@@ -11,49 +11,44 @@ USAGE:
         --features "Online Menu,Contact Form,Mobile Optimized,Google Maps"
 
 This script:
-  1. Creates the preview directory:  previews/<slug>/
-  2. Drops in a placeholder index.html (replace with your real built site)
-  3. Appends the business entry to businesses.json
-  4. Prints next steps
+  1. Creates previews/<slug>/          — the client's website folder
+  2. Creates previews/<slug>/meta.json — business info for the search bar
+  3. Creates previews/<slug>/index.html — placeholder (replace with real site)
+  4. Runs build.py to regenerate previews/manifest.json immediately
 
-Run this from the WebMarket root directory.
-After running it, copy your built website files into previews/<slug>/
-and make sure the main file is named index.html.
+After running this, copy your built website files into previews/<slug>/
+(overwriting the placeholder index.html), then commit and push.
+
+On Vercel, build.py runs automatically on every deployment so the manifest
+is always up to date — no manual step needed after the initial setup.
 """
 
 import argparse
 import json
 import os
 import re
+import subprocess
 import sys
 from datetime import date
 
 
-# ──────────────────────────────────────────────
-# HELPERS
-# ──────────────────────────────────────────────
-
 def slugify(name: str) -> str:
-    """Turn a business name into a URL-safe directory slug."""
+    """Convert a business name to a lowercase-hyphenated slug."""
     slug = name.lower()
-    slug = re.sub(r"[^a-z0-9\s-]", "", slug)   # strip non-alphanumeric
-    slug = re.sub(r"\s+", "-", slug).strip("-")  # spaces → hyphens
+    slug = re.sub(r"[^a-z0-9\s-]", "", slug)
+    slug = re.sub(r"\s+", "-", slug).strip("-")
     return slug
 
 
 def find_repo_root() -> str:
-    """Walk up from the current directory to find businesses.json."""
+    """Walk up from cwd to find the repo root (contains build.py)."""
     current = os.path.abspath(".")
     for _ in range(5):
-        if os.path.exists(os.path.join(current, "businesses.json")):
+        if os.path.exists(os.path.join(current, "build.py")):
             return current
         current = os.path.dirname(current)
-    return os.path.abspath(".")  # fall back to cwd
+    return os.path.abspath(".")
 
-
-# ──────────────────────────────────────────────
-# MAIN
-# ──────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser(
@@ -62,25 +57,25 @@ def main():
         epilog=__doc__
     )
     parser.add_argument("--name",     required=True,
-                        help='Business name, e.g. "Mario\'s Pizza"')
+                        help='Business name,  e.g. "Mario\'s Pizza"')
     parser.add_argument("--category", required=True,
-                        help='Category, e.g. "Italian Restaurant"')
+                        help='Category,        e.g. "Italian Restaurant"')
     parser.add_argument("--city",     required=True,
-                        help='City and state, e.g. "Dallas, TX"')
+                        help='City and state,  e.g. "Dallas, TX"')
     parser.add_argument("--price",    required=True, type=int,
                         help="Asking price in USD, e.g. 299")
     parser.add_argument("--features", default="Mobile Optimized,Contact Form",
-                        help="Comma-separated feature list (default: Mobile Optimized,Contact Form)")
+                        help="Comma-separated features")
     parser.add_argument("--email",    default="",
-                        help="Client email for purchase follow-up (optional)")
+                        help="Client contact email (optional)")
     args = parser.parse_args()
 
-    root         = find_repo_root()
-    slug         = slugify(args.name)
-    features     = [f.strip() for f in args.features.split(",") if f.strip()]
-    preview_dir  = os.path.join(root, "previews", slug)
-    json_path    = os.path.join(root, "businesses.json")
-    placeholder  = os.path.join(preview_dir, "index.html")
+    root        = find_repo_root()
+    slug        = slugify(args.name)
+    features    = [f.strip() for f in args.features.split(",") if f.strip()]
+    folder      = os.path.join(root, "previews", slug)
+    meta_path   = os.path.join(folder, "meta.json")
+    placeholder = os.path.join(folder, "index.html")
 
     print()
     print(f"  Adding: {args.name}")
@@ -88,12 +83,27 @@ def main():
     print()
 
     # ── 1. Create preview directory ──────────────────────────────────────
-    os.makedirs(preview_dir, exist_ok=True)
+    os.makedirs(folder, exist_ok=True)
     print(f"  ✓  Created directory: previews/{slug}/")
 
-    # ── 2. Drop in placeholder index.html ────────────────────────────────
+    # ── 2. Write meta.json ────────────────────────────────────────────────
+    meta = {
+        "name":         args.name,
+        "category":     args.category,
+        "city":         args.city,
+        "price":        args.price,
+        "features":     features,
+        "contactEmail": args.email,
+        "addedDate":    str(date.today())
+    }
+    with open(meta_path, "w", encoding="utf-8") as f:
+        json.dump(meta, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    print(f"  ✓  Wrote meta.json:   previews/{slug}/meta.json")
+
+    # ── 3. Drop placeholder index.html ───────────────────────────────────
     if not os.path.exists(placeholder):
-        with open(placeholder, "w") as f:
+        with open(placeholder, "w", encoding="utf-8") as f:
             f.write(f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,31 +113,17 @@ def main():
 <style>
   body {{
     font-family: sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-    background: #f8f4ee;
-    color: #2a2016;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100vh; margin: 0; background: #f8f4ee; color: #2a2016;
   }}
-  .box {{
-    text-align: center;
-    padding: 60px 40px;
-    max-width: 480px;
-  }}
-  h1 {{ font-size: 2rem; margin-bottom: 12px; }}
-  p  {{ color: #8a7a60; line-height: 1.7; }}
+  .box {{ text-align: center; padding: 60px 40px; max-width: 480px; }}
+  h1   {{ font-size: 2rem; margin-bottom: 12px; }}
+  p    {{ color: #8a7a60; line-height: 1.7; }}
   .badge {{
-    display: inline-block;
-    margin-bottom: 24px;
-    font-size: 0.75rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #b87408;
-    border: 1px solid rgba(184,116,8,0.3);
-    padding: 5px 12px;
-    border-radius: 2px;
+    display: inline-block; margin-bottom: 24px;
+    font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #b87408; border: 1px solid rgba(184,116,8,0.3);
+    padding: 5px 12px; border-radius: 2px;
   }}
 </style>
 </head>
@@ -135,10 +131,8 @@ def main():
   <div class="box">
     <span class="badge">Coming Soon</span>
     <h1>{args.name}</h1>
-    <p>This is a placeholder. Replace this file with your built website.</p>
-    <p style="margin-top:16px;font-size:0.85rem;opacity:0.6">
-      previews/{slug}/index.html
-    </p>
+    <p>Replace this file with your built website.</p>
+    <p style="margin-top:16px;font-size:0.85rem;opacity:0.55">previews/{slug}/index.html</p>
   </div>
 </body>
 </html>
@@ -147,59 +141,39 @@ def main():
     else:
         print(f"  ↷  Skipped placeholder — index.html already exists")
 
-    # ── 3. Read existing businesses.json ─────────────────────────────────
-    if os.path.exists(json_path):
-        with open(json_path, "r", encoding="utf-8") as f:
-            try:
-                businesses = json.load(f)
-            except json.JSONDecodeError as e:
-                print(f"  ✗  businesses.json is invalid JSON: {e}")
-                sys.exit(1)
-    else:
-        print(f"  ⚠  businesses.json not found — creating a new one")
-        businesses = []
-
-    # ── 4. Check for duplicate ────────────────────────────────────────────
-    existing_ids = [b.get("id") for b in businesses]
-    if slug in existing_ids:
-        print(f"  ⚠  A business with id '{slug}' already exists in businesses.json")
-        print(f"     Edit businesses.json manually if you want to update it.")
-        print()
-    else:
-        # ── 5. Append new entry ───────────────────────────────────────────
-        entry = {
-            "id":          slug,
-            "name":        args.name,
-            "category":    args.category,
-            "city":        args.city,
-            "price":       args.price,
-            "previewPath": f"previews/{slug}",
-            "features":    features,
-            "contactEmail": args.email,
-            "addedDate":   str(date.today())
-        }
-        businesses.append(entry)
-
-        with open(json_path, "w", encoding="utf-8") as f:
-            json.dump(businesses, f, indent=2, ensure_ascii=False)
-            f.write("\n")
-
-        print(f"  ✓  Added entry to businesses.json")
-        print(f"     Total businesses in registry: {len(businesses)}")
-
-    # ── 6. Next steps ─────────────────────────────────────────────────────
+    # ── 4. Regenerate previews/manifest.json ─────────────────────────────
     print()
-    print("  " + "─" * 52)
+    build_script = os.path.join(root, "build.py")
+    try:
+        result = subprocess.run(
+            [sys.executable, build_script],
+            cwd=root,
+            capture_output=True,
+            text=True
+        )
+        print(result.stdout.rstrip())
+        if result.returncode != 0:
+            print(f"  ⚠  build.py exited with code {result.returncode}")
+            if result.stderr:
+                print(result.stderr.rstrip())
+    except Exception as e:
+        print(f"  ⚠  Could not run build.py: {e}")
+        print(f"     Run manually:  python build.py")
+
+    # ── 5. Next steps ─────────────────────────────────────────────────────
+    print()
+    print("  " + "─" * 54)
     print("  NEXT STEPS")
-    print("  " + "─" * 52)
-    print(f"  1. Copy your built website into:  previews/{slug}/")
-    print(f"     Make sure there is an index.html in that folder.")
+    print("  " + "─" * 54)
+    print(f"  1. Copy your built website files into previews/{slug}/")
+    print(f"     (Overwrite the placeholder index.html)")
     print(f"  2. Commit and push:")
-    print(f"     git add previews/{slug}/ businesses.json")
+    print(f"     git add previews/{slug}/")
     print(f'     git commit -m "Add website preview for {args.name}"')
     print(f"     git push")
-    print(f"  3. Done — {args.name!r} will appear in search on Website Market!")
-    print("  " + "─" * 52)
+    print(f"  3. Vercel auto-deploys → build.py runs → manifest updates")
+    print(f"     {args.name!r} instantly appears in search. Done!")
+    print("  " + "─" * 54)
     print()
 
 
