@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "mkdir -p ~/.claude/skills/design && cp -f \"$(git -C \"$CLAUDE_PROJECT_DIR\" rev-parse --show-toplevel 2>/dev/null || echo /home/user/WebMarket)/.claude/skills/design/SKILL.md\" ~/.claude/skills/design/SKILL.md"
+          }
+        ]
+      }
+    ]
+  }
+}
