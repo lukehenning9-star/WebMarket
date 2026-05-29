@@ -1,0 +1,238 @@
+/* ================================================
+   WEBSITE MARKET — app.js
+   Handles: live search, business cards, preview modal, nav scroll
+   ================================================ */
+
+/* ------------------------------------------------
+   ELEMENT REFS
+   ------------------------------------------------ */
+const nav            = document.getElementById('nav');
+const searchInput    = document.getElementById('searchInput');
+const searchBtn      = document.getElementById('searchBtn');
+const resultsSection = document.getElementById('results-section');
+const resultsGrid    = document.getElementById('resultsGrid');
+const resultsTitle   = document.getElementById('resultsTitle');
+const resultsCount   = document.getElementById('resultsCount');
+const modalOverlay   = document.getElementById('modal-overlay');
+const modalIframe    = document.getElementById('modalIframe');
+const modalLoading   = document.getElementById('modalLoading');
+const modalName      = document.getElementById('modalBusinessName');
+const modalBuyBtn    = document.getElementById('modalPurchaseBtn');
+const modalClose     = document.getElementById('modalClose');
+
+
+/* ------------------------------------------------
+   DATA LOADING
+   Fetches businesses.json — works when the site is served.
+   If you open index.html directly as a file (file://), run:
+       python -m http.server 8080
+   then visit: http://localhost:8080
+   ------------------------------------------------ */
+let businesses = [];
+
+async function loadBusinesses() {
+    try {
+        const res = await fetch('businesses.json');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        businesses = await res.json();
+    } catch (err) {
+        console.warn('Could not load businesses.json:', err.message);
+        businesses = [];
+        // If the user searches, show a helpful error inside the results area
+        businesses = null;
+    }
+}
+
+loadBusinesses();
+
+
+/* ------------------------------------------------
+   SEARCH
+   ------------------------------------------------ */
+searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim();
+    if (q.length >= 2) {
+        runSearch(q);
+    } else {
+        hideResults();
+    }
+});
+
+searchInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+        const q = searchInput.value.trim();
+        if (q.length >= 2) {
+            runSearch(q);
+            resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+});
+
+searchBtn.addEventListener('click', () => {
+    const q = searchInput.value.trim();
+    if (q.length < 2) return;
+    runSearch(q);
+    resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+function runSearch(query) {
+    if (businesses === null) {
+        /* Data failed to load — show setup instructions */
+        resultsSection.classList.add('visible');
+        resultsTitle.textContent = 'Setup required';
+        resultsCount.textContent = '';
+        resultsGrid.innerHTML = `
+            <div class="load-error">
+                <strong>Could not load business data.</strong><br><br>
+                This page needs to be served over HTTP, not opened as a local file.<br><br>
+                To preview locally, open a terminal in this folder and run:<br>
+                <code>python -m http.server 8080</code><br><br>
+                Then visit <code>http://localhost:8080</code> in your browser.
+            </div>`;
+        return;
+    }
+
+    const q = query.toLowerCase();
+    const matches = businesses.filter(b =>
+        b.name.toLowerCase().includes(q)     ||
+        b.category.toLowerCase().includes(q) ||
+        b.city.toLowerCase().includes(q)
+    );
+
+    renderResults(matches, query);
+}
+
+function renderResults(list, query) {
+    resultsSection.classList.add('visible');
+
+    if (list.length > 0) {
+        resultsTitle.textContent = `Results for "${query}"`;
+        resultsCount.textContent = `${list.length} website${list.length !== 1 ? 's' : ''} ready to preview`;
+        resultsGrid.innerHTML = list.map(b => businessCard(b)).join('');
+    } else {
+        resultsTitle.textContent = `No results for "${query}"`;
+        resultsCount.textContent = '';
+        resultsGrid.innerHTML = `
+            <div class="no-results">
+                <p class="no-results-title">We haven't built a site for "${escHtml(query)}" yet.</p>
+                <p class="no-results-sub">
+                    Want one?
+                    <a href="mailto:YOUR_EMAIL@example.com?subject=New%20Website%20Request&body=Hi%2C%20I%27d%20like%20a%20website%20for%20my%20restaurant.">
+                        Reach out and we'll get started →
+                    </a>
+                </p>
+            </div>`;
+    }
+}
+
+function hideResults() {
+    resultsSection.classList.remove('visible');
+}
+
+function businessCard(b) {
+    const tags = (b.features || [])
+        .map(f => `<span class="feature-tag">${escHtml(f)}</span>`)
+        .join('');
+
+    return `
+        <div class="business-card" onclick="openPreview('${escAttr(b.id)}')" role="button" tabindex="0"
+             aria-label="Preview website for ${escAttr(b.name)}"
+             onkeydown="if(event.key==='Enter'||event.key===' ')openPreview('${escAttr(b.id)}')">
+            <p class="card-category">${escHtml(b.category)}</p>
+            <h3 class="card-name">${escHtml(b.name)}</h3>
+            <p class="card-city">${escHtml(b.city)}</p>
+            <div class="card-features">${tags}</div>
+            <div class="card-footer">
+                <div class="card-price">
+                    $${Number(b.price).toLocaleString()}
+                    <em>one-time</em>
+                </div>
+                <span class="card-btn">Preview Site →</span>
+            </div>
+        </div>`;
+}
+
+
+/* ------------------------------------------------
+   PREVIEW MODAL
+   ------------------------------------------------ */
+function openPreview(businessId) {
+    const biz = businesses && businesses.find(b => b.id === businessId);
+    if (!biz) return;
+
+    modalName.textContent = biz.name;
+
+    /* Pre-fill a purchase email */
+    const subject = encodeURIComponent(`Purchase website for ${biz.name}`);
+    const body    = encodeURIComponent(
+        `Hi,\n\nI previewed the website you built for ${biz.name} and I'd like to purchase it.\n\nPlease send over the next steps.\n\nThank you!`
+    );
+    const toEmail = biz.contactEmail || 'YOUR_EMAIL@example.com';
+    modalBuyBtn.onclick = () => {
+        window.location.href = `mailto:${toEmail}?subject=${subject}&body=${body}`;
+    };
+
+    /* Show loading state then load the iframe */
+    modalLoading.style.display = 'flex';
+    modalIframe.src = '';
+
+    modalIframe.onload = () => {
+        /* Small delay so the page actually renders before we hide the spinner */
+        setTimeout(() => { modalLoading.style.display = 'none'; }, 200);
+    };
+
+    modalIframe.src = `${biz.previewPath}/index.html`;
+
+    modalOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    modalOverlay.classList.remove('open');
+    modalIframe.src = '';
+    document.body.style.overflow = '';
+}
+
+/* Close on overlay click (but not on modal click) */
+modalOverlay.addEventListener('click', e => {
+    if (e.target === modalOverlay) closeModal();
+});
+
+modalClose.addEventListener('click', closeModal);
+
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modalOverlay.classList.contains('open')) closeModal();
+});
+
+/* Expose to onclick in HTML */
+window.openPreview = openPreview;
+
+
+/* ------------------------------------------------
+   NAV SCROLL EFFECT
+   ------------------------------------------------ */
+window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
+
+
+/* ------------------------------------------------
+   UTILITIES
+   ------------------------------------------------ */
+
+/* Safely escape text for HTML insertion */
+function escHtml(str) {
+    const el = document.createElement('div');
+    el.textContent = String(str);
+    return el.innerHTML;
+}
+
+/* Safely escape text for HTML attribute insertion */
+function escAttr(str) {
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#x27;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}

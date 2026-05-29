@@ -1,0 +1,22 @@
+[
+  {
+    "id": "marios-pizza",
+    "name": "Mario's Pizza",
+    "category": "Italian Restaurant",
+    "city": "Dallas, TX",
+    "price": 299,
+    "previewPath": "previews/marios-pizza",
+    "features": ["Online Menu", "Contact Form", "Mobile Optimized", "Google Maps"],
+    "contactEmail": ""
+  },
+  {
+    "id": "golden-wok",
+    "name": "Golden Wok",
+    "category": "Chinese Restaurant",
+    "city": "Austin, TX",
+    "price": 349,
+    "previewPath": "previews/golden-wok",
+    "features": ["Online Menu", "Photo Gallery", "Mobile Optimized", "Hours & Location"],
+    "contactEmail": ""
+  }
+]

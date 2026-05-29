@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Market — Professional Websites for Restaurants</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- =============================================
+         NAVIGATION
+         ============================================= -->
+    <nav id="nav">
+        <div class="nav-logo">Website<span>Market</span></div>
+        <!-- ⚠️  Replace YOUR_EMAIL@example.com with your real email address (appears in 3 places) -->
+        <a href="mailto:YOUR_EMAIL@example.com" class="nav-cta">Get Your Website</a>
+    </nav>
+
+
+    <!-- =============================================
+         HERO
+         ============================================= -->
+    <section id="hero">
+        <div class="hero-inner">
+            <span class="hero-eyebrow">Your Customers Are Online Right Now</span>
+
+            <div class="hero-stat-block">
+                <div class="hero-stat-number"><span>91</span>%</div>
+                <p class="hero-stat-label">of customers check a restaurant's website before deciding to order</p>
+                <p class="hero-stat-sub">and 75% won't order if the online experience is bad &ensp;·&ensp; <em>Owner.com</em></p>
+            </div>
+
+            <h1 class="hero-h1">
+                Is your restaurant showing up?<br>
+                Search below to see the site we built for you.
+            </h1>
+            <p class="hero-sub">
+                We build professional websites for restaurants and hand them over ready to launch.
+                Type your restaurant's name to preview yours — no obligation.
+            </p>
+
+            <!-- SEARCH BAR -->
+            <div class="search-wrap">
+                <label class="search-label" for="searchInput">Find your restaurant</label>
+                <div class="search-box" id="searchBox">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        class="search-input"
+                        placeholder="e.g. Mario's Pizza, The Golden Fork…"
+                        autocomplete="off"
+                        spellcheck="false"
+                        aria-label="Search for your restaurant"
+                    />
+                    <button class="search-btn" id="searchBtn">Find My Site</button>
+                </div>
+                <p class="search-hint">Start typing to see results</p>
+            </div>
+        </div>
+
+        <!-- Subtle decorative orbs -->
+        <div class="hero-orb hero-orb--1" aria-hidden="true"></div>
+        <div class="hero-orb hero-orb--2" aria-hidden="true"></div>
+    </section>
+
+
+    <!-- =============================================
+         SEARCH RESULTS  (hidden until user searches)
+         ============================================= -->
+    <section id="results-section" aria-live="polite" aria-label="Search results">
+        <div class="results-inner">
+            <div class="results-header">
+                <h2 class="results-title" id="resultsTitle"></h2>
+                <p class="results-count" id="resultsCount"></p>
+            </div>
+            <div class="results-grid" id="resultsGrid"></div>
+        </div>
+    </section>
+
+
+    <!-- =============================================
+         STATS
+         ============================================= -->
+    <section id="stats">
+        <div class="section-header">
+            <p class="section-eyebrow">Why This Matters</p>
+            <h2 class="section-title">The numbers don't lie.</h2>
+        </div>
+        <div class="stats-grid">
+
+            <div class="stat-card stat-card--dark">
+                <div class="stat-number">91%</div>
+                <p class="stat-text">
+                    of customers check a restaurant's website before deciding to order
+                    — and <strong>75% won't order</strong> if the site or online experience is bad.
+                </p>
+                <p class="stat-source">Source: Owner.com</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">73%</div>
+                <p class="stat-text">
+                    of diners will choose a competitor if a restaurant doesn't respond
+                    or show up online.
+                </p>
+                <p class="stat-source">Source: Cropink</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-number">84%</div>
+                <p class="stat-text">
+                    of people trust a business's website more than its social media page
+                    — and 75% judge credibility based on website design alone.
+                </p>
+                <p class="stat-source">Source: BusinessDasher</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =============================================
+         HOW IT WORKS
+         ============================================= -->
+    <section id="how">
+        <div class="section-header">
+            <p class="section-eyebrow">The Process</p>
+            <h2 class="section-title">Simple. Fast. Done.</h2>
+        </div>
+        <div class="steps">
+
+            <div class="step">
+                <div class="step-number">01</div>
+                <h3 class="step-title">We build your site</h3>
+                <p class="step-desc">
+                    We design and build a professional website tailored specifically to your
+                    restaurant — no templates, no fluff. You don't lift a finger.
+                </p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">02</div>
+                <h3 class="step-title">You preview it here</h3>
+                <p class="step-desc">
+                    Search your restaurant name on this page to see the finished site we've built
+                    for you. Browse it on any device, exactly as your customers would.
+                </p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">03</div>
+                <h3 class="step-title">You decide to buy</h3>
+                <p class="step-desc">
+                    Love it? We connect your domain and hand it over. One-time fee.
+                    No monthly subscriptions. Yours to keep.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =============================================
+         CTA
+         ============================================= -->
+    <section id="cta">
+        <div class="cta-inner">
+            <p class="section-eyebrow cta-eyebrow">Ready to Get Online?</p>
+            <h2 class="cta-title">Don't let your competitors take your customers.</h2>
+            <p class="cta-sub">
+                We've already built sites for restaurants just like yours.
+                Search above to see if yours is ready — or reach out to get started today.
+            </p>
+            <a href="mailto:YOUR_EMAIL@example.com" class="cta-btn">Get In Touch →</a>
+        </div>
+        <div class="cta-orb" aria-hidden="true"></div>
+    </section>
+
+
+    <!-- =============================================
+         FOOTER
+         ============================================= -->
+    <footer>
+        <div class="footer-logo">WebsiteMarket</div>
+        <p class="footer-copy">© 2025 Website Market. All rights reserved.</p>
+    </footer>
+
+
+    <!-- =============================================
+         PREVIEW MODAL
+         ============================================= -->
+    <div id="modal-overlay" role="dialog" aria-modal="true" aria-label="Website preview">
+        <div class="modal">
+            <div class="modal-header">
+                <span class="modal-business-name" id="modalBusinessName"></span>
+                <div class="modal-actions">
+                    <button class="modal-purchase-btn" id="modalPurchaseBtn">
+                        Purchase This Website
+                    </button>
+                    <button class="modal-close" id="modalClose" aria-label="Close preview">
+                        ✕
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-loading" id="modalLoading">
+                    <div class="loader" aria-label="Loading"></div>
+                    <p>Loading preview…</p>
+                </div>
+                <iframe
+                    id="modalIframe"
+                    class="modal-iframe"
+                    title="Website Preview"
+                    sandbox="allow-scripts allow-same-origin"
+                ></iframe>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="app.js"></script>
+</body>
+</html>
