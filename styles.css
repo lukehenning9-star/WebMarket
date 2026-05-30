@@ -9,28 +9,28 @@
    ------------------------------------------------ */
 :root {
     /* Palette */
-    --ink:          #1b2d22;   /* deep forest — hero / CTA bg */
-    --ink-mid:      #223529;   /* slightly lighter forest — footer */
+    --ink:          #1b2d22;   /* deep forest — hero bg, CTA bg, modal header */
+    --ink-mid:      #223529;   /* slightly lighter dark — footer bg */
     --surface:      #f3f6f3;   /* light section bg */
-    --surface-alt:  #edf1ed;   /* how-it-works bg */
-    --page:         #f9fbf9;   /* main page / cards */
-    --text:         #1b2d22;   /* on light */
+    --surface-alt:  #edf1ed;   /* alternate light — how section */
+    --page:         #f9fbf9;   /* card / content bg */
+    --text:         #1b2d22;   /* primary on light */
     --text-muted:   #5c7a67;   /* secondary on light */
     --text-faint:   #8aab94;   /* tertiary on light */
-    --text-light:   #ddeae0;   /* on dark */
+    --text-light:   #ddeae0;   /* primary on dark */
     --text-ghost:   #7a9e87;   /* secondary on dark */
-    --accent:       #4d8b63;   /* sage green */
+    --accent:       #4d8b63;   /* sage green — buttons, highlights */
     --accent-deep:  #3a6b4a;   /* hover / pressed */
-    --border:       #d1ddd4;
-    --border-light: #dce8de;
+    --border:       #cfdcd2;   /* dividers on light */
+    --border-light: #dbe8de;   /* subtle borders */
     --white:        #fafcfa;
 
-    /* Shadows — tinted to forest green */
+    /* Shadows — tinted green */
     --shadow-sm:    0 2px 8px rgba(27,45,34,0.08);
     --shadow-md:    0 8px 32px rgba(27,45,34,0.12);
     --shadow-lg:    0 24px 72px rgba(27,45,34,0.18);
 
-    /* Radii */
+    /* Shape */
     --radius:       4px;
     --radius-lg:    12px;
 
@@ -63,8 +63,8 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-img  { max-width: 100%; display: block; }
-a    { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+a   { color: inherit; text-decoration: none; }
 
 
 /* ------------------------------------------------
@@ -72,9 +72,7 @@ a    { color: inherit; text-decoration: none; }
    ------------------------------------------------ */
 #nav {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     z-index: 200;
     display: flex;
     align-items: center;
@@ -108,7 +106,7 @@ a    { color: inherit; text-decoration: none; }
     text-transform: uppercase;
     color: rgba(221, 234, 224, 0.50);
     padding: 8px 22px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.13);
     border-radius: var(--radius);
     transition: color 0.2s, border-color 0.2s;
 }
@@ -134,11 +132,16 @@ a    { color: inherit; text-decoration: none; }
     overflow: hidden;
 }
 
-/* Green spotlight radiates from behind the search bar */
+/* Sage spotlight — soft radial glow centered on the search bar */
 .hero-spotlight {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 50% 70%, rgba(77,139,99,0.22) 0%, rgba(77,139,99,0.06) 32%, transparent 64%);
+    background: radial-gradient(
+        ellipse at 50% 70%,
+        rgba(77, 139, 99, 0.20) 0%,
+        rgba(77, 139, 99, 0.06) 32%,
+        transparent 64%
+    );
     pointer-events: none;
 }
 
@@ -168,7 +171,7 @@ a    { color: inherit; text-decoration: none; }
 .hero-sub {
     font-size: 0.80rem;
     font-weight: 400;
-    color: rgba(122, 158, 135, 0.52);
+    color: rgba(122, 158, 135, 0.50);
     letter-spacing: 0.14em;
     text-transform: uppercase;
     margin: 0 auto 80px;
@@ -176,7 +179,7 @@ a    { color: inherit; text-decoration: none; }
 
 
 /* ------------------------------------------------
-   SEARCH BAR — the focal point
+   SEARCH BAR — the stage
    ------------------------------------------------ */
 .search-wrap {
     width: 100%;
@@ -196,9 +199,12 @@ a    { color: inherit; text-decoration: none; }
 }
 
 .search-box:focus-within {
-    border-color: rgba(77, 139, 99, 0.58);
+    border-color: rgba(77, 139, 99, 0.60);
     background: rgba(255, 255, 255, 0.07);
-    box-shadow: 0 8px 56px rgba(0,0,0,0.28), 0 0 0 3px rgba(77,139,99,0.16), 0 0 80px rgba(77,139,99,0.12);
+    box-shadow:
+        0 8px 56px rgba(0,0,0,0.28),
+        0 0 0 3px rgba(77,139,99,0.16),
+        0 0 80px rgba(77,139,99,0.12);
     animation: none;
 }
 
@@ -254,14 +260,8 @@ a    { color: inherit; text-decoration: none; }
     animation: fadeIn 0.3s ease;
 }
 
-.results-inner {
-    max-width: 1120px;
-    margin: 0 auto;
-}
-
-.results-header {
-    margin-bottom: 36px;
-}
+.results-inner  { max-width: 1120px; margin: 0 auto; }
+.results-header { margin-bottom: 36px; }
 
 .results-title {
     font-family: 'Cormorant Garamond', Georgia, serif;
@@ -281,7 +281,6 @@ a    { color: inherit; text-decoration: none; }
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
 }
-
 
 /* Business card */
 .business-card {
@@ -343,7 +342,6 @@ a    { color: inherit; text-decoration: none; }
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: auto;
 }
 
 .card-price {
@@ -379,7 +377,7 @@ a    { color: inherit; text-decoration: none; }
     color: var(--white);
 }
 
-/* No results */
+/* No-results state */
 .no-results {
     grid-column: 1 / -1;
     text-align: center;
@@ -427,33 +425,7 @@ a    { color: inherit; text-decoration: none; }
 
 
 /* ------------------------------------------------
-   SHARED HELPERS
-   ------------------------------------------------ */
-.section-eyebrow {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 14px;
-}
-
-.section-title {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 600;
-    color: var(--text);
-    line-height: 1.15;
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 68px;
-}
-
-
-/* ------------------------------------------------
-   STATS — editorial large numbers, hairline layout
+   STATS — editorial large numbers with hairlines
    ------------------------------------------------ */
 #stats {
     padding: 0;
@@ -476,9 +448,7 @@ a    { color: inherit; text-decoration: none; }
     border-right: 1px solid var(--border);
 }
 
-.stat-card:last-child {
-    border-right: none;
-}
+.stat-card:last-child { border-right: none; }
 
 .stat-number {
     font-family: 'Cormorant Garamond', Georgia, serif;
@@ -500,7 +470,7 @@ a    { color: inherit; text-decoration: none; }
 
 
 /* ------------------------------------------------
-   HOW IT WORKS — vertical numbered list, editorial
+   HOW IT WORKS — vertical editorial numbered list
    ------------------------------------------------ */
 #how {
     padding: 96px 52px;
@@ -519,13 +489,11 @@ a    { color: inherit; text-decoration: none; }
     letter-spacing: 0.18em;
     text-transform: uppercase;
     margin-bottom: 48px;
-    font-family: 'DM Sans', sans-serif;
 }
 
 .steps {
     display: flex;
     flex-direction: column;
-    gap: 0;
 }
 
 .step {
@@ -537,9 +505,7 @@ a    { color: inherit; text-decoration: none; }
     align-items: start;
 }
 
-.step:last-child {
-    border-bottom: 1px solid var(--border);
-}
+.step:last-child { border-bottom: 1px solid var(--border); }
 
 .step-number {
     font-family: 'Cormorant Garamond', Georgia, serif;
@@ -551,8 +517,6 @@ a    { color: inherit; text-decoration: none; }
     display: block;
 }
 
-.step-content { /* title + desc wrapper */ }
-
 .step-title {
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 1.45rem;
@@ -563,7 +527,7 @@ a    { color: inherit; text-decoration: none; }
 }
 
 .step-desc {
-    font-size: 0.9rem;
+    font-size: 0.90rem;
     color: var(--text-muted);
     line-height: 1.76;
 }
@@ -650,14 +614,14 @@ footer {
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--text-light);
-    opacity: 0.35;
+    opacity: 0.32;
     letter-spacing: 0.04em;
 }
 
 .footer-copy {
     font-size: 0.78rem;
     color: var(--text-ghost);
-    opacity: 0.4;
+    opacity: 0.38;
 }
 
 
@@ -801,8 +765,13 @@ footer {
    ANIMATIONS
    ------------------------------------------------ */
 @keyframes searchGlow {
-    0%, 100% { box-shadow: 0 8px 56px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.04); }
-    50%       { box-shadow: 0 8px 56px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.04), 0 0 52px rgba(77,139,99,0.15); }
+    0%, 100% {
+        box-shadow: 0 8px 56px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+    50% {
+        box-shadow: 0 8px 56px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.04),
+                    0 0 52px rgba(77,139,99,0.14);
+    }
 }
 
 @keyframes fadeUp {
@@ -829,12 +798,11 @@ footer {
     .search-box { animation: none; }
 }
 
-/* Default: full button text visible, short hidden */
 .btn-text-short { display: none; }
 
 
 /* ------------------------------------------------
-   RESPONSIVE — Tablet (≤ 900px)
+   RESPONSIVE — Tablet  (≤ 900px)
    ------------------------------------------------ */
 @media (max-width: 900px) {
     #nav             { padding: 16px 24px; }
@@ -845,12 +813,11 @@ footer {
     #cta             { padding: 72px 24px; }
     footer           { padding: 28px 24px; }
 
-    .stats-grid       { grid-template-columns: 1fr; }
-    .stat-card        { border-right: none; border-bottom: 1px solid var(--border); }
+    .stats-grid          { grid-template-columns: 1fr; }
+    .stat-card           { border-right: none; border-bottom: 1px solid var(--border); }
     .stat-card:last-child { border-bottom: none; }
 
-    .how-inner { max-width: 100%; }
-    .step      { grid-template-columns: 56px 1fr; gap: 20px; }
+    .step { grid-template-columns: 56px 1fr; gap: 20px; }
 
     #modal-overlay { padding: 0; }
     .modal         { max-width: 100%; height: 100%; border-radius: 0; }
@@ -858,32 +825,27 @@ footer {
 
 
 /* ------------------------------------------------
-   RESPONSIVE — Large phone (≤ 640px)
+   RESPONSIVE — Large phone  (≤ 640px)
    ------------------------------------------------ */
 @media (max-width: 640px) {
     #nav     { padding: 14px 18px; }
     .nav-cta { padding: 7px 14px; font-size: 0.68rem; letter-spacing: 0.08em; }
 
     #hero     { padding: 92px 20px 56px; }
-    .hero-h1  { font-size: clamp(1.85rem, 7vw, 2.8rem); }
     .hero-sub { margin-bottom: 40px; }
+    .hero-h1  { font-size: clamp(1.85rem, 7vw, 2.8rem); }
 
     .search-box   { flex-direction: column; }
     .search-input { padding: 22px 24px; }
-    .search-btn {
-        border-radius: 0;
-        width: 100%;
-        text-align: center;
-        padding: 20px;
-    }
+    .search-btn   { border-radius: 0; width: 100%; text-align: center; padding: 20px; }
 
-    #stats       { padding: 0 20px; }
-    .stat-card   { padding: 48px 28px; }
-    .stat-number { font-size: clamp(3.8rem, 18vw, 6rem); }
+    #stats        { padding: 0 20px; }
+    .stat-card    { padding: 48px 28px; }
+    .stat-number  { font-size: clamp(3.8rem, 18vw, 6rem); }
 
-    #how         { padding: 60px 20px; }
-    .step        { grid-template-columns: 48px 1fr; gap: 16px; padding: 28px 0; }
-    .step-number { font-size: 2.2rem; }
+    #how          { padding: 60px 20px; }
+    .step         { grid-template-columns: 44px 1fr; gap: 16px; padding: 28px 0; }
+    .step-number  { font-size: 2.2rem; }
 
     #results-section { padding: 44px 20px; }
     .results-grid    { grid-template-columns: 1fr; }
@@ -903,7 +865,7 @@ footer {
 
 
 /* ------------------------------------------------
-   RESPONSIVE — Small phone (≤ 390px)
+   RESPONSIVE — Small phone  (≤ 390px)
    ------------------------------------------------ */
 @media (max-width: 390px) {
     .nav-cta  { display: none; }
