@@ -164,110 +164,84 @@ a    { color: inherit; text-decoration: none; }
 }
 
 /* Staggered entrance animations */
-.hero-eyebrow         { animation: fadeUp 0.7s 0.10s both; }
-.hero-stat-block      { animation: fadeUp 0.7s 0.18s both; }
-.hero-h1              { animation: fadeUp 0.7s 0.32s both; }
-.hero-sub             { animation: fadeUp 0.7s 0.40s both; }
-.search-wrap          { animation: fadeUp 0.7s 0.48s both; }
+.hero-eyebrow  { animation: fadeUp 0.6s 0.08s both; }
+.hero-h1       { animation: fadeUp 0.6s 0.18s both; }
+.hero-sub      { animation: fadeUp 0.6s 0.26s both; }
+.search-wrap   { animation: fadeUp 0.7s 0.36s both; }
+.hero-nudge    { animation: fadeUp 0.6s 0.50s both; }
 
 .hero-eyebrow {
     display: inline-block;
-    font-size: 0.72rem;
+    font-size: 0.70rem;
     font-weight: 600;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
     color: var(--gold-bright);
-    margin-bottom: 36px;
-    padding: 7px 16px;
-    border: 1px solid rgba(240, 168, 37, 0.28);
+    margin-bottom: 28px;
+    padding: 6px 14px;
+    border: 1px solid rgba(240, 168, 37, 0.25);
     border-radius: 2px;
-}
-
-.hero-stat-block {
-    margin-bottom: 44px;
-}
-
-.hero-stat-number {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(7rem, 19vw, 15rem);
-    font-weight: 700;
-    line-height: 0.88;
-    color: var(--cream);
-    letter-spacing: -0.04em;
-}
-
-.hero-stat-number span {
-    color: var(--gold-bright);
-}
-
-.hero-stat-label {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(1.1rem, 2.4vw, 1.7rem);
-    font-style: italic;
-    font-weight: 400;
-    color: var(--text-faint);
-    margin-top: 12px;
-    line-height: 1.4;
-}
-
-.hero-stat-sub {
-    font-size: 0.82rem;
-    color: var(--text-faint);
-    opacity: 0.6;
-    margin-top: 8px;
 }
 
 .hero-h1 {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(1.8rem, 4vw, 2.9rem);
+    font-size: clamp(2.4rem, 5vw, 4rem);
     font-weight: 600;
     color: var(--cream);
-    line-height: 1.22;
-    margin-bottom: 16px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
 }
 
 .hero-sub {
-    font-size: 0.97rem;
+    font-size: 1rem;
     font-weight: 300;
     color: var(--text-faint);
-    line-height: 1.75;
-    max-width: 520px;
-    margin: 0 auto 52px;
+    line-height: 1.72;
+    max-width: 480px;
+    margin: 0 auto 44px;
+}
+
+/* Small stat nudge below the search bar */
+.hero-nudge {
+    margin-top: 22px;
+    font-size: 0.82rem;
+    color: var(--text-faint);
+    opacity: 0.65;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.hero-nudge em {
+    color: var(--gold-bright);
+    font-style: normal;
 }
 
 
 /* ------------------------------------------------
-   SEARCH BAR
+   SEARCH BAR  — the focal point of the whole page
    ------------------------------------------------ */
 .search-wrap {
     width: 100%;
-    max-width: 580px;
+    max-width: 680px;
     margin: 0 auto;
-    text-align: left;
-}
-
-.search-label {
-    display: block;
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--gold-bright);
-    margin-bottom: 10px;
 }
 
 .search-box {
     display: flex;
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.09);
+    border: 1.5px solid rgba(255, 255, 255, 0.22);
+    border-radius: 6px;
     overflow: hidden;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0,0,0,0.2);
+    transition: border-color 0.25s, box-shadow 0.25s;
 }
 
 .search-box:focus-within {
     border-color: var(--gold-bright);
-    box-shadow: 0 0 0 3px rgba(240, 168, 37, 0.18);
+    box-shadow: 0 12px 48px rgba(0,0,0,0.35), 0 0 0 4px rgba(240, 168, 37, 0.22);
 }
 
 .search-input {
@@ -276,41 +250,35 @@ a    { color: inherit; text-decoration: none; }
     background: transparent;
     border: none;
     outline: none;
-    padding: 17px 22px;
+    padding: 22px 28px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--cream);
 }
 
 .search-input::placeholder {
-    color: rgba(247, 242, 232, 0.28);
+    color: rgba(247, 242, 232, 0.32);
 }
 
 .search-btn {
     flex-shrink: 0;
-    padding: 17px 28px;
+    padding: 22px 36px;
     background: var(--gold);
     border: none;
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 600;
-    letter-spacing: 0.10em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--white);
     transition: background 0.2s;
     white-space: nowrap;
+    min-height: 44px;
 }
 
 .search-btn:hover {
     background: var(--gold-bright);
-}
-
-.search-hint {
-    margin-top: 10px;
-    font-size: 0.78rem;
-    color: var(--text-faint);
-    opacity: 0.55;
 }
 
 
@@ -945,19 +913,19 @@ footer {
     .nav-cta     { padding: 7px 14px; font-size: 0.68rem; letter-spacing: 0.08em; }
 
     /* Hero — tighten spacing between elements */
-    #hero                 { padding: 92px 20px 56px; }
-    .hero-eyebrow         { margin-bottom: 22px; }
-    .hero-stat-block      { margin-bottom: 28px; }
-    .hero-sub             { font-size: 0.92rem; margin-bottom: 36px; }
+    #hero        { padding: 92px 20px 56px; }
+    .hero-eyebrow { margin-bottom: 20px; }
+    .hero-sub    { font-size: 0.92rem; margin-bottom: 32px; }
+    .hero-h1     { font-size: clamp(2rem, 7.5vw, 3rem); }
 
-    /* Search — stack input above button */
+    /* Search — stack input above button on small screens */
     .search-box { flex-direction: column; }
     .search-btn {
         border-radius: 0;
         width: 100%;
         text-align: center;
-        padding: 16px;       /* ensure ≥ 44px touch target */
-        min-height: 44px;
+        padding: 18px;
+        min-height: 52px;
     }
 
     /* Stats — reduce card padding */
@@ -994,14 +962,12 @@ footer {
    iPhone SE, older Android phones
    ------------------------------------------------ */
 @media (max-width: 390px) {
-    /* Hide nav CTA entirely — the hero and footer CTA cover this */
+    /* Hide nav CTA entirely — hero and footer CTAs cover this */
     .nav-cta { display: none; }
 
-    /* Stat number: drop minimum so it never clips on 320px screens */
-    .hero-stat-number { font-size: clamp(4.5rem, 22vw, 15rem); }
-
-    /* Hero sub: smaller type */
-    .hero-h1  { font-size: clamp(1.55rem, 6.5vw, 2.9rem); }
+    /* Hero */
+    .hero-h1   { font-size: clamp(1.7rem, 7vw, 2.4rem); }
+    .hero-sub  { font-size: 0.88rem; }
 
     /* Business card */
     .card-name { font-size: 1.65rem; }
