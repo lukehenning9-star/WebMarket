@@ -164,32 +164,17 @@ a    { color: inherit; text-decoration: none; }
 }
 
 /* Staggered entrance animations */
-.hero-eyebrow  { animation: fadeUp 0.6s 0.08s both; }
-.hero-h1       { animation: fadeUp 0.6s 0.18s both; }
-.hero-sub      { animation: fadeUp 0.6s 0.26s both; }
-.search-wrap   { animation: fadeUp 0.7s 0.36s both; }
-.hero-nudge    { animation: fadeUp 0.6s 0.50s both; }
-
-.hero-eyebrow {
-    display: inline-block;
-    font-size: 0.70rem;
-    font-weight: 600;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: var(--gold-bright);
-    margin-bottom: 28px;
-    padding: 6px 14px;
-    border: 1px solid rgba(240, 168, 37, 0.25);
-    border-radius: 2px;
-}
+.hero-h1     { animation: fadeUp 0.7s 0.12s both; }
+.hero-sub    { animation: fadeUp 0.7s 0.22s both; }
+.search-wrap { animation: fadeUp 0.8s 0.34s both; }
 
 .hero-h1 {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-size: clamp(2.6rem, 5.5vw, 4.4rem);
     font-weight: 600;
     color: var(--cream);
-    line-height: 1.15;
-    margin-bottom: 20px;
+    line-height: 1.12;
+    margin-bottom: 18px;
     letter-spacing: -0.01em;
 }
 
@@ -197,26 +182,8 @@ a    { color: inherit; text-decoration: none; }
     font-size: 1rem;
     font-weight: 300;
     color: var(--text-faint);
-    line-height: 1.72;
-    max-width: 480px;
-    margin: 0 auto 44px;
-}
-
-/* Small stat nudge below the search bar */
-.hero-nudge {
-    margin-top: 22px;
-    font-size: 0.82rem;
-    color: var(--text-faint);
-    opacity: 0.65;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
-}
-
-.hero-nudge em {
-    color: var(--gold-bright);
-    font-style: normal;
+    letter-spacing: 0.01em;
+    margin: 0 auto 48px;
 }
 
 
@@ -231,17 +198,17 @@ a    { color: inherit; text-decoration: none; }
 
 .search-box {
     display: flex;
-    background: rgba(255, 255, 255, 0.09);
-    border: 1.5px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0,0,0,0.2);
-    transition: border-color 0.25s, box-shadow 0.25s;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.22);
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .search-box:focus-within {
-    border-color: var(--gold-bright);
-    box-shadow: 0 12px 48px rgba(0,0,0,0.35), 0 0 0 4px rgba(240, 168, 37, 0.22);
+    border-color: rgba(240, 168, 37, 0.55);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.22), 0 0 0 3px rgba(240, 168, 37, 0.12);
 }
 
 .search-input {
@@ -500,61 +467,40 @@ a    { color: inherit; text-decoration: none; }
    STATS
    ------------------------------------------------ */
 #stats {
-    padding: 100px 52px;
+    padding: 96px 52px;
     background: var(--white);
 }
 
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
+    gap: 1px;
     max-width: 1120px;
     margin: 0 auto;
     background: var(--border-light);
-    border: 1px solid var(--border-light);
-    overflow: hidden;
     border-radius: var(--radius-lg);
+    overflow: hidden;
 }
 
 .stat-card {
     background: var(--white);
-    padding: 56px 44px;
-}
-
-.stat-card--dark {
-    background: var(--charcoal);
+    padding: 64px 52px;
 }
 
 .stat-number {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(3.5rem, 5.5vw, 5.5rem);
-    font-weight: 700;
+    font-size: clamp(3.2rem, 5vw, 5rem);
+    font-weight: 600;
     line-height: 1;
-    color: var(--gold-bright);
-    margin-bottom: 18px;
+    color: var(--gold);
+    margin-bottom: 20px;
 }
 
 .stat-text {
     font-size: 0.97rem;
-    line-height: 1.68;
+    line-height: 1.72;
     color: var(--text-muted);
-    margin-bottom: 18px;
-}
-
-.stat-card--dark .stat-text {
-    color: var(--text-faint);
-}
-
-.stat-card--dark .stat-text strong {
-    color: var(--gold-bright);
-}
-
-.stat-source {
-    font-size: 0.70rem;
-    letter-spacing: 0.10em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    opacity: 0.55;
+    font-weight: 300;
 }
 
 
@@ -562,8 +508,18 @@ a    { color: inherit; text-decoration: none; }
    HOW IT WORKS
    ------------------------------------------------ */
 #how {
-    padding: 100px 52px;
+    padding: 112px 52px;
     background: var(--cream);
+}
+
+.how-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 400;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 72px;
+    letter-spacing: 0.01em;
 }
 
 .steps {
@@ -645,13 +601,9 @@ a    { color: inherit; text-decoration: none; }
     margin: 0 auto;
 }
 
-.cta-eyebrow {
-    color: var(--gold-bright);
-}
-
 .cta-title {
     font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: clamp(2rem, 4vw, 3.1rem);
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
     font-weight: 600;
     color: var(--cream);
     line-height: 1.22;
@@ -912,11 +864,10 @@ footer {
     #nav         { padding: 14px 18px; }
     .nav-cta     { padding: 7px 14px; font-size: 0.68rem; letter-spacing: 0.08em; }
 
-    /* Hero — tighten spacing between elements */
-    #hero        { padding: 92px 20px 56px; }
-    .hero-eyebrow { margin-bottom: 20px; }
-    .hero-sub    { font-size: 0.92rem; margin-bottom: 32px; }
-    .hero-h1     { font-size: clamp(2rem, 7.5vw, 3rem); }
+    /* Hero — tighten spacing */
+    #hero     { padding: 92px 20px 56px; }
+    .hero-sub { margin-bottom: 32px; }
+    .hero-h1  { font-size: clamp(2rem, 7.5vw, 3rem); }
 
     /* Search — stack input above button on small screens */
     .search-box { flex-direction: column; }
