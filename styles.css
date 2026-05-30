@@ -851,6 +851,7 @@ footer {
     flex: 1;
     position: relative;
     overflow: hidden;
+    -webkit-overflow-scrolling: touch; /* smoother iframe scroll on iOS */
 }
 
 .modal-loading {
@@ -907,42 +908,101 @@ footer {
     to { transform: rotate(360deg); }
 }
 
+/* Default: show full button text, hide short version */
+.btn-text-short { display: none; }
+
 
 /* ------------------------------------------------
-   RESPONSIVE
+   RESPONSIVE — Tablet  (≤ 900px)
+   Laptops, iPads, large Android tablets
    ------------------------------------------------ */
 @media (max-width: 900px) {
     #nav              { padding: 16px 24px; }
-    #hero             { padding: 110px 24px 70px; }
+    #hero             { padding: 110px 24px 72px; }
     #stats            { padding: 72px 24px; }
     #how              { padding: 72px 24px; }
     #results-section  { padding: 60px 24px; }
     #cta              { padding: 72px 24px; }
     footer            { padding: 28px 24px; }
 
-    .stats-grid {
-        grid-template-columns: 1fr;
-        gap: 1px;
-    }
+    .stats-grid       { grid-template-columns: 1fr; gap: 1px; }
+    .steps            { grid-template-columns: 1fr; gap: 36px; }
+    .steps::before    { display: none; }
 
-    .steps {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .steps::before { display: none; }
-
-    .modal {
-        max-width: 100%;
-        height: 100%;
-        border-radius: 0;
-    }
-
-    #modal-overlay { padding: 0; }
+    /* Modal goes full-screen */
+    #modal-overlay    { padding: 0; }
+    .modal            { max-width: 100%; height: 100%; border-radius: 0; }
 }
 
-@media (max-width: 600px) {
-    .search-box    { flex-direction: column; }
-    .search-btn    { border-radius: 0; }
-    footer         { flex-direction: column; gap: 10px; text-align: center; }
+
+/* ------------------------------------------------
+   RESPONSIVE — Large phone  (≤ 640px)
+   Most Android phones, iPhone Plus/Pro Max landscape
+   ------------------------------------------------ */
+@media (max-width: 640px) {
+    /* Nav — shrink CTA to stay on one line */
+    #nav         { padding: 14px 18px; }
+    .nav-cta     { padding: 7px 14px; font-size: 0.68rem; letter-spacing: 0.08em; }
+
+    /* Hero — tighten spacing between elements */
+    #hero                 { padding: 92px 20px 56px; }
+    .hero-eyebrow         { margin-bottom: 22px; }
+    .hero-stat-block      { margin-bottom: 28px; }
+    .hero-sub             { font-size: 0.92rem; margin-bottom: 36px; }
+
+    /* Search — stack input above button */
+    .search-box { flex-direction: column; }
+    .search-btn {
+        border-radius: 0;
+        width: 100%;
+        text-align: center;
+        padding: 16px;       /* ensure ≥ 44px touch target */
+        min-height: 44px;
+    }
+
+    /* Stats — reduce card padding */
+    #stats     { padding: 60px 20px; }
+    .stat-card { padding: 40px 28px; }
+
+    /* How it works */
+    #how           { padding: 60px 20px; }
+    .section-header { margin-bottom: 48px; }
+
+    /* Results — force single column; drop min-width that could overflow */
+    #results-section { padding: 44px 20px; }
+    .results-grid    { grid-template-columns: 1fr; }
+    .business-card   { padding: 24px 20px; }
+
+    /* CTA */
+    #cta     { padding: 60px 20px; }
+    .cta-btn { padding: 16px 36px; width: 100%; text-align: center; }
+
+    /* Footer */
+    footer { padding: 24px 20px; flex-direction: column; gap: 8px; text-align: center; }
+
+    /* Modal header — swap to short button text so it all fits on one line */
+    .modal-header       { padding: 12px 16px; }
+    .btn-text-full      { display: none; }
+    .btn-text-short     { display: inline; }
+    .modal-purchase-btn { padding: 8px 14px; font-size: 0.76rem; min-height: 44px; }
+    .modal-close        { width: 40px; height: 40px; min-height: 44px; }
+}
+
+
+/* ------------------------------------------------
+   RESPONSIVE — Small phone  (≤ 390px)
+   iPhone SE, older Android phones
+   ------------------------------------------------ */
+@media (max-width: 390px) {
+    /* Hide nav CTA entirely — the hero and footer CTA cover this */
+    .nav-cta { display: none; }
+
+    /* Stat number: drop minimum so it never clips on 320px screens */
+    .hero-stat-number { font-size: clamp(4.5rem, 22vw, 15rem); }
+
+    /* Hero sub: smaller type */
+    .hero-h1  { font-size: clamp(1.55rem, 6.5vw, 2.9rem); }
+
+    /* Business card */
+    .card-name { font-size: 1.65rem; }
 }
