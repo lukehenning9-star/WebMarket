@@ -114,7 +114,7 @@ function renderResults(list, query) {
                 <p class="no-results-title">We haven't built a site for "${escHtml(query)}" yet.</p>
                 <p class="no-results-sub">
                     Want one?
-                    <a href="mailto:YOUR_EMAIL@example.com?subject=New%20Website%20Request&body=Hi%2C%20I%27d%20like%20a%20website%20for%20my%20restaurant.">
+                    <a href="mailto:lukewebsitemarket@gmail.com?subject=New%20Website%20Request&body=Hi%2C%20I%27d%20like%20a%20website%20for%20my%20restaurant.">
                         Reach out and we'll get started →
                     </a>
                 </p>
@@ -164,7 +164,7 @@ function openPreview(businessId) {
     const body    = encodeURIComponent(
         `Hi,\n\nI previewed the website you built for ${biz.name} and I'd like to purchase it.\n\nPlease send over the next steps.\n\nThank you!`
     );
-    const toEmail = biz.contactEmail || 'YOUR_EMAIL@example.com';
+    const toEmail = biz.contactEmail || 'lukewebsitemarket@gmail.com';
     modalBuyBtn.onclick = () => {
         window.location.href = `mailto:${toEmail}?subject=${subject}&body=${body}`;
     };
