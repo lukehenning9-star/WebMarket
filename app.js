@@ -15,6 +15,7 @@ const resultsTitle   = document.getElementById('resultsTitle');
 const resultsCount   = document.getElementById('resultsCount');
 const modalOverlay   = document.getElementById('modal-overlay');
 const modalIframe    = document.getElementById('modalIframe');
+const modalPricing   = document.getElementById('modalPricing');
 const modalLoading   = document.getElementById('modalLoading');
 const modalName      = document.getElementById('modalBusinessName');
 const modalBuyBtn    = document.getElementById('modalPurchaseBtn');
@@ -155,15 +156,10 @@ function openPreview(businessId) {
 
     modalName.textContent = biz.name;
 
-    /* Pre-fill a purchase email */
-    const subject = encodeURIComponent(`Purchase website for ${biz.name}`);
-    const body    = encodeURIComponent(
-        `Hi,\n\nI previewed the website you built for ${biz.name} and I'd like to purchase it.\n\nPlease send over the next steps.\n\nThank you!`
-    );
-    const toEmail = biz.contactEmail || 'lukewebsitemarket@gmail.com';
-    modalBuyBtn.onclick = () => {
-        window.location.href = `mailto:${toEmail}?subject=${subject}&body=${body}`;
-    };
+    /* Purchase button — show Stripe pricing table */
+    modalBuyBtn.innerHTML = '<span class="btn-text-full">Purchase This Website</span><span class="btn-text-short">Buy</span>';
+    modalBuyBtn.onclick = () => showPricing(biz.id);
+    hidePricing();
 
     /* Show loading state then load the iframe */
     modalLoading.style.display = 'flex';
@@ -180,9 +176,30 @@ function openPreview(businessId) {
     document.body.style.overflow = 'hidden';
 }
 
+function showPricing(businessId) {
+    modalIframe.style.display = 'none';
+    modalLoading.style.display = 'none';
+    modalPricing.style.display = 'block';
+    modalPricing.innerHTML = `
+        <stripe-pricing-table
+            pricing-table-id="prctbl_1TdylX9Zed1ZaDEw9zsJuJ9t"
+            publishable-key="pk_live_51TdjZK9Zed1ZaDEwAk3PutssQ4FTrnpicvg3CkGtjNHOzjym7TmldINqpDQLmF37Ip6lN0dhsG8OVTU0x4YZrodr00GmgWRdSB"
+            client-reference-id="${escAttr(businessId)}">
+        </stripe-pricing-table>`;
+    modalBuyBtn.innerHTML = '← Back to preview';
+    modalBuyBtn.onclick = () => hidePricing();
+}
+
+function hidePricing() {
+    modalPricing.style.display = 'none';
+    modalPricing.innerHTML = '';
+    modalIframe.style.display = '';
+}
+
 function closeModal() {
     modalOverlay.classList.remove('open');
     modalIframe.src = '';
+    hidePricing();
     document.body.style.overflow = '';
 }
 
