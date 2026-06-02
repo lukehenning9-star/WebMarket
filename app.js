@@ -114,7 +114,7 @@ function renderResults(list, query) {
                 <p class="no-results-title">We haven't built a site for "${escHtml(query)}" yet.</p>
                 <p class="no-results-sub">
                     Want one?
-                    <a href="mailto:lukewebsitemarket@gmail.com?subject=New%20Website%20Request&body=Hi%2C%20I%27d%20like%20a%20website%20for%20my%20restaurant.">
+                    <a href="mailto:lukewebsitemarket@gmail.com?subject=New%20Website%20Request&body=Hi%2C%20I%27d%20like%20a%20website%20for%20my%20business.">
                         Reach out and we'll get started →
                     </a>
                 </p>
