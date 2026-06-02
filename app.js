@@ -140,10 +140,6 @@ function businessCard(b) {
             <p class="card-city">${escHtml(b.city)}</p>
             <div class="card-features">${tags}</div>
             <div class="card-footer">
-                <div class="card-price">
-                    $${Number(b.price).toLocaleString()}
-                    <em>one-time</em>
-                </div>
                 <span class="card-btn">Preview Site →</span>
             </div>
         </div>`;
