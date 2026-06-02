@@ -245,6 +245,13 @@ document.addEventListener('keydown', e => {
 /* Expose to onclick in HTML */
 window.openPreview = openPreview;
 
+/* Nav CTA — scroll to search and focus */
+document.getElementById('navCta').addEventListener('click', e => {
+    e.preventDefault();
+    searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => searchInput.focus(), 400);
+});
+
 
 /* ------------------------------------------------
    NAV SCROLL EFFECT
