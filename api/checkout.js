@@ -27,7 +27,7 @@ module.exports = async function handler(req, res) {
             { price: PRICES[plan],    quantity: 1 },
         ],
         client_reference_id: businessId || 'unknown',
-        success_url: `${origin}/?purchased=1`,
+        success_url: `${origin}/success.html`,
         cancel_url:  `${origin}/`,
     });
 

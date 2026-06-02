@@ -1,8 +1,5 @@
 {
   "framework": null,
   "buildCommand": "python3 build.py",
-  "outputDirectory": ".",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/$1" }
-  ]
+  "outputDirectory": "."
 }

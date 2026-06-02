@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're all set — Website Market</title>
+    <meta name="robots" content="noindex">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .success-page {
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: oklch(0.22 0.012 52 / 0.08);
+            border: 1.5px solid oklch(0.22 0.012 52 / 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 1.75rem;
+        }
+
+        .success-eyebrow {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: oklch(0.22 0.012 52 / 0.45);
+            margin-bottom: 1rem;
+        }
+
+        .success-h1 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(2.4rem, 6vw, 3.8rem);
+            font-weight: 600;
+            line-height: 1.1;
+            color: oklch(0.22 0.012 52);
+            margin-bottom: 1.25rem;
+        }
+
+        .success-sub {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.65;
+            color: oklch(0.22 0.012 52 / 0.6);
+            max-width: 420px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .success-back {
+            display: inline-block;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: oklch(0.22 0.012 52 / 0.55);
+            text-decoration: none;
+            transition: color 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+        }
+
+        .success-back:hover {
+            color: oklch(0.22 0.012 52);
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="nav">
+        <div class="nav-logo">Website<span>Market</span></div>
+        <a href="mailto:lukewebsitemarket@gmail.com" class="nav-cta">Get in touch</a>
+    </nav>
+
+    <div class="success-page">
+        <div class="success-icon">✓</div>
+        <p class="success-eyebrow">Purchase complete</p>
+        <h1 class="success-h1">You're all set.</h1>
+        <p class="success-sub">
+            We'll be in touch within 24 hours to get your website live and your domain connected.
+        </p>
+        <a href="/" class="success-back">← Back to Website Market</a>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 80);
+        }, { passive: true });
+    </script>
+
+</body>
+</html>
