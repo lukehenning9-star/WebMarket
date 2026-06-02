@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://web-market-two.vercel.app/sitemap.xml
+Sitemap: https://uswebsitemarket.com/sitemap.xml

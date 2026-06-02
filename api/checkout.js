@@ -18,7 +18,7 @@ module.exports = async function handler(req, res) {
         return res.status(400).json({ error: 'Invalid plan' });
     }
 
-    const origin = `${req.headers['x-forwarded-proto'] || 'https'}://${req.headers.host}`;
+    const origin = 'https://uswebsitemarket.com';
 
     const session = await stripe.checkout.sessions.create({
         mode: 'subscription',
