@@ -1,0 +1,8 @@
+{
+  "name": "Golden Wok",
+  "category": "Chinese Restaurant",
+  "city": "Austin, TX",
+  "price": 349,
+  "features": ["Online Menu", "Photo Gallery", "Mobile Optimized", "Hours & Location"],
+  "contactEmail": ""
+}

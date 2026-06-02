@@ -1,0 +1,8 @@
+{
+  "name": "Mario's Pizza",
+  "category": "Italian Restaurant",
+  "city": "Dallas, TX",
+  "price": 299,
+  "features": ["Online Menu", "Contact Form", "Mobile Optimized", "Google Maps"],
+  "contactEmail": ""
+}

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Wok — Austin, TX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red:    #b5211a;
+            --gold:   #c8860a;
+            --cream:  #fdf6ec;
+            --dark:   #160a02;
+            --gray:   #6b5e4e;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+        }
+
+        /* NAV */
+        nav {
+            background: var(--dark);
+            padding: 18px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: 'Noto Serif', serif;
+            font-size: 1.5rem;
+            color: #fff;
+            letter-spacing: 0.04em;
+        }
+
+        .logo span { color: var(--gold); }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+        }
+
+        nav a {
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: var(--gold); }
+
+        .order-btn {
+            padding: 9px 22px;
+            background: var(--red);
+            color: #fff !important;
+            border-radius: 3px;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 540px;
+            background: linear-gradient(150deg, #160a02 0%, #2a0e06 55%, #160a02 100%);
+            display: flex;
+            align-items: center;
+            padding: 80px 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '金';
+            position: absolute;
+            right: 8%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 22rem;
+            color: rgba(200, 134, 10, 0.05);
+            font-family: serif;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 540px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1px solid rgba(200,134,10,0.3);
+            padding: 5px 12px;
+            border-radius: 2px;
+            margin-bottom: 26px;
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif', serif;
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.72;
+            margin-bottom: 36px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 14px 30px;
+            background: var(--red);
+            color: #fff;
+            font-size: 0.84rem;
+            font-weight: 600;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            border-radius: 3px;
+            text-decoration: none;
+        }
+
+        .btn-outline {
+            padding: 14px 30px;
+            border: 1px solid rgba(255,255,255,0.22);
+            color: rgba(255,255,255,0.75);
+            font-size: 0.84rem;
+            font-weight: 600;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            border-radius: 3px;
+            text-decoration: none;
+        }
+
+        /* INFO STRIP */
+        .info-strip {
+            background: var(--gold);
+            padding: 16px 48px;
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .info-item {
+            font-size: 0.85rem;
+            color: rgba(22,10,2,0.85);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-item strong { color: var(--dark); }
+
+        /* MENU */
+        .menu-section {
+            padding: 88px 48px;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 12px;
+        }
+
+        .section-heading {
+            font-family: 'Noto Serif', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 52px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-item {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(22,10,2,0.07);
+        }
+
+        .menu-img {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+        }
+
+        .menu-img.red-bg  { background: linear-gradient(135deg, #2a0604, #8b1a10); }
+        .menu-img.gold-bg { background: linear-gradient(135deg, #3a1a00, #8b5200); }
+        .menu-img.dark-bg { background: linear-gradient(135deg, #160a02, #2a1608); }
+        .menu-img.warm-bg { background: linear-gradient(135deg, #1a0e04, #5c2800); }
+
+        .menu-info { padding: 20px; }
+
+        .menu-name {
+            font-family: 'Noto Serif', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .menu-desc {
+            font-size: 0.86rem;
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .menu-price {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--red);
+        }
+
+        /* GALLERY */
+        .gallery-section {
+            background: var(--dark);
+            padding: 80px 48px;
+        }
+
+        .gallery-section .section-label { color: var(--gold); }
+        .gallery-section .section-heading { color: #fff; }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .gallery-cell {
+            height: 180px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .gallery-cell:nth-child(1) { background: linear-gradient(135deg,#2a0604,#7a1a10); }
+        .gallery-cell:nth-child(2) { background: linear-gradient(135deg,#1a1000,#4a3000); }
+        .gallery-cell:nth-child(3) { background: linear-gradient(135deg,#0a1a08,#1a4010); }
+        .gallery-cell:nth-child(4) { background: linear-gradient(135deg,#1a0a10,#4a0a28); }
+
+        /* HOURS + LOCATION */
+        .info-section {
+            padding: 80px 48px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            background: #fdf6ec;
+        }
+
+        .hours-list { list-style: none; }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e8e0d0;
+            font-size: 0.9rem;
+        }
+
+        .hours-list li span:first-child { color: var(--gray); }
+        .hours-list li span:last-child  { font-weight: 600; color: var(--dark); }
+
+        .address-block {
+            color: var(--gray);
+            font-size: 0.97rem;
+            line-height: 1.8;
+        }
+
+        .address-block strong {
+            color: var(--dark);
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            padding: 32px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        footer .logo { opacity: 0.4; }
+        footer p { font-size: 0.78rem; color: rgba(255,255,255,0.2); }
+
+        @media (max-width: 700px) {
+            nav { padding: 16px 20px; }
+            nav ul { display: none; }
+            .hero { padding: 60px 20px; }
+            .hero::before { display: none; }
+            .info-strip { padding: 14px 20px; gap: 16px; }
+            .menu-section { padding: 60px 20px; }
+            .gallery-section { padding: 60px 20px; }
+            .gallery-grid { grid-template-columns: repeat(2,1fr); }
+            .info-section { grid-template-columns: 1fr; padding: 60px 20px; }
+            footer { padding: 24px 20px; flex-direction: column; gap: 8px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Golden<span>Wok</span></div>
+        <ul>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#" class="order-btn">Order Online</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">Authentic Chinese · Austin, TX</span>
+            <h1>Wok-fired flavors passed down through generations.</h1>
+            <p>From dim sum to Peking duck, every dish carries the soul of traditional Chinese cooking. Family owned since 1998.</p>
+            <div class="hero-btns">
+                <a href="#" class="btn-primary">Order Online</a>
+                <a href="#" class="btn-outline">View Menu</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-strip">
+        <div class="info-item">📍 <span><strong>456 Congress Ave</strong>, Austin TX 78701</span></div>
+        <div class="info-item">🕐 <span>Open <strong>Tue–Sun 11am – 9:30pm</strong></span></div>
+        <div class="info-item">📞 <span><strong>(512) 555-0247</strong></span></div>
+    </div>
+
+    <section class="menu-section">
+        <p class="section-label">Signature Dishes</p>
+        <h2 class="section-heading">The classics, perfected.</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="menu-img red-bg">🦆</div>
+                <div class="menu-info">
+                    <p class="menu-name">Peking Duck</p>
+                    <p class="menu-desc">Whole roasted duck, crispy skin, house-made pancakes, scallion, and hoisin sauce</p>
+                    <p class="menu-price">$48 <span style="font-size:0.8em;color:#999">serves 2</span></p>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-img gold-bg">🥟</div>
+                <div class="menu-info">
+                    <p class="menu-name">Dim Sum Basket</p>
+                    <p class="menu-desc">Shrimp har gow, pork siu mai, char siu bao, turnip cake — 8 pieces</p>
+                    <p class="menu-price">$18</p>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-img dark-bg">🍜</div>
+                <div class="menu-info">
+                    <p class="menu-name">Beef Noodle Soup</p>
+                    <p class="menu-desc">Braised short rib, hand-pulled noodles, bok choy, rich bone broth</p>
+                    <p class="menu-price">$16</p>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-img warm-bg">🦐</div>
+                <div class="menu-info">
+                    <p class="menu-name">Salt & Pepper Shrimp</p>
+                    <p class="menu-desc">Crispy whole shrimp, garlic, jalapeño, scallion, house seasoning</p>
+                    <p class="menu-price">$22</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <p class="section-label">Photo Gallery</p>
+        <h2 class="section-heading" style="margin-bottom:36px">A taste of the experience.</h2>
+        <div class="gallery-grid">
+            <div class="gallery-cell">🍱</div>
+            <div class="gallery-cell">🥡</div>
+            <div class="gallery-cell">🫕</div>
+            <div class="gallery-cell">🍵</div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div>
+            <p class="section-label">Hours</p>
+            <h2 class="section-heading">When to visit.</h2>
+            <ul class="hours-list">
+                <li><span>Monday</span><span>Closed</span></li>
+                <li><span>Tuesday – Thursday</span><span>11am – 9pm</span></li>
+                <li><span>Friday – Saturday</span><span>11am – 10:30pm</span></li>
+                <li><span>Sunday (Dim Sum)</span><span>10am – 2pm</span></li>
+            </ul>
+        </div>
+        <div>
+            <p class="section-label">Find Us</p>
+            <h2 class="section-heading">Location.</h2>
+            <div class="address-block">
+                <strong>Golden Wok</strong>
+                456 Congress Avenue<br>
+                Austin, TX 78701<br><br>
+                📞 (512) 555-0247<br>
+                ✉️ info@goldenwok.com<br><br>
+                Street parking available.<br>
+                Takeout & dine-in welcome.
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">Golden<span style="color:var(--gold)">Wok</span></div>
+        <p>© 2025 Golden Wok. Austin, TX.</p>
+    </footer>
+
+</body>
+</html>

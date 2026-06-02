@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — Website Market</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream:   #f7f2e8;
+            --dark:    #171310;
+            --text:    #2a2016;
+            --muted:   #8a7a60;
+            --gold:    #b87408;
+            --gold-b:  #f0a825;
+            --border:  #ddd4be;
+            --white:   #fffef9;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 32px;
+        }
+
+        header {
+            display: flex;
+            align-items: baseline;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .logo span { color: var(--gold); }
+
+        header p {
+            font-size: 0.84rem;
+            color: var(--muted);
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            max-width: 1100px;
+        }
+
+        /* ── PANEL ── */
+        .panel {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .panel-head {
+            padding: 20px 24px;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .panel-head h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .panel-head span {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .panel-body { padding: 24px; }
+
+        /* ── BUSINESS LIST ── */
+        #businessList { list-style: none; }
+
+        .biz-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .biz-row:last-child { border-bottom: none; }
+
+        .biz-info { flex: 1; }
+
+        .biz-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .biz-meta {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .biz-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--gold);
+            white-space: nowrap;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .load-note {
+            padding: 16px;
+            background: #fff8e6;
+            border: 1px solid #ffe0a0;
+            border-radius: 6px;
+            font-size: 0.84rem;
+            color: #7a5200;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .load-note code {
+            background: rgba(0,0,0,0.06);
+            padding: 1px 5px;
+            border-radius: 3px;
+        }
+
+        /* ── FORM ── */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 6px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--cream);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(184,116,8,0.12);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .add-btn {
+            width: 100%;
+            padding: 13px;
+            background: var(--gold);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.84rem;
+            font-weight: 600;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 8px;
+        }
+
+        .add-btn:hover { background: var(--gold-b); }
+
+        /* ── OUTPUT ── */
+        #output {
+            display: none;
+            margin-top: 24px;
+            padding: 20px;
+            background: #1a1208;
+            border-radius: 6px;
+            color: #a0f0a0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.82rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .output-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .copy-btn, .dl-btn {
+            padding: 9px 18px;
+            border: none;
+            border-radius: 4px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .copy-btn { background: var(--gold); color: #fff; }
+        .copy-btn:hover { background: var(--gold-b); }
+        .dl-btn   { background: var(--cream); color: var(--text); border: 1px solid var(--border); }
+        .dl-btn:hover { background: var(--border); }
+
+        @media (max-width: 800px) {
+            .layout { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Website<span>Market</span> <span style="font-size:0.8rem;color:var(--muted);font-family:'DM Sans',sans-serif">Admin</span></div>
+        <p>Manage your client business registry</p>
+    </header>
+
+    <div class="layout">
+
+        <!-- ── LEFT: Current businesses ── -->
+        <div class="panel">
+            <div class="panel-head">
+                <h2>Current Businesses</h2>
+                <span id="bizCount">Loading…</span>
+            </div>
+            <div class="panel-body">
+                <div class="load-note" id="loadNote" style="display:none">
+                    ⚠ Could not load <code>businesses.json</code>. This page requires an HTTP server.<br>
+                    Run: <code>python -m http.server 8080</code> then open <code>http://localhost:8080/admin.html</code>
+                </div>
+                <ul id="businessList">
+                    <li class="empty-state">Loading businesses…</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ── RIGHT: Add new business ── -->
+        <div class="panel">
+            <div class="panel-head">
+                <h2>Add New Business</h2>
+                <span>generates the CLI command + JSON</span>
+            </div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    <label for="fName">Business Name *</label>
+                    <input type="text" id="fName" placeholder="Mario's Pizza">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fCategory">Category *</label>
+                        <input type="text" id="fCategory" placeholder="Italian Restaurant">
+                    </div>
+                    <div class="form-group">
+                        <label for="fCity">City, State *</label>
+                        <input type="text" id="fCity" placeholder="Dallas, TX">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fPrice">Price (USD) *</label>
+                        <input type="number" id="fPrice" placeholder="299" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="fEmail">Client Email</label>
+                        <input type="email" id="fEmail" placeholder="owner@restaurant.com">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="fFeatures">Features (comma-separated)</label>
+                    <input type="text" id="fFeatures" placeholder="Online Menu, Contact Form, Mobile Optimized">
+                </div>
+
+                <button class="add-btn" onclick="generate()">Generate Command & Entry →</button>
+
+                <div id="output"></div>
+                <div class="output-actions" id="outputActions" style="display:none">
+                    <button class="copy-btn" onclick="copyCommand()">Copy CLI Command</button>
+                    <button class="dl-btn" onclick="downloadJson()">Download businesses.json</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+        /* ── Load current businesses ── */
+        let currentBusinesses = [];
+
+        async function loadBusinesses() {
+            try {
+                const res = await fetch('businesses.json');
+                if (!res.ok) throw new Error(res.status);
+                currentBusinesses = await res.json();
+                renderList(currentBusinesses);
+                document.getElementById('bizCount').textContent = `${currentBusinesses.length} registered`;
+            } catch (e) {
+                document.getElementById('loadNote').style.display = 'block';
+                document.getElementById('businessList').innerHTML =
+                    '<li class="empty-state">Could not load data</li>';
+                document.getElementById('bizCount').textContent = 'unavailable';
+            }
+        }
+
+        function renderList(list) {
+            const ul = document.getElementById('businessList');
+            if (list.length === 0) {
+                ul.innerHTML = '<li class="empty-state">No businesses yet — add one!</li>';
+                return;
+            }
+            ul.innerHTML = list.map(b => `
+                <li class="biz-row">
+                    <div class="biz-info">
+                        <div class="biz-name">${esc(b.name)}</div>
+                        <div class="biz-meta">${esc(b.category)} · ${esc(b.city)}</div>
+                    </div>
+                    <div class="biz-price">$${Number(b.price).toLocaleString()}</div>
+                </li>
+            `).join('');
+        }
+
+
+        /* ── Generate CLI command and JSON entry ── */
+        let lastEntry = null;
+        let lastCommand = '';
+
+        function generate() {
+            const name     = document.getElementById('fName').value.trim();
+            const category = document.getElementById('fCategory').value.trim();
+            const city     = document.getElementById('fCity').value.trim();
+            const price    = parseInt(document.getElementById('fPrice').value, 10);
+            const email    = document.getElementById('fEmail').value.trim();
+            const features = document.getElementById('fFeatures').value.trim();
+
+            if (!name || !category || !city || isNaN(price)) {
+                alert('Please fill in Name, Category, City, and Price.');
+                return;
+            }
+
+            const slug = slugify(name);
+            const featList = features
+                ? features.split(',').map(f => f.trim()).filter(Boolean)
+                : ['Mobile Optimized', 'Contact Form'];
+
+            lastEntry = {
+                id:           slug,
+                name,
+                category,
+                city,
+                price,
+                previewPath:  `previews/${slug}`,
+                features:     featList,
+                contactEmail: email,
+                addedDate:    new Date().toISOString().slice(0, 10)
+            };
+
+            const escapedFeatures = featList.join(',').replace(/"/g, '\\"');
+
+            lastCommand = `python add-to-market.py \\
+    --name     "${name.replace(/"/g, '\\"')}" \\
+    --category "${category.replace(/"/g, '\\"')}" \\
+    --city     "${city.replace(/"/g, '\\"')}" \\
+    --price    ${price}` +
+    (email ? ` \\\n    --email    "${email.replace(/"/g, '\\"')}"` : '') +
+    ` \\\n    --features "${escapedFeatures}"`;
+
+            const outputEl = document.getElementById('output');
+            outputEl.style.display = 'block';
+            outputEl.textContent =
+                '# Run this command from the WebMarket root directory:\n\n' +
+                lastCommand +
+                '\n\n# It will:\n' +
+                `#  1. Create:  previews/${slug}/\n` +
+                `#  2. Update:  businesses.json\n` +
+                '#  3. Print next steps\n\n' +
+                '# Then copy your built site into previews/' + slug + '/';
+
+            document.getElementById('outputActions').style.display = 'flex';
+        }
+
+        function copyCommand() {
+            navigator.clipboard.writeText(lastCommand)
+                .then(() => alert('Command copied to clipboard!'))
+                .catch(() => {
+                    prompt('Copy this command:', lastCommand);
+                });
+        }
+
+        function downloadJson() {
+            if (!lastEntry) return;
+            const updated = [...currentBusinesses];
+            const existing = updated.findIndex(b => b.id === lastEntry.id);
+            if (existing >= 0) {
+                if (!confirm(`A business with id "${lastEntry.id}" already exists. Replace it?`)) return;
+                updated[existing] = lastEntry;
+            } else {
+                updated.push(lastEntry);
+            }
+            const blob = new Blob([JSON.stringify(updated, null, 2) + '\n'], { type: 'application/json' });
+            const url  = URL.createObjectURL(blob);
+            const a    = document.createElement('a');
+            a.href     = url;
+            a.download = 'businesses.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function slugify(name) {
+            return name.toLowerCase()
+                .replace(/[^a-z0-9\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/^-+|-+$/g, '');
+        }
+
+        function esc(str) {
+            const d = document.createElement('div');
+            d.textContent = String(str);
+            return d.innerHTML;
+        }
+
+        loadBusinesses();
+    </script>
+</body>
+</html>
