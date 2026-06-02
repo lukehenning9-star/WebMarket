@@ -4,7 +4,7 @@
     "name": "Golden Wok",
     "category": "Chinese Restaurant",
     "city": "Austin, TX",
-    "price": 349,
+    "price": 400,
     "previewPath": "previews/golden-wok",
     "features": [
       "Online Menu",
@@ -19,7 +19,7 @@
     "name": "Julius Rib Cage",
     "category": "BBQ Restaurant",
     "city": "Wichita, KS",
-    "price": 299,
+    "price": 400,
     "previewPath": "previews/julius-rib-cage",
     "features": [
       "Online Menu",
@@ -33,7 +33,7 @@
     "name": "Mario's Pizza",
     "category": "Italian Restaurant",
     "city": "Dallas, TX",
-    "price": 299,
+    "price": 400,
     "previewPath": "previews/marios-pizza",
     "features": [
       "Online Menu",

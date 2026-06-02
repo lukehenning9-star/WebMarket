@@ -2,7 +2,8 @@
   "name": "Mario's Pizza",
   "category": "Italian Restaurant",
   "city": "Dallas, TX",
-  "price": 299,
+  "price": 400,
+  "monthlyPrice": 50,
   "features": ["Online Menu", "Contact Form", "Mobile Optimized", "Google Maps"],
   "contactEmail": ""
 }

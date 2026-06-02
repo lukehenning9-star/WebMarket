@@ -2,7 +2,8 @@
   "name": "Julius Rib Cage",
   "category": "BBQ Restaurant",
   "city": "Wichita, KS",
-  "price": 299,
+  "price": 400,
+  "monthlyPrice": 50,
   "features": ["Online Menu", "Mobile Optimized", "Call-to-Order"],
   "contactEmail": "lukewebsitemarket@gmail.com",
   "addedDate": "2026-06-02"
