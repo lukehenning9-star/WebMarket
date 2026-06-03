@@ -291,6 +291,10 @@ body {
   transition: text-decoration-color 0.2s;
 }
 .strip-address:hover { text-decoration-color: rgba(255,255,255,0.9); }
+.strip-phone {
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+}
 .strip-dot {
   display: inline-block;
   width: 3px;
