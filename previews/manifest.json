@@ -1,5 +1,21 @@
 [
   {
+    "id": "bonjours-puppy-parade",
+    "name": "Bonjour's Puppy Parade",
+    "category": "Pet Grooming",
+    "city": "Wichita, KS",
+    "price": 750,
+    "previewPath": "previews/bonjours-puppy-parade",
+    "features": [
+      "Dog & Cat Grooming",
+      "All Breeds Welcome",
+      "Mobile Optimized",
+      "Hours & Location",
+      "Services Menu"
+    ],
+    "contactEmail": "lukewebsitemarket@gmail.com"
+  },
+  {
     "id": "golden-wok",
     "name": "Golden Wok",
     "category": "Chinese Restaurant",
