@@ -808,8 +808,6 @@ img { max-width: 100%; display: block; }
   .about__inner {
     grid-template-columns: 1fr;
     gap: 4rem;
-    padding-left: 1.75rem;
-    padding-right: 1.75rem;
   }
 
   .about__image-col img { height: 55vw; }
@@ -823,19 +821,14 @@ img { max-width: 100%; display: block; }
   .info__inner {
     grid-template-columns: 1fr;
     gap: 4rem;
-    padding-left: 1.75rem;
-    padding-right: 1.75rem;
   }
 
-  .nav__links li:not(:last-child) { display: none; }
 }
 
-
 /* ================================================
-   RESPONSIVE — mobile 640px
+   RESPONSIVE — hamburger nav 768px
 ================================================ */
-@media (max-width: 640px) {
-  .nav__inner    { padding: 0 1.25rem; }
+@media (max-width: 768px) {
   .nav__hamburger { display: flex; }
 
   .nav__links {
@@ -859,6 +852,18 @@ img { max-width: 100%; display: block; }
     color: var(--text-dark);
   }
 
+  .nav__cta {
+    font-size: 1rem !important;
+  }
+}
+
+
+/* ================================================
+   RESPONSIVE — mobile 640px
+================================================ */
+@media (max-width: 640px) {
+  .nav__inner { padding: 0 1.25rem; }
+
   .hero        { padding: 6rem 1.25rem 3rem; }
   .trust       { padding: 2.25rem 1.25rem; }
   .services    { padding: 5rem 1.25rem; }
@@ -868,26 +873,32 @@ img { max-width: 100%; display: block; }
   .footer      { padding: 2.5rem 1.25rem; }
 
   .hero__visual {
-    height: 72vw;
-    min-height: 240px;
+    height: 75vw;
+    min-height: 260px;
+    max-height: none;
   }
 
+  /* Keep badge fully inside the image on mobile — no negative offset */
   .hero__badge {
-    left: 0;
-    bottom: -1rem;
+    left: 1rem;
+    bottom: 1rem;
     padding: 0.75rem 1rem;
+    box-shadow: 0 4px 16px rgba(28, 24, 20, 0.14);
   }
 
   .hero__badge-score { font-size: 2rem; }
 
-  .trust__inner   { flex-direction: column; align-items: center; gap: 1.5rem; }
-  .trust__item    { padding: 0; }
+  .trust__inner { flex-direction: column; align-items: center; gap: 1.5rem; }
+  .trust__item  { padding: 0; }
 
   .service-row {
     grid-template-columns: 2.5rem 1fr;
     gap: 1.125rem;
     padding: 2rem 0;
   }
+
+  .about__inner  { gap: 3rem; }
+  .about__image-col img { height: 65vw; }
 
   .review-card { padding: 2rem 1.5rem; }
 }
