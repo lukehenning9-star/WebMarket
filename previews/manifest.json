@@ -57,5 +57,20 @@
       "Google Maps"
     ],
     "contactEmail": ""
+  },
+  {
+    "id": "the-eatery",
+    "name": "The Eatery",
+    "category": "Soul Food Restaurant",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/the-eatery",
+    "features": [
+      "Online Menu",
+      "Mobile Optimized",
+      "Call-to-Order",
+      "Delivery & Takeout"
+    ],
+    "contactEmail": "lukewebsitemarket@gmail.com"
   }
 ]
