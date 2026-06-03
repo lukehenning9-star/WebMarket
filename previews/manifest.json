@@ -1,5 +1,21 @@
 [
   {
+    "id": "andrews-cleaning-service",
+    "name": "Andrew's Cleaning Service",
+    "category": "Cleaning Service",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/andrews-cleaning-service",
+    "features": [
+      "Residential Cleaning",
+      "Deep Cleaning",
+      "Move-In/Out",
+      "Commercial",
+      "Mobile Optimized"
+    ],
+    "contactEmail": "lukewebsitemarket@gmail.com"
+  },
+  {
     "id": "bonjours-puppy-parade",
     "name": "Bonjour's Puppy Parade",
     "category": "Pet Grooming",
