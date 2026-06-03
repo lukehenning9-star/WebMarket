@@ -1,5 +1,14 @@
 /* THE EATERY — app.js */
 
+// Make tel: links work when page is loaded inside a preview iframe
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="tel:"]');
+  if (a && window !== window.top) {
+    e.preventDefault();
+    window.top.location.href = a.href;
+  }
+});
+
 // Sticky nav shadow on scroll
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
