@@ -131,7 +131,6 @@ body {
   width: 84px;
   height: 84px;
   object-fit: contain;
-  filter: brightness(0) invert(1) opacity(0.85);
 }
 .hero-badge {
   display: inline-block;
@@ -226,7 +225,7 @@ body {
 }
 .hero-card-quote {
   font-family: var(--font-display);
-  font-style: italic;
+  font-style: normal;
   font-size: 1rem;
   line-height: 1.72;
   color: rgba(255,255,255,0.75);
@@ -392,7 +391,7 @@ body {
   border-radius: 0 6px 6px 0;
   padding: 22px 24px;
   font-family: var(--font-display);
-  font-style: italic;
+  font-style: normal;
   font-size: 0.95rem;
   line-height: 1.65;
   color: var(--text-mid);
@@ -545,7 +544,7 @@ body {
 }
 .review-card p {
   font-family: var(--font-display);
-  font-style: italic;
+  font-style: normal;
   font-size: 0.98rem;
   line-height: 1.75;
   color: var(--text-mid);

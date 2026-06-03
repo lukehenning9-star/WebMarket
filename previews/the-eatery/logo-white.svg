@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+
+  <!-- white background fill -->
+
+  <!-- scalloped outer ring (green filled, then white inner circle punches out center) -->
+  <polygon fill="white"
+    points="100.0,4.0 107.43,10.31 115.8,5.31 122.09,12.75 131.17,9.2 136.15,17.58 145.69,15.57 149.23,24.66 158.96,24.24 160.96,33.78 170.63,34.98 171.02,44.72 180.37,47.49 179.15,57.16 187.91,61.44 185.12,70.78 193.06,76.43 188.77,85.19 195.67,92.07 190.0,100.0 195.67,107.93 188.77,114.81 193.06,123.57 185.12,129.22 187.91,138.56 179.15,142.84 180.37,152.51 171.02,155.28 170.63,165.02 160.96,166.22 158.96,175.76 149.23,175.34 145.69,184.43 136.15,182.42 131.17,190.8 122.09,187.25 115.8,194.69 107.43,189.69 100.0,196.0 92.57,189.69 84.2,194.69 77.91,187.25 68.83,190.8 63.85,182.42 54.31,184.43 50.77,175.34 41.04,175.76 39.04,166.22 29.37,165.02 28.98,155.28 19.63,152.51 20.85,142.84 12.09,138.56 14.88,129.22 6.94,123.57 11.23,114.81 4.33,107.93 10.0,100.0 4.33,92.07 11.23,85.19 6.94,76.43 14.88,70.78 12.09,61.44 20.85,57.16 19.63,47.49 28.98,44.72 29.37,34.98 39.04,33.78 41.04,24.24 50.77,24.66 54.31,15.57 63.85,17.58 68.83,9.2 77.91,12.75 84.2,5.31 92.57,10.31"/>
+
+  <!-- white circle punches out center of ring -->
+
+  <!-- inner circle border -->
+  <circle cx="100" cy="100" r="88" fill="none" stroke="white" stroke-width="1.5"/>
+
+  <!-- ── STEAMING POT ── centered at top area (~100, 47) -->
+  <!-- pot body -->
+  <rect x="83" y="48" width="34" height="22" rx="3" ry="3" fill="white"/>
+  <!-- pot lid -->
+  <rect x="81" y="44" width="38" height="6" rx="3" ry="3" fill="white"/>
+  <!-- lid knob -->
+  <rect x="97" y="40" width="6" height="5" rx="2" ry="2" fill="white"/>
+  <!-- left handle -->
+  <path d="M83,53 Q75,50 75,56 Q75,62 83,61" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- right handle -->
+  <path d="M117,53 Q125,50 125,56 Q125,62 117,61" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- steam lines -->
+  <path d="M93,41 Q91,36 93,31 Q95,26 93,21" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M100,41 Q98,36 100,31 Q102,26 100,21" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M107,41 Q105,36 107,31 Q109,26 107,21" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- ── "THE" ── -->
+  <text x="100" y="82" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="11" font-weight="700" letter-spacing="5"
+        fill="white">THE</text>
+
+  <!-- ── "Eatery" in italic serif ── -->
+  <text x="100" y="118" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="40" font-style="italic" font-weight="400"
+        fill="white">Eatery</text>
+
+  <!-- ── FORK AND KNIFE CROSSED ── centered around (100, 143) -->
+  <!-- fork (left, angled right) -->
+  <g transform="translate(96,133) rotate(-20)">
+    <!-- handle -->
+    <rect x="-1" y="0" width="2" height="16" rx="1" fill="white"/>
+    <!-- tines area stem -->
+    <rect x="-1" y="-12" width="2" height="8" rx="1" fill="white"/>
+    <!-- tines -->
+    <rect x="-4" y="-16" width="1.2" height="6" rx="0.6" fill="white"/>
+    <rect x="-1.4" y="-17" width="1.2" height="7" rx="0.6" fill="white"/>
+    <rect x="1.2" y="-17" width="1.2" height="7" rx="0.6" fill="white"/>
+    <rect x="3.8" y="-16" width="1.2" height="6" rx="0.6" fill="white"/>
+  </g>
+  <!-- knife (right, angled left) -->
+  <g transform="translate(104,133) rotate(20)">
+    <!-- handle -->
+    <rect x="-1" y="0" width="2" height="16" rx="1" fill="white"/>
+    <!-- blade -->
+    <path d="M-1,-12 L-1,-18 Q1,-18 1,-10 L1,0 L-1,0 Z" fill="white"/>
+  </g>
+
+  <!-- ── "Est." and "2023" ── -->
+  <text x="68" y="155" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="9" font-style="italic"
+        fill="white">Est.</text>
+  <text x="132" y="155" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="9"
+        fill="white">2023</text>
+
+</svg>
