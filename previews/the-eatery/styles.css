@@ -283,6 +283,14 @@ body {
   text-transform: uppercase;
   color: rgba(255,255,255,0.9);
 }
+.strip-address {
+  color: rgba(255,255,255,0.9);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255,255,255,0.35);
+  transition: text-decoration-color 0.2s;
+}
+.strip-address:hover { text-decoration-color: rgba(255,255,255,0.9); }
 .strip-dot {
   display: inline-block;
   width: 3px;
