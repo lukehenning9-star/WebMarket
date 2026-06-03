@@ -1,0 +1,10 @@
+{
+  "name": "The Eatery",
+  "category": "Soul Food Restaurant",
+  "city": "Wichita, KS",
+  "price": 299,
+  "monthlyPrice": 40,
+  "features": ["Online Menu", "Mobile Optimized", "Call-to-Order", "Delivery & Takeout"],
+  "contactEmail": "lukewebsitemarket@gmail.com",
+  "addedDate": "2026-06-03"
+}
