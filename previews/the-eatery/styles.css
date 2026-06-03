@@ -237,7 +237,7 @@ body {
   gap: 12px;
 }
 .hero-card-name {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -256,7 +256,7 @@ body {
   padding-top: 20px;
 }
 .hero-tag {
-  font-size: 0.65rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -277,7 +277,7 @@ body {
   justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -296,7 +296,7 @@ body {
 ================================================ */
 .section-label {
   display: block;
-  font-size: 0.65rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -346,7 +346,7 @@ body {
   margin-top: 4px;
 }
 .service-chip {
-  font-size: 0.68rem;
+  font-size: 0.74rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -379,7 +379,7 @@ body {
   line-height: 1;
 }
 .stat-label {
-  font-size: 0.65rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -401,7 +401,7 @@ body {
   margin-top: 10px;
   font-style: normal;
   font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   color: var(--text-muted);
@@ -467,7 +467,7 @@ body {
   gap: 24px;
 }
 .col-head {
-  font-size: 0.65rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -559,7 +559,7 @@ body {
 }
 .cite-name {
   font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -666,7 +666,7 @@ body {
   align-items: start;
 }
 .detail-label {
-  font-size: 0.65rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -726,7 +726,7 @@ body {
   color: rgba(255,255,255,0.35);
 }
 .footer-copy {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   color: rgba(255,255,255,0.2);
   margin-top: 4px;
 }
@@ -798,6 +798,6 @@ body {
   .hero-actions { flex-direction: column; align-items: flex-start; }
   .btn-primary,
   .btn-ghost    { width: 100%; text-align: center; }
-  .tab-btn      { padding: 10px 14px; font-size: 0.68rem; }
+  .tab-btn      { padding: 10px 14px; font-size: 0.74rem; }
   .detail-row   { grid-template-columns: 90px 1fr; gap: 16px; }
 }
