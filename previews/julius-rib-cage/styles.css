@@ -460,6 +460,11 @@ img { max-width: 100%; display: block; }
   margin-top: 0;
 }
 
+.meats-list--exceptions {
+  margin-top: 0.25rem;
+  border-top: 1px solid rgba(240, 232, 216, 0.055);
+}
+
 .meat-item {
   display: flex;
   justify-content: space-between;
