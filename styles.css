@@ -203,7 +203,7 @@ a   { color: inherit; text-decoration: none; }
     min-width: 0;
     padding: clamp(16px, 2.5vw, 22px) clamp(16px, 2.5vw, 24px);
     font-family: var(--font-body);
-    font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+    font-size: max(1rem, 16px);
     font-weight: 400;
     color: var(--ink);
     background: transparent;
