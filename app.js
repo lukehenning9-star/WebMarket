@@ -266,6 +266,26 @@ function escHtml(str) {
     return el.innerHTML;
 }
 
+/* Scroll-reveal fallback for browsers without CSS scroll-driven animations */
+if (!CSS.supports('animation-timeline: view()')) {
+    const steps = document.querySelectorAll('.step');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (!e.isIntersecting) return;
+            e.target.style.opacity = '';
+            e.target.style.transform = '';
+            observer.unobserve(e.target);
+        });
+    }, { threshold: 0.15 });
+
+    steps.forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(12px)';
+        el.style.transition = `opacity 0.65s ${i * 0.1}s cubic-bezier(0.22,1,0.36,1), transform 0.65s ${i * 0.1}s cubic-bezier(0.22,1,0.36,1)`;
+        observer.observe(el);
+    });
+}
+
 /* Safely escape text for HTML attribute insertion */
 function escAttr(str) {
     return String(str)
