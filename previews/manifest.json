@@ -1,5 +1,20 @@
 [
   {
+    "id": "go-dolla-fitness",
+    "name": "Go Dolla Fitness",
+    "category": "Personal Training Gym",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/go-dolla-fitness",
+    "features": [
+      "Personal Training",
+      "Nutrition Coaching",
+      "Community Sessions",
+      "Strength & Conditioning"
+    ],
+    "contactEmail": ""
+  },
+  {
     "id": "golden-wok",
     "name": "Golden Wok",
     "category": "Chinese Restaurant",

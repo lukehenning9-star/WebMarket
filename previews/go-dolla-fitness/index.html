@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Go Dolla Fitness — Personal Training in Wichita, KS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:         #0C0C0C;
+      --bg-2:       #131313;
+      --bg-3:       #1C1C1C;
+      --accent:     #C4831E;
+      --accent-dim: rgba(196,131,30,0.14);
+      --text:       #F0EDE8;
+      --muted:      #88807A;
+      --border:     rgba(255,255,255,0.07);
+      --font:       'Outfit', sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    @media (max-width: 768px) { .container { padding: 0 20px; } }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.75s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.10s; }
+    .d2 { transition-delay: 0.20s; }
+    .d3 { transition-delay: 0.30s; }
+    .d4 { transition-delay: 0.40s; }
+    .d5 { transition-delay: 0.50s; }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 22px 0;
+      transition: background 0.4s ease, padding 0.4s ease, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+    .nav.scrolled {
+      background: rgba(12,12,12,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      padding: 14px 0;
+      border-bottom-color: var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-phone {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-phone:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent);
+      color: #0C0C0C;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 100px;
+      letter-spacing: 0.01em;
+      transition: opacity 0.2s, transform 0.12s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+    .nav-cta:active { transform: scale(0.97); }
+    @media (max-width: 540px) { .nav-phone { display: none; } }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100dvh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 140px 60px 80px;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .hero-h1 {
+      font-size: clamp(54px, 6.5vw, 92px);
+      font-weight: 900;
+      line-height: 0.91;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+    .hero-h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 400px;
+      margin-bottom: 44px;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0C0C0C;
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 14px 30px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s, transform 0.12s;
+    }
+    .btn-primary:hover { opacity: 0.86; }
+    .btn-primary:active { transform: scale(0.97); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 14px 30px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      display: inline-block;
+      transition: border-color 0.2s, transform 0.12s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.22); }
+    .btn-ghost:active { transform: scale(0.97); }
+
+    .hero-stats {
+      display: flex;
+      gap: 44px;
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-val {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text);
+    }
+    .stat-val em { font-style: normal; color: var(--accent); }
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-right img { object-position: center top; }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--bg) 0%, rgba(12,12,12,0.2) 40%, transparent 100%),
+                  linear-gradient(to top, var(--bg) 0%, transparent 35%);
+      pointer-events: none;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-right {
+        height: 55dvh;
+        order: -1;
+      }
+      .hero-overlay {
+        background: linear-gradient(to bottom, transparent 40%, var(--bg) 100%);
+      }
+      .hero-left {
+        padding: 40px 24px 64px;
+        order: 1;
+      }
+      .hero-stats { gap: 28px; flex-wrap: wrap; }
+    }
+
+    /* ── Marquee ── */
+    .marquee-wrap {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: scrollLeft 30s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 0 28px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .marquee-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    @keyframes scrollLeft {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── Section Shell ── */
+    section { padding: 108px 0; }
+    .s-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .s-h2 {
+      font-size: clamp(36px, 4.8vw, 58px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.04;
+      color: var(--text);
+    }
+    .s-body {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ── About ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 88px;
+      align-items: center;
+    }
+    .about-img-wrap {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+    .about-img-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 45%;
+      background: linear-gradient(to top, rgba(196,131,30,0.08), transparent);
+      pointer-events: none;
+    }
+    .about-content { padding-left: 8px; }
+    .about-content .s-h2 { margin-bottom: 22px; }
+    .about-content .s-body { margin-bottom: 40px; }
+    .about-features {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .feature {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .feature-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .feature-text h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .feature-text p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    @media (max-width: 860px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-img-wrap { aspect-ratio: 16/9; }
+      .about-content { padding-left: 0; }
+    }
+
+    /* ── Chelsea ── */
+    .chelsea-section { background: var(--bg-2); }
+    .chelsea-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 60px;
+    }
+    .chelsea-head .s-body { max-width: 460px; padding-bottom: 4px; }
+    .trainer-card {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      border-radius: 28px;
+      overflow: hidden;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+    }
+    .trainer-img {
+      position: relative;
+      min-height: 460px;
+    }
+    .trainer-img img { object-position: center top; }
+    .trainer-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 55%, var(--bg-3) 100%);
+      pointer-events: none;
+    }
+    .trainer-info {
+      padding: 52px 52px 52px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .trainer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(196,131,30,0.22);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      width: fit-content;
+      margin-bottom: 22px;
+    }
+    .trainer-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: badgePulse 2.4s ease-in-out infinite;
+    }
+    @keyframes badgePulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50% { opacity:0.4; transform:scale(0.65); }
+    }
+    .trainer-name {
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .trainer-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      margin-bottom: 22px;
+    }
+    .trainer-bio {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.72;
+      margin-bottom: 30px;
+      max-width: 420px;
+    }
+    .trainer-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    @media (max-width: 900px) {
+      .chelsea-head { grid-template-columns: 1fr; margin-bottom: 36px; }
+      .trainer-card { grid-template-columns: 1fr; }
+      .trainer-img { min-height: 300px; }
+      .trainer-img::after {
+        background: linear-gradient(to bottom, transparent 50%, var(--bg-3) 100%);
+      }
+      .trainer-info { padding: 32px 24px; }
+      .trainer-name { font-size: 40px; }
+    }
+
+    /* ── Services ── */
+    .services-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 56px;
+    }
+    .services-intro .s-body { padding-bottom: 4px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 14px;
+    }
+    .svc-card {
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--bg-2);
+      padding: 36px;
+      transition: border-color 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .svc-card:hover { border-color: rgba(196,131,30,0.28); }
+    .svc-card.big {
+      grid-row: span 2;
+      padding: 0;
+      min-height: 460px;
+      overflow: hidden;
+    }
+    .svc-card.big img {
+      position: absolute;
+      inset: 0;
+      opacity: 0.35;
+      transition: opacity 0.4s, transform 0.6s cubic-bezier(0.16,1,0.3,1);
+    }
+    .svc-card.big:hover img { opacity: 0.48; transform: scale(1.04); }
+    .svc-big-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 40px;
+      background: linear-gradient(to top, var(--bg-3) 45%, transparent 100%);
+    }
+    .svc-num {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .svc-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .svc-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    @media (max-width: 900px) {
+      .services-intro { grid-template-columns: 1fr; gap: 20px; margin-bottom: 36px; }
+      .services-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .svc-card.big { grid-row: span 1; min-height: 280px; }
+    }
+
+    /* ── Hours ── */
+    .hours-section { background: var(--bg-2); }
+    .hours-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 88px;
+      align-items: start;
+    }
+    .hours-left .s-h2 { margin-bottom: 0; }
+    .hours-table { margin-top: 36px; }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hours-row.is-today .hours-day { color: var(--text); font-weight: 600; }
+    .hours-time {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .today-pip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(196,131,30,0.2);
+      border-radius: 100px;
+      padding: 3px 9px;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .today-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: badgePulse 2s ease-in-out infinite;
+    }
+    .hours-right { padding-top: 0; }
+    .hours-cta {
+      background: var(--accent);
+      border-radius: 24px;
+      padding: 48px 44px;
+    }
+    .hours-cta h3 {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: #0C0C0C;
+      margin-bottom: 14px;
+    }
+    .hours-cta p {
+      font-size: 15px;
+      color: rgba(12,12,12,0.62);
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+    .btn-dark {
+      display: inline-block;
+      background: #0C0C0C;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 100px;
+      transition: opacity 0.2s, transform 0.12s;
+    }
+    .btn-dark:hover { opacity: 0.85; }
+    .btn-dark:active { transform: scale(0.97); }
+    .hours-address {
+      margin-top: 24px;
+      font-size: 13px;
+      color: rgba(12,12,12,0.55);
+      line-height: 1.7;
+    }
+    @media (max-width: 860px) {
+      .hours-grid { grid-template-columns: 1fr; gap: 52px; }
+    }
+
+    /* ── Reviews ── */
+    .reviews-top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 44px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .reviews-rating {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .stars { display: flex; gap: 3px; }
+    .star { width: 18px; height: 18px; fill: var(--accent); }
+    .reviews-score {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .reviews-count {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .reviews-scroll {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .reviews-scroll::-webkit-scrollbar { display: none; }
+    .review-card {
+      min-width: 340px;
+      flex-shrink: 0;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
+      scroll-snap-align: start;
+      transition: border-color 0.25s;
+    }
+    .review-card:hover { border-color: rgba(196,131,30,0.22); }
+    .r-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+    .r-star { width: 14px; height: 14px; fill: var(--accent); }
+    .r-text {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.72;
+      margin-bottom: 22px;
+      opacity: 0.88;
+    }
+    .r-author { display: flex; align-items: center; gap: 12px; }
+    .r-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--accent);
+      flex-shrink: 0;
+      letter-spacing: -0.02em;
+    }
+    .r-name { font-size: 14px; font-weight: 600; color: var(--text); }
+    .r-date { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    /* ── CTA Section ── */
+    .cta-section {
+      background: var(--accent);
+      padding: 120px 0;
+    }
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 60px;
+      align-items: center;
+    }
+    .cta-h2 {
+      font-size: clamp(38px, 5.5vw, 72px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 0.94;
+      color: #0C0C0C;
+    }
+    .cta-sub {
+      font-size: 16px;
+      color: rgba(12,12,12,0.6);
+      line-height: 1.65;
+      margin-top: 18px;
+      max-width: 520px;
+    }
+    .cta-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #0C0C0C;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 100px;
+      white-space: nowrap;
+      transition: opacity 0.2s, transform 0.12s;
+    }
+    .cta-btn:hover { opacity: 0.84; }
+    .cta-btn:active { transform: scale(0.97); }
+    .cta-link {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(12,12,12,0.55);
+      transition: color 0.2s;
+    }
+    .cta-link:hover { color: #0C0C0C; }
+    @media (max-width: 760px) {
+      .cta-inner { grid-template-columns: 1fr; gap: 40px; }
+      .cta-actions { align-items: flex-start; }
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      padding: 64px 0 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 56px;
+    }
+    .footer-brand p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 280px;
+      margin-top: 14px;
+    }
+    .footer-logo {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-col h4 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li {
+      font-size: 14px;
+      color: var(--text);
+      opacity: 0.7;
+      line-height: 1.5;
+    }
+    .footer-col ul li a { transition: opacity 0.2s; }
+    .footer-col ul li a:hover { opacity: 1; }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-bottom p { font-size: 12px; color: var(--muted); }
+    @media (max-width: 760px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <div class="nav-logo">GO <span>DOLLA</span> FITNESS</div>
+      <div class="nav-right">
+        <a href="tel:3167893345" class="nav-phone">316-789-3345</a>
+        <a href="tel:3167893345" class="nav-cta">Book a Session</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Wichita, Kansas</div>
+    <h1 class="hero-h1">Train Hard.<br>Show Up.<br><em>Win Daily.</em></h1>
+    <p class="hero-sub">Personal training built on accountability, community, and results. Coaches who push you past what you thought possible.</p>
+    <div class="hero-actions">
+      <a href="tel:3167893345" class="btn-primary">Call 316-789-3345</a>
+      <a href="#about" class="btn-ghost">Learn More</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-val">5.0<em>*</em></div>
+        <div class="stat-label">Google Rating</div>
+      </div>
+      <div>
+        <div class="stat-val">52</div>
+        <div class="stat-label">Reviews</div>
+      </div>
+      <div>
+        <div class="stat-val">1:1</div>
+        <div class="stat-label">Personal Training</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://picsum.photos/seed/godollagym9/900/1100" alt="Go Dolla Fitness" />
+    <div class="hero-overlay"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item"><span>Go Dolla Fitness</span><span class="marquee-dot"></span><span>Wichita, KS</span><span class="marquee-dot"></span><span>5.0 Stars</span><span class="marquee-dot"></span><span>52 Reviews</span><span class="marquee-dot"></span><span>Personal Training</span><span class="marquee-dot"></span><span>Nutrition Coaching</span><span class="marquee-dot"></span><span>Real Results</span><span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span>Go Dolla Fitness</span><span class="marquee-dot"></span><span>Wichita, KS</span><span class="marquee-dot"></span><span>5.0 Stars</span><span class="marquee-dot"></span><span>52 Reviews</span><span class="marquee-dot"></span><span>Personal Training</span><span class="marquee-dot"></span><span>Nutrition Coaching</span><span class="marquee-dot"></span><span>Real Results</span><span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span>Go Dolla Fitness</span><span class="marquee-dot"></span><span>Wichita, KS</span><span class="marquee-dot"></span><span>5.0 Stars</span><span class="marquee-dot"></span><span>52 Reviews</span><span class="marquee-dot"></span><span>Personal Training</span><span class="marquee-dot"></span><span>Nutrition Coaching</span><span class="marquee-dot"></span><span>Real Results</span><span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span>Go Dolla Fitness</span><span class="marquee-dot"></span><span>Wichita, KS</span><span class="marquee-dot"></span><span>5.0 Stars</span><span class="marquee-dot"></span><span>52 Reviews</span><span class="marquee-dot"></span><span>Personal Training</span><span class="marquee-dot"></span><span>Nutrition Coaching</span><span class="marquee-dot"></span><span>Real Results</span><span class="marquee-dot"></span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <img src="https://picsum.photos/seed/dollagym2wichita/700/900" alt="Inside Go Dolla Fitness" />
+      </div>
+      <div class="about-content">
+        <div class="s-label reveal">About the Gym</div>
+        <h2 class="s-h2 reveal d1">A gym that actually has your back</h2>
+        <p class="s-body reveal d2">Go Dolla Fitness isn't just a place to lift — it's a community built around showing up for each other. Located on E Central Ave in Wichita, we offer personalized training programs, real coaching, and the kind of energy that makes hard days feel possible.</p>
+        <div class="about-features reveal d3">
+          <div class="feature">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24"><path d="M6 5h12M4 9h16M6 13h12M8 17h8"/></svg>
+            </div>
+            <div class="feature-text">
+              <h4>Full Equipment, Every Goal</h4>
+              <p>Everything you need to build strength, burn fat, and move better — all in one place.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+            </div>
+            <div class="feature-text">
+              <h4>Coaches Who Know You</h4>
+              <p>Trainers who learn your strengths, understand your limits, and safely push you past them.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <div class="feature-text">
+              <h4>Affordable Without Compromise</h4>
+              <p>Premium coaching without a premium price tag. High-level fitness, accessible in Wichita.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHELSEA -->
+<section class="chelsea-section" id="trainers">
+  <div class="container">
+    <div class="chelsea-head">
+      <div>
+        <div class="s-label reveal">Featured Trainer</div>
+        <h2 class="s-h2 reveal d1">Meet Chelsea</h2>
+      </div>
+      <div class="s-body reveal">Known as one of Wichita's most sought-after personal trainers, Chelsea brings the kind of intensity and care that clients remember long after a session ends.</div>
+    </div>
+    <div class="trainer-card reveal">
+      <div class="trainer-img">
+        <img src="https://picsum.photos/seed/chelseafitnesstrainer/600/700" alt="Chelsea — Personal Trainer at Go Dolla Fitness" />
+      </div>
+      <div class="trainer-info">
+        <div class="trainer-badge">
+          <span class="trainer-badge-dot"></span>
+          Head Trainer
+        </div>
+        <div class="trainer-name">Chelsea</div>
+        <div class="trainer-title">Personal Trainer — Go Dolla Fitness LLC</div>
+        <p class="trainer-bio">Chelsea meets you where you are and takes you where you want to go. She designs every session around your individual goals, keeps your form safe, and brings the kind of energy that makes you forget how hard you're working. Her clients call it the Chelsea Experience — and it delivers every time.</p>
+        <div class="trainer-tags">
+          <span class="tag">Goal-Focused Programming</span>
+          <span class="tag">Nutrition Guidance</span>
+          <span class="tag">1-on-1 Training</span>
+          <span class="tag">Accountability Coaching</span>
+          <span class="tag">Meal Prep</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="services-intro">
+      <div>
+        <div class="s-label reveal">What We Offer</div>
+        <h2 class="s-h2 reveal d1">Training built<br>around you</h2>
+      </div>
+      <div class="s-body reveal">Every program at Go Dolla is customized — no cookie-cutter plans, no guesswork. Just focused work with coaches who keep you accountable.</div>
+    </div>
+    <div class="services-grid reveal d2">
+      <div class="svc-card big">
+        <img src="https://picsum.photos/seed/personaltrainingwichita/900/700" alt="Personal Training" />
+        <div class="svc-big-content">
+          <div class="svc-num">01</div>
+          <div class="svc-title">1-on-1 Personal Training</div>
+          <div class="svc-desc">Fully customized sessions with a dedicated trainer who tracks your progress, adjusts your program, and holds you accountable from day one.</div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <div class="svc-title">Strength & Conditioning</div>
+        <div class="svc-desc">Structured programming for building real strength, improving performance, and developing lasting endurance.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <div class="svc-title">Nutrition Coaching</div>
+        <div class="svc-desc">Meal guidance and diet planning that supports your training goals — including our popular overnight oats prep.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">04</div>
+        <div class="svc-title">Community Training</div>
+        <div class="svc-desc">A welcoming group environment where everyone cheers each other on. Push harder when others push with you.</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">05</div>
+        <div class="svc-title">Body Composition</div>
+        <div class="svc-desc">Targeted programming for fat loss, muscle gain, and full-body reshaping — built around your specific goals.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS -->
+<section class="hours-section" id="hours">
+  <div class="container">
+    <div class="hours-grid">
+      <div class="hours-left">
+        <div class="s-label reveal">Hours</div>
+        <h2 class="s-h2 reveal d1">Open early.<br>Open late.<br>Open for you.</h2>
+        <div class="hours-table reveal d2">
+          <div class="hours-row" data-day="1">
+            <span class="hours-day">Monday</span>
+            <span class="hours-time">5:00 AM – 7:00 PM</span>
+          </div>
+          <div class="hours-row" data-day="2">
+            <span class="hours-day">Tuesday</span>
+            <span class="hours-time">5:00 AM – 8:00 PM</span>
+          </div>
+          <div class="hours-row" data-day="3">
+            <span class="hours-day">Wednesday</span>
+            <span class="hours-time">5:30 AM – 7:00 PM</span>
+          </div>
+          <div class="hours-row" data-day="4">
+            <span class="hours-day">Thursday</span>
+            <span class="hours-time">6:00 AM – 8:00 PM</span>
+          </div>
+          <div class="hours-row" data-day="5">
+            <span class="hours-day">Friday</span>
+            <span class="hours-time">5:00 AM – 7:00 PM</span>
+          </div>
+          <div class="hours-row" data-day="6">
+            <span class="hours-day">Saturday</span>
+            <span class="hours-time">9:00 AM – 1:30 PM</span>
+          </div>
+          <div class="hours-row" data-day="0">
+            <span class="hours-day">Sunday</span>
+            <span class="hours-time">11:00 AM – 3:00 PM</span>
+          </div>
+        </div>
+      </div>
+      <div class="hours-right reveal d2">
+        <div class="hours-cta">
+          <h3>Ready to start your journey?</h3>
+          <p>Call us to schedule your first session. We'll match you with the right trainer and build a program around your goals.</p>
+          <a href="tel:3167893345" class="btn-dark">Call 316-789-3345</a>
+          <div class="hours-address">
+            2627 E Central Ave<br>
+            Wichita, KS 67214
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="reviews-top">
+      <div>
+        <div class="s-label reveal">Client Reviews</div>
+        <h2 class="s-h2 reveal d1">What clients say</h2>
+      </div>
+      <div class="reviews-rating reveal">
+        <div class="stars">
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span class="reviews-score">5.0</span>
+        <span class="reviews-count">52 Google Reviews</span>
+      </div>
+    </div>
+    <div class="reviews-scroll">
+
+      <div class="review-card">
+        <div class="r-stars">
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="r-text">"Chels is hands down, the BEST trainer. She understands your goals, your strengths and weaknesses. She is very caring. All the trainers there are very supportive and cheer you on when you think you can't do it. They're so welcoming. This gym also has everything you need and more, plus it's super affordable."</p>
+        <div class="r-author">
+          <div class="r-avatar">SB</div>
+          <div>
+            <div class="r-name">Sandra Blancas</div>
+            <div class="r-date">October 2023</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="r-stars">
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="r-text">"Training with Chelsea has been the best investment I could've made for myself. She's motivating and truly cares about helping you reach your goals. She's so nice, fun, and easy to work with — but she isn't afraid to hold you accountable, which is exactly what I need."</p>
+        <div class="r-author">
+          <div class="r-avatar">AM</div>
+          <div>
+            <div class="r-name">Alejandra Marin</div>
+            <div class="r-date">September 2023</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="r-stars">
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="r-text">"My trainer Chelsea is excellent. She is very knowledgeable and patient with each workout. Each session is safe and geared to my abilities. She makes you work but always keeps it fun."</p>
+        <div class="r-author">
+          <div class="r-avatar">EH</div>
+          <div>
+            <div class="r-name">Elena Helm</div>
+            <div class="r-date">November 2023</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="r-stars">
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="r-text">"Chelsea is one of the most motivational people I know. She will not let you coast and is very understanding at the same time. One thing about Chels — she will not let you talk down on yourself. I have seen so much growth, mentally and physically, since I started training."</p>
+        <div class="r-author">
+          <div class="r-avatar">NG</div>
+          <div>
+            <div class="r-name">Nella Galleguillos</div>
+            <div class="r-date">December 2022</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="r-stars">
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="r-text">"The Chelsea experience has truly helped me gain an overall healthy lifestyle and continues to mold my body for both an amazing look and strength. Her workout and meal preps are no joke. I would 1000% recommend Dolla Fitness to everyone struggling to hit the goals they desire."</p>
+        <div class="r-author">
+          <div class="r-avatar">GD</div>
+          <div>
+            <div class="r-name">Giselle Dos Santos</div>
+            <div class="r-date">April 2022</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="r-stars">
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="r-text">"Just finished my first 12 sessions. I feel stronger physically and mentally. If you need a hype person, Chelsea is your girl. She gets you pumped and pushes you to go harder each session. From diet to exercises targeting each muscle individually — she's got it all."</p>
+        <div class="r-author">
+          <div class="r-avatar">MV</div>
+          <div>
+            <div class="r-name">Maritza Valdez</div>
+            <div class="r-date">July 2022</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="r-stars">
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="r-text">"Chelsea has helped me gain more confidence in myself in a short amount of time. If you are looking for someone to motivate you and make sure you meet your body goals — go with Chelsea at Go Dolla. She is nothing but amazing."</p>
+        <div class="r-author">
+          <div class="r-avatar">RS</div>
+          <div>
+            <div class="r-name">Rachel Schmitz</div>
+            <div class="r-date">May 2022</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <div>
+        <h2 class="cta-h2">Start training.<br>Start winning.</h2>
+        <p class="cta-sub">Located at 2627 E Central Ave in Wichita. Call or stop by — we'll build a program that fits your life and gets you the results you came for.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="tel:3167893345" class="cta-btn">Call 316-789-3345</a>
+        <a href="https://maps.google.com/?q=2627+E+Central+Ave+Wichita+KS+67214" target="_blank" rel="noopener" class="cta-link">Get Directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">GO <span>DOLLA</span> FITNESS</div>
+        <p>Personal training in Wichita, Kansas. We help people build strength, confidence, and lasting habits — one session at a time.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:3167893345">316-789-3345</a></li>
+          <li>2627 E Central Ave</li>
+          <li>Wichita, KS 67214</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <ul>
+          <li>Mon: 5:00 AM – 7:00 PM</li>
+          <li>Tue: 5:00 AM – 8:00 PM</li>
+          <li>Wed: 5:30 AM – 7:00 PM</li>
+          <li>Thu: 6:00 AM – 8:00 PM</li>
+          <li>Fri: 5:00 AM – 7:00 PM</li>
+          <li>Sat: 9:00 AM – 1:30 PM</li>
+          <li>Sun: 11:00 AM – 3:00 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>2627 E Central Ave, Wichita, KS 67214</p>
+      <p>Go Dolla Fitness LLC &mdash; All rights reserved</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 48);
+  }, { passive: true });
+
+  // Highlight today in hours table
+  const today = new Date().getDay();
+  document.querySelectorAll('.hours-row').forEach(row => {
+    if (parseInt(row.dataset.day) === today) {
+      row.classList.add('is-today');
+      const daySpan = row.querySelector('.hours-day');
+      const pip = document.createElement('span');
+      pip.className = 'today-pip';
+      pip.innerHTML = '<span class="today-dot"></span>Today';
+      daySpan.appendChild(pip);
+    }
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
