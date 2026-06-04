@@ -32,17 +32,17 @@
     "contactEmail": "lukewebsitemarket@gmail.com"
   },
   {
-    "id": "golden-wok",
-    "name": "Golden Wok",
-    "category": "Chinese Restaurant",
-    "city": "Austin, TX",
-    "price": 400,
-    "previewPath": "previews/golden-wok",
+    "id": "go-dolla-fitness",
+    "name": "Go Dolla Fitness",
+    "category": "Personal Training Gym",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/go-dolla-fitness",
     "features": [
-      "Online Menu",
-      "Photo Gallery",
-      "Mobile Optimized",
-      "Hours & Location"
+      "Personal Training",
+      "Nutrition Coaching",
+      "Community Sessions",
+      "Strength & Conditioning"
     ],
     "contactEmail": ""
   },
@@ -74,21 +74,6 @@
       "Services Menu"
     ],
     "contactEmail": "oquinn588@gmail.com"
-  },
-  {
-    "id": "marios-pizza",
-    "name": "Mario's Pizza",
-    "category": "Italian Restaurant",
-    "city": "Dallas, TX",
-    "price": 400,
-    "previewPath": "previews/marios-pizza",
-    "features": [
-      "Online Menu",
-      "Contact Form",
-      "Mobile Optimized",
-      "Google Maps"
-    ],
-    "contactEmail": ""
   },
   {
     "id": "the-eatery",

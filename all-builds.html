@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Builds — Website Market</title>
+    <meta name="robots" content="noindex">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav id="nav">
+        <a href="/" class="nav-logo">Website<span>Market</span></a>
+        <a href="/" class="nav-cta">← Back</a>
+    </nav>
+
+    <section class="builds-header">
+        <div class="builds-header-inner">
+            <h1 class="builds-title">All Builds</h1>
+            <p class="builds-sub">Every site we've built — click any to preview.</p>
+        </div>
+    </section>
+
+    <section class="builds-body">
+        <div class="results-grid" id="buildsGrid"></div>
+    </section>
+
+    <!-- PREVIEW MODAL -->
+    <div id="modal-overlay" role="dialog" aria-modal="true" aria-label="Website preview">
+        <div class="modal">
+            <div class="modal-header">
+                <span class="modal-business-name" id="modalBusinessName"></span>
+                <div class="modal-actions">
+                    <button class="modal-purchase-btn" id="modalPurchaseBtn">
+                        <span class="btn-text-full">Purchase This Website</span>
+                        <span class="btn-text-short">Buy</span>
+                    </button>
+                    <button class="modal-close" id="modalClose" aria-label="Close preview">✕</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-loading" id="modalLoading">
+                    <div class="loader" aria-label="Loading"></div>
+                    <p>Loading preview…</p>
+                </div>
+                <iframe
+                    id="modalIframe"
+                    class="modal-iframe"
+                    title="Website Preview"
+                    sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation allow-forms"
+                ></iframe>
+                <div id="modalPricing" class="modal-pricing"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="all-builds.js"></script>
+</body>
+</html>
