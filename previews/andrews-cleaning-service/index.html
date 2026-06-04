@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrew's Cleaning Service LLC — Wichita, KS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy:       #0f172a;
+            --navy-mid:   #1e293b;
+            --sky:        #0284c7;
+            --sky-hover:  #0369a1;
+            --sky-light:  #e0f2fe;
+            --sky-pale:   #f0f9ff;
+            --white:      #ffffff;
+            --gray-soft:  #64748b;
+            --gray-text:  #334155;
+            --border:     #e2e8f0;
+            --gold:       #f59e0b;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--white);
+            color: var(--navy);
+            overflow-x: hidden;
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 48px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            transition: padding 0.3s ease;
+        }
+        nav.scrolled { padding: 13px 48px; }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .nav-logo {
+            width: 36px; height: 36px;
+            background: var(--sky);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .nav-logo svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2.2; stroke-linecap: round; }
+        .nav-name { color: #fff; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+
+        .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+        .nav-links a:hover { color: #fff; }
+
+        .nav-cta {
+            background: var(--sky);
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px; font-weight: 600;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .nav-cta:hover { background: var(--sky-hover); transform: translateY(-1px); }
+        .nav-cta:active { transform: scale(0.98); }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100dvh;
+            background: var(--navy);
+            display: grid;
+            grid-template-columns: 56fr 44fr;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 130px 72px 80px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(2, 132, 199, 0.14);
+            border: 1px solid rgba(2, 132, 199, 0.28);
+            border-radius: 999px;
+            padding: 6px 16px;
+            color: #7dd3fc;
+            font-size: 13px; font-weight: 500;
+            margin-bottom: 28px;
+            width: fit-content;
+        }
+        .badge-dot {
+            width: 7px; height: 7px;
+            background: #38bdf8;
+            border-radius: 50%;
+            animation: blink 2.2s ease-in-out infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.8); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.6rem, 4.2vw, 3.9rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+            margin-bottom: 22px;
+        }
+        .hero h1 em { font-style: normal; color: #38bdf8; }
+
+        .hero-sub {
+            font-size: 1.08rem;
+            color: rgba(255,255,255,0.55);
+            font-weight: 300;
+            line-height: 1.75;
+            max-width: 50ch;
+            margin-bottom: 40px;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 52px;
+        }
+
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 9px;
+            background: var(--sky);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 15px; font-weight: 600;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .btn-primary:hover { background: var(--sky-hover); transform: translateY(-2px); }
+        .btn-primary:active { transform: scale(0.98); }
+        .btn-primary svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+        .btn-ghost {
+            display: inline-flex; align-items: center; gap: 8px;
+            border: 1px solid rgba(255,255,255,0.18);
+            color: rgba(255,255,255,0.75);
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 15px; font-weight: 500;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .btn-ghost:hover { border-color: rgba(255,255,255,0.45); color: #fff; }
+
+        .hero-trust {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .trust-pill {
+            display: flex; align-items: center; gap: 7px;
+        }
+        .stars-inline { display: flex; gap: 2px; }
+        .star { color: var(--gold); font-size: 13px; }
+        .trust-txt { color: rgba(255,255,255,0.5); font-size: 13px; }
+        .trust-div { width: 1px; height: 14px; background: rgba(255,255,255,0.14); }
+
+        /* hero right */
+        .hero-visual { position: relative; overflow: hidden; }
+        .hero-visual img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6) saturate(0.55);
+        }
+        .hero-visual-grad {
+            position: absolute; inset: 0;
+            background: linear-gradient(to right, var(--navy) 0%, rgba(15,23,42,0.35) 45%, transparent 100%);
+        }
+        .hero-float {
+            position: absolute;
+            bottom: 40px; right: 40px;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 14px;
+            padding: 18px 22px;
+            color: #fff;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        .float-num { font-size: 2rem; font-weight: 800; color: #38bdf8; line-height: 1; }
+        .float-lbl { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 5px; }
+
+        /* ─── TRUST STRIP ─── */
+        .trust-strip {
+            background: var(--navy-mid);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            padding: 0 48px;
+        }
+        .ts-item {
+            display: flex; align-items: center; gap: 14px;
+            padding: 26px 28px;
+            border-right: 1px solid rgba(255,255,255,0.07);
+        }
+        .ts-item:last-child { border-right: none; }
+        .ts-icon {
+            width: 40px; height: 40px;
+            background: rgba(2, 132, 199, 0.14);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .ts-icon svg { width: 19px; height: 19px; stroke: #38bdf8; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+        .ts-val { font-size: 1.25rem; font-weight: 700; color: #fff; line-height: 1; }
+        .ts-lbl { font-size: 12px; color: rgba(255,255,255,0.38); margin-top: 3px; }
+
+        /* ─── SECTION COMMONS ─── */
+        .section-label {
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--sky);
+            margin-bottom: 14px;
+        }
+        .section-title {
+            font-size: clamp(1.9rem, 3vw, 2.7rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.12;
+            color: var(--navy);
+        }
+        .section-title.on-dark { color: #fff; }
+        .section-body {
+            font-size: 1.05rem;
+            color: var(--gray-soft);
+            line-height: 1.75;
+            max-width: 58ch;
+            margin-top: 16px;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .fade-up.in { opacity: 1; transform: translateY(0); }
+
+        /* ─── SERVICES ─── */
+        .services { padding: 100px 48px; background: var(--sky-pale); }
+        .services-inner { max-width: 1200px; margin: 0 auto; }
+        .services-head { margin-bottom: 68px; }
+
+        .svc-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background: #fff;
+            box-shadow: 0 4px 28px -8px rgba(15,23,42,0.07);
+        }
+
+        .svc-visual {
+            display: flex; align-items: center; justify-content: center;
+            min-height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+        /* service panel photos: clean living room / kitchen / bright empty room / clean office */
+        .svc-visual.v1 { background: url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&h=500&fit=crop&auto=format&q=75') center/cover no-repeat; }
+        .svc-visual.v2 { background: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&h=500&fit=crop&auto=format&q=75') center/cover no-repeat; }
+        .svc-visual.v3 { background: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&h=500&fit=crop&auto=format&q=75') center/cover no-repeat; }
+        .svc-visual.v4 { background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&h=500&fit=crop&auto=format&q=75') center/cover no-repeat; }
+
+        .svc-visual-icon {
+            width: 100px; height: 100px;
+            stroke: rgba(255,255,255,0.55);
+            fill: none;
+            stroke-width: 1.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .svc-visual-num {
+            position: absolute;
+            bottom: 24px; right: 28px;
+            font-size: 5rem;
+            font-weight: 800;
+            color: rgba(255,255,255,0.08);
+            line-height: 1;
+            letter-spacing: -0.04em;
+            user-select: none;
+        }
+
+        .svc-info {
+            padding: 52px 52px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .svc-num-label {
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--sky);
+            margin-bottom: 14px;
+        }
+        .svc-name {
+            font-size: 1.65rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--navy);
+            line-height: 1.15;
+            margin-bottom: 14px;
+        }
+        .svc-desc {
+            font-size: 0.95rem;
+            color: var(--gray-soft);
+            line-height: 1.72;
+        }
+        .svc-tags {
+            display: flex; flex-wrap: wrap; gap: 8px;
+            margin-top: 22px;
+        }
+        .svc-tag {
+            background: var(--sky-light);
+            color: var(--sky-hover);
+            font-size: 12px; font-weight: 500;
+            padding: 5px 13px;
+            border-radius: 999px;
+        }
+
+        /* reverse order */
+        .svc-row.flip .svc-visual { order: 2; }
+        .svc-row.flip .svc-info   { order: 1; }
+
+        /* ─── REVIEWS ─── */
+        .reviews { padding: 100px 48px; background: var(--navy); overflow: hidden; }
+        .reviews-inner { max-width: 1200px; margin: 0 auto; }
+        .reviews-head {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 52px;
+        }
+        .reviews-score-block { text-align: right; }
+        .score-num { font-size: 3.5rem; font-weight: 800; color: var(--gold); line-height: 1; }
+        .score-stars { display: flex; justify-content: flex-end; gap: 3px; margin-top: 6px; }
+        .score-sub { font-size: 12px; color: rgba(255,255,255,0.38); margin-top: 5px; }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .rv-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 28px;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+        }
+        .rv-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.14);
+            transform: translateY(-2px);
+        }
+        .rv-stars { display: flex; gap: 3px; margin-bottom: 16px; }
+        .rv-star { color: var(--gold); font-size: 13px; }
+        .rv-text {
+            font-size: 0.93rem;
+            color: rgba(255,255,255,0.72);
+            line-height: 1.72;
+            font-style: italic;
+            margin-bottom: 22px;
+        }
+        .rv-footer { display: flex; align-items: center; gap: 12px; }
+        .rv-avatar {
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            background: var(--sky);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px; font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+            letter-spacing: 0;
+        }
+        .rv-name { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.88); }
+        .rv-source { font-size: 12px; color: rgba(255,255,255,0.32); margin-top: 2px; }
+
+        /* ─── WHY ─── */
+        .why { padding: 100px 48px; background: var(--white); }
+        .why-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            gap: 96px;
+            align-items: start;
+        }
+        .why-left { position: sticky; top: 120px; }
+
+        .why-list { display: flex; flex-direction: column; margin-top: 8px; }
+        .why-item {
+            display: flex; align-items: flex-start; gap: 22px;
+            padding: 28px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .why-item:first-child { border-top: 1px solid var(--border); }
+        .why-n {
+            font-size: 11px; font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--sky);
+            padding-top: 3px;
+            min-width: 28px;
+        }
+        .why-text h3 { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 7px; }
+        .why-text p { font-size: 0.9rem; color: var(--gray-soft); line-height: 1.68; }
+
+        /* ─── CONTACT ─── */
+        .contact { padding: 100px 48px; background: var(--sky-pale); }
+        .contact-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .hours-list { display: flex; flex-direction: column; margin-top: 32px; }
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 13px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+        .hours-row:last-child { border-bottom: none; }
+        .h-day { color: var(--gray-text); font-weight: 500; }
+        .h-val { display: flex; align-items: center; gap: 7px; color: var(--sky-hover); font-weight: 600; }
+        .h-dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; animation: blink 2.2s ease-in-out infinite; }
+
+        .contact-cards { display: flex; flex-direction: column; gap: 18px; margin-top: 32px; }
+        .c-card {
+            display: flex; align-items: flex-start; gap: 16px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .c-icon {
+            width: 42px; height: 42px;
+            background: var(--sky-light);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .c-icon svg { width: 20px; height: 20px; stroke: var(--sky-hover); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+        .c-lbl { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-soft); margin-bottom: 5px; }
+        .c-val { font-size: 1rem; font-weight: 600; color: var(--navy); }
+        .c-val a { color: var(--navy); text-decoration: none; }
+        .c-val a:hover { color: var(--sky); }
+
+        /* ─── CTA BANNER ─── */
+        .cta-banner {
+            background: var(--sky);
+            padding: 88px 48px;
+            text-align: center;
+        }
+        .cta-banner h2 {
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+        .cta-banner p { font-size: 1.08rem; color: rgba(255,255,255,0.72); margin-bottom: 36px; }
+        .btn-white {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: #fff;
+            color: var(--sky-hover);
+            padding: 16px 38px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1rem; font-weight: 700;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.18); }
+        .btn-white:active { transform: scale(0.98); }
+        .btn-white svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--navy);
+            padding: 36px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .foot-brand { color: #fff; font-size: 15px; font-weight: 600; }
+        .foot-info { font-size: 13px; color: rgba(255,255,255,0.32); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 960px) {
+            nav { padding: 16px 24px; }
+            nav.scrolled { padding: 13px 24px; }
+            .nav-links { display: none; }
+
+            .hero { grid-template-columns: 1fr; }
+            .hero-content { padding: 110px 24px 56px; }
+            .hero-visual { height: 280px; }
+            .hero-visual-grad { background: linear-gradient(to bottom, var(--navy) 0%, rgba(15,23,42,0.1) 100%); }
+
+            .trust-strip { grid-template-columns: 1fr 1fr; padding: 20px 24px; gap: 0; }
+            .ts-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 18px 12px; }
+            .ts-item:nth-child(2n) { padding-left: 20px; }
+            .ts-item:last-child, .ts-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+
+            .services { padding: 72px 24px; }
+            .svc-row { grid-template-columns: 1fr; }
+            .svc-row.flip .svc-visual { order: 0; }
+            .svc-row.flip .svc-info   { order: 0; }
+            .svc-visual { min-height: 200px; }
+            .svc-info { padding: 36px 28px; }
+
+            .reviews { padding: 72px 24px; }
+            .reviews-head { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .reviews-score-block { text-align: left; }
+            .score-stars { justify-content: flex-start; }
+            .reviews-grid { grid-template-columns: 1fr; }
+
+            .why { padding: 72px 24px; }
+            .why-inner { grid-template-columns: 1fr; gap: 48px; }
+            .why-left { position: static; }
+
+            .contact { padding: 72px 24px; }
+            .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+
+            .cta-banner { padding: 72px 24px; }
+            footer { flex-direction: column; gap: 10px; text-align: center; padding: 32px 24px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.3rem; }
+            .hero-actions { flex-direction: column; align-items: stretch; }
+            .btn-primary, .btn-ghost { justify-content: center; }
+            .hero-float { bottom: 20px; right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="nav">
+    <a href="#" class="nav-brand">
+        <div class="nav-logo">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3L4.5 9v12h5v-7h5v7h5V9z"/>
+            </svg>
+        </div>
+        <span class="nav-name">Andrew's Cleaning</span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="tel:3167123883" class="nav-cta">Call Now</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="hero-badge">
+            <div class="badge-dot"></div>
+            Available 24 Hours &mdash; 7 Days a Week
+        </div>
+        <h1>Wichita's Most <em>Trusted</em> Cleaning Service</h1>
+        <p class="hero-sub">Professional, detail-obsessed cleaning for homes and businesses across Wichita, KS. Residential, commercial, deep cleaning, and move-in/out services &mdash; done right every time.</p>
+        <div class="hero-actions">
+            <a href="tel:3167123883" class="btn-primary">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.86 9.85 19.79 19.79 0 01.79 1.18 2 2 0 012.81 0h3a2 2 0 012 1.72c.127.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+                316-712-3883
+            </a>
+            <a href="#services" class="btn-ghost">See Services</a>
+        </div>
+        <div class="hero-trust">
+            <div class="trust-pill">
+                <div class="stars-inline">
+                    <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span>
+                </div>
+                <span class="trust-txt">5.0 on Google</span>
+            </div>
+            <div class="trust-div"></div>
+            <span class="trust-txt">25 Reviews</span>
+            <div class="trust-div"></div>
+            <span class="trust-txt">Wichita, KS</span>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=900&h=1100&fit=crop&auto=format&q=80" alt="Clean bright home interior" />
+        <div class="hero-visual-grad"></div>
+        <div class="hero-float">
+            <div class="float-num">5.0</div>
+            <div class="float-lbl">Average Rating</div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── TRUST STRIP ─── -->
+<div class="trust-strip">
+    <div class="ts-item">
+        <div class="ts-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+            <div class="ts-val">5.0 Stars</div>
+            <div class="ts-lbl">Google Rating</div>
+        </div>
+    </div>
+    <div class="ts-item">
+        <div class="ts-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div>
+            <div class="ts-val">25 Reviews</div>
+            <div class="ts-lbl">All 5-Star</div>
+        </div>
+    </div>
+    <div class="ts-item">
+        <div class="ts-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+            <div class="ts-val">24 / 7</div>
+            <div class="ts-lbl">Always Available</div>
+        </div>
+    </div>
+    <div class="ts-item">
+        <div class="ts-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div>
+            <div class="ts-val">Res &amp; Com</div>
+            <div class="ts-lbl">Home &amp; Business</div>
+        </div>
+    </div>
+</div>
+
+<!-- ─── SERVICES ─── -->
+<section class="services" id="services">
+    <div class="services-inner">
+        <div class="services-head fade-up">
+            <div class="section-label">What We Do</div>
+            <h2 class="section-title">Every Space. Every Standard.</h2>
+            <p class="section-body">Whether it's your home, your business, or a move-in turnaround, Andrew's team delivers spotless results with professional-grade care.</p>
+        </div>
+
+        <div class="svc-row fade-up">
+            <div class="svc-visual v1"></div>
+            <div class="svc-info">
+                <div class="svc-num-label">Service 01</div>
+                <div class="svc-name">Residential Cleaning</div>
+                <p class="svc-desc">Floors that shine, surfaces you can eat off, and a home that feels yours again. Andrew's team works through every room with methodical care &mdash; nothing skipped, nothing rushed.</p>
+                <div class="svc-tags">
+                    <span class="svc-tag">Kitchens</span>
+                    <span class="svc-tag">Bathrooms</span>
+                    <span class="svc-tag">All Bedrooms</span>
+                    <span class="svc-tag">Monthly Plans</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="svc-row flip fade-up">
+            <div class="svc-visual v2"></div>
+            <div class="svc-info">
+                <div class="svc-num-label">Service 02</div>
+                <div class="svc-name">Deep Cleaning</div>
+                <p class="svc-desc">A thorough top-to-bottom reset. Inside appliances, baseboards, grout lines, window sills &mdash; every inch gets attention that standard cleaning leaves behind.</p>
+                <div class="svc-tags">
+                    <span class="svc-tag">Inside Appliances</span>
+                    <span class="svc-tag">Baseboards</span>
+                    <span class="svc-tag">Grout &amp; Tile</span>
+                    <span class="svc-tag">Full Property</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="svc-row fade-up">
+            <div class="svc-visual v3"></div>
+            <div class="svc-info">
+                <div class="svc-num-label">Service 03</div>
+                <div class="svc-name">Move-In / Move-Out</div>
+                <p class="svc-desc">Ready for the next chapter. Andrew's team makes your old home inspection-ready and your new one feel brand new from day one &mdash; spotless on both ends.</p>
+                <div class="svc-tags">
+                    <span class="svc-tag">Inspection Ready</span>
+                    <span class="svc-tag">Full Turnaround</span>
+                    <span class="svc-tag">Quick Scheduling</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="svc-row flip fade-up">
+            <div class="svc-visual v4"></div>
+            <div class="svc-info">
+                <div class="svc-num-label">Service 04</div>
+                <div class="svc-name">Commercial &amp; Office</div>
+                <p class="svc-desc">On-time, professional, discreet. Andrew services offices and businesses across Wichita with the same precision that earned 25 five-star reviews from homeowners.</p>
+                <div class="svc-tags">
+                    <span class="svc-tag">Offices</span>
+                    <span class="svc-tag">Recurring Contracts</span>
+                    <span class="svc-tag">Always On Time</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── REVIEWS ─── -->
+<section class="reviews" id="reviews">
+    <div class="reviews-inner">
+        <div class="reviews-head fade-up">
+            <div>
+                <div class="section-label">What Clients Say</div>
+                <h2 class="section-title on-dark">Trusted by Wichita.</h2>
+            </div>
+            <div class="reviews-score-block">
+                <div class="score-num">5.0</div>
+                <div class="score-stars">
+                    <span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span>
+                </div>
+                <div class="score-sub">25 verified Google reviews</div>
+            </div>
+        </div>
+        <div class="reviews-grid">
+            <div class="rv-card fade-up">
+                <div class="rv-stars"><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span></div>
+                <p class="rv-text">"Andrew made our house look brand new inside and ready for move-in. Went above and beyond expectations &mdash; would recommend him every time."</p>
+                <div class="rv-footer">
+                    <div class="rv-avatar">TK</div>
+                    <div><div class="rv-name">Tevin Kendall</div><div class="rv-source">Google Review</div></div>
+                </div>
+            </div>
+            <div class="rv-card fade-up">
+                <div class="rv-stars"><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span></div>
+                <p class="rv-text">"Professional, easy to talk to, and provided excellent service. Deep cleaned our entire 4-bedroom, 2-bath house. Would definitely recommend."</p>
+                <div class="rv-footer">
+                    <div class="rv-avatar">BS</div>
+                    <div><div class="rv-name">Bridget Sweeney</div><div class="rv-source">Google Review</div></div>
+                </div>
+            </div>
+            <div class="rv-card fade-up">
+                <div class="rv-stars"><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span></div>
+                <p class="rv-text">"Andrew is wonderful &mdash; very much the professional. Top-notch customer service. I highly recommend this business without hesitation."</p>
+                <div class="rv-footer">
+                    <div class="rv-avatar">AM</div>
+                    <div><div class="rv-name">Angel McCloud</div><div class="rv-source">Google Review</div></div>
+                </div>
+            </div>
+            <div class="rv-card fade-up">
+                <div class="rv-stars"><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span></div>
+                <p class="rv-text">"Andrew services our business and his team does an amazing job. Always on time, everything looks great. Switching to his company was the best decision we ever made."</p>
+                <div class="rv-footer">
+                    <div class="rv-avatar">BH</div>
+                    <div><div class="rv-name">Ben Hook</div><div class="rv-source">Google Review</div></div>
+                </div>
+            </div>
+            <div class="rv-card fade-up">
+                <div class="rv-stars"><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span></div>
+                <p class="rv-text">"Andrew and his crew do a great job. My floors and counters shine. Very kind and professional. Goes the extra mile every time. House feels so clean."</p>
+                <div class="rv-footer">
+                    <div class="rv-avatar">MD</div>
+                    <div><div class="rv-name">Mindy Dillon</div><div class="rv-source">Google Review</div></div>
+                </div>
+            </div>
+            <div class="rv-card fade-up">
+                <div class="rv-stars"><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span><span class="rv-star">&#9733;</span></div>
+                <p class="rv-text">"The attention to detail and customer satisfaction is top notch. We are very happy with the service we received. Highly recommend their services."</p>
+                <div class="rv-footer">
+                    <div class="rv-avatar">MA</div>
+                    <div><div class="rv-name">Molly Anderson</div><div class="rv-source">Google Review</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── WHY ─── -->
+<section class="why" id="about">
+    <div class="why-inner">
+        <div class="why-left fade-up">
+            <div class="section-label">Why Andrew's</div>
+            <h2 class="section-title">Cleaning done right,<br>every single time.</h2>
+            <p class="section-body">Andrew built this business on one principle: leave every space better than you found it. That standard hasn't changed &mdash; and neither has the five-star track record to prove it.</p>
+        </div>
+        <div class="why-list">
+            <div class="why-item fade-up">
+                <div class="why-n">01</div>
+                <div class="why-text">
+                    <h3>Trustworthy in Every Room</h3>
+                    <p>Clients trust Andrew in their homes, around their families, and inside their offices. That trust is earned daily &mdash; and it shows in every review left behind.</p>
+                </div>
+            </div>
+            <div class="why-item fade-up">
+                <div class="why-n">02</div>
+                <div class="why-text">
+                    <h3>Relentless Attention to Detail</h3>
+                    <p>Floors that shine. Counters that gleam. Baseboards that get the same care as the kitchen. The difference is in what others skip and Andrew doesn't.</p>
+                </div>
+            </div>
+            <div class="why-item fade-up">
+                <div class="why-n">03</div>
+                <div class="why-text">
+                    <h3>Always Responsive</h3>
+                    <p>Available 24 hours, 7 days a week &mdash; Andrew picks up, shows up, and follows through. No runaround, no rescheduling, no wait.</p>
+                </div>
+            </div>
+            <div class="why-item fade-up">
+                <div class="why-n">04</div>
+                <div class="why-text">
+                    <h3>Home &amp; Business Ready</h3>
+                    <p>From single-family homes to full office floors, the same professional standard applies across every job. One team. Consistent quality. Every time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section class="contact" id="contact">
+    <div class="contact-inner">
+        <div>
+            <div class="section-label">Hours</div>
+            <h2 class="section-title">Open Every Day.</h2>
+            <div class="hours-list">
+                <div class="hours-row"><span class="h-day">Monday</span><span class="h-val"><span class="h-dot"></span>24 Hours</span></div>
+                <div class="hours-row"><span class="h-day">Tuesday</span><span class="h-val"><span class="h-dot"></span>24 Hours</span></div>
+                <div class="hours-row"><span class="h-day">Wednesday</span><span class="h-val"><span class="h-dot"></span>24 Hours</span></div>
+                <div class="hours-row"><span class="h-day">Thursday</span><span class="h-val"><span class="h-dot"></span>24 Hours</span></div>
+                <div class="hours-row"><span class="h-day">Friday</span><span class="h-val"><span class="h-dot"></span>24 Hours</span></div>
+                <div class="hours-row"><span class="h-day">Saturday</span><span class="h-val"><span class="h-dot"></span>24 Hours</span></div>
+                <div class="hours-row"><span class="h-day">Sunday</span><span class="h-val"><span class="h-dot"></span>24 Hours</span></div>
+            </div>
+        </div>
+        <div>
+            <div class="section-label">Get in Touch</div>
+            <h2 class="section-title">Ready when you are.</h2>
+            <div class="contact-cards">
+                <div class="c-card">
+                    <div class="c-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.86 9.85 19.79 19.79 0 01.79 1.18 2 2 0 012.81 0h3a2 2 0 012 1.72c.127.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    </div>
+                    <div>
+                        <div class="c-lbl">Phone</div>
+                        <div class="c-val"><a href="tel:3167123883">316-712-3883</a></div>
+                    </div>
+                </div>
+                <div class="c-card">
+                    <div class="c-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div>
+                        <div class="c-lbl">Location</div>
+                        <div class="c-val">13902 W Ponderosa St<br>Wichita, KS 67235</div>
+                    </div>
+                </div>
+                <div class="c-card">
+                    <div class="c-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div>
+                        <div class="c-lbl">Availability</div>
+                        <div class="c-val">24 Hours &mdash; 7 Days a Week</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── CTA BANNER ─── -->
+<div class="cta-banner">
+    <h2>Ready for a spotless space?</h2>
+    <p>Call now &mdash; Andrew picks up and we'll get you scheduled right away.</p>
+    <a href="tel:3167123883" class="btn-white">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.86 9.85 19.79 19.79 0 01.79 1.18 2 2 0 012.81 0h3a2 2 0 012 1.72c.127.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l.97-.97a2 2 0 012.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+        316-712-3883
+    </a>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+    <div class="foot-brand">Andrew's Cleaning Service LLC</div>
+    <div class="foot-info">13902 W Ponderosa St &bull; Wichita, KS 67235 &bull; 316-712-3883</div>
+</footer>
+
+<script>
+    // Nav shrink on scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 24);
+    }, { passive: true });
+
+    // Fade-up on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    // Stagger siblings in the same parent
+    document.querySelectorAll('.fade-up').forEach((el, i) => {
+        const siblings = el.parentElement.querySelectorAll('.fade-up');
+        const sibIndex = Array.from(siblings).indexOf(el);
+        el.style.transitionDelay = `${sibIndex * 80}ms`;
+        observer.observe(el);
+    });
+</script>
+</body>
+</html>

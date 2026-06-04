@@ -1,5 +1,52 @@
 [
   {
+    "id": "andrews-cleaning-service",
+    "name": "Andrew's Cleaning Service",
+    "category": "Cleaning Service",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/andrews-cleaning-service",
+    "features": [
+      "Residential Cleaning",
+      "Deep Cleaning",
+      "Move-In/Out",
+      "Commercial",
+      "Mobile Optimized"
+    ],
+    "contactEmail": "lukewebsitemarket@gmail.com"
+  },
+  {
+    "id": "bonjours-puppy-parade",
+    "name": "Bonjour's Puppy Parade",
+    "category": "Pet Grooming",
+    "city": "Wichita, KS",
+    "price": 750,
+    "previewPath": "previews/bonjours-puppy-parade",
+    "features": [
+      "Dog & Cat Grooming",
+      "All Breeds Welcome",
+      "Mobile Optimized",
+      "Hours & Location",
+      "Services Menu"
+    ],
+    "contactEmail": "lukewebsitemarket@gmail.com"
+  },
+  {
+    "id": "golden-wok",
+    "name": "Golden Wok",
+    "category": "Chinese Restaurant",
+    "city": "Austin, TX",
+    "price": 400,
+    "previewPath": "previews/golden-wok",
+    "features": [
+      "Online Menu",
+      "Photo Gallery",
+      "Mobile Optimized",
+      "Hours & Location"
+    ],
+    "contactEmail": ""
+  },
+  {
     "id": "julius-rib-cage",
     "name": "Julius Rib Cage",
     "category": "BBQ Restaurant",
@@ -27,5 +74,35 @@
       "Services Menu"
     ],
     "contactEmail": "oquinn588@gmail.com"
+  },
+  {
+    "id": "marios-pizza",
+    "name": "Mario's Pizza",
+    "category": "Italian Restaurant",
+    "city": "Dallas, TX",
+    "price": 400,
+    "previewPath": "previews/marios-pizza",
+    "features": [
+      "Online Menu",
+      "Contact Form",
+      "Mobile Optimized",
+      "Google Maps"
+    ],
+    "contactEmail": ""
+  },
+  {
+    "id": "the-eatery",
+    "name": "The Eatery",
+    "category": "Soul Food Restaurant",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/the-eatery",
+    "features": [
+      "Online Menu",
+      "Mobile Optimized",
+      "Call-to-Order",
+      "Delivery & Takeout"
+    ],
+    "contactEmail": "lukewebsitemarket@gmail.com"
   }
 ]
