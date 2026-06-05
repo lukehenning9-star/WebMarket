@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <rect width="32" height="32" rx="6" fill="#252220"/>
   <!-- M strokes: left post up, diagonal to center valley, diagonal back up, right post down -->
-  <!-- W on top: outer peaks high, two valleys + center peak touching midline -->
-  <polyline points="4,5 10,16 16,8 22,16 28,5"
-            fill="none" stroke="#f5f0ec" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="round"/>
-  <!-- M on bottom: outer valleys low, two peaks + center valley touching midline -->
-  <polyline points="4,27 10,16 16,24 22,16 28,27"
-            fill="none" stroke="#f5f0ec" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="round"/>
+  <!-- M on top: posts y=5–14, center valley touches y=16 -->
+  <polyline points="5,14 5,5 16,16 27,5 27,14"
+            fill="none" stroke="#f5f0ec" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="square"/>
+  <!-- W on bottom: posts y=18–27, center peak touches y=16 -->
+  <polyline points="5,18 5,27 16,16 27,27 27,18"
+            fill="none" stroke="#f5f0ec" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="square"/>
 </svg>
