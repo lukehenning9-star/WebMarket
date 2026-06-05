@@ -791,7 +791,7 @@ img { max-width: 100%; display: block; }
 
   .hero__badge {
     left: 0;
-    bottom: -1.25rem;
+    bottom: 2rem;
   }
 
   .trust__inner { gap: 1rem; flex-wrap: wrap; justify-content: center; }
@@ -878,10 +878,11 @@ img { max-width: 100%; display: block; }
     max-height: none;
   }
 
-  /* Keep badge fully inside the image on mobile — no negative offset */
+  /* Badge at top-left on mobile */
   .hero__badge {
     left: 1rem;
-    bottom: 1rem;
+    top: 1rem;
+    bottom: auto;
     padding: 0.75rem 1rem;
     box-shadow: 0 4px 16px rgba(28, 24, 20, 0.14);
   }
