@@ -1,5 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <rect width="32" height="32" rx="6" fill="#252220"/>
-  <text x="16" y="16" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#f5f0ec" text-anchor="middle">M</text>
-  <text x="16" y="27" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#f5f0ec" text-anchor="middle">W</text>
+  <!-- M strokes: left post up, diagonal to center valley, diagonal back up, right post down -->
+  <polyline points="5,16 5,5 16,12 27,5 27,16"
+            fill="none" stroke="#f5f0ec" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="square"/>
+  <!-- W strokes: mirror of M below -->
+  <polyline points="5,16 5,27 16,20 27,27 27,16"
+            fill="none" stroke="#f5f0ec" stroke-width="2.5" stroke-linejoin="miter" stroke-linecap="square"/>
 </svg>
