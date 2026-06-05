@@ -81,6 +81,24 @@
     "tier": 2
   },
   {
+    "id": "taste-of-flavorz",
+    "name": "Taste of Flavorz",
+    "category": "Soul Food Restaurant",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/taste-of-flavorz",
+    "features": [
+      "Full Menu",
+      "Saturday Special",
+      "Customer Reviews",
+      "Hours & Location",
+      "Mobile Optimized",
+      "Google Maps Link"
+    ],
+    "contactEmail": "lukehenning9@gmail.com",
+    "tier": 1
+  },
+  {
     "id": "the-eatery",
     "name": "The Eatery",
     "category": "Soul Food Restaurant",
