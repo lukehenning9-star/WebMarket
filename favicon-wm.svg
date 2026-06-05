@@ -1,15 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <rect width="32" height="32" rx="6" fill="#252220"/>
-  <g fill="none" stroke="#f5f0ec" stroke-width="2" stroke-linejoin="miter" stroke-linecap="butt">
-    <!-- W left outer post -->
-    <line x1="4" y1="5" x2="4" y2="27"/>
-    <!-- W inner strokes (upside-down M: valleys at bottom, peak near top) -->
-    <polyline points="4,27 10,11 16,27"/>
-    <!-- Shared center post (rightmost W bar = leftmost M bar) -->
-    <line x1="16" y1="5" x2="16" y2="27"/>
-    <!-- M inner strokes (peak at top, valley near bottom) -->
-    <polyline points="16,5 22,21 28,5"/>
-    <!-- M right outer post -->
-    <line x1="28" y1="5" x2="28" y2="27"/>
-  </g>
+  <!-- Single path: W (left post down → up to peak → down to center bar bottom → up center bar)
+       then M (center bar top → down to valley → up to right post top → right post down) -->
+  <path d="M 3,7 L 3,25 L 9.5,11 L 16,25 L 16,7 L 22.5,21 L 29,7 L 29,25"
+        fill="none" stroke="#f5f0ec" stroke-width="2.5"
+        stroke-linejoin="miter" stroke-linecap="square"/>
 </svg>
