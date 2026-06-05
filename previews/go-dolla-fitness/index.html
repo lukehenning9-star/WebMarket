@@ -31,7 +31,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    img { display: block; width: 100%; height: 100%; object-fit: cover; }
     a { text-decoration: none; color: inherit; }
 
     .container {
@@ -217,34 +216,55 @@
       margin-top: 3px;
     }
 
+    /* Hero right — CSS art panel */
     .hero-right {
       position: relative;
       overflow: hidden;
     }
-    .hero-right img { object-position: center top; }
-    .hero-overlay {
+    .hero-art {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, var(--bg) 0%, rgba(12,12,12,0.2) 40%, transparent 100%),
-                  linear-gradient(to top, var(--bg) 0%, transparent 35%);
-      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 75% 25%, rgba(196,131,30,0.22) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 85%, rgba(196,131,30,0.10) 0%, transparent 45%),
+        linear-gradient(150deg, #1E1E1E 0%, #141414 45%, #0C0C0C 100%);
+    }
+    .hero-art-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(196,131,30,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(196,131,30,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at 60% 40%, black 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at 60% 40%, black 20%, transparent 75%);
+    }
+    .hero-art-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(440px, 80%);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid rgba(196,131,30,0.12);
+      box-shadow: 0 0 0 60px rgba(196,131,30,0.03), 0 0 0 120px rgba(196,131,30,0.02);
+    }
+    .hero-art-label {
+      position: absolute;
+      bottom: 48px;
+      left: 48px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(196,131,30,0.5);
     }
 
     @media (max-width: 860px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-      .hero-right {
-        height: 55dvh;
-        order: -1;
-      }
-      .hero-overlay {
-        background: linear-gradient(to bottom, transparent 40%, var(--bg) 100%);
-      }
-      .hero-left {
-        padding: 40px 24px 64px;
-        order: 1;
-      }
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { height: 40dvh; order: -1; }
+      .hero-left { padding: 40px 24px 64px; order: 1; }
       .hero-stats { gap: 28px; flex-wrap: wrap; }
     }
 
@@ -317,20 +337,62 @@
       gap: 88px;
       align-items: center;
     }
-    .about-img-wrap {
-      position: relative;
+
+    /* Left panel: premium stats art card */
+    .about-panel {
       border-radius: 24px;
       overflow: hidden;
       aspect-ratio: 4/5;
+      background:
+        radial-gradient(ellipse at 40% 35%, rgba(196,131,30,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 80%, rgba(196,131,30,0.08) 0%, transparent 40%),
+        linear-gradient(155deg, #1E1C1A 0%, #131313 100%);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 44px;
+      position: relative;
     }
-    .about-img-wrap::after {
-      content: '';
+    .about-panel-grid {
       position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 45%;
-      background: linear-gradient(to top, rgba(196,131,30,0.08), transparent);
-      pointer-events: none;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(196,131,30,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(196,131,30,0.04) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(ellipse at 50% 40%, black 15%, transparent 65%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 40%, black 15%, transparent 65%);
+      border-radius: 24px;
     }
+    .about-panel-stats {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .about-stat {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 24px;
+    }
+    .about-stat:first-child { border-top: none; padding-top: 0; }
+    .about-stat-val {
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      color: var(--text);
+    }
+    .about-stat-val span { color: var(--accent); font-size: 0.6em; vertical-align: super; }
+    .about-stat-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
     .about-content { padding-left: 8px; }
     .about-content .s-h2 { margin-bottom: 22px; }
     .about-content .s-body { margin-bottom: 40px; }
@@ -376,114 +438,8 @@
     }
     @media (max-width: 860px) {
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .about-img-wrap { aspect-ratio: 16/9; }
+      .about-panel { aspect-ratio: 16/7; }
       .about-content { padding-left: 0; }
-    }
-
-    /* ── Chelsea ── */
-    .chelsea-section { background: var(--bg-2); }
-    .chelsea-head {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: end;
-      margin-bottom: 60px;
-    }
-    .chelsea-head .s-body { max-width: 460px; padding-bottom: 4px; }
-    .trainer-card {
-      display: grid;
-      grid-template-columns: 380px 1fr;
-      border-radius: 28px;
-      overflow: hidden;
-      background: var(--bg-3);
-      border: 1px solid var(--border);
-    }
-    .trainer-img {
-      position: relative;
-      min-height: 460px;
-    }
-    .trainer-img img { object-position: center top; }
-    .trainer-img::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, transparent 55%, var(--bg-3) 100%);
-      pointer-events: none;
-    }
-    .trainer-info {
-      padding: 52px 52px 52px 36px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .trainer-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent-dim);
-      border: 1px solid rgba(196,131,30,0.22);
-      border-radius: 100px;
-      padding: 6px 14px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      width: fit-content;
-      margin-bottom: 22px;
-    }
-    .trainer-badge-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      animation: badgePulse 2.4s ease-in-out infinite;
-    }
-    @keyframes badgePulse {
-      0%,100% { opacity:1; transform:scale(1); }
-      50% { opacity:0.4; transform:scale(0.65); }
-    }
-    .trainer-name {
-      font-size: 52px;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 1.0;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-    .trainer-title {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--accent);
-      letter-spacing: 0.04em;
-      margin-bottom: 22px;
-    }
-    .trainer-bio {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.72;
-      margin-bottom: 30px;
-      max-width: 420px;
-    }
-    .trainer-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 6px 14px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--muted);
-    }
-    @media (max-width: 900px) {
-      .chelsea-head { grid-template-columns: 1fr; margin-bottom: 36px; }
-      .trainer-card { grid-template-columns: 1fr; }
-      .trainer-img { min-height: 300px; }
-      .trainer-img::after {
-        background: linear-gradient(to bottom, transparent 50%, var(--bg-3) 100%);
-      }
-      .trainer-info { padding: 32px 24px; }
-      .trainer-name { font-size: 40px; }
     }
 
     /* ── Services ── */
@@ -515,20 +471,31 @@
       grid-row: span 2;
       padding: 0;
       min-height: 460px;
-      overflow: hidden;
     }
-    .svc-card.big img {
+    /* Featured service card — CSS art background */
+    .svc-art {
       position: absolute;
       inset: 0;
-      opacity: 0.35;
-      transition: opacity 0.4s, transform 0.6s cubic-bezier(0.16,1,0.3,1);
+      background:
+        radial-gradient(ellipse at 35% 45%, rgba(196,131,30,0.20) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 85%, rgba(196,131,30,0.08) 0%, transparent 40%),
+        linear-gradient(145deg, #1E1C18 0%, #111 100%);
     }
-    .svc-card.big:hover img { opacity: 0.48; transform: scale(1.04); }
+    .svc-art-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(196,131,30,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(196,131,30,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse at 40% 50%, black 10%, transparent 60%);
+      -webkit-mask-image: radial-gradient(ellipse at 40% 50%, black 10%, transparent 60%);
+    }
     .svc-big-content {
       position: absolute;
       bottom: 0; left: 0; right: 0;
       padding: 40px;
-      background: linear-gradient(to top, var(--bg-3) 45%, transparent 100%);
+      background: linear-gradient(to top, #111 45%, transparent 100%);
     }
     .svc-num {
       font-size: 11px;
@@ -557,7 +524,7 @@
         grid-template-columns: 1fr;
         grid-template-rows: auto;
       }
-      .svc-card.big { grid-row: span 1; min-height: 280px; }
+      .svc-card.big { grid-row: span 1; min-height: 260px; }
     }
 
     /* ── Hours ── */
@@ -613,7 +580,10 @@
       background: var(--accent);
       animation: badgePulse 2s ease-in-out infinite;
     }
-    .hours-right { padding-top: 0; }
+    @keyframes badgePulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50% { opacity:0.4; transform:scale(0.65); }
+    }
     .hours-cta {
       background: var(--accent);
       border-radius: 24px;
@@ -678,10 +648,7 @@
       letter-spacing: -0.02em;
       color: var(--text);
     }
-    .reviews-count {
-      font-size: 13px;
-      color: var(--muted);
-    }
+    .reviews-count { font-size: 13px; color: var(--muted); }
     .reviews-scroll {
       display: flex;
       gap: 16px;
@@ -730,7 +697,7 @@
     .r-name { font-size: 14px; font-weight: 600; color: var(--text); }
     .r-date { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
-    /* ── CTA Section ── */
+    /* ── CTA ── */
     .cta-section {
       background: var(--accent);
       padding: 120px 0;
@@ -890,8 +857,10 @@
     </div>
   </div>
   <div class="hero-right">
-    <img src="https://picsum.photos/seed/godollagym9/900/1100" alt="Go Dolla Fitness" />
-    <div class="hero-overlay"></div>
+    <div class="hero-art"></div>
+    <div class="hero-art-grid"></div>
+    <div class="hero-art-ring"></div>
+    <div class="hero-art-label">Go Dolla Fitness — Wichita, KS</div>
   </div>
 </section>
 
@@ -909,8 +878,22 @@
 <section id="about">
   <div class="container">
     <div class="about-grid">
-      <div class="about-img-wrap reveal">
-        <img src="https://picsum.photos/seed/dollagym2wichita/700/900" alt="Inside Go Dolla Fitness" />
+      <div class="about-panel reveal">
+        <div class="about-panel-grid"></div>
+        <div class="about-panel-stats">
+          <div class="about-stat">
+            <div class="about-stat-val">5.0<span>★</span></div>
+            <div class="about-stat-label">Google Rating</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-val">52</div>
+            <div class="about-stat-label">Verified Reviews</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-val">1:1</div>
+            <div class="about-stat-label">Personal Training</div>
+          </div>
+        </div>
       </div>
       <div class="about-content">
         <div class="s-label reveal">About the Gym</div>
@@ -950,40 +933,6 @@
   </div>
 </section>
 
-<!-- CHELSEA -->
-<section class="chelsea-section" id="trainers">
-  <div class="container">
-    <div class="chelsea-head">
-      <div>
-        <div class="s-label reveal">Featured Trainer</div>
-        <h2 class="s-h2 reveal d1">Meet Chelsea</h2>
-      </div>
-      <div class="s-body reveal">Known as one of Wichita's most sought-after personal trainers, Chelsea brings the kind of intensity and care that clients remember long after a session ends.</div>
-    </div>
-    <div class="trainer-card reveal">
-      <div class="trainer-img">
-        <img src="https://picsum.photos/seed/chelseafitnesstrainer/600/700" alt="Chelsea — Personal Trainer at Go Dolla Fitness" />
-      </div>
-      <div class="trainer-info">
-        <div class="trainer-badge">
-          <span class="trainer-badge-dot"></span>
-          Head Trainer
-        </div>
-        <div class="trainer-name">Chelsea</div>
-        <div class="trainer-title">Personal Trainer — Go Dolla Fitness LLC</div>
-        <p class="trainer-bio">Chelsea meets you where you are and takes you where you want to go. She designs every session around your individual goals, keeps your form safe, and brings the kind of energy that makes you forget how hard you're working. Her clients call it the Chelsea Experience — and it delivers every time.</p>
-        <div class="trainer-tags">
-          <span class="tag">Goal-Focused Programming</span>
-          <span class="tag">Nutrition Guidance</span>
-          <span class="tag">1-on-1 Training</span>
-          <span class="tag">Accountability Coaching</span>
-          <span class="tag">Meal Prep</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- SERVICES -->
 <section id="services">
   <div class="container">
@@ -996,7 +945,8 @@
     </div>
     <div class="services-grid reveal d2">
       <div class="svc-card big">
-        <img src="https://picsum.photos/seed/personaltrainingwichita/900/700" alt="Personal Training" />
+        <div class="svc-art"></div>
+        <div class="svc-art-lines"></div>
         <div class="svc-big-content">
           <div class="svc-num">01</div>
           <div class="svc-title">1-on-1 Personal Training</div>
@@ -1016,7 +966,7 @@
       <div class="svc-card">
         <div class="svc-num">04</div>
         <div class="svc-title">Community Training</div>
-        <div class="svc-desc">A welcoming group environment where everyone cheers each other on. Push harder when others push with you.</div>
+        <div class="svc-desc">A welcoming environment where everyone cheers each other on. Push harder when others push with you.</div>
       </div>
       <div class="svc-card">
         <div class="svc-num">05</div>
@@ -1065,7 +1015,7 @@
           </div>
         </div>
       </div>
-      <div class="hours-right reveal d2">
+      <div class="reveal d2">
         <div class="hours-cta">
           <h3>Ready to start your journey?</h3>
           <p>Call us to schedule your first session. We'll match you with the right trainer and build a program around your goals.</p>
@@ -1128,7 +1078,7 @@
           <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <p class="r-text">"Training with Chelsea has been the best investment I could've made for myself. She's motivating and truly cares about helping you reach your goals. She's so nice, fun, and easy to work with — but she isn't afraid to hold you accountable, which is exactly what I need."</p>
+        <p class="r-text">"Training here has been the best investment I could've made for myself. The coaches are motivating and truly care about helping you reach your goals. Fun, easy to work with — but they don't hesitate to hold you accountable, which is exactly what I need."</p>
         <div class="r-author">
           <div class="r-avatar">AM</div>
           <div>
@@ -1146,7 +1096,7 @@
           <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <p class="r-text">"My trainer Chelsea is excellent. She is very knowledgeable and patient with each workout. Each session is safe and geared to my abilities. She makes you work but always keeps it fun."</p>
+        <p class="r-text">"My trainer is excellent — very knowledgeable and patient with each workout. Every session is safe and geared to my abilities. They make you work but always keep it fun."</p>
         <div class="r-author">
           <div class="r-avatar">EH</div>
           <div>
@@ -1164,7 +1114,7 @@
           <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <p class="r-text">"Chelsea is one of the most motivational people I know. She will not let you coast and is very understanding at the same time. One thing about Chels — she will not let you talk down on yourself. I have seen so much growth, mentally and physically, since I started training."</p>
+        <p class="r-text">"The coaches here will not let you coast and are very understanding at the same time. They will not let you talk down on yourself. I've seen so much growth mentally and physically since I started training here."</p>
         <div class="r-author">
           <div class="r-avatar">NG</div>
           <div>
@@ -1182,7 +1132,7 @@
           <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <p class="r-text">"The Chelsea experience has truly helped me gain an overall healthy lifestyle and continues to mold my body for both an amazing look and strength. Her workout and meal preps are no joke. I would 1000% recommend Dolla Fitness to everyone struggling to hit the goals they desire."</p>
+        <p class="r-text">"Go Dolla has truly helped me gain an overall healthy lifestyle and continues to reshape my body for both an amazing look and real strength. The workout and meal preps here are no joke. I would 1000% recommend this place to anyone."</p>
         <div class="r-author">
           <div class="r-avatar">GD</div>
           <div>
@@ -1200,7 +1150,7 @@
           <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <p class="r-text">"Just finished my first 12 sessions. I feel stronger physically and mentally. If you need a hype person, Chelsea is your girl. She gets you pumped and pushes you to go harder each session. From diet to exercises targeting each muscle individually — she's got it all."</p>
+        <p class="r-text">"Just finished my first 12 sessions. I feel stronger physically and mentally. The coaches here get you pumped and push you harder each session. From diet to exercises targeting each muscle individually — they've got it all covered."</p>
         <div class="r-author">
           <div class="r-avatar">MV</div>
           <div>
@@ -1218,7 +1168,7 @@
           <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           <svg class="r-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-        <p class="r-text">"Chelsea has helped me gain more confidence in myself in a short amount of time. If you are looking for someone to motivate you and make sure you meet your body goals — go with Chelsea at Go Dolla. She is nothing but amazing."</p>
+        <p class="r-text">"I've been working out here for over a month and it's been nothing but amazing. The coaches have helped me gain confidence in a short amount of time. If you're looking for someone to motivate you and keep you on track — Go Dolla is it."</p>
         <div class="r-author">
           <div class="r-avatar">RS</div>
           <div>
@@ -1285,13 +1235,11 @@
 </footer>
 
 <script>
-  // Nav scroll effect
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 48);
   }, { passive: true });
 
-  // Highlight today in hours table
   const today = new Date().getDay();
   document.querySelectorAll('.hours-row').forEach(row => {
     if (parseInt(row.dataset.day) === today) {
@@ -1304,7 +1252,6 @@
     }
   });
 
-  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
