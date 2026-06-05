@@ -9,77 +9,74 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ─── Reset & Root ────────────────────────────────────────────── */
+    /* ─── Reset & Root ─────────────────────────────────────────────── */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     :root {
-      --dark:        #17130e;
-      --dark-2:      #201b14;
-      --dark-3:      #2a231a;
-      --gold:        #c49a2a;
-      --gold-lt:     #ddb93e;
-      --gold-dim:    rgba(196,154,42,0.12);
-      --green:       #1a4e2a;
-      --green-lt:    #1f5d32;
-      --cream:       #f5f0e6;
-      --cream-60:    rgba(245,240,230,0.6);
-      --cream-30:    rgba(245,240,230,0.3);
-      --cream-10:    rgba(245,240,230,0.07);
-      --font-head:   'Oswald', sans-serif;
-      --font-body:   'Outfit', sans-serif;
-      --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+      --bg:       #faf8f4;
+      --bg-2:     #f3ede2;
+      --bg-3:     #ede7da;
+      --text:     #1c1814;
+      --text-2:   #6b5e52;
+      --text-3:   rgba(28,24,20,0.35);
+      --gold:     #9a7220;
+      --gold-lt:  #b8891f;
+      --gold-dim: rgba(154,114,32,0.08);
+      --border:   rgba(28,24,20,0.09);
+      --green:    #1a4e2a;
+      --green-lt: #1f5d32;
+      --font-head: 'Oswald', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+      --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     body {
       font-family: var(--font-body);
-      background: var(--dark);
-      color: var(--cream);
+      background: var(--bg);
+      color: var(--text);
       overflow-x: hidden;
     }
-
     img { display: block; max-width: 100%; }
 
-    /* ─── Announcement Bar ────────────────────────────────────────── */
+    /* ─── Announcement Bar ─────────────────────────────────────────── */
     .announce-bar {
-      background: var(--gold);
-      color: var(--dark);
-      font-family: var(--font-body);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      background: var(--text);
+      color: rgba(250,248,244,0.75);
+      font-size: 0.74rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
       text-align: center;
-      padding: 0.6rem 1rem;
+      padding: 0.55rem 1rem;
     }
+    .announce-bar strong { color: #faf8f4; font-weight: 600; }
 
-    /* ─── Nav ─────────────────────────────────────────────────────── */
+    /* ─── Nav ──────────────────────────────────────────────────────── */
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 200;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.25rem 5vw;
-      transition: background 0.4s var(--ease-out), backdrop-filter 0.4s, border-color 0.4s;
+      padding: 1.1rem 5vw;
+      background: transparent;
+      transition: background 0.35s var(--ease-out), border-color 0.35s, box-shadow 0.35s;
       border-bottom: 1px solid transparent;
     }
-
     nav.scrolled {
-      background: rgba(23,19,14,0.93);
-      backdrop-filter: blur(14px);
-      border-color: rgba(196,154,42,0.15);
+      background: rgba(250,248,244,0.96);
+      backdrop-filter: blur(12px);
+      border-color: var(--border);
+      box-shadow: 0 1px 16px rgba(28,24,20,0.06);
     }
 
     .nav-logo {
       font-family: var(--font-head);
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      letter-spacing: 0.07em;
-      color: var(--gold);
+      letter-spacing: 0.06em;
+      color: var(--text);
       text-decoration: none;
     }
 
@@ -89,27 +86,27 @@
       gap: 2.25rem;
       list-style: none;
     }
-
     .nav-links a {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 500;
-      letter-spacing: 0.07em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--cream-60);
+      color: var(--text-2);
       text-decoration: none;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover { color: var(--text); }
 
     .nav-cta {
       background: var(--gold) !important;
-      color: var(--dark) !important;
-      padding: 0.55rem 1.35rem;
-      font-weight: 700 !important;
+      color: #fff !important;
+      padding: 0.52rem 1.3rem;
+      border-radius: 2px;
+      font-weight: 600 !important;
       letter-spacing: 0.04em !important;
       transition: background 0.2s !important;
     }
-    .nav-cta:hover { background: var(--gold-lt) !important; color: var(--dark) !important; }
+    .nav-cta:hover { background: var(--gold-lt) !important; color: #fff !important; }
 
     /* hamburger */
     .hamburger {
@@ -120,13 +117,12 @@
       border: none;
       cursor: pointer;
       padding: 4px;
-      z-index: 210;
     }
     .hamburger span {
       display: block;
       width: 22px;
       height: 2px;
-      background: var(--cream);
+      background: var(--text);
       border-radius: 2px;
       transition: all 0.3s var(--ease-out);
     }
@@ -137,43 +133,41 @@
       position: fixed;
       inset: 0;
       z-index: 205;
-      background: rgba(23,19,14,0.98);
+      background: var(--bg);
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 2.5rem;
+      gap: 2.25rem;
     }
     .mobile-overlay.open { display: flex; }
-
     .mobile-overlay a {
       font-family: var(--font-head);
       font-size: 2.25rem;
       font-weight: 600;
       letter-spacing: 0.04em;
-      color: var(--cream);
+      color: var(--text);
       text-decoration: none;
       transition: color 0.2s;
     }
     .mobile-overlay a:hover { color: var(--gold); }
-
     .mob-close {
       position: absolute;
       top: 1.5rem;
       right: 1.5rem;
       background: none;
       border: none;
-      color: var(--cream-60);
+      color: var(--text-2);
       font-size: 2rem;
       cursor: pointer;
       line-height: 1;
     }
     .mob-phone { color: var(--gold) !important; }
 
-    /* ─── Hero ────────────────────────────────────────────────────── */
+    /* ─── Hero ─────────────────────────────────────────────────────── */
     .hero {
       min-height: 100dvh;
       display: grid;
-      grid-template-columns: 55% 45%;
+      grid-template-columns: 52% 48%;
       overflow: hidden;
       position: relative;
     }
@@ -184,14 +178,15 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 9rem 3rem 5rem max(4vw, 3rem);
+      padding: 9rem 3.5rem 5rem max(5vw, 3rem);
+      background: var(--bg);
     }
 
     .hero-label {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
@@ -201,18 +196,18 @@
     .hero-label::before {
       content: '';
       display: block;
-      width: 2.25rem;
+      width: 2rem;
       height: 1px;
       background: var(--gold);
     }
 
     .hero-title {
       font-family: var(--font-head);
-      font-size: clamp(3.5rem, 6.5vw, 6rem);
+      font-size: clamp(3.25rem, 6vw, 5.75rem);
       font-weight: 700;
       line-height: 0.93;
       letter-spacing: -0.01em;
-      color: var(--cream);
+      color: var(--text);
       margin-bottom: 1.75rem;
     }
     .hero-title em { color: var(--gold); font-style: normal; }
@@ -220,7 +215,7 @@
     .hero-desc {
       font-size: 1rem;
       font-weight: 300;
-      color: var(--cream-60);
+      color: var(--text-2);
       line-height: 1.75;
       max-width: 44ch;
       margin-bottom: 2.75rem;
@@ -238,13 +233,13 @@
       align-items: center;
       gap: 0.5rem;
       background: var(--gold);
-      color: var(--dark);
+      color: #fff;
       font-family: var(--font-body);
-      font-size: 0.85rem;
+      font-size: 0.83rem;
       font-weight: 700;
       letter-spacing: 0.07em;
       text-transform: uppercase;
-      padding: 0.9rem 2rem;
+      padding: 0.875rem 1.9rem;
       text-decoration: none;
       border-radius: 2px;
       transition: background 0.2s, transform 0.15s;
@@ -257,15 +252,15 @@
       align-items: center;
       gap: 0.5rem;
       background: transparent;
-      color: var(--cream);
+      color: var(--text);
       font-family: var(--font-body);
-      font-size: 0.85rem;
+      font-size: 0.83rem;
       font-weight: 500;
       letter-spacing: 0.07em;
       text-transform: uppercase;
-      padding: 0.9rem 1.6rem;
+      padding: 0.875rem 1.6rem;
       text-decoration: none;
-      border: 1px solid var(--cream-30);
+      border: 1px solid var(--border);
       border-radius: 2px;
       transition: border-color 0.2s, color 0.2s, transform 0.15s;
     }
@@ -275,9 +270,9 @@
     .hero-stats {
       display: flex;
       gap: 3rem;
-      margin-top: 4.5rem;
+      margin-top: 4rem;
       padding-top: 2.5rem;
-      border-top: 1px solid var(--cream-10);
+      border-top: 1px solid var(--border);
     }
     .stat-n {
       font-family: var(--font-head);
@@ -288,11 +283,11 @@
       margin-bottom: 0.2rem;
     }
     .stat-l {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--cream-60);
+      color: var(--text-2);
     }
 
     /* hero image pane */
@@ -306,37 +301,25 @@
       object-fit: cover;
       transition: transform 10s ease;
     }
-    /* gradient fade into left side */
     .hero-img-pane::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, var(--dark) 0%, transparent 25%);
-      z-index: 1;
-      pointer-events: none;
-    }
-    /* subtle bottom dark */
-    .hero-img-pane::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(23,19,14,0.5) 0%, transparent 45%);
+      background: linear-gradient(to right, var(--bg) 0%, transparent 22%);
       z-index: 1;
       pointer-events: none;
     }
 
-    /* ─── Marquee Strip ───────────────────────────────────────────── */
+    /* ─── Marquee Strip ────────────────────────────────────────────── */
     .marquee-wrap {
-      background: var(--gold);
+      background: var(--text);
       overflow: hidden;
-      padding: 0.8rem 0;
-      position: relative;
+      padding: 0.75rem 0;
     }
     .marquee-track {
       display: flex;
-      gap: 0;
       width: max-content;
-      animation: marquee 28s linear infinite;
+      animation: marquee 32s linear infinite;
     }
     .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
     @keyframes marquee {
@@ -349,34 +332,34 @@
       gap: 1.5rem;
       padding: 0 2.5rem;
       font-family: var(--font-head);
-      font-size: 0.82rem;
-      font-weight: 600;
+      font-size: 0.78rem;
+      font-weight: 500;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--dark);
+      color: rgba(250,248,244,0.55);
       white-space: nowrap;
     }
     .marquee-dot {
-      width: 5px;
-      height: 5px;
+      width: 3px;
+      height: 3px;
       border-radius: 50%;
-      background: rgba(23,19,14,0.4);
+      background: rgba(154,114,32,0.8);
       flex-shrink: 0;
     }
 
-    /* ─── Section Shared ──────────────────────────────────────────── */
+    /* ─── Section Shared ───────────────────────────────────────────── */
     .sec { padding: 7rem 5vw; }
 
     .sec-label {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.85rem;
     }
     .sec-label::before {
       content: '';
@@ -388,24 +371,24 @@
 
     .sec-title {
       font-family: var(--font-head);
-      font-size: clamp(2.25rem, 4vw, 3.25rem);
+      font-size: clamp(2.25rem, 3.75vw, 3rem);
       font-weight: 700;
-      line-height: 1;
+      line-height: 1.0;
       letter-spacing: -0.01em;
-      color: var(--cream);
+      color: var(--text);
       margin-bottom: 1.25rem;
     }
 
     .sec-sub {
       font-size: 0.97rem;
       font-weight: 300;
-      color: var(--cream-60);
+      color: var(--text-2);
       line-height: 1.75;
       max-width: 55ch;
     }
 
-    /* ─── Highlights / About ─────────────────────────────────────── */
-    .highlights { background: var(--dark-2); }
+    /* ─── Highlights ───────────────────────────────────────────────── */
+    .highlights { background: var(--bg-2); }
 
     .hl-grid {
       display: grid;
@@ -434,84 +417,76 @@
       bottom: -1.25rem;
       right: -1.25rem;
       background: var(--gold);
-      color: var(--dark);
+      color: #fff;
       font-family: var(--font-head);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 1.1rem 1.35rem;
-      line-height: 1.5;
+      padding: 1rem 1.3rem;
+      line-height: 1.55;
       z-index: 2;
     }
 
-    .hl-items { display: flex; flex-direction: column; gap: 0; }
+    .hl-items { display: flex; flex-direction: column; margin-top: 3rem; }
 
     .hl-item {
       display: flex;
       gap: 1.5rem;
       align-items: flex-start;
       padding: 2.25rem 0;
-      border-bottom: 1px solid var(--cream-10);
+      border-bottom: 1px solid var(--border);
     }
     .hl-item:first-child { padding-top: 0; }
     .hl-item:last-child { border-bottom: none; }
 
     .hl-num {
       font-family: var(--font-head);
-      font-size: 2.75rem;
+      font-size: 2.5rem;
       font-weight: 700;
-      color: rgba(196,154,42,0.12);
+      color: rgba(154,114,32,0.15);
       line-height: 1;
       min-width: 2.5rem;
     }
-
     .hl-name {
       font-family: var(--font-head);
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 600;
-      color: var(--cream);
-      margin-bottom: 0.45rem;
+      color: var(--text);
+      margin-bottom: 0.4rem;
       letter-spacing: 0.02em;
     }
     .hl-text {
       font-size: 0.88rem;
       font-weight: 300;
-      color: var(--cream-60);
+      color: var(--text-2);
       line-height: 1.75;
     }
 
-    /* ─── Gallery Strip ───────────────────────────────────────────── */
-    .gallery-strip {
-      overflow: hidden;
-      padding: 0;
-      line-height: 0;
-    }
-
+    /* ─── Gallery Strip ────────────────────────────────────────────── */
+    .gallery-strip { overflow: hidden; line-height: 0; }
     .gallery-track {
       display: flex;
       width: max-content;
-      animation: galleryScroll 40s linear infinite;
+      animation: galleryScroll 42s linear infinite;
     }
     .gallery-strip:hover .gallery-track { animation-play-state: paused; }
-
     @keyframes galleryScroll {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
     }
-
     .gallery-track img {
       width: 380px;
-      height: 280px;
+      height: 270px;
       object-fit: cover;
       flex-shrink: 0;
-      filter: brightness(0.85) saturate(1.1);
+      filter: brightness(0.92) saturate(1.05);
       transition: filter 0.4s;
     }
-    .gallery-track img:hover { filter: brightness(1) saturate(1.2); }
+    .gallery-track img:hover { filter: brightness(1) saturate(1.15); }
 
-    /* ─── Menu Section ────────────────────────────────────────────── */
-    .menu-sec { background: var(--dark); }
+    /* ─── Menu Section ─────────────────────────────────────────────── */
+    .menu-sec { background: var(--bg); }
 
     .menu-top {
       display: flex;
@@ -524,73 +499,78 @@
 
     .tab-bar {
       display: flex;
-      gap: 0.4rem;
+      gap: 0.35rem;
       flex-wrap: wrap;
     }
 
     .tab-btn {
       font-family: var(--font-body);
-      font-size: 0.77rem;
+      font-size: 0.76rem;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       padding: 0.55rem 1.2rem;
       background: transparent;
-      color: var(--cream-60);
-      border: 1px solid rgba(245,240,230,0.1);
+      color: var(--text-2);
+      border: 1px solid var(--border);
       border-radius: 2px;
       cursor: pointer;
       transition: all 0.2s;
     }
     .tab-btn.active {
       background: var(--gold);
-      color: var(--dark);
+      color: #fff;
       border-color: var(--gold);
     }
     .tab-btn:hover:not(.active) { border-color: var(--gold); color: var(--gold); }
 
+    /* ── Menu Panel (clean single-column list) ── */
     .tab-panel { display: none; }
     .tab-panel.active {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 0;
+      display: flex;
+      flex-direction: column;
+      max-width: 720px;
       animation: fadeUp 0.3s var(--ease-out);
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(8px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
     .mi {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      padding: 1.35rem 0;
-      border-bottom: 1px solid var(--cream-10);
-      gap: 1.25rem;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
     }
+    .mi:first-child { border-top: 1px solid var(--border); }
+
+    .mi-left { flex: 1; min-width: 0; }
     .mi-name {
       font-size: 0.97rem;
       font-weight: 500;
-      color: var(--cream);
+      color: var(--text);
       line-height: 1.35;
     }
     .mi-note {
       font-size: 0.78rem;
       font-weight: 300;
-      color: var(--cream-60);
+      color: var(--text-2);
       margin-top: 0.2rem;
     }
     .mi-price {
       font-family: var(--font-head);
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 600;
       color: var(--gold);
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
-    /* ─── Saturday Special ────────────────────────────────────────── */
+    /* ─── Saturday Special ─────────────────────────────────────────── */
     .saturday {
       background: var(--green);
       position: relative;
@@ -623,13 +603,14 @@
     .sat-badge {
       display: inline-block;
       background: var(--gold);
-      color: var(--dark);
-      font-size: 0.68rem;
+      color: #fff;
+      font-size: 0.67rem;
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       padding: 0.35rem 0.9rem;
       margin-bottom: 1.5rem;
+      border-radius: 1px;
     }
 
     .sat-title {
@@ -642,8 +623,8 @@
     }
 
     .sat-desc {
-      font-size: 0.97rem;
-      color: rgba(255,255,255,0.78);
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.75);
       line-height: 1.75;
       max-width: 42ch;
       margin-bottom: 2.5rem;
@@ -655,46 +636,45 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.15rem 1.25rem;
+      padding: 1.1rem 1.25rem;
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .sat-row:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
-
     .sat-row-name {
       font-family: var(--font-head);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 500;
       color: #fff;
     }
     .sat-row-price {
       font-family: var(--font-head);
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 700;
-      color: var(--gold-lt);
+      color: #ddb93e;
     }
 
     .sat-sides {
       margin-top: 1.5rem;
-      padding: 1.15rem 1.25rem;
+      padding: 1.1rem 1.25rem;
       background: rgba(255,255,255,0.07);
       border-left: 3px solid var(--gold);
     }
     .sat-sides-label {
-      font-size: 0.68rem;
+      font-size: 0.67rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--gold-lt);
+      color: #ddb93e;
       margin-bottom: 0.45rem;
     }
     .sat-sides-list {
       font-size: 0.88rem;
-      color: rgba(255,255,255,0.72);
+      color: rgba(255,255,255,0.7);
       line-height: 1.65;
     }
 
-    /* ─── Reviews ─────────────────────────────────────────────────── */
-    .reviews-sec { background: var(--dark-2); }
+    /* ─── Reviews ──────────────────────────────────────────────────── */
+    .reviews-sec { background: var(--bg-2); }
 
     .rev-grid {
       margin-top: 4rem;
@@ -704,27 +684,25 @@
     }
 
     .rev-card {
-      background: var(--dark);
-      border: 1px solid rgba(245,240,230,0.06);
-      border-radius: 3px;
-      padding: 2rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.75rem;
       display: flex;
       flex-direction: column;
       gap: 1.25rem;
-      transition: border-color 0.25s, transform 0.25s;
+      box-shadow: 0 1px 12px rgba(28,24,20,0.05);
+      transition: box-shadow 0.25s, transform 0.25s;
     }
-    .rev-card:hover { border-color: rgba(196,154,42,0.3); transform: translateY(-2px); }
+    .rev-card:hover { box-shadow: 0 4px 24px rgba(28,24,20,0.1); transform: translateY(-2px); }
 
-    .stars {
-      display: flex;
-      gap: 2px;
-    }
+    .stars { display: flex; gap: 2px; }
     .stars svg { fill: var(--gold); }
 
     .rev-text {
-      font-size: 0.93rem;
+      font-size: 0.92rem;
       font-weight: 300;
-      color: rgba(245,240,230,0.82);
+      color: var(--text-2);
       line-height: 1.8;
       font-style: italic;
       flex: 1;
@@ -737,33 +715,33 @@
     }
 
     .rev-ava {
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       background: var(--gold);
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--font-head);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      color: var(--dark);
+      color: #fff;
       flex-shrink: 0;
     }
 
     .rev-name {
       font-size: 0.85rem;
       font-weight: 600;
-      color: var(--cream);
+      color: var(--text);
     }
     .rev-date {
-      font-size: 0.73rem;
-      color: var(--cream-60);
+      font-size: 0.72rem;
+      color: var(--text-2);
       margin-top: 0.1rem;
     }
 
-    /* ─── Info (Hours + Location) ─────────────────────────────────── */
-    .info-sec { background: var(--dark-3); }
+    /* ─── Info (Hours + Location) ──────────────────────────────────── */
+    .info-sec { background: var(--bg-3); }
 
     .info-grid {
       display: grid;
@@ -779,20 +757,20 @@
       justify-content: space-between;
       align-items: center;
       padding: 0.95rem 0;
-      border-bottom: 1px solid var(--cream-10);
+      border-bottom: 1px solid var(--border);
     }
-    .hr-row:first-child { border-top: 1px solid var(--cream-10); }
+    .hr-row:first-child { border-top: 1px solid var(--border); }
 
     .hr-day {
       font-size: 0.88rem;
       font-weight: 400;
-      color: var(--cream-60);
+      color: var(--text-2);
     }
     .hr-time {
       font-family: var(--font-head);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 500;
-      color: var(--cream);
+      color: var(--text);
     }
     .hr-time.gold { color: var(--gold); }
 
@@ -805,10 +783,10 @@
     }
 
     .loc-icon {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       background: var(--gold-dim);
-      border: 1px solid rgba(196,154,42,0.2);
+      border: 1px solid rgba(154,114,32,0.18);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -817,7 +795,7 @@
     }
 
     .loc-label {
-      font-size: 0.68rem;
+      font-size: 0.67rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -827,7 +805,7 @@
     .loc-val {
       font-size: 0.93rem;
       font-weight: 300;
-      color: rgba(245,240,230,0.82);
+      color: var(--text-2);
       line-height: 1.6;
     }
     .loc-val a { color: inherit; text-decoration: none; transition: color 0.2s; }
@@ -837,38 +815,38 @@
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
-      margin-top: 0.65rem;
-      font-size: 0.83rem;
+      margin-top: 0.6rem;
+      font-size: 0.82rem;
       font-weight: 600;
       color: var(--gold);
       text-decoration: none;
-      border-bottom: 1px solid rgba(196,154,42,0.3);
+      border-bottom: 1px solid rgba(154,114,32,0.3);
       padding-bottom: 1px;
       transition: border-color 0.2s;
     }
     .dir-link:hover { border-color: var(--gold); }
 
-    /* ─── CTA Section ─────────────────────────────────────────────── */
+    /* ─── CTA Section ──────────────────────────────────────────────── */
     .cta-sec {
-      background: var(--dark-2);
+      background: var(--text);
       text-align: center;
       padding: 8rem 5vw;
     }
-    .cta-inner { max-width: 640px; margin: 0 auto; }
+    .cta-inner { max-width: 620px; margin: 0 auto; }
 
     .cta-title {
       font-family: var(--font-head);
       font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 700;
       line-height: 1;
-      color: var(--cream);
+      color: #faf8f4;
       margin-bottom: 1.5rem;
     }
-    .cta-title em { color: var(--gold); font-style: normal; }
+    .cta-title em { color: var(--gold-lt); font-style: normal; }
 
     .cta-text {
       font-size: 0.97rem;
-      color: var(--cream-60);
+      color: rgba(250,248,244,0.6);
       line-height: 1.75;
       margin-bottom: 3rem;
     }
@@ -880,13 +858,31 @@
       flex-wrap: wrap;
     }
 
-    /* ─── Footer ──────────────────────────────────────────────────── */
-    footer {
-      background: #0f0d09;
-      padding: 2.75rem 5vw;
-      border-top: 1px solid rgba(245,240,230,0.05);
+    .btn-outline-light {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: rgba(250,248,244,0.75);
+      font-family: var(--font-body);
+      font-size: 0.83rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.875rem 1.6rem;
+      text-decoration: none;
+      border: 1px solid rgba(250,248,244,0.2);
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
     }
+    .btn-outline-light:hover { border-color: rgba(250,248,244,0.5); color: #faf8f4; transform: translateY(-1px); }
 
+    /* ─── Footer ───────────────────────────────────────────────────── */
+    footer {
+      background: #141109;
+      padding: 2.75rem 5vw;
+      border-top: 1px solid rgba(250,248,244,0.06);
+    }
     .foot-inner {
       display: flex;
       align-items: center;
@@ -894,42 +890,39 @@
       gap: 2rem;
       flex-wrap: wrap;
     }
-
     .foot-logo {
       font-family: var(--font-head);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: 0.07em;
-      color: var(--gold);
+      color: #ddb93e;
     }
-
     .foot-info {
-      font-size: 0.78rem;
-      color: rgba(245,240,230,0.28);
+      font-size: 0.77rem;
+      color: rgba(250,248,244,0.28);
       line-height: 1.7;
       text-align: center;
     }
-
     .foot-links {
       display: flex;
       gap: 2rem;
     }
     .foot-links a {
-      font-size: 0.78rem;
+      font-size: 0.77rem;
       font-weight: 500;
       letter-spacing: 0.07em;
       text-transform: uppercase;
-      color: rgba(245,240,230,0.35);
+      color: rgba(250,248,244,0.35);
       text-decoration: none;
       transition: color 0.2s;
     }
-    .foot-links a:hover { color: var(--gold); }
+    .foot-links a:hover { color: #ddb93e; }
 
-    /* ─── Scroll Reveal ───────────────────────────────────────────── */
+    /* ─── Scroll Reveal ────────────────────────────────────────────── */
     .reveal {
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+      transform: translateY(20px);
+      transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .delay-1 { transition-delay: 0.1s; }
@@ -937,7 +930,7 @@
     .delay-3 { transition-delay: 0.3s; }
     .delay-4 { transition-delay: 0.4s; }
 
-    /* ─── Responsive ──────────────────────────────────────────────── */
+    /* ─── Responsive ───────────────────────────────────────────────── */
     @media (max-width: 1024px) {
       .hero {
         grid-template-columns: 1fr;
@@ -947,7 +940,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: rgba(23,19,14,0.7);
+        background: rgba(250,248,244,0.82);
         z-index: 1;
         pointer-events: none;
       }
@@ -956,10 +949,10 @@
         inset: 0;
         z-index: 0;
       }
-      .hero-img-pane::before,
-      .hero-img-pane::after { display: none; }
+      .hero-img-pane::before { display: none; }
       .hero-content {
         z-index: 2;
+        background: transparent;
         padding: 9rem 5vw 5rem;
         min-height: 100dvh;
       }
@@ -969,30 +962,24 @@
       }
       .hl-img-wrap { aspect-ratio: 16/9; }
       .hl-badge { right: 0; bottom: -1rem; }
-      .sat-inner {
-        grid-template-columns: 1fr;
-        gap: 3.5rem;
-      }
-      .info-grid {
-        grid-template-columns: 1fr;
-        gap: 3.5rem;
-      }
+      .sat-inner { grid-template-columns: 1fr; gap: 3.5rem; }
+      .info-grid { grid-template-columns: 1fr; gap: 3.5rem; }
     }
 
     @media (max-width: 768px) {
       .sec { padding: 5rem 1.25rem; }
-      .cta-sec { padding: 6rem 1.25rem; }
+      .cta-sec { padding: 5.5rem 1.25rem; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .hero-stats { gap: 1.75rem; }
+      .hero-stats { gap: 2rem; }
       .rev-grid { grid-template-columns: 1fr; }
-      .tab-panel.active { grid-template-columns: 1fr; }
       .foot-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
       .foot-info { text-align: left; }
       .foot-links { flex-wrap: wrap; gap: 1.25rem; }
       .cta-btns { flex-direction: column; align-items: center; }
       .menu-top { flex-direction: column; align-items: flex-start; }
-      .gallery-track img { width: 260px; height: 195px; }
+      .gallery-track img { width: 260px; height: 190px; }
+      .tab-panel.active { max-width: 100%; }
     }
 
     @media (max-width: 480px) {
@@ -1005,7 +992,7 @@
 
   <!-- Announcement Bar -->
   <div class="announce-bar">
-    Open 7 Days a Week &nbsp;&#183;&nbsp; 11:00 AM – 8:00 PM &nbsp;&#183;&nbsp; 2545 N Hillside St, Wichita KS &nbsp;&#183;&nbsp; (316) 352-7637
+    <strong>Open 7 Days a Week</strong> &nbsp;&#183;&nbsp; 11:00 AM – 8:00 PM &nbsp;&#183;&nbsp; 2545 N Hillside St, Wichita KS &nbsp;&#183;&nbsp; (316) 352-7637
   </div>
 
   <!-- Navigation -->
@@ -1079,8 +1066,7 @@
 
   <!-- Marquee -->
   <div class="marquee-wrap">
-    <div class="marquee-track" id="marqueeTrack">
-      <!-- Items duplicated for seamless loop -->
+    <div class="marquee-track">
       <span class="marquee-item">Wings<span class="marquee-dot"></span></span>
       <span class="marquee-item">Catfish<span class="marquee-dot"></span></span>
       <span class="marquee-item">Smash Burgers<span class="marquee-dot"></span></span>
@@ -1091,7 +1077,6 @@
       <span class="marquee-item">Wichita's Finest<span class="marquee-dot"></span></span>
       <span class="marquee-item">Seasoned Right<span class="marquee-dot"></span></span>
       <span class="marquee-item">Big Portions<span class="marquee-dot"></span></span>
-      <!-- Duplicate -->
       <span class="marquee-item">Wings<span class="marquee-dot"></span></span>
       <span class="marquee-item">Catfish<span class="marquee-dot"></span></span>
       <span class="marquee-item">Smash Burgers<span class="marquee-dot"></span></span>
@@ -1122,7 +1107,7 @@
         <p class="sec-sub reveal delay-1">
           At Taste of Flavorz, every dish starts with real seasoning and honest cooking. We believe good food speaks for itself — and our customers keep proving us right.
         </p>
-        <div class="hl-items" style="margin-top:3rem;">
+        <div class="hl-items">
           <div class="hl-item reveal delay-1">
             <div class="hl-num">01</div>
             <div>
@@ -1133,7 +1118,7 @@
           <div class="hl-item reveal delay-2">
             <div class="hl-num">02</div>
             <div>
-              <div class="hl-name">Crispy Catfish & Seafood</div>
+              <div class="hl-name">Crispy Catfish &amp; Seafood</div>
               <div class="hl-text">Fresh catfish fillets, seasoned shrimp, and a fish sandwich that delivers every time. Southern classic, Wichita proud.</div>
             </div>
           </div>
@@ -1141,7 +1126,7 @@
             <div class="hl-num">03</div>
             <div>
               <div class="hl-name">Big Portions, Real Value</div>
-              <div class="hl-text">Every dinner plate comes with two sides. Mac &amp; cheese, cabbage, potato salad, baked beans — the real deal, at a fair price.</div>
+              <div class="hl-text">Every dinner comes with two sides — mac &amp; cheese, cabbage, potato salad, or baked beans. Honest food at a fair price.</div>
             </div>
           </div>
         </div>
@@ -1158,7 +1143,6 @@
       <img src="https://images.unsplash.com/photo-1519984388953-d2406bc725e1?w=600&q=75&auto=format&fit=crop" alt="Shrimp" onerror="this.src='https://picsum.photos/seed/gal4/600/450'">
       <img src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=600&q=75&auto=format&fit=crop" alt="Catfish fillet" onerror="this.src='https://picsum.photos/seed/gal5/600/450'">
       <img src="https://images.unsplash.com/photo-1572441713132-51c75654db73?w=600&q=75&auto=format&fit=crop" alt="Chicken strips" onerror="this.src='https://picsum.photos/seed/gal6/600/450'">
-      <!-- Duplicate for loop -->
       <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600&q=75&auto=format&fit=crop" alt="Fried chicken" onerror="this.src='https://picsum.photos/seed/gal1/600/450'">
       <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&q=75&auto=format&fit=crop" alt="Smash burger" onerror="this.src='https://picsum.photos/seed/gal2/600/450'">
       <img src="https://images.unsplash.com/photo-1544025162-d76538250f49?w=600&q=75&auto=format&fit=crop" alt="Grilled pork" onerror="this.src='https://picsum.photos/seed/gal3/600/450'">
@@ -1185,110 +1169,41 @@
     </div>
 
     <div class="tab-panel active" id="tab-chicken">
-      <div class="mi">
-        <div><div class="mi-name">3 pc Whole Wing Dinner</div><div class="mi-note">Comes with fries</div></div>
-        <div class="mi-price">$8.99</div>
-      </div>
-      <div class="mi">
-        <div><div class="mi-name">6 pc Whole Wing Dinner</div><div class="mi-note">Comes with fries</div></div>
-        <div class="mi-price">$12.99</div>
-      </div>
-      <div class="mi">
-        <div><div class="mi-name">Party Wings</div><div class="mi-note">Sold per wing — perfect for groups</div></div>
-        <div class="mi-price">$1.25 ea</div>
-      </div>
-      <div class="mi">
-        <div><div class="mi-name">3 pc Chicken Strip Dinner</div><div class="mi-note">Comes with fries</div></div>
-        <div class="mi-price">$7.99</div>
-      </div>
-      <div class="mi">
-        <div><div class="mi-name">5 pc Chicken Strip Dinner</div><div class="mi-note">Comes with fries</div></div>
-        <div class="mi-price">$9.99</div>
-      </div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">3 pc Whole Wing Dinner</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$8.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">6 pc Whole Wing Dinner</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$12.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Party Wings</div><div class="mi-note">Sold per wing — perfect for groups</div></div><div class="mi-price">$1.25 ea</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">3 pc Chicken Strip Dinner</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$7.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">5 pc Chicken Strip Dinner</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$9.99</div></div>
     </div>
 
     <div class="tab-panel" id="tab-fish">
-      <div class="mi">
-        <div><div class="mi-name">1 pc Catfish Fillet Dinner</div><div class="mi-note">Comes with fries</div></div>
-        <div class="mi-price">$9.99</div>
-      </div>
-      <div class="mi">
-        <div><div class="mi-name">2 pc Catfish Fillet Dinner</div><div class="mi-note">Comes with fries</div></div>
-        <div class="mi-price">$13.99</div>
-      </div>
-      <div class="mi">
-        <div><div class="mi-name">Fish Sandwich</div><div class="mi-note">Comes with fries</div></div>
-        <div class="mi-price">$8.99</div>
-      </div>
-      <div class="mi">
-        <div><div class="mi-name">Shrimp Dinner</div><div class="mi-note">Comes with fries</div></div>
-        <div class="mi-price">$8.99</div>
-      </div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">1 pc Catfish Fillet Dinner</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$9.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">2 pc Catfish Fillet Dinner</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$13.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Fish Sandwich</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$8.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Shrimp Dinner</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$8.99</div></div>
     </div>
 
     <div class="tab-panel" id="tab-pork">
-      <div class="mi">
-        <div><div class="mi-name">Pork Chop Sandwich</div><div class="mi-note">Comes with fries</div></div>
-        <div class="mi-price">$7.99</div>
-      </div>
-      <div class="mi">
-        <div><div class="mi-name">Pork Chop Dinner</div><div class="mi-note">Comes with fries</div></div>
-        <div class="mi-price">$14.99</div>
-      </div>
-      <div class="mi">
-        <div><div class="mi-name">Taste of Flavorz Steak Sandwich</div><div class="mi-note">Comes with fries</div></div>
-        <div class="mi-price">$14.99</div>
-      </div>
-      <div class="mi">
-        <div><div class="mi-name">Philly Cheesesteak</div><div class="mi-note">Comes with fries</div></div>
-        <div class="mi-price">$12.99</div>
-      </div>
-      <div class="mi">
-        <div><div class="mi-name">Hot Dog</div><div class="mi-note">Comes with fries</div></div>
-        <div class="mi-price">$6.99</div>
-      </div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Pork Chop Sandwich</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$7.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Pork Chop Dinner</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$14.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Taste of Flavorz Steak Sandwich</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$14.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Philly Cheesesteak</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$12.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Hot Dog</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$6.99</div></div>
     </div>
 
     <div class="tab-panel" id="tab-burgers">
-      <div class="mi">
-        <div><div class="mi-name">Single Smash Burger</div><div class="mi-note">Comes with fries</div></div>
-        <div class="mi-price">$8.99</div>
-      </div>
-      <div class="mi">
-        <div><div class="mi-name">Double Smash Burger</div><div class="mi-note">Comes with fries</div></div>
-        <div class="mi-price">$10.99</div>
-      </div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Single Smash Burger</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$8.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Double Smash Burger</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$10.99</div></div>
     </div>
 
     <div class="tab-panel" id="tab-sides">
-      <div class="mi">
-        <div><div class="mi-name">Fries</div></div>
-        <div class="mi-price">$2.25</div>
-      </div>
-      <div class="mi">
-        <div><div class="mi-name">Okra</div><div class="mi-note">Crispy, seasoned to perfection</div></div>
-        <div class="mi-price">$2.25</div>
-      </div>
-      <div class="mi">
-        <div><div class="mi-name">Sweet Potato Fries</div></div>
-        <div class="mi-price">$3.99</div>
-      </div>
-      <div class="mi">
-        <div><div class="mi-name">Add Cheese</div></div>
-        <div class="mi-price">$0.75</div>
-      </div>
-      <div class="mi">
-        <div><div class="mi-name">Add Bacon</div></div>
-        <div class="mi-price">$1.00</div>
-      </div>
-      <div class="mi">
-        <div><div class="mi-name">Strawberry Crunch Cake</div><div class="mi-note">House dessert</div></div>
-        <div class="mi-price">$3.50</div>
-      </div>
-      <div class="mi">
-        <div><div class="mi-name">Lemon Crunch Cake</div><div class="mi-note">House dessert</div></div>
-        <div class="mi-price">$3.50</div>
-      </div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Fries</div></div><div class="mi-price">$2.25</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Okra</div><div class="mi-note">Crispy, seasoned to perfection</div></div><div class="mi-price">$2.25</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Sweet Potato Fries</div></div><div class="mi-price">$3.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Add Cheese</div></div><div class="mi-price">$0.75</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Add Bacon</div></div><div class="mi-price">$1.00</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Strawberry Crunch Cake</div><div class="mi-note">House dessert</div></div><div class="mi-price">$3.50</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Lemon Crunch Cake</div><div class="mi-note">House dessert</div></div><div class="mi-price">$3.50</div></div>
     </div>
   </section>
 
@@ -1429,17 +1344,12 @@
       <div class="loc-list reveal delay-1">
         <div class="loc-item">
           <div class="loc-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c49a2a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a7220" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <div>
             <div class="loc-label">Address</div>
             <div class="loc-val">2545 N Hillside St<br>Wichita, KS 67219</div>
-            <a
-              class="dir-link"
-              href="https://www.google.com/maps/search/?api=1&query=2545+N+Hillside+St+Wichita+KS+67219"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a class="dir-link" href="https://www.google.com/maps/search/?api=1&query=2545+N+Hillside+St+Wichita+KS+67219" target="_blank" rel="noopener noreferrer">
               Get Directions
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -1447,7 +1357,7 @@
         </div>
         <div class="loc-item">
           <div class="loc-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c49a2a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.37 19.79 19.79 0 012 2.78A2 2 0 013.98 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a7220" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.37 19.79 19.79 0 012 2.78A2 2 0 013.98 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
           </div>
           <div>
             <div class="loc-label">Phone</div>
@@ -1456,7 +1366,7 @@
         </div>
         <div class="loc-item">
           <div class="loc-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c49a2a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a7220" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <div>
             <div class="loc-label">Hours</div>
@@ -1474,12 +1384,7 @@
       <p class="cta-text">Stop by any day of the week, 11am to 8pm. Come hungry — leave satisfied. Every single time.</p>
       <div class="cta-btns">
         <a href="#menu" class="btn-gold">See Full Menu</a>
-        <a
-          href="https://www.google.com/maps/search/?api=1&query=2545+N+Hillside+St+Wichita+KS+67219"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-outline"
-        >Get Directions</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=2545+N+Hillside+St+Wichita+KS+67219" target="_blank" rel="noopener noreferrer" class="btn-outline-light">Get Directions</a>
       </div>
     </div>
   </section>
@@ -1503,22 +1408,18 @@
   </footer>
 
   <script>
-    // Navbar scroll glass effect
+    // Navbar scroll
     const navbar = document.getElementById('navbar');
-    const announceBarH = document.querySelector('.announce-bar').offsetHeight;
+    const announceH = document.querySelector('.announce-bar').offsetHeight;
     window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > announceBarH + 20);
+      navbar.classList.toggle('scrolled', window.scrollY > announceH + 10);
     }, { passive: true });
 
     // Mobile menu
     const mobileOverlay = document.getElementById('mobileOverlay');
-    document.getElementById('hamburger').addEventListener('click', () => {
-      mobileOverlay.classList.add('open');
-    });
+    document.getElementById('hamburger').addEventListener('click', () => mobileOverlay.classList.add('open'));
     document.getElementById('mobClose').addEventListener('click', closeMob);
-    function closeMob() {
-      mobileOverlay.classList.remove('open');
-    }
+    function closeMob() { mobileOverlay.classList.remove('open'); }
 
     // Menu tabs
     document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -1531,22 +1432,17 @@
     });
 
     // Scroll reveal
-    const revealEls = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
-        }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
       });
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    revealEls.forEach(el => revealObserver.observe(el));
-
-    // Hero image slow zoom on load
+    // Hero image slow zoom
     window.addEventListener('load', () => {
-      const heroImg = document.querySelector('.hero-img-pane img');
-      if (heroImg) heroImg.style.transform = 'scale(1.02)';
+      const img = document.querySelector('.hero-img-pane img');
+      if (img) img.style.transform = 'scale(1.03)';
     });
   </script>
 </body>
