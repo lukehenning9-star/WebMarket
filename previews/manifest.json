@@ -13,7 +13,8 @@
       "Commercial",
       "Mobile Optimized"
     ],
-    "contactEmail": "lukewebsitemarket@gmail.com"
+    "contactEmail": "lukewebsitemarket@gmail.com",
+    "tier": 2
   },
   {
     "id": "bonjours-puppy-parade",
@@ -29,7 +30,8 @@
       "Hours & Location",
       "Services Menu"
     ],
-    "contactEmail": "lukewebsitemarket@gmail.com"
+    "contactEmail": "lukewebsitemarket@gmail.com",
+    "tier": 2
   },
   {
     "id": "go-dolla-fitness",
@@ -44,7 +46,8 @@
       "Community Sessions",
       "Strength & Conditioning"
     ],
-    "contactEmail": ""
+    "contactEmail": "",
+    "tier": 2
   },
   {
     "id": "julius-rib-cage",
@@ -58,7 +61,8 @@
       "Mobile Optimized",
       "Call-to-Order"
     ],
-    "contactEmail": "lukewebsitemarket@gmail.com"
+    "contactEmail": "lukewebsitemarket@gmail.com",
+    "tier": 1
   },
   {
     "id": "keep-it-cute-grooming",
@@ -73,7 +77,8 @@
       "Hours & Location",
       "Services Menu"
     ],
-    "contactEmail": "oquinn588@gmail.com"
+    "contactEmail": "oquinn588@gmail.com",
+    "tier": 2
   },
   {
     "id": "the-eatery",
@@ -88,6 +93,7 @@
       "Call-to-Order",
       "Delivery & Takeout"
     ],
-    "contactEmail": "lukewebsitemarket@gmail.com"
+    "contactEmail": "lukewebsitemarket@gmail.com",
+    "tier": 1
   }
 ]

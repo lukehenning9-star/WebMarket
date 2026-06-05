@@ -4,5 +4,6 @@
   "city": "Wichita, KS",
   "price": 750,
   "features": ["Mobile Optimized", "Contact Form", "Hours & Location", "Services Menu"],
-  "contactEmail": "oquinn588@gmail.com"
+  "contactEmail": "oquinn588@gmail.com",
+  "tier": 2
 }

@@ -51,7 +51,7 @@ function openPreview(businessId) {
 
     modalName.textContent = biz.name;
     modalBuyBtn.innerHTML = '<span class="btn-text-full">Purchase This Website</span><span class="btn-text-short">Buy</span>';
-    modalBuyBtn.onclick = () => showPricing(biz.id);
+    modalBuyBtn.onclick = () => showPricing(biz.id, biz.tier || 1);
     hidePricing();
 
     modalLoading.style.display = 'flex';
@@ -63,38 +63,44 @@ function openPreview(businessId) {
     document.body.style.overflow = 'hidden';
 }
 
-function showPricing(businessId) {
+function showPricing(businessId, tier) {
+    const t2 = tier === 2;
+    const setup   = t2 ? '$750' : '$400';
+    const monthly = t2 ? '$75'  : '$50';
+    const yearly  = t2 ? '$750' : '$500';
+    const savings = t2 ? 'Save $150 vs monthly' : 'Save $100 vs monthly';
+
     modalIframe.style.display = 'none';
     modalLoading.style.display = 'none';
     modalPricing.style.display = 'block';
     modalPricing.innerHTML = `
         <div class="pricing-wrap">
             <h2 class="pricing-title">Get your website live</h2>
-            <p class="pricing-sub">$400 one-time setup fee included with your first payment.</p>
+            <p class="pricing-sub">${setup} one-time setup fee included with your first payment.</p>
             <div class="pricing-plans">
-                <button class="plan-card" onclick="startCheckout('${escAttr(businessId)}','monthly')">
+                <button class="plan-card" onclick="startCheckout('${escAttr(businessId)}','monthly',${tier || 1})">
                     <span class="plan-name">Monthly</span>
-                    <span class="plan-price">$50<em>/mo</em></span>
+                    <span class="plan-price">${monthly}<em>/mo</em></span>
                     <span class="plan-note">Cancel anytime</span>
                 </button>
-                <button class="plan-card plan-card--featured" onclick="startCheckout('${escAttr(businessId)}','yearly')">
+                <button class="plan-card plan-card--featured" onclick="startCheckout('${escAttr(businessId)}','yearly',${tier || 1})">
                     <span class="plan-name">Yearly</span>
-                    <span class="plan-price">$500<em>/yr</em></span>
-                    <span class="plan-note">Save $100 vs monthly</span>
+                    <span class="plan-price">${yearly}<em>/yr</em></span>
+                    <span class="plan-note">${savings}</span>
                 </button>
             </div>
-            <p class="pricing-legal">$400 setup + your chosen plan charged today. Renews automatically.</p>
+            <p class="pricing-legal">${setup} setup + your chosen plan charged today. Renews automatically.</p>
         </div>`;
     modalBuyBtn.innerHTML = '← Back to preview';
     modalBuyBtn.onclick = () => hidePricing();
 }
 
-async function startCheckout(businessId, plan) {
+async function startCheckout(businessId, plan, tier) {
     try {
         const res = await fetch('/api/checkout', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ plan, businessId }),
+            body: JSON.stringify({ plan, businessId, tier: tier || 1 }),
         });
         const { url } = await res.json();
         window.location.href = url;

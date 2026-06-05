@@ -4,7 +4,14 @@
   "city": "Wichita, KS",
   "price": 750,
   "monthlyPrice": 50,
-  "features": ["Dog & Cat Grooming", "All Breeds Welcome", "Mobile Optimized", "Hours & Location", "Services Menu"],
+  "features": [
+    "Dog & Cat Grooming",
+    "All Breeds Welcome",
+    "Mobile Optimized",
+    "Hours & Location",
+    "Services Menu"
+  ],
   "contactEmail": "lukewebsitemarket@gmail.com",
-  "addedDate": "2026-06-03"
+  "addedDate": "2026-06-03",
+  "tier": 2
 }

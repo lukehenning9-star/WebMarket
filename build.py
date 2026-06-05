@@ -64,7 +64,8 @@ def build_manifest():
             "price":        meta.get("price", 0),
             "previewPath":  f"previews/{slug}",
             "features":     meta.get("features", []),
-            "contactEmail": meta.get("contactEmail", "")
+            "contactEmail": meta.get("contactEmail", ""),
+            "tier":         meta.get("tier", 1)
         }
         entries.append(entry)
 
