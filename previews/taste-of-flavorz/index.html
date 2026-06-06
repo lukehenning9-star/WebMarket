@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taste of Flavorz | Wings &amp; Soul Food — Wichita, KS</title>
+  <meta name="description" content="Wichita's best wings, crispy catfish, and homestyle soul food. Open 7 days a week at 2545 N Hillside St, Wichita KS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ─── Reset & Root ─────────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:       #faf8f4;
+      --bg-2:     #f3ede2;
+      --bg-3:     #ede7da;
+      --text:     #1c1814;
+      --text-2:   #6b5e52;
+      --text-3:   rgba(28,24,20,0.35);
+      --gold:     #9a7220;
+      --gold-lt:  #b8891f;
+      --gold-dim: rgba(154,114,32,0.08);
+      --border:   rgba(28,24,20,0.09);
+      --font-head: 'Oswald', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+      --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+
+    /* ─── Announcement Bar ─────────────────────────────────────────── */
+    .announce-bar {
+      background: var(--text);
+      color: rgba(250,248,244,0.75);
+      font-size: 0.74rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-align: center;
+      padding: 0.55rem 1rem;
+    }
+    .announce-bar strong { color: #faf8f4; font-weight: 600; }
+
+    /* ─── Nav ──────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 5vw;
+      background: transparent;
+      transition: background 0.35s var(--ease-out), border-color 0.35s, box-shadow 0.35s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(250,248,244,0.96);
+      backdrop-filter: blur(12px);
+      border-color: var(--border);
+      box-shadow: 0 1px 16px rgba(28,24,20,0.06);
+    }
+
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.25rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--gold) !important;
+      color: #fff !important;
+      padding: 0.52rem 1.3rem;
+      border-radius: 2px;
+      font-weight: 600 !important;
+      letter-spacing: 0.04em !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-lt) !important; color: #fff !important; }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s var(--ease-out);
+    }
+
+    /* mobile overlay */
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 205;
+      background: var(--bg);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.25rem;
+    }
+    .mobile-overlay.open { display: flex; }
+    .mobile-overlay a {
+      font-family: var(--font-head);
+      font-size: 2.25rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-overlay a:hover { color: var(--gold); }
+    .mob-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--text-2);
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .mob-phone { color: var(--gold) !important; }
+
+    /* ─── Hero ─────────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100dvh;
+      display: grid;
+      grid-template-columns: 52% 48%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 9rem 3.5rem 5rem max(5vw, 3rem);
+      background: var(--bg);
+    }
+
+    .hero-label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.75rem;
+    }
+    .hero-label::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(3.25rem, 6vw, 5.75rem);
+      font-weight: 700;
+      line-height: 0.93;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 1.75rem;
+    }
+    .hero-title em { color: var(--gold); font-style: normal; }
+
+    .hero-desc {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text-2);
+      line-height: 1.75;
+      max-width: 44ch;
+      margin-bottom: 2.75rem;
+    }
+
+    .btn-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gold);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.83rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.875rem 1.9rem;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .btn-gold:active { transform: scale(0.98); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 0.83rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.875rem 1.6rem;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+    .btn-outline:active { transform: scale(0.98); }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 4rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .stat-n {
+      font-family: var(--font-head);
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .stat-l {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-2);
+    }
+
+    /* hero image pane */
+    .hero-img-pane {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-img-pane img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 10s ease;
+    }
+    .hero-img-pane::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--bg) 0%, transparent 22%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ─── Marquee Strip ────────────────────────────────────────────── */
+    .marquee-wrap {
+      background: var(--text);
+      overflow: hidden;
+      padding: 0.75rem 0;
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 32s linear infinite;
+    }
+    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0 2.5rem;
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(250,248,244,0.55);
+      white-space: nowrap;
+    }
+    .marquee-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(154,114,32,0.8);
+      flex-shrink: 0;
+    }
+
+    /* ─── Section Shared ───────────────────────────────────────────── */
+    .sec { padding: 7rem 5vw; }
+
+    .sec-label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.85rem;
+    }
+    .sec-label::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .sec-title {
+      font-family: var(--font-head);
+      font-size: clamp(2.25rem, 3.75vw, 3rem);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    .sec-sub {
+      font-size: 0.97rem;
+      font-weight: 300;
+      color: var(--text-2);
+      line-height: 1.75;
+      max-width: 55ch;
+    }
+
+    /* ─── Highlights ───────────────────────────────────────────────── */
+    .highlights { background: var(--bg-2); }
+
+    .hl-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 5.5rem;
+      align-items: center;
+      margin-top: 5rem;
+    }
+
+    .hl-img-wrap {
+      position: relative;
+      aspect-ratio: 3/4;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .hl-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease-out);
+    }
+    .hl-img-wrap:hover img { transform: scale(1.04); }
+
+    .hl-badge {
+      position: absolute;
+      bottom: -1.25rem;
+      right: -1.25rem;
+      background: var(--gold);
+      color: #fff;
+      font-family: var(--font-head);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1rem 1.3rem;
+      line-height: 1.55;
+      z-index: 2;
+    }
+
+    .hl-items { display: flex; flex-direction: column; margin-top: 3rem; }
+
+    .hl-item {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      padding: 2.25rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .hl-item:first-child { padding-top: 0; }
+    .hl-item:last-child { border-bottom: none; }
+
+    .hl-num {
+      font-family: var(--font-head);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: rgba(154,114,32,0.15);
+      line-height: 1;
+      min-width: 2.5rem;
+    }
+    .hl-name {
+      font-family: var(--font-head);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.02em;
+    }
+    .hl-text {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--text-2);
+      line-height: 1.75;
+    }
+
+    /* ─── Gallery Strip ────────────────────────────────────────────── */
+    .gallery-strip { overflow: hidden; line-height: 0; }
+    .gallery-track {
+      display: flex;
+      width: max-content;
+      animation: galleryScroll 42s linear infinite;
+    }
+    .gallery-strip:hover .gallery-track { animation-play-state: paused; }
+    @keyframes galleryScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .gallery-track img {
+      width: 380px;
+      height: 270px;
+      object-fit: cover;
+      flex-shrink: 0;
+      filter: brightness(0.92) saturate(1.05);
+      transition: filter 0.4s;
+    }
+    .gallery-track img:hover { filter: brightness(1) saturate(1.15); }
+
+    /* ─── Menu Section ─────────────────────────────────────────────── */
+    .menu-sec { background: var(--bg); }
+
+    .menu-top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .tab-bar {
+      display: flex;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      font-family: var(--font-body);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.2rem;
+      background: transparent;
+      color: var(--text-2);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: var(--gold);
+      color: #fff;
+      border-color: var(--gold);
+    }
+    .tab-btn:hover:not(.active) { border-color: var(--gold); color: var(--gold); }
+
+    /* ── Menu Panel (clean single-column list) ── */
+    .tab-panel { display: none; }
+    .tab-panel.active {
+      display: flex;
+      flex-direction: column;
+      max-width: 720px;
+      animation: fadeUp 0.3s var(--ease-out);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .mi {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mi:first-child { border-top: 1px solid var(--border); }
+
+    .mi-left { flex: 1; min-width: 0; }
+    .mi-name {
+      font-size: 0.97rem;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.35;
+    }
+    .mi-note {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--text-2);
+      margin-top: 0.2rem;
+    }
+    .mi-price {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ─── Reviews ──────────────────────────────────────────────────── */
+    .reviews-sec { background: var(--bg-2); }
+
+    .rev-grid {
+      margin-top: 4rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .rev-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      box-shadow: 0 1px 12px rgba(28,24,20,0.05);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .rev-card:hover { box-shadow: 0 4px 24px rgba(28,24,20,0.1); transform: translateY(-2px); }
+
+    .stars { display: flex; gap: 2px; }
+    .stars svg { fill: var(--gold); }
+
+    .rev-text {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--text-2);
+      line-height: 1.8;
+      font-style: italic;
+      flex: 1;
+    }
+
+    .rev-author {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+    }
+
+    .rev-ava {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .rev-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .rev-date {
+      font-size: 0.72rem;
+      color: var(--text-2);
+      margin-top: 0.1rem;
+    }
+
+    /* ─── Info (Hours + Location) ──────────────────────────────────── */
+    .info-sec { background: var(--bg-3); }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5.5rem;
+      margin-top: 4.5rem;
+    }
+
+    .hours-list { display: flex; flex-direction: column; }
+
+    .hr-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.95rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .hr-row:first-child { border-top: 1px solid var(--border); }
+
+    .hr-day {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--text-2);
+    }
+    .hr-time {
+      font-family: var(--font-head);
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .hr-time.gold { color: var(--gold); }
+
+    .loc-list { display: flex; flex-direction: column; gap: 2.25rem; }
+
+    .loc-item {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .loc-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--gold-dim);
+      border: 1px solid rgba(154,114,32,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border-radius: 2px;
+    }
+
+    .loc-label {
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.35rem;
+    }
+    .loc-val {
+      font-size: 0.93rem;
+      font-weight: 300;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .loc-val a { color: inherit; text-decoration: none; transition: color 0.2s; }
+    .loc-val a:hover { color: var(--gold); }
+
+    .dir-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 0.6rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(154,114,32,0.3);
+      padding-bottom: 1px;
+      transition: border-color 0.2s;
+    }
+    .dir-link:hover { border-color: var(--gold); }
+
+    /* ─── CTA Section ──────────────────────────────────────────────── */
+    .cta-sec {
+      background: var(--text);
+      text-align: center;
+      padding: 8rem 5vw;
+    }
+    .cta-inner { max-width: 620px; margin: 0 auto; }
+
+    .cta-title {
+      font-family: var(--font-head);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1;
+      color: #faf8f4;
+      margin-bottom: 1.5rem;
+    }
+    .cta-title em { color: var(--gold-lt); font-style: normal; }
+
+    .cta-text {
+      font-size: 0.97rem;
+      color: rgba(250,248,244,0.6);
+      line-height: 1.75;
+      margin-bottom: 3rem;
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline-light {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: rgba(250,248,244,0.75);
+      font-family: var(--font-body);
+      font-size: 0.83rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.875rem 1.6rem;
+      text-decoration: none;
+      border: 1px solid rgba(250,248,244,0.2);
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-outline-light:hover { border-color: rgba(250,248,244,0.5); color: #faf8f4; transform: translateY(-1px); }
+
+    /* ─── Footer ───────────────────────────────────────────────────── */
+    footer {
+      background: #141109;
+      padding: 2.75rem 5vw;
+      border-top: 1px solid rgba(250,248,244,0.06);
+    }
+    .foot-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .foot-logo {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      color: #ddb93e;
+    }
+    .foot-info {
+      font-size: 0.77rem;
+      color: rgba(250,248,244,0.28);
+      line-height: 1.7;
+      text-align: center;
+    }
+    .foot-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .foot-links a {
+      font-size: 0.77rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: rgba(250,248,244,0.35);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .foot-links a:hover { color: #ddb93e; }
+
+    /* ─── Scroll Reveal ────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+
+    /* ─── Responsive ───────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero {
+        grid-template-columns: 1fr;
+        position: relative;
+      }
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(250,248,244,0.82);
+        z-index: 1;
+        pointer-events: none;
+      }
+      .hero-img-pane {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
+      .hero-img-pane::before { display: none; }
+      .hero-content {
+        z-index: 2;
+        background: transparent;
+        padding: 9rem 5vw 5rem;
+        min-height: 100dvh;
+      }
+      .hl-grid {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+      }
+      .hl-img-wrap { aspect-ratio: 16/9; }
+      .hl-badge { right: 0; bottom: -1rem; }
+      .info-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+    }
+
+    @media (max-width: 768px) {
+      .sec { padding: 5rem 1.25rem; }
+      .cta-sec { padding: 5.5rem 1.25rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-stats { gap: 2rem; }
+      .rev-grid { grid-template-columns: 1fr; }
+      .foot-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .foot-info { text-align: left; }
+      .foot-links { flex-wrap: wrap; gap: 1.25rem; }
+      .cta-btns { flex-direction: column; align-items: center; }
+      .menu-top { flex-direction: column; align-items: flex-start; }
+      .gallery-track img { width: 260px; height: 190px; }
+      .tab-panel.active { max-width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+      .btn-row { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announce-bar">
+    <strong>Open 7 Days a Week</strong> &nbsp;&#183;&nbsp; 11:00 AM – 8:00 PM &nbsp;&#183;&nbsp; 2545 N Hillside St, Wichita KS &nbsp;&#183;&nbsp; (316) 352-7637
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <a href="#home" class="nav-logo">TASTE OF FLAVORZ</a>
+    <ul class="nav-links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="tel:3163527637" class="nav-cta">Call Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-overlay" id="mobileOverlay">
+    <button class="mob-close" id="mobClose" aria-label="Close menu">&#215;</button>
+    <a href="#menu" onclick="closeMob()">Menu</a>
+    <a href="#reviews" onclick="closeMob()">Reviews</a>
+    <a href="#location" onclick="closeMob()">Location</a>
+    <a href="tel:3163527637" class="mob-phone" onclick="closeMob()">(316) 352-7637</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-label reveal">Wichita, Kansas</p>
+      <h1 class="hero-title reveal delay-1">
+        Taste Of<br><em>Flavorz</em>
+      </h1>
+      <p class="hero-desc reveal delay-2">
+        Wings that keep you coming back, catfish seasoned to perfection, and homestyle cooking made with care. Right here in Wichita, seven days a week.
+      </p>
+      <div class="btn-row reveal delay-3">
+        <a href="#menu" class="btn-gold">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
+          View Full Menu
+        </a>
+        <a href="tel:3163527637" class="btn-outline">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.37 19.79 19.79 0 012 2.78A2 2 0 013.98 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          (316) 352-7637
+        </a>
+      </div>
+      <div class="hero-stats reveal delay-4">
+        <div>
+          <div class="stat-n">7</div>
+          <div class="stat-l">Days a Week</div>
+        </div>
+        <div>
+          <div class="stat-n">11am</div>
+          <div class="stat-l">Opens Daily</div>
+        </div>
+        <div>
+          <div class="stat-n">5</div>
+          <div class="stat-l">Star Reviews</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-img-pane">
+      <img
+        src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=1200&q=80&auto=format&fit=crop"
+        alt="Crispy fried chicken wings"
+        onerror="this.src='https://picsum.photos/seed/flavorz-hero-wings/1200/900'"
+      >
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">Wings<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Catfish<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Smash Burgers<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Shrimp<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Pork Chop<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Soul Food<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Open Daily<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Wichita's Finest<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Seasoned Right<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Big Portions<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Wings<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Catfish<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Smash Burgers<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Shrimp<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Pork Chop<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Soul Food<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Open Daily<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Wichita's Finest<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Seasoned Right<span class="marquee-dot"></span></span>
+      <span class="marquee-item">Big Portions<span class="marquee-dot"></span></span>
+    </div>
+  </div>
+
+  <!-- Highlights -->
+  <section class="sec highlights" id="about">
+    <div class="hl-grid">
+      <div class="hl-img-wrap reveal">
+        <img
+          src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=800&q=80&auto=format&fit=crop"
+          alt="Fried chicken dinner with sides"
+          onerror="this.src='https://picsum.photos/seed/flavorz-hl-chicken/600/800'"
+        >
+        <div class="hl-badge">Open 7 Days<br>11am – 8pm</div>
+      </div>
+      <div>
+        <p class="sec-label reveal">Why Wichita Loves Us</p>
+        <h2 class="sec-title reveal">Flavor in<br>Every Bite</h2>
+        <p class="sec-sub reveal delay-1">
+          At Taste of Flavorz, every dish starts with real seasoning and honest cooking. We believe good food speaks for itself — and our customers keep proving us right.
+        </p>
+        <div class="hl-items">
+          <div class="hl-item reveal delay-1">
+            <div class="hl-num">01</div>
+            <div>
+              <div class="hl-name">Wichita's Best Wings</div>
+              <div class="hl-text">Golden whole wings seasoned and fried to perfection. Customers drive across town for them — and come back the next day.</div>
+            </div>
+          </div>
+          <div class="hl-item reveal delay-2">
+            <div class="hl-num">02</div>
+            <div>
+              <div class="hl-name">Crispy Catfish &amp; Seafood</div>
+              <div class="hl-text">Fresh catfish fillets, seasoned shrimp, and a fish sandwich that delivers every time. Southern classic, Wichita proud.</div>
+            </div>
+          </div>
+          <div class="hl-item reveal delay-3">
+            <div class="hl-num">03</div>
+            <div>
+              <div class="hl-name">Big Portions, Real Value</div>
+              <div class="hl-text">Every dinner comes with two sides — mac &amp; cheese, cabbage, potato salad, or baked beans. Honest food at a fair price.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Strip -->
+  <div class="gallery-strip">
+    <div class="gallery-track">
+      <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600&q=75&auto=format&fit=crop" alt="Fried chicken" onerror="this.src='https://picsum.photos/seed/gal1/600/450'">
+      <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&q=75&auto=format&fit=crop" alt="Smash burger" onerror="this.src='https://picsum.photos/seed/gal2/600/450'">
+      <img src="https://images.unsplash.com/photo-1544025162-d76538250f49?w=600&q=75&auto=format&fit=crop" alt="Grilled pork" onerror="this.src='https://picsum.photos/seed/gal3/600/450'">
+      <img src="https://images.unsplash.com/photo-1519984388953-d2406bc725e1?w=600&q=75&auto=format&fit=crop" alt="Shrimp" onerror="this.src='https://picsum.photos/seed/gal4/600/450'">
+      <img src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=600&q=75&auto=format&fit=crop" alt="Catfish fillet" onerror="this.src='https://picsum.photos/seed/gal5/600/450'">
+      <img src="https://images.unsplash.com/photo-1572441713132-51c75654db73?w=600&q=75&auto=format&fit=crop" alt="Chicken strips" onerror="this.src='https://picsum.photos/seed/gal6/600/450'">
+      <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600&q=75&auto=format&fit=crop" alt="Fried chicken" onerror="this.src='https://picsum.photos/seed/gal1/600/450'">
+      <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&q=75&auto=format&fit=crop" alt="Smash burger" onerror="this.src='https://picsum.photos/seed/gal2/600/450'">
+      <img src="https://images.unsplash.com/photo-1544025162-d76538250f49?w=600&q=75&auto=format&fit=crop" alt="Grilled pork" onerror="this.src='https://picsum.photos/seed/gal3/600/450'">
+      <img src="https://images.unsplash.com/photo-1519984388953-d2406bc725e1?w=600&q=75&auto=format&fit=crop" alt="Shrimp" onerror="this.src='https://picsum.photos/seed/gal4/600/450'">
+      <img src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=600&q=75&auto=format&fit=crop" alt="Catfish fillet" onerror="this.src='https://picsum.photos/seed/gal5/600/450'">
+      <img src="https://images.unsplash.com/photo-1572441713132-51c75654db73?w=600&q=75&auto=format&fit=crop" alt="Chicken strips" onerror="this.src='https://picsum.photos/seed/gal6/600/450'">
+    </div>
+  </div>
+
+  <!-- Menu -->
+  <section class="sec menu-sec" id="menu">
+    <div class="menu-top">
+      <div>
+        <p class="sec-label reveal">What We Serve</p>
+        <h2 class="sec-title reveal">Our Menu</h2>
+      </div>
+      <div class="tab-bar reveal">
+        <button class="tab-btn active" data-tab="chicken">Chicken</button>
+        <button class="tab-btn" data-tab="fish">Fish &amp; Seafood</button>
+        <button class="tab-btn" data-tab="pork">Pork &amp; Sandwiches</button>
+        <button class="tab-btn" data-tab="burgers">Smash Burgers</button>
+        <button class="tab-btn" data-tab="sides">Sides &amp; Desserts</button>
+      </div>
+    </div>
+
+    <div class="tab-panel active" id="tab-chicken">
+      <div class="mi"><div class="mi-left"><div class="mi-name">3 pc Whole Wing Dinner</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$8.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">6 pc Whole Wing Dinner</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$12.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Party Wings</div><div class="mi-note">Sold per wing — perfect for groups</div></div><div class="mi-price">$1.25 ea</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">3 pc Chicken Strip Dinner</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$7.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">5 pc Chicken Strip Dinner</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$9.99</div></div>
+    </div>
+
+    <div class="tab-panel" id="tab-fish">
+      <div class="mi"><div class="mi-left"><div class="mi-name">1 pc Catfish Fillet Dinner</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$9.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">2 pc Catfish Fillet Dinner</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$13.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Fish Sandwich</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$8.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Shrimp Dinner</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$8.99</div></div>
+    </div>
+
+    <div class="tab-panel" id="tab-pork">
+      <div class="mi"><div class="mi-left"><div class="mi-name">Pork Chop Sandwich</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$7.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Pork Chop Dinner</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$14.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Taste of Flavorz Steak Sandwich</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$14.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Philly Cheesesteak</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$12.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Hot Dog</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$6.99</div></div>
+    </div>
+
+    <div class="tab-panel" id="tab-burgers">
+      <div class="mi"><div class="mi-left"><div class="mi-name">Single Smash Burger</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$8.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Double Smash Burger</div><div class="mi-note">Comes with fries</div></div><div class="mi-price">$10.99</div></div>
+    </div>
+
+    <div class="tab-panel" id="tab-sides">
+      <div class="mi"><div class="mi-left"><div class="mi-name">Fries</div></div><div class="mi-price">$2.25</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Okra</div><div class="mi-note">Crispy, seasoned to perfection</div></div><div class="mi-price">$2.25</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Sweet Potato Fries</div></div><div class="mi-price">$3.99</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Add Cheese</div></div><div class="mi-price">$0.75</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Add Bacon</div></div><div class="mi-price">$1.00</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Strawberry Crunch Cake</div><div class="mi-note">House dessert</div></div><div class="mi-price">$3.50</div></div>
+      <div class="mi"><div class="mi-left"><div class="mi-name">Lemon Crunch Cake</div><div class="mi-note">House dessert</div></div><div class="mi-price">$3.50</div></div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="sec reviews-sec" id="reviews">
+    <p class="sec-label reveal">What Customers Say</p>
+    <h2 class="sec-title reveal">Real Reviews,<br>Real Flavor</h2>
+    <div class="rev-grid">
+
+      <div class="rev-card reveal">
+        <div class="stars">
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="rev-text">"Best Wings in Wichita. Came back the next day and I'll be coming back again."</p>
+        <div class="rev-author">
+          <div class="rev-ava">TB</div>
+          <div><div class="rev-name">Trae Barnes</div><div class="rev-date">April 2025</div></div>
+        </div>
+      </div>
+
+      <div class="rev-card reveal delay-1">
+        <div class="stars">
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="rev-text">"Super good — chicken was extremely tender, literally falling off the bone. 10/10. Okra crispy and seasoned to perfection."</p>
+        <div class="rev-author">
+          <div class="rev-ava">DM</div>
+          <div><div class="rev-name">Dezire Monai</div><div class="rev-date">April 2025</div></div>
+        </div>
+      </div>
+
+      <div class="rev-card reveal delay-2">
+        <div class="stars">
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="rev-text">"Well worth the drive into town. Great food, great service — will definitely be making the trip again."</p>
+        <div class="rev-author">
+          <div class="rev-ava">WT</div>
+          <div><div class="rev-name">Ware L Travis</div><div class="rev-date">February 2025</div></div>
+        </div>
+      </div>
+
+      <div class="rev-card reveal">
+        <div class="stars">
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="rev-text">"Food was really good, seasoned to perfection. Great customer service and big portions. I will be back."</p>
+        <div class="rev-author">
+          <div class="rev-ava">KB</div>
+          <div><div class="rev-name">Kin Brooks-Cobbins</div><div class="rev-date">January 2025</div></div>
+        </div>
+      </div>
+
+      <div class="rev-card reveal delay-1">
+        <div class="stars">
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="rev-text">"Ordered the 2 piece catfish and okra — seasoned very well, big portions. Definitely going back to try more."</p>
+        <div class="rev-author">
+          <div class="rev-ava">KW</div>
+          <div><div class="rev-name">Kandie Wakefield</div><div class="rev-date">December 2025</div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Hours & Location -->
+  <section class="sec info-sec" id="location">
+    <p class="sec-label reveal">Find Us</p>
+    <h2 class="sec-title reveal">Hours &amp; Location</h2>
+    <div class="info-grid">
+      <div>
+        <p class="sec-sub reveal" style="margin-bottom:2.25rem;">Open seven days a week — no excuses needed to stop by.</p>
+        <div class="hours-list reveal">
+          <div class="hr-row"><span class="hr-day">Monday</span><span class="hr-time">11:00 AM – 8:00 PM</span></div>
+          <div class="hr-row"><span class="hr-day">Tuesday</span><span class="hr-time">11:00 AM – 8:00 PM</span></div>
+          <div class="hr-row"><span class="hr-day">Wednesday</span><span class="hr-time">11:00 AM – 8:00 PM</span></div>
+          <div class="hr-row"><span class="hr-day">Thursday</span><span class="hr-time">11:00 AM – 8:00 PM</span></div>
+          <div class="hr-row"><span class="hr-day">Friday</span><span class="hr-time">11:00 AM – 8:00 PM</span></div>
+          <div class="hr-row"><span class="hr-day">Saturday</span><span class="hr-time gold">11:00 AM – 8:00 PM</span></div>
+          <div class="hr-row"><span class="hr-day">Sunday</span><span class="hr-time">11:00 AM – 8:00 PM</span></div>
+        </div>
+      </div>
+      <div class="loc-list reveal delay-1">
+        <div class="loc-item">
+          <div class="loc-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a7220" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="loc-label">Address</div>
+            <div class="loc-val">2545 N Hillside St<br>Wichita, KS 67219</div>
+            <a class="dir-link" href="https://www.google.com/maps/search/?api=1&query=2545+N+Hillside+St+Wichita+KS+67219" target="_blank" rel="noopener noreferrer">
+              Get Directions
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a7220" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.37 19.79 19.79 0 012 2.78A2 2 0 013.98 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="loc-label">Phone</div>
+            <div class="loc-val"><a href="tel:3163527637">(316) 352-7637</a></div>
+          </div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9a7220" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="loc-label">Hours</div>
+            <div class="loc-val">Open Daily<br>11:00 AM – 8:00 PM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-sec">
+    <div class="cta-inner reveal">
+      <h2 class="cta-title">Ready to Taste<br>the <em>Difference?</em></h2>
+      <p class="cta-text">Stop by any day of the week, 11am to 8pm. Come hungry — leave satisfied. Every single time.</p>
+      <div class="cta-btns">
+        <a href="#menu" class="btn-gold">See Full Menu</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=2545+N+Hillside+St+Wichita+KS+67219" target="_blank" rel="noopener noreferrer" class="btn-outline-light">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="foot-inner">
+      <div class="foot-logo">TASTE OF FLAVORZ</div>
+      <div class="foot-info">
+        2545 N Hillside St, Wichita, KS 67219 &nbsp;&#183;&nbsp; (316) 352-7637<br>
+        Open Daily 11:00 AM – 8:00 PM
+      </div>
+      <div class="foot-links">
+        <a href="#menu">Menu</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#location">Location</a>
+        <a href="tel:3163527637">Call</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    const announceH = document.querySelector('.announce-bar').offsetHeight;
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > announceH + 10);
+    }, { passive: true });
+
+    // Mobile menu
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    document.getElementById('hamburger').addEventListener('click', () => mobileOverlay.classList.add('open'));
+    document.getElementById('mobClose').addEventListener('click', closeMob);
+    function closeMob() { mobileOverlay.classList.remove('open'); }
+
+    // Menu tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Hero image slow zoom
+    window.addEventListener('load', () => {
+      const img = document.querySelector('.hero-img-pane img');
+      if (img) img.style.transform = 'scale(1.03)';
+    });
+  </script>
+</body>
+</html>

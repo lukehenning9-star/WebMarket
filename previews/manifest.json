@@ -1,39 +1,5 @@
 [
   {
-    "id": "andrews-cleaning-service",
-    "name": "Andrew's Cleaning Service",
-    "category": "Cleaning Service",
-    "city": "Wichita, KS",
-    "price": 299,
-    "previewPath": "previews/andrews-cleaning-service",
-    "features": [
-      "Residential Cleaning",
-      "Deep Cleaning",
-      "Move-In/Out",
-      "Commercial",
-      "Mobile Optimized"
-    ],
-    "contactEmail": "lukewebsitemarket@gmail.com",
-    "tier": 2
-  },
-  {
-    "id": "bonjours-puppy-parade",
-    "name": "Bonjour's Puppy Parade",
-    "category": "Pet Grooming",
-    "city": "Wichita, KS",
-    "price": 750,
-    "previewPath": "previews/bonjours-puppy-parade",
-    "features": [
-      "Dog & Cat Grooming",
-      "All Breeds Welcome",
-      "Mobile Optimized",
-      "Hours & Location",
-      "Services Menu"
-    ],
-    "contactEmail": "lukewebsitemarket@gmail.com",
-    "tier": 2
-  },
-  {
     "id": "go-dolla-fitness",
     "name": "Go Dolla Fitness",
     "category": "Personal Training Gym",
@@ -46,8 +12,22 @@
       "Community Sessions",
       "Strength & Conditioning"
     ],
-    "contactEmail": "",
-    "tier": 2
+    "contactEmail": ""
+  },
+  {
+    "id": "golden-wok",
+    "name": "Golden Wok",
+    "category": "Chinese Restaurant",
+    "city": "Austin, TX",
+    "price": 400,
+    "previewPath": "previews/golden-wok",
+    "features": [
+      "Online Menu",
+      "Photo Gallery",
+      "Mobile Optimized",
+      "Hours & Location"
+    ],
+    "contactEmail": ""
   },
   {
     "id": "julius-rib-cage",
@@ -61,7 +41,22 @@
       "Mobile Optimized",
       "Call-to-Order"
     ],
-    "contactEmail": "lukewebsitemarket@gmail.com",
+    "contactEmail": "lukewebsitemarket@gmail.com"
+  },
+  {
+    "id": "just-like-mamas-kitchen",
+    "name": "Just Like Mama's Kitchen",
+    "category": "Soul Food",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/just-like-mamas-kitchen",
+    "features": [
+      "Full Menu",
+      "Customer Reviews",
+      "Mobile Optimized",
+      "Click to Call"
+    ],
+    "contactEmail": "lukehenning9@gmail.com",
     "tier": 1
   },
   {
@@ -77,23 +72,21 @@
       "Hours & Location",
       "Services Menu"
     ],
-    "contactEmail": "oquinn588@gmail.com",
-    "tier": 2
+    "contactEmail": "oquinn588@gmail.com"
   },
   {
-    "id": "the-eatery",
-    "name": "The Eatery",
-    "category": "Soul Food Restaurant",
-    "city": "Wichita, KS",
-    "price": 299,
-    "previewPath": "previews/the-eatery",
+    "id": "marios-pizza",
+    "name": "Mario's Pizza",
+    "category": "Italian Restaurant",
+    "city": "Dallas, TX",
+    "price": 400,
+    "previewPath": "previews/marios-pizza",
     "features": [
       "Online Menu",
+      "Contact Form",
       "Mobile Optimized",
-      "Call-to-Order",
-      "Delivery & Takeout"
+      "Google Maps"
     ],
-    "contactEmail": "lukewebsitemarket@gmail.com",
-    "tier": 1
+    "contactEmail": ""
   }
 ]
