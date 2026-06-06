@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Just Like Mama's Kitchen — Soul Food in Wichita, KS</title>
+  <meta name="description" content="Just Like Mama's Kitchen serves hand-seasoned soul food in Wichita. Crispy catfish, juicy burgers, chicken wings, and more — made fresh to order. Open 12:30–7PM.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #FDF8F0;
+      --warm-white: #FFFDF8;
+      --brown-dark: #231008;
+      --brown-mid:  #5A3626;
+      --brown-light:#9B7B6A;
+      --red:        #B52B2B;
+      --red-dark:   #8C1F1F;
+      --gold:       #C8922A;
+      --gold-light: #E8B84B;
+      --black:      #160B04;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--cream);
+      color: var(--brown-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLL PROGRESS ── */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      background: var(--gold);
+      z-index: 200;
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(22, 11, 4, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200,146,42,0.18);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 66px;
+      padding: 0 1.5rem;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+
+    .nav-logo span { color: var(--gold-light); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold-light); }
+
+    .nav-cta {
+      background: var(--red) !important;
+      color: #fff !important;
+      padding: 0.45rem 1.15rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover { background: var(--red-dark) !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(22,11,4,0.98);
+      border-top: 1px solid rgba(200,146,42,0.15);
+      padding: 0.5rem 1.5rem 1.25rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      display: block;
+      padding: 0.75rem 0;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--gold-light); }
+    .mobile-menu a.cta { color: var(--gold-light); font-weight: 700; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100dvh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7rem 4rem 4rem 5rem;
+      background: var(--cream);
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(200,146,42,0.1);
+      border: 1px solid rgba(200,146,42,0.28);
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.38rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.6rem;
+      width: fit-content;
+    }
+
+    .hero-pill-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 3.8vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--brown-dark);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--red);
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--brown-mid);
+      max-width: 38ch;
+      line-height: 1.75;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .stars { display: flex; gap: 3px; }
+
+    .star { width: 17px; height: 17px; }
+
+    .hero-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.875rem;
+      color: var(--brown-mid);
+    }
+
+    .meta-row svg { flex-shrink: 0; color: var(--gold); }
+    .meta-row a { color: inherit; text-decoration: none; }
+    .meta-row a:hover { color: var(--red); }
+
+    .hero-btns {
+      display: flex;
+      gap: 0.875rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--red);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.825rem 1.6rem;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+    .btn-primary:active { transform: scale(0.98); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: transparent;
+      color: var(--brown-dark);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.825rem 1.6rem;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 2px solid rgba(35,16,8,0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--brown-dark);
+      background: var(--brown-dark);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 90px;
+      background: linear-gradient(to right, var(--cream), transparent);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      padding: 7rem 1.5rem;
+      background: var(--warm-white);
+    }
+
+    .about-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+
+    .about-img-wrap img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -18px;
+      right: -18px;
+      background: var(--red);
+      color: #fff;
+      padding: 1.2rem 1.4rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 8px 28px rgba(181,43,43,0.28);
+    }
+
+    .badge-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .badge-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      opacity: 0.85;
+      margin-top: 3px;
+      letter-spacing: 0.05em;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.875rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--brown-dark);
+      margin-bottom: 1.25rem;
+    }
+
+    .section-body {
+      font-size: 0.975rem;
+      color: var(--brown-mid);
+      line-height: 1.8;
+      max-width: 58ch;
+    }
+
+    .section-body + .section-body { margin-top: 0.875rem; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2.25rem;
+    }
+
+    .stat-block {
+      padding: 1.1rem 1.2rem;
+      background: rgba(200,146,42,0.06);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--brown-dark);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.775rem;
+      color: var(--brown-light);
+      margin-top: 3px;
+      font-weight: 500;
+    }
+
+    /* ── FAVORITES ── */
+    .favorites {
+      padding: 7rem 1.5rem;
+      background: var(--brown-dark);
+    }
+
+    .favorites-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .favorites-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .favorites .section-eyebrow { color: var(--gold-light); }
+    .favorites .section-title { color: #fff; margin-bottom: 0; }
+
+    .fav-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .fav-card {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      position: relative;
+      cursor: default;
+    }
+
+    .fav-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s cubic-bezier(0.16,1,0.3,1);
+      display: block;
+    }
+
+    .fav-card:hover img { transform: scale(1.07); }
+
+    .fav-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(16,6,2,0.88) 0%, transparent 65%);
+      padding: 1.4rem 1.1rem 1.1rem;
+      pointer-events: none;
+    }
+
+    .fav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.025rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    .fav-price {
+      font-size: 0.825rem;
+      color: var(--gold-light);
+      font-weight: 600;
+      margin-top: 3px;
+    }
+
+    /* ── MENU ── */
+    .menu {
+      padding: 7rem 1.5rem;
+      background: var(--cream);
+    }
+
+    .menu-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .menu-head { margin-bottom: 3rem; }
+
+    .menu-tabs {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      margin-bottom: 2.5rem;
+    }
+
+    .tab-btn {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.45rem 1.15rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      background: transparent;
+      color: var(--brown-light);
+      letter-spacing: 0.02em;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover { color: var(--brown-dark); }
+    .tab-btn.active { background: var(--brown-dark); color: #fff; }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .menu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.055);
+    }
+
+    .menu-row:nth-child(odd)  { padding-right: 2.5rem; }
+    .menu-row:nth-child(even) { padding-left: 2.5rem; border-left: 1px solid rgba(0,0,0,0.055); }
+
+    .menu-name {
+      font-size: 0.925rem;
+      font-weight: 500;
+      color: var(--brown-dark);
+    }
+
+    .menu-price {
+      font-size: 0.925rem;
+      font-weight: 700;
+      color: var(--red);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .menu-sub-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--brown-dark);
+      margin: 2.25rem 0 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0,0,0,0.07);
+    }
+
+    .menu-note {
+      font-size: 0.8rem;
+      color: var(--brown-light);
+      margin-top: 1.25rem;
+      line-height: 1.6;
+    }
+
+    .menu-prose {
+      font-size: 0.925rem;
+      color: var(--brown-mid);
+      line-height: 1.75;
+      max-width: 60ch;
+    }
+
+    /* ── REVIEWS ── */
+    .reviews {
+      padding: 7rem 1.5rem;
+      background: var(--warm-white);
+    }
+
+    .reviews-inner { max-width: 1200px; margin: 0 auto; }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 4.5rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+
+    .score-box {
+      background: var(--brown-dark);
+      border-radius: 16px;
+      padding: 2.25rem 2rem;
+      color: #fff;
+      text-align: center;
+      position: sticky;
+      top: 90px;
+    }
+
+    .score-big {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.75rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+
+    .score-stars {
+      display: flex;
+      justify-content: center;
+      gap: 3px;
+      margin: 0.625rem 0;
+    }
+
+    .score-count {
+      font-size: 0.825rem;
+      opacity: 0.65;
+      margin-bottom: 1.75rem;
+    }
+
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .bar-lbl {
+      font-size: 0.775rem;
+      opacity: 0.7;
+      width: 42px;
+      text-align: right;
+    }
+
+    .bar-track {
+      flex: 1;
+      height: 5px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--gold-light);
+      border-radius: 100px;
+    }
+
+    .bar-val {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      width: 28px;
+    }
+
+    .cat-scores {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .cat-box {
+      text-align: center;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 10px;
+      padding: 1.25rem 0.75rem;
+    }
+
+    .cat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--brown-dark);
+      line-height: 1;
+    }
+
+    .cat-lbl {
+      font-size: 0.775rem;
+      color: var(--brown-light);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .review-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .review-card {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.055);
+      border-radius: 12px;
+      padding: 1.6rem;
+    }
+
+    .r-head {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      margin-bottom: 0.875rem;
+    }
+
+    .avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.975rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .r-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--brown-dark);
+    }
+
+    .r-date {
+      font-size: 0.775rem;
+      color: var(--brown-light);
+      margin-top: 1px;
+    }
+
+    .r-stars { display: flex; gap: 2px; margin-left: auto; }
+
+    .review-text {
+      font-size: 0.885rem;
+      color: var(--brown-mid);
+      line-height: 1.75;
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: var(--red);
+      padding: 5rem 1.5rem;
+    }
+
+    .cta-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-text {}
+
+    .cta-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-sub {
+      font-size: 0.975rem;
+      color: rgba(255,255,255,0.8);
+      margin-top: 0.5rem;
+    }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #fff;
+      color: var(--red);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0.875rem 1.75rem;
+      border-radius: 8px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .btn-white:hover { background: var(--cream); transform: translateY(-1px); }
+    .btn-white:active { transform: scale(0.98); }
+
+    /* ── LOCATION ── */
+    .location {
+      padding: 7rem 1.5rem;
+      background: var(--cream);
+    }
+
+    .location-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .location-details { display: flex; flex-direction: column; gap: 2.25rem; }
+
+    .detail-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      margin-bottom: 0.6rem;
+    }
+
+    .detail-value {
+      font-size: 0.975rem;
+      color: var(--brown-dark);
+      font-weight: 500;
+      line-height: 1.65;
+    }
+
+    .detail-value a {
+      color: var(--red);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .detail-value a:hover { text-decoration: underline; }
+
+    .hours-rows { display: flex; flex-direction: column; gap: 0; }
+
+    .h-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .h-row:last-child { border-bottom: none; }
+    .h-day { color: var(--brown-mid); }
+    .h-time { font-weight: 600; color: var(--brown-dark); }
+
+    .map-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+      height: 420px;
+      position: relative;
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .map-btn {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      background: var(--red);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.575rem 1.15rem;
+      border-radius: 7px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .map-btn:hover { background: var(--red-dark); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      padding: 3.5rem 1.5rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .footer-logo span { color: var(--gold-light); }
+
+    .footer-tagline {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.38);
+      margin-top: 5px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 0.825rem;
+      color: rgba(255,255,255,0.38);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold-light); }
+
+    .footer-copy {
+      max-width: 1200px;
+      margin: 1.5rem auto 0;
+      font-size: 0.775rem;
+      color: rgba(255,255,255,0.22);
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.65s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .fav-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid { grid-template-columns: 240px 1fr; gap: 3rem; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .hero { grid-template-columns: 1fr; }
+      .hero-content { padding: 5.5rem 1.5rem 2.5rem; }
+      .hero-image { height: 280px; }
+      .hero-image::before { display: none; }
+
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-img-wrap img { height: 320px; }
+      .about-badge { right: 8px; }
+
+      .fav-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .menu-grid { grid-template-columns: 1fr; }
+      .menu-row:nth-child(odd)  { padding-right: 0; }
+      .menu-row:nth-child(even) { padding-left: 0; border-left: none; }
+
+      .reviews-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .score-box { position: static; }
+      .cat-scores { grid-template-columns: repeat(3, 1fr); }
+
+      .cta-inner { flex-direction: column; text-align: center; }
+      .btn-white { width: 100%; justify-content: center; }
+
+      .location-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .map-wrap { height: 300px; }
+
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-links { gap: 1.25rem; }
+    }
+
+    @media (max-width: 480px) {
+      .fav-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; }
+      .cat-scores { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll progress -->
+  <div id="progress-bar"></div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Mama's <span>Kitchen</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="tel:3166367321" class="nav-cta">Call to Order</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#about"    onclick="closeNav()">Our Story</a>
+      <a href="#menu"     onclick="closeNav()">Menu</a>
+      <a href="#reviews"  onclick="closeNav()">Reviews</a>
+      <a href="#location" onclick="closeNav()">Location</a>
+      <a href="tel:3166367321" class="cta">(316) 636-7321 — Call to Order</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="hero-content">
+      <div class="hero-pill">
+        <div class="hero-pill-dot"></div>
+        Open Today &nbsp;12:30 PM – 7:00 PM
+      </div>
+      <h1 class="hero-title">
+        Food That<br><em>Tastes Like Home</em>
+      </h1>
+      <p class="hero-desc">
+        Wichita's favorite soul food spot. Hand-seasoned wings, crispy catfish, juicy burgers, and thick-cut fries — made fresh to order, every single time.
+      </p>
+      <div class="hero-rating">
+        <div class="stars">
+          <!-- 4.3 stars -->
+          <svg class="star" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star" viewBox="0 0 24 24" fill="#C8922A" opacity="0.3"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span style="font-size:.875rem;color:var(--brown-mid)"><strong style="color:var(--brown-dark)">4.3</strong> &nbsp;·&nbsp; 87 reviews</span>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-row">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          2504 E 9th St N, Wichita, KS
+        </div>
+        <div class="meta-row">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.28 6.28l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href="tel:3166367321">(316) 636-7321</a>
+        </div>
+        <div class="meta-row">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          Chicken Wings &nbsp;·&nbsp; Burgers &nbsp;·&nbsp; Soul Food
+        </div>
+      </div>
+      <div class="hero-btns">
+        <a href="#menu" class="btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
+          View Menu
+        </a>
+        <a href="tel:3166367321" class="btn-outline">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.28 6.28l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call to Order
+        </a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img
+        src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=1200&q=85"
+        alt="Crispy fried chicken and soul food at Just Like Mama's Kitchen"
+        loading="eager"
+      >
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-img-wrap fade-up">
+        <img
+          src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=900&q=85"
+          alt="Fresh homemade soul food cooking"
+          loading="lazy"
+        >
+        <div class="about-badge">
+          <div class="badge-num">4.9</div>
+          <div class="badge-label">Food Rating</div>
+        </div>
+      </div>
+      <div class="fade-up delay-1">
+        <p class="section-eyebrow">Our Story</p>
+        <h2 class="section-title">Made Fresh. Seasoned Right. Every Time.</h2>
+        <p class="section-body">
+          Just Like Mama's Kitchen brings the warmth of a home-cooked meal to every plate. We're known for our hand-seasoned chicken wings, thick-cut homemade fries, and juicy burgers — all made to order so every bite arrives hot and full of flavor.
+        </p>
+        <p class="section-body">
+          Whether you stop in for a quick catfish sandwich, treat the family to our 10-piece dark chicken deal, or load up on sides like collard greens and fried okra, every plate is made with care and served with a smile.
+        </p>
+        <div class="about-stats">
+          <div class="stat-block">
+            <div class="stat-num">87+</div>
+            <div class="stat-label">Customer Reviews</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-num">4.9</div>
+            <div class="stat-label">Food Score</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-num">Fresh</div>
+            <div class="stat-label">Made to Order</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-num">$</div>
+            <div class="stat-label">Affordable Prices</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Favorites -->
+  <section class="favorites" id="favorites">
+    <div class="favorites-inner">
+      <div class="favorites-header fade-up">
+        <p class="section-eyebrow">What People Love</p>
+        <h2 class="section-title">Customer Favorites</h2>
+      </div>
+      <div class="fav-grid">
+        <div class="fav-card fade-up">
+          <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?auto=format&fit=crop&w=700&q=80" alt="Crispy Chicken Wings" loading="lazy">
+          <div class="fav-overlay">
+            <div class="fav-name">Chicken Wings</div>
+            <div class="fav-price">From $6.99</div>
+          </div>
+        </div>
+        <div class="fav-card fade-up delay-1">
+          <img src="https://images.unsplash.com/photo-1519984388953-d2406bc725e1?auto=format&fit=crop&w=700&q=80" alt="Catfish Dinner" loading="lazy">
+          <div class="fav-overlay">
+            <div class="fav-name">Catfish Dinner</div>
+            <div class="fav-price">From $8.99</div>
+          </div>
+        </div>
+        <div class="fav-card fade-up delay-2">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80" alt="Mama's Burger" loading="lazy">
+          <div class="fav-overlay">
+            <div class="fav-name">Mama's Burger</div>
+            <div class="fav-price">From $7.50</div>
+          </div>
+        </div>
+        <div class="fav-card fade-up delay-3">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80" alt="Fried Ribs" loading="lazy">
+          <div class="fav-overlay">
+            <div class="fav-name">Fried Ribs</div>
+            <div class="fav-price">From $7.99</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu -->
+  <section class="menu" id="menu">
+    <div class="menu-inner">
+      <div class="menu-head fade-up">
+        <p class="section-eyebrow">Full Menu</p>
+        <h2 class="section-title">Everything We Serve</h2>
+      </div>
+
+      <div class="menu-tabs" role="tablist">
+        <button class="tab-btn active" onclick="switchTab(this,'mains')">Mains</button>
+        <button class="tab-btn" onclick="switchTab(this,'sandwiches')">Sandwiches</button>
+        <button class="tab-btn" onclick="switchTab(this,'sides')">Sides</button>
+        <button class="tab-btn" onclick="switchTab(this,'specials')">Specials</button>
+        <button class="tab-btn" onclick="switchTab(this,'drinks')">Drinks</button>
+      </div>
+
+      <!-- Mains -->
+      <div class="tab-panel active" id="panel-mains">
+        <div class="menu-grid">
+          <div class="menu-row"><span class="menu-name">Mama's House Burger</span><span class="menu-price">$7.50</span></div>
+          <div class="menu-row"><span class="menu-name">Chili Cheeseburger</span><span class="menu-price">$7.99</span></div>
+          <div class="menu-row"><span class="menu-name">Mushroom Swiss Burger</span><span class="menu-price">$7.99</span></div>
+          <div class="menu-row"><span class="menu-name">Bacon Cheeseburger</span><span class="menu-price">$7.99</span></div>
+          <div class="menu-row"><span class="menu-name">Double Cheeseburger</span><span class="menu-price">$7.99</span></div>
+          <div class="menu-row"><span class="menu-name">Hamburger</span><span class="menu-price">$4.99</span></div>
+          <div class="menu-row"><span class="menu-name">Pork Chop</span><span class="menu-price">$7.99</span></div>
+          <div class="menu-row"><span class="menu-name">1pc Catfish</span><span class="menu-price">$8.99</span></div>
+          <div class="menu-row"><span class="menu-name">2pc Catfish</span><span class="menu-price">$10.99</span></div>
+          <div class="menu-row"><span class="menu-name">3pc Whole Wings</span><span class="menu-price">$6.99</span></div>
+          <div class="menu-row"><span class="menu-name">5pc Whole Wings</span><span class="menu-price">$8.50</span></div>
+          <div class="menu-row"><span class="menu-name">3pc Fried Ribs</span><span class="menu-price">$7.99</span></div>
+          <div class="menu-row"><span class="menu-name">5pc Fried Ribs</span><span class="menu-price">$8.99</span></div>
+          <div class="menu-row"><span class="menu-name">3pc Chicken Strips</span><span class="menu-price">$6.99</span></div>
+          <div class="menu-row"><span class="menu-name">5pc Chicken Strips</span><span class="menu-price">$7.99</span></div>
+        </div>
+        <p class="menu-note">Add-ons available: Bacon +$0.75 &nbsp;·&nbsp; Cheese +$0.50 &nbsp;·&nbsp; Grilled Onions +$0.25 &nbsp;·&nbsp; Jalapenos 3/$1.00 or $0.50 each</p>
+      </div>
+
+      <!-- Sandwiches -->
+      <div class="tab-panel" id="panel-sandwiches">
+        <div class="menu-grid">
+          <div class="menu-row"><span class="menu-name">Pork Chop Sandwich</span><span class="menu-price">$5.25</span></div>
+          <div class="menu-row"><span class="menu-name">Hot Link</span><span class="menu-price">$3.50</span></div>
+          <div class="menu-row"><span class="menu-name">Catfish Sandwich</span><span class="menu-price">$6.99</span></div>
+          <div class="menu-row"><span class="menu-name">BLT</span><span class="menu-price">$3.50</span></div>
+          <div class="menu-row"><span class="menu-name">Chicken Sandwich</span><span class="menu-price">$4.50</span></div>
+        </div>
+      </div>
+
+      <!-- Sides -->
+      <div class="tab-panel" id="panel-sides">
+        <div class="menu-grid">
+          <div class="menu-row"><span class="menu-name">Collard Greens</span><span class="menu-price">$2.25</span></div>
+          <div class="menu-row"><span class="menu-name">Sweet Potatoes</span><span class="menu-price">$1.50</span></div>
+          <div class="menu-row"><span class="menu-name">Mac &amp; Cheese</span><span class="menu-price">$1.50</span></div>
+          <div class="menu-row"><span class="menu-name">Homemade Fries</span><span class="menu-price">$1.50</span></div>
+          <div class="menu-row"><span class="menu-name">Fried Okra</span><span class="menu-price">$2.25</span></div>
+          <div class="menu-row"><span class="menu-name">Tater Tots</span><span class="menu-price">$1.50</span></div>
+          <div class="menu-row"><span class="menu-name">Onion Rings</span><span class="menu-price">$1.50</span></div>
+          <div class="menu-row"><span class="menu-name">Cole Slaw</span><span class="menu-price">$1.50</span></div>
+        </div>
+        <p class="menu-sub-title">Mama's Selection</p>
+        <div class="menu-grid">
+          <div class="menu-row"><span class="menu-name">Mozzarella Sticks</span><span class="menu-price">$3.50</span></div>
+          <div class="menu-row"><span class="menu-name">Fried Pickles</span><span class="menu-price">$2.50</span></div>
+          <div class="menu-row"><span class="menu-name">Chilli Cheese Fries</span><span class="menu-price">$2.50</span></div>
+          <div class="menu-row"><span class="menu-name">Pepper Jack Cheese Bites</span><span class="menu-price">$3.50</span></div>
+          <div class="menu-row"><span class="menu-name">Fried Mushrooms</span><span class="menu-price">$3.00</span></div>
+          <div class="menu-row"><span class="menu-name">Fried Corn On Cob</span><span class="menu-price">$1.00 ea</span></div>
+          <div class="menu-row"><span class="menu-name">Taco</span><span class="menu-price">$1.25 ea</span></div>
+        </div>
+      </div>
+
+      <!-- Specials -->
+      <div class="tab-panel" id="panel-specials">
+        <div class="menu-grid">
+          <div class="menu-row"><span class="menu-name">10pc Dark Chicken Family Deal</span><span class="menu-price">$10.99</span></div>
+        </div>
+        <p class="menu-sub-title">Breakfast</p>
+        <p class="menu-prose">Build your own breakfast — 2 items for <strong>$2.00</strong>. Mix and match from: Eggs, Bacon, Sausage, Pancakes, French Toast, Hash Brown, Biscuit, or Biscuit &amp; Gravy.</p>
+      </div>
+
+      <!-- Drinks -->
+      <div class="tab-panel" id="panel-drinks">
+        <div class="menu-grid">
+          <div class="menu-row"><span class="menu-name">Fountain Drink — Medium</span><span class="menu-price">$1.25</span></div>
+          <div class="menu-row"><span class="menu-name">Fountain Drink — Large</span><span class="menu-price">$1.75</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="reviews" id="reviews">
+    <div class="reviews-inner">
+      <p class="section-eyebrow fade-up">What Customers Say</p>
+      <h2 class="section-title fade-up">Reviews</h2>
+
+      <div class="reviews-grid fade-up">
+        <!-- Score Box -->
+        <div class="score-box">
+          <div class="score-big">4.3</div>
+          <div class="score-stars">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="#E8B84B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="#E8B84B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="#E8B84B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="#E8B84B"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="#E8B84B" opacity="0.3"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="score-count">Based on 87 ratings</div>
+          <div class="bar-row"><div class="bar-lbl">5 star</div><div class="bar-track"><div class="bar-fill" style="width:81%"></div></div><div class="bar-val">81%</div></div>
+          <div class="bar-row"><div class="bar-lbl">4 star</div><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><div class="bar-val">3%</div></div>
+          <div class="bar-row"><div class="bar-lbl">2 star</div><div class="bar-track"><div class="bar-fill" style="width:10%"></div></div><div class="bar-val">10%</div></div>
+          <div class="bar-row"><div class="bar-lbl">1 star</div><div class="bar-track"><div class="bar-fill" style="width:6%"></div></div><div class="bar-val">6%</div></div>
+        </div>
+
+        <!-- Right column -->
+        <div>
+          <div class="cat-scores">
+            <div class="cat-box">
+              <div class="cat-num">4.9</div>
+              <div class="cat-lbl">Food</div>
+            </div>
+            <div class="cat-box">
+              <div class="cat-num">4.3</div>
+              <div class="cat-lbl">Atmosphere</div>
+            </div>
+            <div class="cat-box">
+              <div class="cat-num">4.5</div>
+              <div class="cat-lbl">Service</div>
+            </div>
+          </div>
+
+          <div class="review-list">
+            <div class="review-card">
+              <div class="r-head">
+                <div class="avatar" style="background:#7A3B2E;">D</div>
+                <div>
+                  <div class="r-name">Darnell W.</div>
+                  <div class="r-date">December 2025</div>
+                </div>
+                <div class="r-stars">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+              </div>
+              <p class="review-text">"Their food is to die for. This restaurant has some of the best fried okra and catfish I've ever had. Hands down a Wichita gem — I keep coming back every chance I get."</p>
+            </div>
+
+            <div class="review-card">
+              <div class="r-head">
+                <div class="avatar" style="background:#3B6255;">T</div>
+                <div>
+                  <div class="r-name">Tamara B.</div>
+                  <div class="r-date">March 2023</div>
+                </div>
+                <div class="r-stars">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+              </div>
+              <p class="review-text">"Tried it for the first time and we got a kids chicken strip meal, Mama's special burger, and a pork sandwich with fries. Some of the best food I've had in a really long time — fresh, hot, and made to order. The person at the window walked us through all the sauce options. Sweet heat was perfect for the strips. Everything was seasoned amazingly. Highly recommend — you will not be disappointed!"</p>
+            </div>
+
+            <div class="review-card">
+              <div class="r-head">
+                <div class="avatar" style="background:#4A3060;">M</div>
+                <div>
+                  <div class="r-name">Marcus J.</div>
+                  <div class="r-date">January 2025</div>
+                </div>
+                <div class="r-stars">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="#C8922A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+              </div>
+              <p class="review-text">"The fried ribs are next level. I had no idea what to expect but they were tender, crispy, and perfectly seasoned. Family deal is a great value too. This place is the real deal."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h2 class="cta-heading">Come hungry.<br>Leave happy.</h2>
+        <p class="cta-sub">Open 12:30 PM – 7:00 PM &nbsp;·&nbsp; 2504 E 9th St N, Wichita</p>
+      </div>
+      <a href="tel:3166367321" class="btn-white">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.28 6.28l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (316) 636-7321
+      </a>
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section class="location" id="location">
+    <div class="location-inner">
+      <div class="location-details fade-up">
+        <div>
+          <p class="section-eyebrow">Visit Us</p>
+          <h2 class="section-title">Hours &amp; Location</h2>
+        </div>
+
+        <div>
+          <p class="detail-label">Address</p>
+          <p class="detail-value">
+            2504 E 9th St N<br>
+            Wichita, KS<br>
+            <a href="https://www.google.com/maps/search/2504+E+9th+St+N+Wichita+KS" target="_blank" rel="noopener noreferrer">Get Directions</a>
+          </p>
+        </div>
+
+        <div>
+          <p class="detail-label">Phone</p>
+          <p class="detail-value">
+            <a href="tel:3166367321">(316) 636-7321</a>
+          </p>
+        </div>
+
+        <div>
+          <p class="detail-label">Hours of Operation</p>
+          <div class="hours-rows">
+            <div class="h-row">
+              <span class="h-day">Monday – Saturday</span>
+              <span class="h-time">12:30 PM – 7:00 PM</span>
+            </div>
+            <div class="h-row">
+              <span class="h-day">Sunday</span>
+              <span class="h-time">Closed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-wrap fade-up delay-1">
+        <iframe
+          src="https://maps.google.com/maps?q=2504+E+9th+St+N,+Wichita,+KS&z=15&output=embed"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Just Like Mama's Kitchen — 2504 E 9th St N, Wichita, KS"
+        ></iframe>
+        <a
+          href="https://www.google.com/maps/search/2504+E+9th+St+N+Wichita+KS"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="map-btn"
+        >Open in Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Just Like <span>Mama's Kitchen</span></div>
+        <div class="footer-tagline">2504 E 9th St N &nbsp;·&nbsp; Wichita, KS &nbsp;·&nbsp; (316) 636-7321</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="tel:3166367321">Call Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-copy">&copy; 2025 Just Like Mama's Kitchen. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      document.getElementById('progress-bar').style.width = (scrolled / total * 100) + '%';
+    }, { passive: true });
+
+    // Mobile nav
+    function toggleNav() {
+      const btn = document.getElementById('hamburger');
+      const menu = document.getElementById('mobile-menu');
+      btn.classList.toggle('open');
+      menu.classList.toggle('open');
+    }
+
+    function closeNav() {
+      document.getElementById('hamburger').classList.remove('open');
+      document.getElementById('mobile-menu').classList.remove('open');
+    }
+
+    // Menu tabs
+    function switchTab(btn, name) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + name).classList.add('active');
+    }
+
+    // Scroll-reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

@@ -44,6 +44,22 @@
     "contactEmail": "lukewebsitemarket@gmail.com"
   },
   {
+    "id": "just-like-mamas-kitchen",
+    "name": "Just Like Mama's Kitchen",
+    "category": "Soul Food",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/just-like-mamas-kitchen",
+    "features": [
+      "Full Menu",
+      "Customer Reviews",
+      "Mobile Optimized",
+      "Click to Call"
+    ],
+    "contactEmail": "lukehenning9@gmail.com",
+    "tier": 1
+  },
+  {
     "id": "keep-it-cute-grooming",
     "name": "Keep it Cute Grooming",
     "category": "Pet Grooming",
