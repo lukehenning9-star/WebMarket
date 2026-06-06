@@ -44,6 +44,14 @@ async function loadBusinesses() {
 
 loadBusinesses();
 
+function updatePlaceholder() {
+    searchInput.placeholder = window.innerWidth < 640
+        ? 'Search your business…'
+        : 'Search your business name…';
+}
+updatePlaceholder();
+window.addEventListener('resize', updatePlaceholder, { passive: true });
+
 
 /* ------------------------------------------------
    SEARCH
