@@ -1,0 +1,15 @@
+{
+  "name": "Taste of Flavorz",
+  "category": "Soul Food Restaurant",
+  "city": "Wichita, KS",
+  "price": 299,
+  "features": [
+    "Full Menu",
+    "Saturday Special",
+    "Customer Reviews",
+    "Hours & Location",
+    "Mobile Optimized",
+    "Google Maps Link"
+  ],
+  "contactEmail": "lukehenning9@gmail.com"
+}
