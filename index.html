@@ -136,9 +136,17 @@
         <div class="cta-inner">
             <h2 class="cta-title">Ready to get your business online?</h2>
             <p class="cta-sub">
-                Search above to preview your site, or reach out and we'll get you started.
+                Search above to preview your site, or request a demo and we'll walk you through it.
             </p>
-            <a href="mailto:lukewebsitemarket@gmail.com" class="cta-btn">Get in touch</a>
+            <button class="cta-btn" onclick="openDemoModal()">Request a Demo</button>
+        </div>
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="contact-inner">
+            <p class="contact-text">Questions? <a href="mailto:lukewebsitemarket@gmail.com" class="contact-link">Contact us →</a></p>
         </div>
     </section>
 
@@ -178,6 +186,37 @@
                     sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation allow-forms"
                 ></iframe>
                 <div id="modalPricing" class="modal-pricing"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- DEMO REQUEST MODAL -->
+    <div id="demo-modal-overlay" role="dialog" aria-modal="true" aria-label="Request a Demo">
+        <div class="demo-modal">
+            <div class="demo-modal-header">
+                <h2 class="demo-modal-title">Request a Demo</h2>
+                <button class="demo-modal-close" onclick="closeDemoModal()" aria-label="Close">✕</button>
+            </div>
+            <div class="demo-modal-body">
+                <form id="demoForm" onsubmit="submitDemo(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="demoCompany">Company Name</label>
+                        <input class="form-input" type="text" id="demoCompany" required placeholder="Your business name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="demoContact">Contact Info</label>
+                        <input class="form-input" type="text" id="demoContact" required placeholder="Email or phone number">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="demoDetails">Website Details <span class="form-optional">(optional)</span></label>
+                        <textarea class="form-input form-textarea" id="demoDetails" rows="3" placeholder="Tell us about your business or what you're looking for…"></textarea>
+                    </div>
+                    <button type="submit" class="demo-submit-btn">Send Request</button>
+                </form>
+                <div id="demoSuccess" class="demo-success" style="display:none">
+                    <p class="demo-success-msg">Thanks! We'll be in touch soon.</p>
+                </div>
             </div>
         </div>
     </div>
