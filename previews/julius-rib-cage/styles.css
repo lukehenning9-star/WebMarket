@@ -4,8 +4,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600&display=swap');
 
 :root {
-  --bg:             #12100D;
-  --bg-warm:        #1A1511;
+  --bg:             #16130F;
+  --bg-warm:        #1E1912;
   --surface:        #F5EDDE;
   --surface-dim:    #EDE3D1;
   --surface-white:  #FFFFFF;
@@ -65,7 +65,7 @@ img { max-width: 100%; display: block; }
 }
 
 .nav.scrolled {
-  background: rgba(18, 16, 13, 0.88);
+  background: rgba(22, 19, 15, 0.90);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom-color: var(--border-dark);
@@ -132,13 +132,41 @@ img { max-width: 100%; display: block; }
   overflow: hidden;
 }
 
+/* Hero photo background */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(22, 19, 15, 0.96) 0%,
+    rgba(22, 19, 15, 0.85) 38%,
+    rgba(22, 19, 15, 0.52) 62%,
+    rgba(22, 19, 15, 0.38) 100%
+  );
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: saturate(1.1) brightness(0.88);
+}
+
 .hero-glow {
   position: absolute;
   bottom: -15%;
   right: -8%;
   width: 55vw;
   height: 75vh;
-  background: radial-gradient(ellipse at center, rgba(196, 98, 42, 0.11) 0%, transparent 65%);
+  background: radial-gradient(ellipse at center, rgba(196, 98, 42, 0.17) 0%, transparent 65%);
   pointer-events: none;
 }
 
@@ -378,6 +406,17 @@ img { max-width: 100%; display: block; }
 
 .about-quote {
   padding-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.about-photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 3px;
 }
 
 .about-quote blockquote {
@@ -402,6 +441,24 @@ img { max-width: 100%; display: block; }
   font-style: normal;
   color: var(--text-dark-dim);
   letter-spacing: 0.04em;
+}
+
+
+/* ================================================
+   PHOTO STRIP
+================================================ */
+.photo-strip {
+  position: relative;
+  height: clamp(200px, 28vw, 360px);
+  overflow: hidden;
+}
+
+.photo-strip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+  filter: brightness(0.82) saturate(1.08);
 }
 
 

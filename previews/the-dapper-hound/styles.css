@@ -373,7 +373,7 @@ a {
   min-height: 100dvh;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(160deg, var(--dark-2) 0%, #3d3020 55%, var(--dark) 100%);
+  background: linear-gradient(160deg, #E91E63 0%, #AD1457 55%, #880E4F 100%);
 }
 
 .hero-visual::before {
@@ -390,46 +390,28 @@ a {
   inset: 0;
 }
 
-.hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.hero-img.loaded {
-  opacity: 1;
-}
-
-.hero-img-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(26,23,20,0.25) 0%, transparent 60%);
-  pointer-events: none;
-}
-
 .hero-img-fallback {
   position: absolute;
   inset: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
-  color: rgba(255,255,255,0.25);
 }
 
 .hero-img-fallback svg {
-  opacity: 0.3;
+  width: 75%;
+  max-width: 380px;
+  height: auto;
+  max-height: 80%;
 }
 
-.hero-img-fallback p {
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .hero-scroll-hint {
@@ -548,21 +530,8 @@ a {
   border-radius: var(--radius-xl);
   overflow: hidden;
   aspect-ratio: 4/5;
-  background: linear-gradient(145deg, var(--dark-2) 0%, #4a3d2c 100%);
+  background: linear-gradient(145deg, #FF5722 0%, #BF360C 100%);
   position: relative;
-}
-
-.about-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.about-img.loaded {
-  opacity: 1;
 }
 
 .about-img-fallback {
@@ -572,8 +541,23 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.9);
   gap: 1rem;
+}
+
+.about-img-fallback svg {
+  width: 72%;
+  max-width: 210px;
+  height: auto;
+}
+
+.about-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .about-badge {
@@ -650,25 +634,6 @@ a {
   cursor: pointer;
 }
 
-.gallery-item img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.55s var(--ease), opacity 0.4s ease;
-  opacity: 0;
-}
-
-.gallery-item img.loaded {
-  opacity: 1;
-}
-
-.gallery-item:hover img.loaded {
-  transform: scale(1.04);
-}
-
 .gallery-fallback {
   position: absolute;
   inset: 0;
@@ -680,8 +645,11 @@ a {
 }
 
 .gallery-fallback svg {
-  opacity: 0.15;
+  opacity: 0.9;
   color: #fff;
+  width: 52%;
+  max-width: 88px;
+  height: auto;
 }
 
 .gallery-fallback span {
@@ -689,7 +657,21 @@ a {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.92);
+}
+
+.gallery-item img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.55s var(--ease);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.04);
 }
 
 .gallery-caption {
@@ -720,10 +702,14 @@ a {
 .gi-4 { grid-column: 2 / 4; grid-row: 2; }
 
 /* Per-item fallback gradients */
-.gi-1 .gallery-fallback { background: linear-gradient(145deg, #2a2219, #3d3020); }
-.gi-2 .gallery-fallback { background: linear-gradient(145deg, #1e2a22, #2d4030); }
-.gi-3 .gallery-fallback { background: linear-gradient(145deg, #1e2228, #2a3040); }
-.gi-4 .gallery-fallback { background: linear-gradient(145deg, #2a2016, #3d3220); }
+.gi-1 .gallery-fallback { background: linear-gradient(145deg, #7B1FA2, #4A148C); }
+.gi-2 .gallery-fallback { background: linear-gradient(145deg, #00897B, #004D40); }
+.gi-3 .gallery-fallback { background: linear-gradient(145deg, #F57F17, #E65100); }
+.gi-4 .gallery-fallback { background: linear-gradient(145deg, #3949AB, #1A237E); }
+
+.gi-4 .gallery-fallback svg {
+  max-width: 160px;
+}
 
 /* ============================================================
    REVIEWS
