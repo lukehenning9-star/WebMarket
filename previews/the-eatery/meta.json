@@ -4,7 +4,13 @@
   "city": "Wichita, KS",
   "price": 299,
   "monthlyPrice": 40,
-  "features": ["Online Menu", "Mobile Optimized", "Call-to-Order", "Delivery & Takeout"],
+  "features": [
+    "Online Menu",
+    "Mobile Optimized",
+    "Call-to-Order",
+    "Delivery & Takeout"
+  ],
   "contactEmail": "lukewebsitemarket@gmail.com",
-  "addedDate": "2026-06-03"
+  "addedDate": "2026-06-03",
+  "tier": 2
 }
