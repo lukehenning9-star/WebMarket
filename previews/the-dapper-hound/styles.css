@@ -461,38 +461,6 @@ a {
 }
 
 /* ============================================================
-   TAG BAR
-   ============================================================ */
-.tag-bar {
-  background: var(--dark);
-  color: rgba(255,255,255,0.7);
-  overflow: hidden;
-}
-
-.tag-bar-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0;
-  padding: 1rem 2rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.tag-bar-inner span {
-  padding: 0 1.5rem;
-}
-
-.tag-sep {
-  color: var(--accent);
-  padding: 0 !important;
-  font-size: 1.1rem;
-}
-
-/* ============================================================
    SERVICES
    ============================================================ */
 .services {
@@ -658,37 +626,6 @@ a {
   line-height: 1.85;
   max-width: 52ch;
   margin-bottom: 1.25rem;
-}
-
-.about-stats {
-  display: flex;
-  gap: 2.5rem;
-  padding: 2rem 0;
-  border-top: 1px solid var(--border-2);
-  border-bottom: 1px solid var(--border-2);
-  margin: 2rem 0;
-}
-
-.stat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.stat-num {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--dark);
-  letter-spacing: -0.03em;
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--text-3);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
 }
 
 /* ============================================================
