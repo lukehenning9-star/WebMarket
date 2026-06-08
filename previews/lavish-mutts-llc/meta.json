@@ -1,0 +1,17 @@
+{
+  "name": "Lavish Mutts",
+  "category": "Pet Grooming",
+  "city": "Wichita, KS",
+  "price": 399,
+  "features": [
+    "Online Booking",
+    "Full Grooming",
+    "Bath Services",
+    "Nail Trims",
+    "Memberships",
+    "Cat Grooming",
+    "Mobile Optimized"
+  ],
+  "contactEmail": "lavishmuttsllc@gmail.com",
+  "addedDate": "2026-06-07"
+}

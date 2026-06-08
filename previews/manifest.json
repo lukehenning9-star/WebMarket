@@ -97,6 +97,59 @@
     "tier": 2
   },
   {
+    "id": "lavish-mutts-llc",
+    "name": "Lavish Mutts",
+    "category": "Pet Grooming",
+    "city": "Wichita, KS",
+    "price": 399,
+    "previewPath": "previews/lavish-mutts-llc",
+    "features": [
+      "Online Booking",
+      "Full Grooming",
+      "Bath Services",
+      "Nail Trims",
+      "Memberships",
+      "Cat Grooming",
+      "Mobile Optimized"
+    ],
+    "contactEmail": "lavishmuttsllc@gmail.com",
+    "tier": 1
+  },
+  {
+    "id": "papa-jacks-bbq",
+    "name": "Papa Jack's BBQ",
+    "category": "BBQ Restaurant",
+    "city": "Waco, TX",
+    "price": 399,
+    "previewPath": "previews/papa-jacks-bbq",
+    "features": [
+      "Full Menu",
+      "Online Menu",
+      "Mobile Optimized",
+      "Call-to-Order",
+      "Google Maps Link"
+    ],
+    "contactEmail": "lukewebsitemarket@gmail.com",
+    "tier": 1
+  },
+  {
+    "id": "tanker-bbq-co",
+    "name": "Tanker BBQ Co.",
+    "category": "Barbeque",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/tanker-bbq-co",
+    "features": [
+      "Full Menu",
+      "Online Ordering",
+      "Google Maps",
+      "Mobile Optimized",
+      "Photo Gallery"
+    ],
+    "contactEmail": "",
+    "tier": 1
+  },
+  {
     "id": "taste-of-flavorz",
     "name": "Taste of Flavorz",
     "category": "Soul Food Restaurant",
@@ -113,6 +166,23 @@
     ],
     "contactEmail": "lukehenning9@gmail.com",
     "tier": 2
+  },
+  {
+    "id": "the-dapper-hound",
+    "name": "The Dapper Hound",
+    "category": "Dog Grooming",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/the-dapper-hound",
+    "features": [
+      "All Breed Grooming",
+      "Photo Gallery",
+      "Mobile Friendly",
+      "Reviews",
+      "Contact Form"
+    ],
+    "contactEmail": "TheDapperHound1@gmail.com",
+    "tier": 1
   },
   {
     "id": "the-eatery",
