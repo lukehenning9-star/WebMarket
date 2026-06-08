@@ -75,6 +75,25 @@
     "contactEmail": "oquinn588@gmail.com"
   },
   {
+    "id": "lavish-mutts-llc",
+    "name": "Lavish Mutts LLC",
+    "category": "Pet Grooming",
+    "city": "Wichita, KS",
+    "price": 399,
+    "previewPath": "previews/lavish-mutts-llc",
+    "features": [
+      "Online Booking",
+      "Full Grooming",
+      "Bath Services",
+      "Nail Trims",
+      "Memberships",
+      "Cat Grooming",
+      "Mobile Optimized"
+    ],
+    "contactEmail": "lavishmuttsllc@gmail.com",
+    "tier": 1
+  },
+  {
     "id": "marios-pizza",
     "name": "Mario's Pizza",
     "category": "Italian Restaurant",
