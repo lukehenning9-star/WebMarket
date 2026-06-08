@@ -4,7 +4,14 @@
   "city": "Waco, TX",
   "price": 399,
   "monthlyPrice": 50,
-  "features": ["Full Menu", "Online Menu", "Mobile Optimized", "Call-to-Order", "Google Maps Link"],
+  "features": [
+    "Full Menu",
+    "Online Menu",
+    "Mobile Optimized",
+    "Call-to-Order",
+    "Google Maps Link"
+  ],
   "contactEmail": "lukewebsitemarket@gmail.com",
-  "addedDate": "2026-06-08"
+  "addedDate": "2026-06-08",
+  "tier": 2
 }
