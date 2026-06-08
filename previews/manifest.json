@@ -116,6 +116,23 @@
     "tier": 1
   },
   {
+    "id": "tanker-bbq-co",
+    "name": "Tanker BBQ Co.",
+    "category": "Barbeque",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/tanker-bbq-co",
+    "features": [
+      "Full Menu",
+      "Online Ordering",
+      "Google Maps",
+      "Mobile Optimized",
+      "Photo Gallery"
+    ],
+    "contactEmail": "",
+    "tier": 1
+  },
+  {
     "id": "taste-of-flavorz",
     "name": "Taste of Flavorz",
     "category": "Soul Food Restaurant",
