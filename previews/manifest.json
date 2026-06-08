@@ -116,6 +116,23 @@
     "tier": 1
   },
   {
+    "id": "papa-jacks-bbq",
+    "name": "Papa Jack's BBQ",
+    "category": "BBQ Restaurant",
+    "city": "Waco, TX",
+    "price": 399,
+    "previewPath": "previews/papa-jacks-bbq",
+    "features": [
+      "Full Menu",
+      "Online Menu",
+      "Mobile Optimized",
+      "Call-to-Order",
+      "Google Maps Link"
+    ],
+    "contactEmail": "lukewebsitemarket@gmail.com",
+    "tier": 1
+  },
+  {
     "id": "tanker-bbq-co",
     "name": "Tanker BBQ Co.",
     "category": "Barbeque",
