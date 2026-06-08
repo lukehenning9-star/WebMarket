@@ -391,12 +391,15 @@ a {
 }
 
 .hero-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
   opacity: 0;
   transition: opacity 0.5s ease;
+  z-index: 1;
 }
 
 .hero-img.loaded {
@@ -408,28 +411,12 @@ a {
   inset: 0;
   background: linear-gradient(to right, rgba(26,23,20,0.25) 0%, transparent 60%);
   pointer-events: none;
+  z-index: 2;
 }
 
 .hero-img-fallback {
   position: absolute;
   inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  color: rgba(255,255,255,0.25);
-}
-
-.hero-img-fallback svg {
-  opacity: 0.3;
-}
-
-.hero-img-fallback p {
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .hero-scroll-hint {
