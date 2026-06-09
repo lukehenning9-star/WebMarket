@@ -17,6 +17,24 @@
     "tier": 3
   },
   {
+    "id": "barks-an-bubbles",
+    "name": "Barks-An-Bubbles",
+    "category": "Pet Groomer",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/barks-an-bubbles",
+    "features": [
+      "Mobile Optimized",
+      "Service Menu",
+      "Reviews",
+      "Hours & Location",
+      "Click-to-Call",
+      "Google Maps"
+    ],
+    "contactEmail": "Barksanbubblesllc@gmail.com",
+    "tier": 1
+  },
+  {
     "id": "bonjours-puppy-parade",
     "name": "Bonjour's Puppy Parade",
     "category": "Pet Grooming",
