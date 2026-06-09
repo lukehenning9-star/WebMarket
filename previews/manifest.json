@@ -132,6 +132,22 @@
     "tier": 3
   },
   {
+    "id": "midway-custom-detailing",
+    "name": "Midway Custom Detailing",
+    "category": "Auto Detailing",
+    "city": "Waco, TX",
+    "price": 299,
+    "previewPath": "previews/midway-custom-detailing",
+    "features": [
+      "Mobile Service",
+      "Hand Wash",
+      "Interior Detail",
+      "Exterior Polish"
+    ],
+    "contactEmail": "MidwayCustomDetailing@gmail.com",
+    "tier": 1
+  },
+  {
     "id": "papa-jacks-bbq",
     "name": "Papa Jack's BBQ",
     "category": "BBQ Restaurant",
