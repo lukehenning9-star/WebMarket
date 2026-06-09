@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional pet grooming in Wichita, KS. Book your appointment with Helen and Laura at Barks-An-Bubbles — trusted by pet owners across Kansas.">
+  <title>Barks-An-Bubbles | Professional Pet Grooming — Wichita, KS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:       #0D9488;
+      --teal-light: #14B8A6;
+      --teal-pale:  #CCFBF1;
+      --teal-dim:   #0F766E;
+      --bg:         #FAFAF9;
+      --surface:    #FFFFFF;
+      --s100:       #F5F5F4;
+      --s200:       #E7E5E4;
+      --s400:       #A8A29E;
+      --s600:       #57534E;
+      --s800:       #292524;
+      --s900:       #1C1917;
+      --font:       'Outfit', sans-serif;
+      --r:          1.5rem;
+      --shadow-sm:  0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md:  0 8px 28px -4px rgba(0,0,0,0.09);
+      --shadow-lg:  0 20px 52px -10px rgba(0,0,0,0.14);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--s900);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── MOBILE OVERLAY ── */
+    .mob-menu {
+      display: none;
+      position: fixed; inset: 0;
+      background: var(--bg);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .mob-menu.open { display: flex; }
+    .mob-menu a {
+      font-size: 1.5rem; font-weight: 700;
+      color: var(--s900); text-decoration: none;
+      transition: color .2s;
+    }
+    .mob-menu a:hover { color: var(--teal); }
+    .mob-close {
+      position: absolute; top: 1.4rem; right: 1.8rem;
+      background: none; border: none;
+      cursor: pointer; color: var(--s600); line-height: 1;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100; padding: 1.1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all .3s ease;
+    }
+    nav.scrolled {
+      background: rgba(250,250,249,.93);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--s200);
+      padding: .75rem 2rem;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: .6rem;
+      text-decoration: none;
+    }
+    .nav-logo-badge {
+      width: 42px; height: 42px;
+      background: var(--teal); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .65rem; font-weight: 800; color: white;
+      letter-spacing: -.5px; line-height: 1.15; text-align: center;
+    }
+    .nav-logo-text {
+      font-size: 1rem; font-weight: 700; color: var(--s900);
+      letter-spacing: -.25px;
+    }
+    .nav-links {
+      display: flex; align-items: center;
+      gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none; color: var(--s600);
+      font-size: .88rem; font-weight: 500; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+
+    .btn {
+      padding: .6rem 1.4rem; border-radius: 100px;
+      font-size: .88rem; font-weight: 600; font-family: var(--font);
+      text-decoration: none; border: none; cursor: pointer;
+      display: inline-flex; align-items: center; gap: .4rem;
+      transition: all .2s cubic-bezier(.16,1,.3,1);
+    }
+    .btn-teal {
+      background: var(--teal); color: white;
+      box-shadow: 0 2px 10px rgba(13,148,136,.28);
+    }
+    .btn-teal:hover {
+      background: var(--teal-dim);
+      transform: translateY(-1px);
+      box-shadow: 0 5px 18px rgba(13,148,136,.35);
+    }
+    .btn-teal:active { transform: translateY(0) scale(.98); }
+    .btn-outline {
+      background: transparent; color: var(--teal);
+      border: 1.5px solid var(--teal);
+    }
+    .btn-outline:hover {
+      background: var(--teal-pale); transform: translateY(-1px);
+    }
+    .btn-lg { padding: .8rem 1.8rem; font-size: .92rem; }
+
+    .hamburger {
+      display: none; flex-direction: column;
+      gap: 5px; cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .hamburger span {
+      width: 24px; height: 2px;
+      background: var(--s900); border-radius: 2px; display: block;
+    }
+
+    /* ── HERO ── */
+    .hero-wrap {
+      min-height: 100dvh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      max-width: 1380px; margin: 0 auto;
+      padding: 9rem 4rem 5rem;
+      gap: 4rem;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--teal-pale); color: var(--teal-dim);
+      padding: .38rem .9rem; border-radius: 100px;
+      font-size: .75rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .eyebrow-dot {
+      width: 6px; height: 6px; background: var(--teal);
+      border-radius: 50%;
+      animation: pulse-dot 2.2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .45; transform: scale(.75); }
+    }
+    .hero h1 {
+      font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+      font-weight: 800; letter-spacing: -.035em;
+      line-height: 1.08; color: var(--s900);
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em { color: var(--teal); font-style: normal; }
+    .hero-sub {
+      font-size: 1rem; color: var(--s600);
+      line-height: 1.75; max-width: 50ch;
+      margin-bottom: .6rem;
+    }
+    .hero-appt {
+      font-size: .8rem; color: var(--s400);
+      display: flex; align-items: center; gap: .4rem;
+      margin-bottom: 2rem;
+    }
+    .hero-appt svg { color: var(--teal); flex-shrink: 0; }
+    .hero-ctas { display: flex; gap: .9rem; flex-wrap: wrap; margin-bottom: 3rem; }
+    .hero-divider {
+      border: none; border-top: 1px solid var(--s200);
+      margin-bottom: 1.75rem;
+    }
+    .hero-stats { display: flex; gap: 2.5rem; }
+    .stat-num {
+      font-size: 1.55rem; font-weight: 800;
+      color: var(--s900); letter-spacing: -.04em;
+      display: block; line-height: 1;
+      margin-bottom: .2rem;
+    }
+    .stat-label {
+      font-size: .72rem; color: var(--s400);
+      font-weight: 600; text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    /* Hero visual */
+    .hero-visual { position: relative; height: 580px; }
+    .hero-img {
+      width: 100%; height: 100%;
+      object-fit: cover; border-radius: var(--r);
+      box-shadow: var(--shadow-lg);
+      display: block;
+    }
+    .hero-badge {
+      position: absolute; top: 2rem; right: -1.25rem;
+      background: var(--teal); color: white;
+      border-radius: 1rem; padding: .8rem 1.1rem;
+      text-align: center;
+      box-shadow: 0 8px 28px rgba(13,148,136,.4);
+    }
+    .hero-badge-num {
+      font-size: 1.45rem; font-weight: 800;
+      display: block; line-height: 1; margin-bottom: .15rem;
+    }
+    .hero-badge-text {
+      font-size: .6rem; font-weight: 700;
+      opacity: .85; text-transform: uppercase; letter-spacing: .06em;
+    }
+    .hero-card {
+      position: absolute; bottom: 2.5rem; left: -2rem;
+      background: white; border-radius: 1rem;
+      padding: .9rem 1.15rem;
+      box-shadow: var(--shadow-md);
+      display: flex; align-items: center; gap: .75rem;
+      border: 1px solid var(--s200);
+      animation: float 4.5s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-6px); }
+    }
+    .hero-card-icon {
+      width: 38px; height: 38px; background: var(--teal-pale);
+      border-radius: 10px; display: flex;
+      align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .hero-card strong { display: block; font-size: .82rem; font-weight: 700; color: var(--s900); }
+    .hero-card span   { font-size: .72rem; color: var(--s400); }
+
+    /* ── SECTION COMMONS ── */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-chip {
+      display: inline-flex; align-items: center; gap: .5rem;
+      color: var(--teal); font-size: .72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .1em;
+      margin-bottom: .65rem;
+    }
+    .section-chip::before {
+      content: ''; width: 18px; height: 2px;
+      background: var(--teal); border-radius: 2px; display: block;
+    }
+    h2 {
+      font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+      font-weight: 800; letter-spacing: -.03em;
+      line-height: 1.12; color: var(--s900);
+      margin-bottom: .9rem;
+    }
+    .section-body {
+      font-size: .95rem; color: var(--s600);
+      line-height: 1.75; max-width: 52ch;
+    }
+
+    /* ── SERVICES ── */
+    .services-sec { background: var(--surface); }
+    .services-head {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2rem; align-items: end; margin-bottom: 3.5rem;
+    }
+    .services-head .section-body { margin-bottom: 0; }
+    .services-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+    }
+    .svc-card {
+      background: var(--bg);
+      border: 1px solid var(--s200);
+      border-radius: var(--r);
+      padding: 2rem;
+      transition: all .3s cubic-bezier(.16,1,.3,1);
+      position: relative; overflow: hidden;
+    }
+    .svc-card.featured {
+      grid-column: span 2;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2rem; align-items: center;
+      background: var(--teal); border-color: transparent;
+      color: white;
+    }
+    .svc-card:not(.featured):hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--teal-pale);
+    }
+    .svc-card.featured:hover { transform: translateY(-2px); }
+    .svc-icon {
+      width: 46px; height: 46px;
+      background: var(--teal-pale); border-radius: 13px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.15rem;
+    }
+    .svc-card.featured .svc-icon { background: rgba(255,255,255,.2); }
+    .svc-icon svg { color: var(--teal); }
+    .svc-card.featured .svc-icon svg { color: white; }
+    .svc-name {
+      font-size: 1rem; font-weight: 700;
+      color: var(--s900); margin-bottom: .35rem;
+    }
+    .svc-card.featured .svc-name { font-size: 1.3rem; color: white; }
+    .svc-desc { font-size: .86rem; color: var(--s600); line-height: 1.65; }
+    .svc-card.featured .svc-desc { color: rgba(255,255,255,.78); font-size: .9rem; }
+    .svc-pill {
+      display: inline-block; margin-top: .85rem;
+      background: rgba(255,255,255,.2); color: rgba(255,255,255,.9);
+      font-size: .68rem; font-weight: 700;
+      padding: .25rem .65rem; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: .07em;
+    }
+    .svc-img {
+      border-radius: 1.1rem; overflow: hidden; height: 230px;
+    }
+    .svc-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── ABOUT ── */
+    .about-sec { background: var(--bg); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .about-photos { position: relative; height: 520px; }
+    .photo-main {
+      width: 70%; height: 370px;
+      object-fit: cover; border-radius: var(--r);
+      box-shadow: var(--shadow-md);
+      position: absolute; top: 0; left: 0;
+    }
+    .photo-sub {
+      width: 54%; height: 250px;
+      object-fit: cover; border-radius: var(--r);
+      box-shadow: var(--shadow-md);
+      position: absolute; bottom: 0; right: 0;
+      border: 5px solid var(--surface);
+    }
+    .about-blob {
+      position: absolute; bottom: 3.5rem; left: -2rem;
+      width: 72px; height: 72px;
+      background: var(--teal); border-radius: 1.25rem;
+      opacity: .12;
+    }
+    .about-list { list-style: none; margin: 1.75rem 0; display: flex; flex-direction: column; gap: .7rem; }
+    .about-list li { display: flex; align-items: flex-start; gap: .7rem; font-size: .9rem; color: var(--s600); line-height: 1.55; }
+    .check-circle {
+      width: 20px; height: 20px; flex-shrink: 0;
+      background: var(--teal); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+    }
+    .check-circle svg { color: white; }
+    .about-ctas { display: flex; gap: .9rem; flex-wrap: wrap; margin-top: 1.75rem; }
+
+    /* ── GALLERY ── */
+    .gallery-sec { background: var(--s900); overflow: hidden; }
+    .gallery-sec .section-chip { color: var(--teal-light); }
+    .gallery-sec .section-chip::before { background: var(--teal-light); }
+    .gallery-sec h2 { color: white; }
+    .gallery-sec .section-body { color: rgba(255,255,255,.45); margin-bottom: 2.5rem; }
+    .gallery-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1.5rem; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 240px 240px;
+      gap: .9rem;
+    }
+    .g-item { border-radius: 1.1rem; overflow: hidden; }
+    .g-item:first-child { grid-row: span 2; }
+    .g-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .55s cubic-bezier(.16,1,.3,1);
+      display: block;
+    }
+    .g-item:hover img { transform: scale(1.06); }
+
+    /* ── REVIEWS ── */
+    .reviews-sec { background: var(--surface); }
+    .reviews-head {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1.5rem;
+    }
+    .stars-row { display: flex; gap: 2px; }
+    .stars-row svg { color: #F59E0B; }
+    .reviews-score { display: flex; align-items: center; gap: .5rem; flex-shrink: 0; }
+    .score-num { font-size: 1.4rem; font-weight: 800; color: var(--s900); }
+    .score-label { font-size: .78rem; color: var(--s400); }
+    .reviews-track {
+      display: flex; gap: 1.4rem;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      scrollbar-width: none; padding-bottom: .5rem;
+    }
+    .reviews-track::-webkit-scrollbar { display: none; }
+    .r-card {
+      flex: 0 0 330px; scroll-snap-align: start;
+      background: var(--bg); border: 1px solid var(--s200);
+      border-radius: var(--r); padding: 1.6rem;
+      transition: all .3s ease;
+    }
+    .r-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .r-stars { display: flex; gap: 3px; margin-bottom: .9rem; }
+    .r-text {
+      font-size: .87rem; color: var(--s600);
+      line-height: 1.72; margin-bottom: 1.2rem; font-style: italic;
+    }
+    .r-author { display: flex; align-items: center; gap: .7rem; }
+    .r-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--teal-pale); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .78rem; font-weight: 800; color: var(--teal-dim);
+    }
+    .r-name { font-size: .82rem; font-weight: 700; color: var(--s900); }
+    .r-date { font-size: .72rem; color: var(--s400); }
+
+    /* ── HOURS & LOCATION ── */
+    .info-sec { background: var(--bg); }
+    .info-head { text-align: center; margin-bottom: 3.5rem; }
+    .info-head .section-chip { justify-content: center; }
+    .info-head .section-chip::before { display: none; }
+    .info-head p { color: var(--s600); font-size: .92rem; line-height: 1.7; max-width: 46ch; margin: .6rem auto 0; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .hours-label { font-size: .88rem; font-weight: 700; color: var(--s900); margin-bottom: 1.1rem; }
+    .hours-table { width: 100%; border-collapse: collapse; }
+    .hours-table tr { border-bottom: 1px solid var(--s200); }
+    .hours-table tr:last-child { border-bottom: none; }
+    .hours-table td { padding: .7rem 0; font-size: .88rem; color: var(--s600); }
+    .hours-table td:first-child { font-weight: 600; color: var(--s800); width: 48%; }
+    .hours-table tr.today td { color: var(--teal); }
+    .hours-table tr.today td:first-child { color: var(--teal-dim); }
+    .closed-txt { color: var(--s400) !important; font-style: italic; }
+    .hours-note { font-size: .77rem; color: var(--s400); margin-top: 1.1rem; line-height: 1.55; }
+
+    .loc-card {
+      background: var(--surface); border: 1px solid var(--s200);
+      border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow-sm);
+    }
+    .map-link {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: .55rem;
+      width: 100%; height: 210px;
+      background: var(--teal-pale); text-decoration: none;
+      transition: background .2s;
+    }
+    .map-link:hover { background: #B2F5EA; }
+    .map-icon {
+      width: 46px; height: 46px; background: var(--teal);
+      border-radius: 50%; display: flex;
+      align-items: center; justify-content: center;
+    }
+    .map-link span { font-size: .8rem; color: var(--teal-dim); font-weight: 600; }
+    .loc-rows { padding: 1.4rem; }
+    .loc-row {
+      display: flex; align-items: flex-start; gap: .7rem;
+      padding: .65rem 0; border-bottom: 1px solid var(--s200);
+    }
+    .loc-row:last-child { border-bottom: none; }
+    .loc-icon {
+      width: 30px; height: 30px; background: var(--teal-pale);
+      border-radius: 8px; display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+    .loc-icon svg { color: var(--teal); }
+    .loc-lbl { font-size: .7rem; color: var(--s400); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .12rem; }
+    .loc-val {
+      font-size: .85rem; color: var(--s800); font-weight: 500;
+      text-decoration: none; line-height: 1.45; display: block;
+    }
+    a.loc-val:hover { color: var(--teal); }
+
+    /* ── CTA BANNER ── */
+    .cta-sec { background: var(--teal); padding: 5rem 2rem; }
+    .cta-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 3rem;
+    }
+    .cta-sec h2 { color: white; margin-bottom: .5rem; }
+    .cta-sec p { color: rgba(255,255,255,.72); font-size: .95rem; line-height: 1.7; max-width: 50ch; }
+    .cta-btns { display: flex; gap: .9rem; flex-wrap: wrap; align-items: center; }
+    .btn-white {
+      background: white; color: var(--teal-dim);
+      padding: .8rem 1.8rem; border-radius: 100px;
+      font-size: .9rem; font-weight: 700; font-family: var(--font);
+      text-decoration: none; display: inline-flex;
+      align-items: center; gap: .5rem; white-space: nowrap;
+      transition: all .2s; box-shadow: 0 4px 18px rgba(0,0,0,.15);
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,.2); }
+    .btn-ghost {
+      background: transparent; color: white;
+      border: 1.5px solid rgba(255,255,255,.55);
+      padding: .8rem 1.8rem; border-radius: 100px;
+      font-size: .9rem; font-weight: 700; font-family: var(--font);
+      text-decoration: none; display: inline-flex;
+      align-items: center; gap: .5rem; white-space: nowrap;
+      transition: all .2s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.1); border-color: white; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--s900); color: rgba(255,255,255,.45);
+      padding: 3rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 2rem; flex-wrap: wrap;
+    }
+    .footer-logo { display: flex; align-items: center; gap: .65rem; text-decoration: none; }
+    .footer-logo-badge {
+      width: 36px; height: 36px; background: var(--teal); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .58rem; font-weight: 800; color: white;
+      line-height: 1.15; text-align: center;
+    }
+    .footer-logo span { color: rgba(255,255,255,.65); font-size: .88rem; font-weight: 600; }
+    .footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,.38); text-decoration: none; font-size: .8rem; transition: color .2s; }
+    .footer-links a:hover { color: rgba(255,255,255,.75); }
+    .footer-copy { font-size: .75rem; }
+
+    /* ── ANIMATIONS ── */
+    .fade { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
+    .fade.d1 { transition-delay: .1s; }
+    .fade.d2 { transition-delay: .2s; }
+    .fade.d3 { transition-delay: .3s; }
+    .fade.d4 { transition-delay: .4s; }
+    .fade.in { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1080px) {
+      .hero-wrap { padding: 8rem 2.5rem 4.5rem; gap: 2.5rem; }
+      .hero-visual { height: 480px; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      nav.scrolled { padding: .7rem 1.5rem; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      .hero-wrap { grid-template-columns: 1fr; min-height: auto; padding: 7rem 1.5rem 4rem; gap: 2.5rem; }
+      .hero-visual { height: 300px; }
+      .hero-badge { right: .4rem; top: .8rem; }
+      .hero-card { left: .5rem; bottom: 1.5rem; padding: .7rem .95rem; }
+      .hero-stats { gap: 1.5rem; }
+
+      section { padding: 4rem 1.5rem; }
+
+      .services-head { grid-template-columns: 1fr; gap: 1rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .svc-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+      .svc-img { height: 180px; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-photos { height: 260px; }
+      .photo-main { width: 78%; height: 220px; }
+      .photo-sub  { width: 58%; height: 170px; }
+
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gallery-grid .g-item:first-child { grid-row: span 1; }
+      .g-item { height: 180px; }
+
+      .reviews-head { flex-direction: column; align-items: flex-start; }
+      .r-card { flex: 0 0 288px; }
+
+      .info-grid { grid-template-columns: 1fr; }
+
+      .cta-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .cta-btns { flex-direction: column; align-items: flex-start; }
+
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero-ctas { flex-direction: column; align-items: flex-start; }
+      .hero-stats { gap: 1.25rem; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .g-item { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Mobile Menu -->
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="closeMob()" aria-label="Close menu">
+    <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <a href="#services" onclick="closeMob()">Services</a>
+  <a href="#about"    onclick="closeMob()">About</a>
+  <a href="#reviews"  onclick="closeMob()">Reviews</a>
+  <a href="#hours"    onclick="closeMob()">Hours</a>
+  <a href="tel:3166558404" class="btn btn-teal btn-lg" style="margin-top:.5rem;" onclick="closeMob()">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 7.18 19.79 19.79 0 012 2.18 2 2 0 014 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+    Call to Book
+  </a>
+</div>
+
+<!-- Nav -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-badge">B<br>AN<br>B</div>
+    <span class="nav-logo-text">Barks-An-Bubbles</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#hours">Hours</a></li>
+  </ul>
+  <a href="tel:3166558404" class="btn btn-teal nav-cta">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 7.18 19.79 19.79 0 012 2.18 2 2 0 014 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+    Book Appointment
+  </a>
+  <button class="hamburger" id="ham" onclick="openMob()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── HERO ── -->
+<section style="padding:0; background: var(--bg);">
+  <div class="hero-wrap">
+    <!-- Left -->
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-dot"></div>
+        Wichita's Trusted Pet Groomers
+      </div>
+      <h1>Your Dog Deserves<br>to Feel <em>Incredible</em><br>After Every Visit.</h1>
+      <p class="hero-sub">Helen and Laura bring genuine care and years of hands-on experience to every appointment at Barks-An-Bubbles — a grooming shop built on patience, trust, and love for animals.</p>
+      <p class="hero-appt">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        By appointment only &mdash; call or text to schedule
+      </p>
+      <div class="hero-ctas">
+        <a href="tel:3166558404" class="btn btn-teal btn-lg">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 7.18 19.79 19.79 0 012 2.18 2 2 0 014 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+          (316) 655-8404
+        </a>
+        <a href="https://www.google.com/maps/search/6100+E+21st+St+North+Suite+200+Wichita+KS" target="_blank" rel="noopener" class="btn btn-outline btn-lg">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Get Directions
+        </a>
+      </div>
+      <hr class="hero-divider">
+      <div class="hero-stats">
+        <div>
+          <span class="stat-num">4+</span>
+          <span class="stat-label">Years in Wichita</span>
+        </div>
+        <div>
+          <span class="stat-num">5★</span>
+          <span class="stat-label">Facebook Rating</span>
+        </div>
+        <div>
+          <span class="stat-num">565+</span>
+          <span class="stat-label">Happy Clients</span>
+        </div>
+      </div>
+    </div>
+    <!-- Right -->
+    <div class="hero-visual">
+      <img
+        src="https://images.pexels.com/photos/3299904/pexels-photo-3299904.jpeg?auto=compress&cs=tinysrgb&w=700&h=620&fit=crop"
+        alt="Happy groomed dog"
+        class="hero-img"
+      >
+      <div class="hero-badge">
+        <span class="hero-badge-num">100%</span>
+        <span class="hero-badge-text">Recommended</span>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">
+          <svg width="20" height="20" fill="none" stroke="#0D9488" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div>
+          <strong>Loved by Locals</strong>
+          <span>Clients drive from across Kansas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="services-sec" id="services">
+  <div class="container">
+    <div class="services-head fade">
+      <div>
+        <div class="section-chip">What We Offer</div>
+        <h2>Every Service<br>Your Pet Deserves</h2>
+      </div>
+      <p class="section-body">From a quick tidy to a full transformation — we handle every breed with patience and a professional eye for detail.</p>
+    </div>
+    <div class="services-grid">
+
+      <!-- Featured -->
+      <div class="svc-card featured fade">
+        <div>
+          <div class="svc-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+          </div>
+          <div class="svc-name">Full Groom Package</div>
+          <p class="svc-desc">Our signature service — bath, blow-dry, breed-specific haircut, nail trim, ear cleaning, and a finishing spritz. Your dog walks out looking and smelling incredible, every time.</p>
+          <span class="svc-pill">Most Popular</span>
+        </div>
+        <div class="svc-img">
+          <img
+            src="https://images.pexels.com/photos/5264104/pexels-photo-5264104.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&fit=crop"
+            alt="Full groom result"
+          >
+        </div>
+      </div>
+
+      <div class="svc-card fade d1">
+        <div class="svc-icon">
+          <svg width="22" height="22" fill="none" stroke="#0D9488" stroke-width="2" viewBox="0 0 24 24"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 7.5 7 5c-.17 1.55.5 2.93 1.29 3.96-.77-.25-2.2-.36-3.29.17C6.77 10.43 6.07 14.3 3 14.3"/><path d="M10.46 7.26C10.2 5.88 9.17 4.24 8 3h5.8a2 2 0 011.98 1.67l.23 1.4A4 4 0 0018 10c0 2.76-2.46 4.3-6 4.3-2.16 0-4-.86-5-2.3"/></svg>
+        </div>
+        <div class="svc-name">Bath &amp; Brush</div>
+        <p class="svc-desc">Deep shampoo, conditioning rinse, blow-dry, and thorough brushing. Removes loose fur and leaves the coat gleaming with natural shine.</p>
+      </div>
+
+      <div class="svc-card fade d2">
+        <div class="svc-icon">
+          <svg width="22" height="22" fill="none" stroke="#0D9488" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <div class="svc-name">Nail Trim &amp; Filing</div>
+        <p class="svc-desc">Gentle trimming and smooth filing — including for dogs that have never let anyone near their nails. Our patient approach makes all the difference.</p>
+      </div>
+
+      <div class="svc-card fade d3">
+        <div class="svc-icon">
+          <svg width="22" height="22" fill="none" stroke="#0D9488" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="svc-name">Ear Cleaning</div>
+        <p class="svc-desc">Careful, thorough ear cleaning that removes buildup and reduces the risk of infection — included with every full groom or available on its own.</p>
+      </div>
+
+      <div class="svc-card fade d4">
+        <div class="svc-icon">
+          <svg width="22" height="22" fill="none" stroke="#0D9488" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div class="svc-name">De-Shedding Treatment</div>
+        <p class="svc-desc">Specialty treatment for heavy-shedding breeds. Dramatically reduces loose fur with a deshedding shampoo, deep conditioner, and high-velocity blow-out.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="about-sec" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <!-- Photos -->
+      <div class="about-photos">
+        <img
+          src="https://images.pexels.com/photos/3299900/pexels-photo-3299900.jpeg?auto=compress&cs=tinysrgb&w=700&h=450&fit=crop"
+          alt="Professionally groomed dog"
+          class="photo-main fade"
+        >
+        <img
+          src="https://images.pexels.com/photos/3299895/pexels-photo-3299895.jpeg?auto=compress&cs=tinysrgb&w=520&h=320&fit=crop"
+          alt="Happy dog after grooming"
+          class="photo-sub fade d2"
+        >
+        <div class="about-blob"></div>
+      </div>
+      <!-- Text -->
+      <div class="fade">
+        <div class="section-chip">Our Story</div>
+        <h2>Built on Patience,<br>Trust &amp; Real Care</h2>
+        <p class="section-body">Helen and Laura opened Barks-An-Bubbles because they believed every pet deserved a groomer who genuinely cares. Located in Wichita, they've built a loyal following — including clients who make the drive from cities across Kansas — because of their calm, unhurried approach to every animal.</p>
+        <ul class="about-list">
+          <li>
+            <div class="check-circle">
+              <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Experienced with nervous, anxious, and difficult-to-handle pets
+          </li>
+          <li>
+            <div class="check-circle">
+              <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            By-appointment only &mdash; your pet always gets focused, unhurried attention
+          </li>
+          <li>
+            <div class="check-circle">
+              <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Succeeds with pets other groomers have turned away
+          </li>
+          <li>
+            <div class="check-circle">
+              <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            All breeds welcome &mdash; terriers to large double-coated dogs
+          </li>
+        </ul>
+        <div class="about-ctas">
+          <a href="tel:3162025285" class="btn btn-teal">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 7.18 19.79 19.79 0 012 2.18 2 2 0 014 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+            Call Helen
+          </a>
+          <a href="tel:3166558404" class="btn btn-outline">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 7.18 19.79 19.79 0 012 2.18 2 2 0 014 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+            Call Laura
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY ── -->
+<section class="gallery-sec">
+  <div class="container">
+    <div class="gallery-head">
+      <div>
+        <div class="section-chip">Our Work</div>
+        <h2>Happy Tails,<br>Beautiful Coats</h2>
+      </div>
+      <p class="section-body" style="margin-bottom:0; max-width:36ch;">Every dog that walks through our doors gets the same exceptional standard of care.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-item">
+        <img
+          src="https://images.pexels.com/photos/3299903/pexels-photo-3299903.jpeg?auto=compress&cs=tinysrgb&w=650&h=530&fit=crop"
+          alt="Groomed dog"
+        >
+      </div>
+      <div class="g-item">
+        <img
+          src="https://images.pexels.com/photos/3299905/pexels-photo-3299905.jpeg?auto=compress&cs=tinysrgb&w=420&h=250&fit=crop"
+          alt="Puppy after groom"
+        >
+      </div>
+      <div class="g-item">
+        <img
+          src="https://images.pexels.com/photos/6222967/pexels-photo-6222967.jpeg?auto=compress&cs=tinysrgb&w=420&h=250&fit=crop"
+          alt="Dog bath"
+        >
+      </div>
+      <div class="g-item">
+        <img
+          src="https://images.pexels.com/photos/3297597/pexels-photo-3297597.jpeg?auto=compress&cs=tinysrgb&w=420&h=250&fit=crop"
+          alt="Golden retriever groom"
+        >
+      </div>
+      <div class="g-item">
+        <img
+          src="https://images.pexels.com/photos/3777203/pexels-photo-3777203.jpeg?auto=compress&cs=tinysrgb&w=420&h=250&fit=crop"
+          alt="Poodle trim"
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── REVIEWS ── -->
+<section class="reviews-sec" id="reviews">
+  <div class="container">
+    <div class="reviews-head">
+      <div>
+        <div class="section-chip">Client Stories</div>
+        <h2>What Pet Owners<br>Are Saying</h2>
+      </div>
+      <div class="reviews-score">
+        <div class="stars-row">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span class="score-num">5.0</span>
+        <span class="score-label">on Facebook</span>
+      </div>
+    </div>
+    <div class="reviews-track">
+
+      <div class="r-card">
+        <div class="r-stars">
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="r-text">"We drove all the way from Emporia and it was worth every dollar. The quality of the grooming was outstanding — we are going to come here from now on."</p>
+        <div class="r-author">
+          <div class="r-avatar">CF</div>
+          <div>
+            <div class="r-name">Carla Fessler</div>
+            <div class="r-date">November 2023</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="r-card">
+        <div class="r-stars">
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="r-text">"The best in town. I wouldn't take my pup anywhere else — the level of care and professionalism here is genuinely unmatched."</p>
+        <div class="r-author">
+          <div class="r-avatar">TS</div>
+          <div>
+            <div class="r-name">Tyler Stonestreet</div>
+            <div class="r-date">July 2023</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="r-card">
+        <div class="r-stars">
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="r-text">"My Mia came out more beautiful than anywhere else. I also brought my sister's dog who never lets anyone near his nails — every other groomer had failed. Barks-An-Bubbles got it done immediately. I recommend this place 100%."</p>
+        <div class="r-author">
+          <div class="r-avatar">IF</div>
+          <div>
+            <div class="r-name">Iris Fletcher</div>
+            <div class="r-date">February 2023</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="r-card">
+        <div class="r-stars">
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="13" height="13" fill="#F59E0B" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="r-text">"Super patient and friendly groomers. My golden doodle puppy came back smelling incredible and looking so cute. 1000 out of 10 — this shop is the real deal."</p>
+        <div class="r-author">
+          <div class="r-avatar">JM</div>
+          <div>
+            <div class="r-name">Jailene Mendoza</div>
+            <div class="r-date">December 2022</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── HOURS & LOCATION ── -->
+<section class="info-sec" id="hours">
+  <div class="container">
+    <div class="info-head fade">
+      <div class="section-chip" style="justify-content:center;">Visit Us</div>
+      <h2>Hours &amp; Location</h2>
+      <p>By appointment only. Call or text to schedule — we'll confirm your slot by end of day or first thing the next morning.</p>
+    </div>
+    <div class="info-grid">
+      <div class="fade">
+        <div class="hours-label">Hours of Operation</div>
+        <table class="hours-table" id="hoursTable">
+          <tr data-day="Monday">   <td>Monday</td>   <td>8:00 AM &ndash; 4:00 PM</td></tr>
+          <tr data-day="Tuesday">  <td>Tuesday</td>  <td>8:00 AM &ndash; 4:00 PM</td></tr>
+          <tr data-day="Wednesday"><td>Wednesday</td><td>8:00 AM &ndash; 4:00 PM</td></tr>
+          <tr data-day="Thursday"> <td>Thursday</td> <td>8:00 AM &ndash; 4:00 PM</td></tr>
+          <tr data-day="Friday">   <td>Friday</td>   <td>8:00 AM &ndash; 4:00 PM</td></tr>
+          <tr data-day="Saturday"> <td>Saturday</td> <td>7:00 AM &ndash; 5:00 PM</td></tr>
+          <tr data-day="Sunday">   <td>Sunday</td>   <td class="closed-txt">Closed</td></tr>
+        </table>
+        <p class="hours-note">If we don't answer, please leave a voicemail with your phone number. We will return your call at the end of the day or first thing in the morning.</p>
+      </div>
+      <div class="loc-card fade d2">
+        <a href="https://www.google.com/maps/search/6100+E+21st+St+North+Suite+200+Wichita+KS" target="_blank" rel="noopener" class="map-link">
+          <div class="map-icon">
+            <svg width="22" height="22" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <span>Open in Google Maps</span>
+        </a>
+        <div class="loc-rows">
+          <div class="loc-row">
+            <div class="loc-icon">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="loc-lbl">Address</div>
+              <a href="https://www.google.com/maps/search/6100+E+21st+St+North+Suite+200+Wichita+KS" target="_blank" rel="noopener" class="loc-val">6100 E 21st St North, Suite 200<br>Wichita, KS</a>
+            </div>
+          </div>
+          <div class="loc-row">
+            <div class="loc-icon">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 7.18 19.79 19.79 0 012 2.18 2 2 0 014 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+            </div>
+            <div>
+              <div class="loc-lbl">Main Line — Laura</div>
+              <a href="tel:3166558404" class="loc-val">(316) 655-8404</a>
+            </div>
+          </div>
+          <div class="loc-row">
+            <div class="loc-icon">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 7.18 19.79 19.79 0 012 2.18 2 2 0 014 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+            </div>
+            <div>
+              <div class="loc-lbl">Also Available — Helen</div>
+              <a href="tel:3162025285" class="loc-val">(316) 202-5285</a>
+            </div>
+          </div>
+          <div class="loc-row">
+            <div class="loc-icon">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="loc-lbl">Email</div>
+              <a href="mailto:Barksanbubblesllc@gmail.com" class="loc-val">Barksanbubblesllc@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BANNER ── -->
+<section class="cta-sec">
+  <div class="cta-inner">
+    <div>
+      <h2>Ready to Book Your<br>Pup's Next Appointment?</h2>
+      <p>Call or text Helen or Laura to get scheduled. We'll make sure your dog gets the time and care they deserve.</p>
+    </div>
+    <div class="cta-btns">
+      <a href="tel:3166558404" class="btn-white">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 7.18 19.79 19.79 0 012 2.18 2 2 0 014 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+        Call (316) 655-8404
+      </a>
+      <a href="mailto:Barksanbubblesllc@gmail.com" class="btn-ghost">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Send an Email
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-logo">
+      <div class="footer-logo-badge">B<br>AN<br>B</div>
+      <span>Barks-An-Bubbles LLC</span>
+    </a>
+    <ul class="footer-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#hours">Hours &amp; Location</a></li>
+      <li><a href="tel:3166558404">(316) 655-8404</a></li>
+    </ul>
+    <p class="footer-copy">6100 E 21st St N, Suite 200 &mdash; Wichita, KS</p>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Mobile menu
+  function openMob()  { document.getElementById('mobMenu').classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeMob() { document.getElementById('mobMenu').classList.remove('open'); document.body.style.overflow = ''; }
+
+  // Scroll-in fade
+  const fadeEls = document.querySelectorAll('.fade');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .1 });
+  fadeEls.forEach(el => io.observe(el));
+
+  // Highlight today
+  const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const today = dayNames[new Date().getDay()];
+  document.querySelectorAll('#hoursTable tr').forEach(row => {
+    if (row.dataset.day === today) row.classList.add('today');
+  });
+</script>
+</body>
+</html>

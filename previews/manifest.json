@@ -1,5 +1,21 @@
 [
   {
+    "id": "610fit-academy",
+    "name": "610Fit Academy",
+    "category": "Personal Fitness Coach",
+    "city": "Waco, TX",
+    "price": 299,
+    "previewPath": "previews/610fit-academy",
+    "features": [
+      "Personal Training",
+      "Faith-Based Coaching",
+      "Podcast",
+      "Mobile Optimized"
+    ],
+    "contactEmail": "jenny@610fit.com",
+    "tier": 2
+  },
+  {
     "id": "andrews-cleaning-service",
     "name": "Andrew's Cleaning Service",
     "category": "Cleaning Service",
@@ -15,6 +31,24 @@
     ],
     "contactEmail": "lukewebsitemarket@gmail.com",
     "tier": 3
+  },
+  {
+    "id": "barks-an-bubbles",
+    "name": "Barks-An-Bubbles",
+    "category": "Pet Groomer",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/barks-an-bubbles",
+    "features": [
+      "Mobile Optimized",
+      "Service Menu",
+      "Reviews",
+      "Hours & Location",
+      "Click-to-Call",
+      "Google Maps"
+    ],
+    "contactEmail": "Barksanbubblesllc@gmail.com",
+    "tier": 1
   },
   {
     "id": "bonjours-puppy-parade",
@@ -113,6 +147,40 @@
       "Mobile Optimized"
     ],
     "contactEmail": "lavishmuttsllc@gmail.com",
+    "tier": 3
+  },
+  {
+    "id": "midway-custom-detailing",
+    "name": "Midway Custom Detailing",
+    "category": "Auto Detailing",
+    "city": "Waco, TX",
+    "price": 299,
+    "previewPath": "previews/midway-custom-detailing",
+    "features": [
+      "Mobile Service",
+      "Hand Wash",
+      "Interior Detail",
+      "Exterior Polish"
+    ],
+    "contactEmail": "MidwayCustomDetailing@gmail.com",
+    "tier": 1
+  },
+  {
+    "id": "nose-to-toes-pet-grooming",
+    "name": "Nose to Toes Pet Grooming",
+    "category": "Pet Grooming",
+    "city": "Andover, KS",
+    "price": 750,
+    "previewPath": "previews/nose-to-toes-pet-grooming",
+    "features": [
+      "Mobile Optimized",
+      "Hours & Location",
+      "Services Menu",
+      "Client Reviews",
+      "Click-to-Call",
+      "Google Maps Link"
+    ],
+    "contactEmail": "lukehenning9@gmail.com",
     "tier": 3
   },
   {

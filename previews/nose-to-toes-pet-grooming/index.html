@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nose to Toes Pet Grooming | Andover, KS</title>
+  <meta name="description" content="Professional pet grooming in Andover, KS. 100% recommended by clients. Full grooms, baths, nail trims and more — all breeds welcome. Call (316) 226-0599.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #f9f7f3;
+      --bg-alt:      #f1ede6;
+      --white:       #ffffff;
+      --dark:        #1b1814;
+      --dark-2:      #2a2520;
+      --teal:        #0d9488;
+      --teal-d:      #0f766e;
+      --teal-pale:   #ccfbf1;
+      --stone:       #6b6560;
+      --stone-lt:    #a8a29e;
+      --border:      #e4e0d9;
+      --font:        'Outfit', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--dark);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 66px;
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      z-index: 200;
+      transition: background .3s, box-shadow .3s;
+    }
+    .nav.scrolled {
+      background: rgba(249,247,243,.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav-inner {
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      text-decoration: none;
+      color: var(--dark);
+    }
+    .logo-mark {
+      width: 40px; height: 40px;
+      background: var(--teal);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .5px;
+      flex-shrink: 0;
+    }
+    .logo-name {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -.3px;
+    }
+    .logo-sub {
+      font-size: 10.5px;
+      font-weight: 400;
+      color: var(--stone);
+      letter-spacing: .6px;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+    @media (max-width: 768px) { .nav-links { display: none; } }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--stone);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--dark); }
+    .nav-actions { display: flex; align-items: center; gap: .65rem; }
+    .nav-phone {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      color: var(--stone);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    @media (max-width: 580px) { .nav-phone { display: none; } }
+    .nav-phone:hover { color: var(--teal); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      text-decoration: none;
+      font-family: var(--font);
+      font-weight: 600;
+      border-radius: 9px;
+      cursor: pointer;
+      border: none;
+      transition: background .2s, color .2s, border-color .2s, transform .15s, box-shadow .2s;
+    }
+    .btn:active { transform: scale(.97); }
+    .btn-teal {
+      background: var(--teal);
+      color: #fff;
+      padding: .6rem 1.2rem;
+      font-size: 14px;
+    }
+    .btn-teal:hover { background: var(--teal-d); transform: translateY(-1px); }
+    .btn-teal-lg {
+      background: var(--teal);
+      color: #fff;
+      padding: .85rem 1.85rem;
+      font-size: 15px;
+      border-radius: 11px;
+    }
+    .btn-teal-lg:hover { background: var(--teal-d); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(13,148,136,.25); }
+    .btn-outline-lg {
+      background: transparent;
+      color: var(--dark);
+      padding: .85rem 1.85rem;
+      font-size: 15px;
+      border-radius: 11px;
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline-lg:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-1px); }
+    .btn-outline-dark {
+      background: transparent;
+      color: #fff;
+      padding: .85rem 1.85rem;
+      font-size: 15px;
+      border-radius: 11px;
+      border: 1.5px solid rgba(255,255,255,.18);
+    }
+    .btn-outline-dark:hover { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.06); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100dvh;
+      display: grid;
+      grid-template-columns: 58% 42%;
+      padding-top: 66px;
+    }
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+    }
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 3.5rem 5rem 5vw;
+    }
+    @media (max-width: 1100px) { .hero-content { padding: 4rem 2.5rem 4rem 3rem; } }
+    @media (max-width: 900px) {
+      .hero-content {
+        padding: 3rem 1.5rem 3rem;
+        order: 2;
+      }
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      background: var(--teal-pale);
+      color: var(--teal-d);
+      padding: .3rem .85rem;
+      border-radius: 100px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: .7px;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      width: fit-content;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--teal);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 3.8vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      color: var(--dark);
+      margin-bottom: 1.4rem;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--stone);
+      line-height: 1.72;
+      max-width: 460px;
+      margin-bottom: 2.25rem;
+    }
+    .hero-actions {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.75rem;
+    }
+    .hero-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 2rem;
+    }
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      flex-wrap: wrap;
+    }
+    .stars {
+      display: flex;
+      gap: 2px;
+    }
+    .star-svg {
+      width: 16px; height: 16px;
+      fill: #f59e0b;
+      flex-shrink: 0;
+    }
+    .trust-label {
+      font-size: 13px;
+      color: var(--stone);
+      font-weight: 500;
+    }
+    .trust-label strong { color: var(--dark); }
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+    }
+    @media (max-width: 900px) {
+      .hero-visual {
+        min-height: 300px;
+        order: 1;
+      }
+    }
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+    .hero-fade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--bg) 0%, transparent 30%);
+      pointer-events: none;
+    }
+    @media (max-width: 900px) {
+      .hero-fade {
+        background: linear-gradient(to bottom, transparent 55%, var(--bg) 100%);
+      }
+    }
+
+    /* ── TRUST STRIP ── */
+    .trust-strip {
+      background: var(--dark);
+      padding: .9rem 1.5rem;
+    }
+    .trust-strip-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      row-gap: .65rem;
+    }
+    .t-item {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--stone-lt);
+      font-size: 13px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .t-item svg { color: var(--teal); flex-shrink: 0; }
+    .t-item strong { color: #fff; }
+
+    /* ── SHARED SECTION STYLES ── */
+    .sec { padding: 6rem 1.5rem; }
+    @media (max-width: 768px) { .sec { padding: 4rem 1.25rem; } }
+    .sec-inner { max-width: 1280px; margin: 0 auto; }
+    .sec-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--teal);
+      margin-bottom: .85rem;
+    }
+    .sec-h2 {
+      font-size: clamp(1.9rem, 3vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.12;
+      color: var(--dark);
+    }
+    .sec-p {
+      font-size: 1rem;
+      color: var(--stone);
+      line-height: 1.72;
+      max-width: 500px;
+      margin-top: .75rem;
+    }
+
+    /* ── SERVICES ── */
+    .services { background: var(--white); }
+    .services-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .services-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    .services-sticky { position: sticky; top: 90px; }
+    .services-cta { margin-top: 2.25rem; }
+    .svc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    @media (max-width: 600px) { .svc-grid { grid-template-columns: 1fr; } }
+    .svc-card {
+      padding: 1.6rem;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--bg);
+      transition: border-color .25s, box-shadow .25s, transform .25s;
+    }
+    .svc-card:hover {
+      border-color: var(--teal);
+      box-shadow: 0 8px 28px rgba(13,148,136,.09);
+      transform: translateY(-2px);
+    }
+    .svc-icon {
+      width: 40px; height: 40px;
+      background: var(--teal-pale);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: var(--teal);
+      margin-bottom: .9rem;
+    }
+    .svc-name {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: .35rem;
+    }
+    .svc-desc {
+      font-size: 13px;
+      color: var(--stone);
+      line-height: 1.6;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--bg); }
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .about-layout { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    .about-img-wrap {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+    @media (max-width: 900px) {
+      .about-img-wrap { aspect-ratio: 16/9; border-radius: 16px; }
+    }
+    .about-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .img-badge {
+      position: absolute;
+      bottom: 1.5rem; left: 1.5rem;
+      background: #fff;
+      border-radius: 12px;
+      padding: .9rem 1.2rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,.14);
+    }
+    .badge-num {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--teal);
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+    .badge-lbl {
+      font-size: 11.5px;
+      color: var(--stone);
+      font-weight: 500;
+      margin-top: .2rem;
+    }
+    .about-pts {
+      margin-top: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+    .abt-pt {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .pt-dot {
+      width: 8px; height: 8px;
+      background: var(--teal);
+      border-radius: 50%;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+    .pt-text {
+      font-size: 15px;
+      color: var(--stone);
+      line-height: 1.67;
+    }
+    .pt-text strong {
+      color: var(--dark);
+      font-weight: 600;
+      display: block;
+      margin-bottom: .12rem;
+    }
+
+    /* ── GALLERY ── */
+    .gallery-sec { background: var(--white); }
+    .gallery-hd { margin-bottom: 2.5rem; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 260px 260px;
+      gap: 1rem;
+    }
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+    }
+    @media (max-width: 540px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+    .gal-item {
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+    }
+    .gal-item:first-child { grid-row: span 2; }
+    @media (max-width: 900px) {
+      .gal-item:first-child { grid-column: span 2; aspect-ratio: 16/7; }
+    }
+    @media (max-width: 540px) {
+      .gal-item:first-child { grid-column: span 1; aspect-ratio: auto; }
+      .gal-item { aspect-ratio: 4/3; }
+    }
+    .gal-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+      display: block;
+    }
+    .gal-item:hover img { transform: scale(1.05); }
+
+    /* ── REVIEWS ── */
+    .reviews-sec { background: var(--bg-alt); }
+    .reviews-hd {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .rating-block {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .rating-num {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+    .rating-info {
+      display: flex;
+      flex-direction: column;
+      gap: .3rem;
+    }
+    .rating-count {
+      font-size: 12.5px;
+      color: var(--stone);
+    }
+    .rev-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 960px) { .rev-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 600px) { .rev-grid { grid-template-columns: 1fr; } }
+    .rev-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+    .rev-stars { display: flex; gap: 2px; margin-bottom: .7rem; }
+    .rev-star { width: 14px; height: 14px; fill: #f59e0b; }
+    .rev-text {
+      font-size: 13.5px;
+      color: var(--stone);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 1.25rem;
+    }
+    .rev-author { display: flex; align-items: center; gap: .7rem; }
+    .rev-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .rev-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .rev-date {
+      font-size: 11.5px;
+      color: var(--stone-lt);
+    }
+
+    /* ── CONTACT / CTA ── */
+    .contact-sec { background: var(--dark-2); }
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    .contact-sec .sec-label { color: var(--teal); }
+    .contact-sec .sec-h2 { color: #fff; }
+    .contact-sec .sec-p { color: #a8a29e; max-width: 420px; }
+    .cinfo-list {
+      margin-top: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .cinfo-row { display: flex; align-items: flex-start; gap: 1rem; }
+    .cinfo-icon {
+      width: 40px; height: 40px;
+      background: rgba(13,148,136,.15);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      color: var(--teal);
+      flex-shrink: 0;
+    }
+    .cinfo-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: var(--stone-lt);
+      margin-bottom: .25rem;
+    }
+    .cinfo-val {
+      font-size: 15px;
+      font-weight: 500;
+      color: #fff;
+      text-decoration: none;
+      transition: color .2s;
+      display: block;
+    }
+    a.cinfo-val:hover { color: var(--teal); }
+    .cta-box {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 18px;
+      padding: 2.5rem;
+    }
+    .cta-box-title {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -.5px;
+      margin-bottom: .7rem;
+    }
+    .cta-box-body {
+      font-size: 14px;
+      color: #a8a29e;
+      line-height: 1.7;
+      margin-bottom: 1.75rem;
+    }
+    .cta-box .btn-teal-lg {
+      width: 100%;
+      justify-content: center;
+    }
+    .cta-sub {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 12px;
+      color: #6b6560;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--dark);
+      padding: 1.75rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 12.5px; color: #4a4540; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a {
+      font-size: 12.5px;
+      color: #4a4540;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--stone-lt); }
+
+    /* ── SCROLL REVEAL ── */
+    .rv {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .rv.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .rv.d1 { transition-delay: .08s; }
+    .rv.d2 { transition-delay: .16s; }
+    .rv.d3 { transition-delay: .24s; }
+    .rv.d4 { transition-delay: .32s; }
+    .rv.d5 { transition-delay: .40s; }
+  </style>
+</head>
+<body>
+
+  <!-- ──────────────────── NAV ──────────────────── -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="logo-mark">N·T</div>
+        <div>
+          <div class="logo-name">Nose to Toes</div>
+          <div class="logo-sub">Pet Grooming</div>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="tel:3162260599" class="nav-phone">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.14 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          (316) 226-0599
+        </a>
+        <a href="tel:3162260599" class="btn btn-teal">Book Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ──────────────────── HERO ──────────────────── -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Andover, Kansas</div>
+      <h1>Your pet deserves the best, every single visit.</h1>
+      <p class="hero-sub">
+        Professional grooming for dogs of all breeds and sizes. From quick nail trims to full show-ready cuts — handled with patience, care, and genuine love for animals.
+      </p>
+      <div class="hero-actions">
+        <a href="tel:3162260599" class="btn btn-teal-lg">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.14 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          Call to Book
+        </a>
+        <a href="https://maps.google.com/?q=321+S+Andover+Rd+Suite+300+Andover+KS" target="_blank" rel="noopener" class="btn btn-outline-lg">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Get Directions
+        </a>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-trust">
+        <div class="stars">
+          <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div class="trust-label"><strong>100% recommended</strong>&nbsp;&nbsp;·&nbsp;&nbsp;26 client reviews</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img
+        src="https://images.pexels.com/photos/5630233/pexels-photo-5630233.jpeg?auto=compress&cs=tinysrgb&w=700&h=950&fit=crop"
+        alt="Happy freshly groomed dog at Nose to Toes Pet Grooming in Andover, KS"
+      >
+      <div class="hero-fade"></div>
+    </div>
+  </section>
+
+  <!-- ──────────────────── TRUST STRIP ──────────────────── -->
+  <div class="trust-strip">
+    <div class="trust-strip-inner">
+      <div class="t-item">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span><strong>100% Recommended</strong></span>
+      </div>
+      <div class="t-item">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        <span><strong>26 Happy Clients</strong>&nbsp;Reviewed</span>
+      </div>
+      <div class="t-item">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>321 S Andover Rd, Suite 300&nbsp;·&nbsp;<strong>Andover, KS</strong></span>
+      </div>
+      <div class="t-item">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.14 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        <span><strong>(316) 226-0599</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──────────────────── SERVICES ──────────────────── -->
+  <section class="sec services" id="services">
+    <div class="sec-inner">
+      <div class="services-layout">
+        <div class="services-sticky">
+          <span class="sec-label rv">Services</span>
+          <h2 class="sec-h2 rv">Everything your pet needs, done right.</h2>
+          <p class="sec-p rv">From routine maintenance to breed-specific styling — every service is performed with patience, care, and real expertise.</p>
+          <div class="services-cta rv">
+            <a href="tel:3162260599" class="btn btn-teal-lg">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.14 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+              Call to Schedule
+            </a>
+          </div>
+        </div>
+        <div class="svc-grid">
+
+          <div class="svc-card rv">
+            <div class="svc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 3h12l4 6-10 13L2 9z"/>
+                <path d="M11 3 8 9l4 13 4-13-3-6"/>
+                <path d="M2 9h20"/>
+              </svg>
+            </div>
+            <div class="svc-name">Full Service Groom</div>
+            <div class="svc-desc">Bath, blow dry, breed-specific cut, nail trim, ear cleaning, and a fresh bandana — the complete package.</div>
+          </div>
+
+          <div class="svc-card rv d1">
+            <div class="svc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                <path d="M8 12s1.5 2 4 2 4-2 4-2"/>
+                <line x1="9" y1="9" x2="9.01" y2="9"/>
+                <line x1="15" y1="9" x2="15.01" y2="9"/>
+              </svg>
+            </div>
+            <div class="svc-name">Bath & Brush Out</div>
+            <div class="svc-desc">Shampoo, conditioning treatment, thorough blow dry, and a full brush-out for a silky, healthy coat.</div>
+          </div>
+
+          <div class="svc-card rv d2">
+            <div class="svc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="6" y1="3" x2="6" y2="15"/>
+                <circle cx="18" cy="6" r="3"/>
+                <circle cx="6" cy="18" r="3"/>
+                <path d="M18 9a9 9 0 01-9 9"/>
+              </svg>
+            </div>
+            <div class="svc-name">Nail Trim & File</div>
+            <div class="svc-desc">Clipping and filing for smooth, comfortable nails — gentle enough for even anxious dogs.</div>
+          </div>
+
+          <div class="svc-card rv d3">
+            <div class="svc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 18v-6a9 9 0 0118 0v6"/>
+                <path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3v5z"/>
+                <path d="M3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3v5z"/>
+              </svg>
+            </div>
+            <div class="svc-name">Ear Cleaning</div>
+            <div class="svc-desc">Gentle ear canal cleaning and hair removal to keep ears healthy and prevent buildup.</div>
+          </div>
+
+          <div class="svc-card rv d2">
+            <div class="svc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="svc-name">Teeth Brushing</div>
+            <div class="svc-desc">Pet-safe dental cleaning to freshen breath and support long-term oral health between vet visits.</div>
+          </div>
+
+          <div class="svc-card rv d3">
+            <div class="svc-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 4 23 10 17 10"/>
+                <polyline points="1 20 1 14 7 14"/>
+                <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+              </svg>
+            </div>
+            <div class="svc-name">De-Shedding Treatment</div>
+            <div class="svc-desc">Specialized shampoo and thorough brush-out that dramatically cuts down on shedding at home.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────── ABOUT ──────────────────── -->
+  <section class="sec about" id="about">
+    <div class="sec-inner">
+      <div class="about-layout">
+        <div class="about-img-wrap rv">
+          <img
+            src="https://images.pexels.com/photos/9378527/pexels-photo-9378527.jpeg?auto=compress&cs=tinysrgb&w=600&h=750&fit=crop"
+            alt="Professional pet groomer working at Nose to Toes salon in Andover, KS"
+          >
+          <div class="img-badge">
+            <div class="badge-num">100%</div>
+            <div class="badge-lbl">Client Recommendation Rate</div>
+          </div>
+        </div>
+        <div>
+          <span class="sec-label rv">About Us</span>
+          <h2 class="sec-h2 rv">Groomers who genuinely love what they do.</h2>
+          <p class="sec-p rv">
+            At Nose to Toes, every member of our team brings real skill and genuine affection for the animals in their care. Clients keep coming back — and they keep bringing their friends — because their pets leave happy and it shows.
+          </p>
+          <div class="about-pts">
+            <div class="abt-pt rv d1">
+              <div class="pt-dot"></div>
+              <div class="pt-text">
+                <strong>All breeds, all sizes</strong>
+                From compact Shih Tzus to 65-pound Labs and everything in between — we're experienced and comfortable with every dog that comes through our door.
+              </div>
+            </div>
+            <div class="abt-pt rv d2">
+              <div class="pt-dot"></div>
+              <div class="pt-text">
+                <strong>We listen to what you want</strong>
+                Every cut starts with a conversation. We pay attention to your preferences and communicate throughout the appointment by phone or text.
+              </div>
+            </div>
+            <div class="abt-pt rv d3">
+              <div class="pt-dot"></div>
+              <div class="pt-text">
+                <strong>Reminders sent in advance</strong>
+                We send appointment reminders a few days ahead so you never miss a visit and your pet always stays on schedule.
+              </div>
+            </div>
+            <div class="abt-pt rv d4">
+              <div class="pt-dot"></div>
+              <div class="pt-text">
+                <strong>Same-day scheduling available</strong>
+                Need it done today? We do our best to fit you in — no week-long waits when your dog can't wait.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────── GALLERY ──────────────────── -->
+  <section class="sec gallery-sec">
+    <div class="sec-inner">
+      <div class="gallery-hd">
+        <span class="sec-label rv">Gallery</span>
+        <h2 class="sec-h2 rv">Happy dogs. Every single time.</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gal-item rv">
+          <img src="https://images.pexels.com/photos/840326/pexels-photo-840326.jpeg?auto=compress&cs=tinysrgb&w=800&h=900&fit=crop" alt="Golden retriever puppy freshly groomed at Nose to Toes">
+        </div>
+        <div class="gal-item rv d1">
+          <img src="https://images.pexels.com/photos/3299904/pexels-photo-3299904.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" alt="Fluffy dog after full service groom at Nose to Toes">
+        </div>
+        <div class="gal-item rv d2">
+          <img src="https://images.pexels.com/photos/16177879/pexels-photo-16177879.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" alt="Chocolate labradoodle close-up at Nose to Toes Pet Grooming">
+        </div>
+        <div class="gal-item rv d1">
+          <img src="https://images.pexels.com/photos/16234670/pexels-photo-16234670.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" alt="Black Labrador puppy portrait at Nose to Toes">
+        </div>
+        <div class="gal-item rv d2">
+          <img src="https://images.pexels.com/photos/17880518/pexels-photo-17880518.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop" alt="Fluffy white dog portrait after grooming">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────── REVIEWS ──────────────────── -->
+  <section class="sec reviews-sec" id="reviews">
+    <div class="sec-inner">
+      <div class="reviews-hd">
+        <div>
+          <span class="sec-label rv">Reviews</span>
+          <h2 class="sec-h2 rv">What Andover pet owners are saying.</h2>
+        </div>
+        <div class="rating-block rv">
+          <div class="rating-num">5.0</div>
+          <div class="rating-info">
+            <div class="stars">
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg class="star-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <div class="rating-count">26 reviews · 100% recommend</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rev-grid">
+
+        <div class="rev-card rv">
+          <div class="rev-stars">
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="rev-text">"I followed Miranda from another grooming facility because she is just that good. She takes great care of my Nala and always gives her the perfect cut."</p>
+          <div class="rev-author">
+            <img class="rev-avatar" src="https://ui-avatars.com/api/?name=Laquita+Clark&background=ccfbf1&color=0d9488&rounded=true&bold=true&size=72" alt="Laquita Clark">
+            <div>
+              <div class="rev-name">Laquita Lugrand Clark</div>
+              <div class="rev-date">November 2025</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rev-card rv d1">
+          <div class="rev-stars">
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="rev-text">"This place is amazing! Treated all three of my bulldogs wonderfully and scheduled the same day! Definitely will return. Support small business."</p>
+          <div class="rev-author">
+            <img class="rev-avatar" src="https://ui-avatars.com/api/?name=Amanda+Stevens&background=e0f2fe&color=0369a1&rounded=true&bold=true&size=72" alt="Amanda Stevens">
+            <div>
+              <div class="rev-name">Amanda Stevens</div>
+              <div class="rev-date">June 2024</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rev-card rv d2">
+          <div class="rev-stars">
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="rev-text">"Courtnee is amazing! Not only does my doodle adore her, but it's clear she truly loves all her clients. Professional, always listening to what cut I want, and sends reminders in advance. Highly recommend."</p>
+          <div class="rev-author">
+            <img class="rev-avatar" src="https://ui-avatars.com/api/?name=Karin+Jonas&background=fef9c3&color=a16207&rounded=true&bold=true&size=72" alt="Karin Jonas">
+            <div>
+              <div class="rev-name">Karin Markey Jonas</div>
+              <div class="rev-date">July 2023</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rev-card rv d1">
+          <div class="rev-stars">
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="rev-text">"First time visiting for our two boys, Miller and Murphy. Great staff — they made both dogs feel completely comfortable. We'll be back."</p>
+          <div class="rev-author">
+            <img class="rev-avatar" src="https://ui-avatars.com/api/?name=Rod+Henricks&background=ede9fe&color=5b21b6&rounded=true&bold=true&size=72" alt="Rod Henricks">
+            <div>
+              <div class="rev-name">Rod Henricks</div>
+              <div class="rev-date">May 2023</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rev-card rv d2">
+          <div class="rev-stars">
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="rev-text">"Miranda is the best! She loves Roxy as if she is her own. I always know Roxy is in good hands with her. Wouldn't take her anywhere else."</p>
+          <div class="rev-author">
+            <img class="rev-avatar" src="https://ui-avatars.com/api/?name=Stacy+Parks&background=fce7f3&color=9d174d&rounded=true&bold=true&size=72" alt="Stacy Parks">
+            <div>
+              <div class="rev-name">Stacy Parks</div>
+              <div class="rev-date">March 2023</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rev-card rv d3">
+          <div class="rev-stars">
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="rev-text">"My first experience dropping off my 65-pound Labs. They did absolutely amazing with them — I had two very happy pups when I picked them up. I highly recommend them for any grooming needs."</p>
+          <div class="rev-author">
+            <img class="rev-avatar" src="https://ui-avatars.com/api/?name=Mindy+West-Loch&background=dcfce7&color=15803d&rounded=true&bold=true&size=72" alt="Mindy West-Loch">
+            <div>
+              <div class="rev-name">Mindy West-Loch</div>
+              <div class="rev-date">March 2023</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────── CONTACT ──────────────────── -->
+  <section class="sec contact-sec" id="contact">
+    <div class="sec-inner">
+      <div class="contact-layout">
+        <div>
+          <span class="sec-label rv">Contact</span>
+          <h2 class="sec-h2 rv">Ready to book an appointment?</h2>
+          <p class="sec-p rv">Give us a call or send a text — we'll get your dog scheduled and send you a reminder before the day arrives.</p>
+          <div class="cinfo-list">
+            <div class="cinfo-row rv d1">
+              <div class="cinfo-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.14 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+              </div>
+              <div>
+                <div class="cinfo-label">Phone / Text</div>
+                <a href="tel:3162260599" class="cinfo-val">(316) 226-0599</a>
+              </div>
+            </div>
+            <div class="cinfo-row rv d2">
+              <div class="cinfo-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <div class="cinfo-label">Location</div>
+                <a href="https://maps.google.com/?q=321+S+Andover+Rd+Suite+300+Andover+KS" target="_blank" rel="noopener" class="cinfo-val">321 S Andover Rd, Suite 300<br>Andover, KS</a>
+              </div>
+            </div>
+            <div class="cinfo-row rv d3">
+              <div class="cinfo-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div>
+                <div class="cinfo-label">Scheduling</div>
+                <span class="cinfo-val">By appointment — call or text to book</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rv d2">
+          <div class="cta-box">
+            <div class="cta-box-title">Book Your Dog's Appointment</div>
+            <p class="cta-box-body">
+              Call or text us at <strong style="color:#fff;">(316) 226-0599</strong> to schedule. We serve Andover, Wichita, and surrounding communities. All breeds welcome.
+            </p>
+            <a href="tel:3162260599" class="btn btn-teal-lg">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.14 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+              Call (316) 226-0599
+            </a>
+            <div class="cta-sub">Or text us anytime — we'll get back to you quickly.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────── FOOTER ──────────────────── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-copy">
+        &copy; 2025 Nose to Toes Pet Grooming &nbsp;·&nbsp; Andover, KS &nbsp;·&nbsp; (316) 226-0599
+      </div>
+      <div class="footer-links">
+        <a href="tel:3162260599">Call Us</a>
+        <a href="https://maps.google.com/?q=321+S+Andover+Rd+Suite+300+Andover+KS" target="_blank" rel="noopener">Directions</a>
+        <a href="#services">Services</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // Scroll reveal via IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.rv').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
