@@ -116,6 +116,23 @@
     "tier": 3
   },
   {
+    "id": "nathanael-white-training-wellness",
+    "name": "Nathanael White Training & Wellness",
+    "category": "Personal Training & Wellness",
+    "city": "Waco, TX",
+    "price": 299,
+    "previewPath": "previews/nathanael-white-training-wellness",
+    "features": [
+      "1-on-1 Personal Training",
+      "Strength Training",
+      "Weight Loss Programs",
+      "Wellness Coaching",
+      "Beginner Fitness"
+    ],
+    "contactEmail": "",
+    "tier": 1
+  },
+  {
     "id": "papa-jacks-bbq",
     "name": "Papa Jack's BBQ",
     "category": "BBQ Restaurant",
