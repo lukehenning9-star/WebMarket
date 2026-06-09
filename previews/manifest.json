@@ -166,6 +166,24 @@
     "tier": 1
   },
   {
+    "id": "nose-to-toes-pet-grooming",
+    "name": "Nose to Toes Pet Grooming",
+    "category": "Pet Grooming",
+    "city": "Andover, KS",
+    "price": 750,
+    "previewPath": "previews/nose-to-toes-pet-grooming",
+    "features": [
+      "Mobile Optimized",
+      "Hours & Location",
+      "Services Menu",
+      "Client Reviews",
+      "Click-to-Call",
+      "Google Maps Link"
+    ],
+    "contactEmail": "lukehenning9@gmail.com",
+    "tier": 3
+  },
+  {
     "id": "papa-jacks-bbq",
     "name": "Papa Jack's BBQ",
     "category": "BBQ Restaurant",
