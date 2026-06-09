@@ -1,5 +1,21 @@
 [
   {
+    "id": "610fit-academy",
+    "name": "610Fit Academy",
+    "category": "Personal Fitness Coach",
+    "city": "Waco, TX",
+    "price": 299,
+    "previewPath": "previews/610fit-academy",
+    "features": [
+      "Personal Training",
+      "Faith-Based Coaching",
+      "Podcast",
+      "Mobile Optimized"
+    ],
+    "contactEmail": "jenny@610fit.com",
+    "tier": 2
+  },
+  {
     "id": "andrews-cleaning-service",
     "name": "Andrew's Cleaning Service",
     "category": "Cleaning Service",
