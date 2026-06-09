@@ -92,7 +92,7 @@ function showPricing(businessId, tier) {
             <p class="pricing-legal">${setup} setup + your chosen plan charged today. Renews automatically.</p>
         </div>`;
     modalBuyBtn.innerHTML = '← Back to preview';
-    modalBuyBtn.onclick = () => hidePricing();
+    modalBuyBtn.onclick = () => hidePricing(businessId, tier);
 }
 
 async function startCheckout(businessId, plan, tier) {
@@ -109,10 +109,14 @@ async function startCheckout(businessId, plan, tier) {
     }
 }
 
-function hidePricing() {
+function hidePricing(businessId, tier) {
     modalPricing.style.display = 'none';
     modalPricing.innerHTML = '';
     modalIframe.style.display = '';
+    if (businessId) {
+        modalBuyBtn.innerHTML = '<span class="btn-text-full">Purchase This Website</span><span class="btn-text-short">Buy</span>';
+        modalBuyBtn.onclick = () => showPricing(businessId, tier);
+    }
 }
 
 function closeModal() {
