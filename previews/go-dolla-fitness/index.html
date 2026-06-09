@@ -368,6 +368,20 @@
       border-radius: 20px; padding: 30px; scroll-snap-align: start;
       transition: border-color 0.25s;
     }
+    @media (max-width: 640px) {
+      .reviews-scroll {
+        flex-direction: column;
+        overflow-x: visible;
+        padding-bottom: 0;
+        scroll-snap-type: none;
+        gap: 12px;
+      }
+      .review-card {
+        min-width: unset;
+        width: 100%;
+        flex-shrink: 1;
+      }
+    }
     .review-card:hover { border-color: rgba(29,111,232,0.24); }
     .r-stars { display: flex; gap: 3px; margin-bottom: 14px; }
     .r-star { width: 14px; height: 14px; fill: var(--accent); }
