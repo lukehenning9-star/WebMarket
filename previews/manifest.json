@@ -1,5 +1,73 @@
 [
   {
+    "id": "610fit-academy",
+    "name": "610Fit Academy",
+    "category": "Personal Fitness Coach",
+    "city": "Waco, TX",
+    "price": 299,
+    "previewPath": "previews/610fit-academy",
+    "features": [
+      "Personal Training",
+      "Faith-Based Coaching",
+      "Podcast",
+      "Mobile Optimized"
+    ],
+    "contactEmail": "jenny@610fit.com",
+    "tier": 3
+  },
+  {
+    "id": "andrews-cleaning-service",
+    "name": "Andrew's Cleaning Service",
+    "category": "Cleaning Service",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/andrews-cleaning-service",
+    "features": [
+      "Residential Cleaning",
+      "Deep Cleaning",
+      "Move-In/Out",
+      "Commercial",
+      "Mobile Optimized"
+    ],
+    "contactEmail": "lukewebsitemarket@gmail.com",
+    "tier": 3
+  },
+  {
+    "id": "barks-an-bubbles",
+    "name": "Barks-An-Bubbles",
+    "category": "Pet Groomer",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/barks-an-bubbles",
+    "features": [
+      "Mobile Optimized",
+      "Service Menu",
+      "Reviews",
+      "Hours & Location",
+      "Click-to-Call",
+      "Google Maps"
+    ],
+    "contactEmail": "Barksanbubblesllc@gmail.com",
+    "tier": 3
+  },
+  {
+    "id": "bonjours-puppy-parade",
+    "name": "Bonjour's Puppy Parade",
+    "category": "Pet Grooming",
+    "city": "Wichita, KS",
+    "price": 750,
+    "previewPath": "previews/bonjours-puppy-parade",
+    "features": [
+      "Dog & Cat Grooming",
+      "All Breeds Welcome",
+      "Mobile Optimized",
+      "Hours & Location",
+      "Services Menu"
+    ],
+    "contactEmail": "lukewebsitemarket@gmail.com",
+    "tier": 3
+  },
+  {
     "id": "go-dolla-fitness",
     "name": "Go Dolla Fitness",
     "category": "Personal Training Gym",
@@ -12,22 +80,8 @@
       "Community Sessions",
       "Strength & Conditioning"
     ],
-    "contactEmail": ""
-  },
-  {
-    "id": "golden-wok",
-    "name": "Golden Wok",
-    "category": "Chinese Restaurant",
-    "city": "Austin, TX",
-    "price": 400,
-    "previewPath": "previews/golden-wok",
-    "features": [
-      "Online Menu",
-      "Photo Gallery",
-      "Mobile Optimized",
-      "Hours & Location"
-    ],
-    "contactEmail": ""
+    "contactEmail": "",
+    "tier": 3
   },
   {
     "id": "julius-rib-cage",
@@ -41,7 +95,24 @@
       "Mobile Optimized",
       "Call-to-Order"
     ],
-    "contactEmail": "lukewebsitemarket@gmail.com"
+    "contactEmail": "lukewebsitemarket@gmail.com",
+    "tier": 2
+  },
+  {
+    "id": "just-like-mamas-kitchen",
+    "name": "Just Like Mama's Kitchen",
+    "category": "Soul Food",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/just-like-mamas-kitchen",
+    "features": [
+      "Full Menu",
+      "Customer Reviews",
+      "Mobile Optimized",
+      "Click to Call"
+    ],
+    "contactEmail": "lukehenning9@gmail.com",
+    "tier": 2
   },
   {
     "id": "keep-it-cute-grooming",
@@ -56,21 +127,145 @@
       "Hours & Location",
       "Services Menu"
     ],
-    "contactEmail": "oquinn588@gmail.com"
+    "contactEmail": "oquinn588@gmail.com",
+    "tier": 3
   },
   {
-    "id": "marios-pizza",
-    "name": "Mario's Pizza",
-    "category": "Italian Restaurant",
-    "city": "Dallas, TX",
-    "price": 400,
-    "previewPath": "previews/marios-pizza",
+    "id": "lavish-mutts-llc",
+    "name": "Lavish Mutts",
+    "category": "Pet Grooming",
+    "city": "Wichita, KS",
+    "price": 399,
+    "previewPath": "previews/lavish-mutts-llc",
+    "features": [
+      "Online Booking",
+      "Full Grooming",
+      "Bath Services",
+      "Nail Trims",
+      "Memberships",
+      "Cat Grooming",
+      "Mobile Optimized"
+    ],
+    "contactEmail": "lavishmuttsllc@gmail.com",
+    "tier": 3
+  },
+  {
+    "id": "midway-custom-detailing",
+    "name": "Midway Custom Detailing",
+    "category": "Auto Detailing",
+    "city": "Waco, TX",
+    "price": 299,
+    "previewPath": "previews/midway-custom-detailing",
+    "features": [
+      "Mobile Service",
+      "Hand Wash",
+      "Interior Detail",
+      "Exterior Polish"
+    ],
+    "contactEmail": "MidwayCustomDetailing@gmail.com",
+    "tier": 3
+  },
+  {
+    "id": "nose-to-toes-pet-grooming",
+    "name": "Nose to Toes Pet Grooming",
+    "category": "Pet Grooming",
+    "city": "Andover, KS",
+    "price": 750,
+    "previewPath": "previews/nose-to-toes-pet-grooming",
+    "features": [
+      "Mobile Optimized",
+      "Hours & Location",
+      "Services Menu",
+      "Client Reviews",
+      "Click-to-Call",
+      "Google Maps Link"
+    ],
+    "contactEmail": "lukehenning9@gmail.com",
+    "tier": 3
+  },
+  {
+    "id": "papa-jacks-bbq",
+    "name": "Papa Jack's BBQ",
+    "category": "BBQ Restaurant",
+    "city": "Waco, TX",
+    "price": 399,
+    "previewPath": "previews/papa-jacks-bbq",
+    "features": [
+      "Full Menu",
+      "Online Menu",
+      "Mobile Optimized",
+      "Call-to-Order",
+      "Google Maps Link"
+    ],
+    "contactEmail": "lukewebsitemarket@gmail.com",
+    "tier": 2
+  },
+  {
+    "id": "tanker-bbq-co",
+    "name": "Tanker BBQ Co.",
+    "category": "Barbeque",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/tanker-bbq-co",
+    "features": [
+      "Full Menu",
+      "Online Ordering",
+      "Google Maps",
+      "Mobile Optimized",
+      "Photo Gallery"
+    ],
+    "contactEmail": "",
+    "tier": 2
+  },
+  {
+    "id": "taste-of-flavorz",
+    "name": "Taste of Flavorz",
+    "category": "Soul Food Restaurant",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/taste-of-flavorz",
+    "features": [
+      "Full Menu",
+      "Saturday Special",
+      "Customer Reviews",
+      "Hours & Location",
+      "Mobile Optimized",
+      "Google Maps Link"
+    ],
+    "contactEmail": "lukehenning9@gmail.com",
+    "tier": 2
+  },
+  {
+    "id": "the-dapper-hound",
+    "name": "The Dapper Hound",
+    "category": "Dog Grooming",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/the-dapper-hound",
+    "features": [
+      "All Breed Grooming",
+      "Photo Gallery",
+      "Mobile Friendly",
+      "Reviews",
+      "Contact Form"
+    ],
+    "contactEmail": "TheDapperHound1@gmail.com",
+    "tier": 3
+  },
+  {
+    "id": "the-eatery",
+    "name": "The Eatery",
+    "category": "Soul Food Restaurant",
+    "city": "Wichita, KS",
+    "price": 299,
+    "previewPath": "previews/the-eatery",
     "features": [
       "Online Menu",
-      "Contact Form",
       "Mobile Optimized",
-      "Google Maps"
+      "Call-to-Order",
+      "Delivery & Takeout"
     ],
-    "contactEmail": ""
+    "contactEmail": "lukewebsitemarket@gmail.com",
+    "tier": 2
   }
 ]

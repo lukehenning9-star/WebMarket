@@ -64,11 +64,11 @@ function openPreview(businessId) {
 }
 
 function showPricing(businessId, tier) {
-    const t2 = tier === 2;
-    const setup   = t2 ? '$750' : '$400';
-    const monthly = t2 ? '$75'  : '$50';
-    const yearly  = t2 ? '$750' : '$500';
-    const savings = t2 ? 'Save $150 vs monthly' : 'Save $100 vs monthly';
+    const t3 = tier === 3;
+    const setup   = t3 ? '$1,000' : '$750';
+    const monthly = t3 ? '$100'   : '$75';
+    const yearly  = t3 ? '$1,000' : '$750';
+    const savings = t3 ? 'Save $200 vs monthly' : 'Save $150 vs monthly';
 
     modalIframe.style.display = 'none';
     modalLoading.style.display = 'none';
@@ -78,12 +78,12 @@ function showPricing(businessId, tier) {
             <h2 class="pricing-title">Get your website live</h2>
             <p class="pricing-sub">${setup} one-time setup fee included with your first payment.</p>
             <div class="pricing-plans">
-                <button class="plan-card" onclick="startCheckout('${escAttr(businessId)}','monthly',${tier || 1})">
+                <button class="plan-card" onclick="startCheckout('${escAttr(businessId)}','monthly',${tier || 2})">
                     <span class="plan-name">Monthly</span>
                     <span class="plan-price">${monthly}<em>/mo</em></span>
                     <span class="plan-note">Cancel anytime</span>
                 </button>
-                <button class="plan-card plan-card--featured" onclick="startCheckout('${escAttr(businessId)}','yearly',${tier || 1})">
+                <button class="plan-card plan-card--featured" onclick="startCheckout('${escAttr(businessId)}','yearly',${tier || 2})">
                     <span class="plan-name">Yearly</span>
                     <span class="plan-price">${yearly}<em>/yr</em></span>
                     <span class="plan-note">${savings}</span>
@@ -100,7 +100,7 @@ async function startCheckout(businessId, plan, tier) {
         const res = await fetch('/api/checkout', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ plan, businessId, tier: tier || 1 }),
+            body: JSON.stringify({ plan, businessId, tier: tier || 2 }),
         });
         const { url } = await res.json();
         window.location.href = url;

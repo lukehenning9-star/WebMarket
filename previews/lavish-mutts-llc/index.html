@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lavish Mutts — Premium pet grooming salon in Wichita, Kansas. Full grooms, baths, nail trims, memberships, and more. Book online 24/7.">
+  <title>Lavish Mutts — Premium Pet Grooming | Wichita, KS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ── Tokens ── */
+    :root {
+      --cream:       #faf7f2;
+      --cream-mid:   #f0e8dc;
+      --cream-dark:  #e5d9cc;
+      --off-black:   #1c1714;
+      --brown:       #8b6a48;
+      --gold:        #c4a46b;
+      --gold-hover:  #b8936e;
+      --text-1:      #1c1714;
+      --text-2:      #7a6b5e;
+      --text-3:      #a89988;
+      --border:      #e5d9cc;
+      --surface:     #ffffff;
+      --shadow:      rgba(139, 106, 72, 0.13);
+    }
+
+    /* ── Base ── */
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--cream);
+      color: var(--text-1);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.65s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━
+       NAV
+    ━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(250,247,242,0.93);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s ease;
+    }
+    .nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+
+    .nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-logo { text-decoration: none; margin-right: auto; display: flex; flex-direction: column; line-height: 1; }
+    .nav-logo-main { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--text-1); letter-spacing: -0.01em; }
+    .nav-logo-sub  { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-top: 2px; }
+
+    .nav-links { list-style: none; display: flex; gap: 2rem; }
+    .nav-links a { text-decoration: none; font-size: 0.85rem; font-weight: 400; color: var(--text-2); letter-spacing: 0.02em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text-1); }
+
+    .nav-book {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.55rem 1.35rem;
+      background: var(--off-black);
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      white-space: nowrap;
+      transition: all 0.25s cubic-bezier(0.16,1,0.3,1);
+    }
+    .nav-book:hover { background: var(--brown); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(139,106,72,0.25); }
+    .nav-book:active { transform: scale(0.98); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px 4px;
+    }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-1); border-radius: 1px; transition: all 0.3s cubic-bezier(0.16,1,0.3,1); transform-origin: center; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0; bottom: 0;
+      background: var(--cream);
+      z-index: 190;
+      flex-direction: column;
+      padding: 3rem 2.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: 'Playfair Display', serif; font-size: 2.25rem; font-weight: 500; color: var(--text-1); text-decoration: none; padding: 1rem 0; border-bottom: 1px solid var(--border); letter-spacing: -0.02em; transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .m-book { font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brown); border-bottom: none; margin-top: 2rem; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━
+       HERO
+    ━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .hero {
+      min-height: 100dvh;
+      padding-top: 72px;
+      display: grid;
+      grid-template-columns: 52% 48%;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 4rem 5rem 10vw;
+      background: var(--cream);
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1.75rem;
+      opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.75rem);
+      font-weight: 500; line-height: 1.08; letter-spacing: -0.025em; color: var(--text-1);
+      margin-bottom: 1.75rem;
+      opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.35s forwards;
+    }
+    .hero-title em { font-style: italic; color: var(--brown); }
+
+    .hero-desc {
+      font-size: 1.05rem; font-weight: 300; color: var(--text-2); line-height: 1.75; max-width: 40ch;
+      margin-bottom: 3rem;
+      opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;
+    }
+
+    .hero-actions {
+      display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.65s forwards;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 1.05rem 2.25rem;
+      background: var(--off-black); color: var(--cream); text-decoration: none;
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      border-radius: 2px;
+      transition: all 0.25s cubic-bezier(0.16,1,0.3,1);
+    }
+    .btn-primary:hover { background: var(--brown); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(139,106,72,0.25); }
+    .btn-primary:active { transform: translateY(-1px) scale(0.99); }
+    .btn-primary svg { flex-shrink: 0; transition: transform 0.2s ease; }
+    .btn-primary:hover svg { transform: translateX(3px); }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center;
+      padding: 0.5rem 0;
+      color: var(--text-1); text-decoration: none;
+      font-size: 0.85rem; font-weight: 500;
+      border-bottom: 1.5px solid var(--text-1);
+      transition: all 0.2s ease;
+    }
+    .btn-ghost:hover { color: var(--brown); border-color: var(--brown); }
+
+    .hero-stats {
+      margin-top: 4.5rem; padding-top: 2rem; border-top: 1px solid var(--border);
+      display: flex; gap: 3rem;
+      opacity: 0; animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.8s forwards;
+    }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 600; color: var(--text-1); letter-spacing: -0.025em; line-height: 1; display: block; }
+    .stat-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); display: block; margin-top: 0.2rem; }
+
+    .hero-image {
+      position: relative; overflow: hidden; background: var(--cream-dark);
+    }
+    .hero-image img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 8s ease; }
+    .hero-image:hover img { transform: scale(1.04); }
+    .hero-image::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, var(--cream) 0%, transparent 18%);
+      z-index: 1; pointer-events: none;
+    }
+
+    .scroll-hint {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      opacity: 0; animation: fadeUp 0.8s ease 1.2s forwards;
+    }
+    .scroll-hint span { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-3); }
+    .scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, var(--text-3), transparent); animation: scrollPulse 2.2s ease infinite; }
+
+    @keyframes fadeUp    { from { opacity:0; transform: translateY(22px); } to { opacity:1; transform: translateY(0); } }
+    @keyframes scrollPulse { 0%,100% { opacity:0.3; } 50% { opacity:0.9; } }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━
+       SHARED UTILS
+    ━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .wrap { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; }
+    .sec-eye   { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,3.5rem); font-weight: 500; line-height: 1.1; letter-spacing: -0.025em; color: var(--text-1); }
+    .sec-sub   { margin-top: 1rem; font-size: 1rem; font-weight: 300; color: var(--text-2); line-height: 1.75; max-width: 52ch; }
+    .sec-head  { margin-bottom: 5rem; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━
+       ABOUT
+    ━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .about { padding: 9rem 0; background: var(--surface); }
+
+    .about-grid { display: grid; grid-template-columns: 5fr 4fr; gap: 7rem; align-items: center; }
+
+    .about-eye { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+    .about-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem,3.5vw,3rem); font-weight: 500; line-height: 1.15; letter-spacing: -0.02em; color: var(--text-1); margin-bottom: 2rem; }
+    .about-body p { font-size: 1rem; font-weight: 300; color: var(--text-2); line-height: 1.85; max-width: 58ch; margin-bottom: 1.4rem; }
+    .about-body p:last-child { margin-bottom: 0; }
+    .about-pull { margin-top: 2.5rem; padding: 1.5rem 2rem; border-left: 3px solid var(--gold); background: var(--cream); }
+    .about-pull p { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-style: italic; color: var(--text-1); line-height: 1.65; margin: 0 !important; }
+
+    .about-visual { position: relative; }
+    .about-img { width: 100%; height: 520px; object-fit: cover; border-radius: 3px; }
+    .about-tag {
+      position: absolute; bottom: -2.5rem; right: -1.5rem;
+      background: var(--off-black); color: var(--cream);
+      padding: 1.75rem 2.25rem; border-radius: 2px; min-width: 160px;
+    }
+    .about-tag-num { font-family: 'Playfair Display', serif; font-size: 2.75rem; font-weight: 600; letter-spacing: -0.03em; line-height: 1; display: block; }
+    .about-tag-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); display: block; margin-top: 0.4rem; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━
+       SERVICES
+    ━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .services { padding: 9rem 0; background: var(--cream); }
+
+    .svc-layout { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); }
+    .svc-col:last-child { border-left: 1px solid var(--border); }
+
+    .svc-group { padding: 3rem 3rem 3rem 0; border-top: 1px solid var(--border); }
+    .svc-group:first-child { border-top: none; }
+    .svc-col:last-child .svc-group { padding-left: 3rem; padding-right: 0; }
+
+    .svc-group-title {
+      font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 500; color: var(--text-1);
+      letter-spacing: -0.01em; margin-bottom: 2rem;
+      padding-bottom: 0.65rem; border-bottom: 1.5px solid var(--gold); display: inline-block;
+    }
+
+    .svc-item { display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; padding: 0.8rem 0; border-bottom: 1px dashed var(--cream-dark); transition: all 0.18s ease; }
+    .svc-item:last-child { border-bottom: none; }
+    .svc-item:hover { padding-left: 0.65rem; }
+    .svc-name { font-size: 0.9rem; font-weight: 400; color: var(--text-1); flex: 1; transition: color 0.18s ease; }
+    .svc-item:hover .svc-name { color: var(--brown); }
+    .svc-name small { display: block; font-size: 0.75rem; font-weight: 300; color: var(--text-3); margin-top: 0.15rem; line-height: 1.5; }
+    .svc-price { font-size: 0.9rem; font-weight: 600; color: var(--brown); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+    .svc-note { margin-top: 3rem; padding: 1.5rem 2rem; background: var(--cream-mid); border-left: 3px solid var(--gold); border-radius: 2px; }
+    .svc-note p { font-size: 0.875rem; font-weight: 300; color: var(--text-2); line-height: 1.75; margin-bottom: 0.5rem; }
+    .svc-note p:last-child { margin-bottom: 0; }
+    .walkin { display: inline-block; margin-top: 1rem; padding: 0.45rem 1rem; background: var(--brown); color: var(--cream); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 2px; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━
+       MEMBERSHIPS
+    ━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .memberships { padding: 9rem 0; background: var(--off-black); position: relative; overflow: hidden; }
+    .memberships::before {
+      content: ''; position: absolute; top: -40%; right: -15%;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(196,164,107,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .memberships .sec-eye { color: var(--gold); }
+    .memberships .sec-title { color: var(--cream); }
+    .memberships .sec-sub { color: rgba(250,247,242,0.55); }
+
+    .mem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 5rem; }
+
+    .mem-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 3px; padding: 3.5rem;
+      position: relative; overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+    }
+    .mem-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, var(--gold), transparent); transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .mem-card:hover::after { transform: scaleX(1); }
+    .mem-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-5px); box-shadow: 0 24px 48px rgba(0,0,0,0.35); }
+
+    .mem-badge { display: inline-block; padding: 0.35rem 0.9rem; border: 1px solid rgba(196,164,107,0.35); background: rgba(196,164,107,0.1); color: var(--gold); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; border-radius: 2px; margin-bottom: 2.25rem; }
+    .mem-name { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 500; color: var(--cream); letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    .mem-desc { font-size: 0.9rem; font-weight: 300; color: rgba(250,247,242,0.55); line-height: 1.75; margin-bottom: 2.5rem; }
+
+    .mem-inc-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .mem-feat { display: flex; align-items: center; gap: 0.85rem; padding: 0.55rem 0; font-size: 0.875rem; font-weight: 300; color: rgba(250,247,242,0.75); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .mem-feat:last-child { border-bottom: none; }
+    .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+    .mem-inc { margin-bottom: 2.5rem; }
+    .mem-pricing { border-top: 1px solid rgba(255,255,255,0.09); padding-top: 2.25rem; }
+    .mem-pricing-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(250,247,242,0.35); margin-bottom: 1rem; }
+    .mem-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .mem-row:last-child { border-bottom: none; }
+    .mem-size { font-size: 0.85rem; font-weight: 300; color: rgba(250,247,242,0.6); }
+    .mem-price { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; color: var(--cream); }
+    .mem-price sub { font-family: 'Outfit', sans-serif; font-size: 0.7rem; font-weight: 300; color: rgba(250,247,242,0.4); vertical-align: middle; }
+    .mem-cta { display: block; text-align: center; margin-top: 2.25rem; padding: 1rem; border: 1px solid rgba(196,164,107,0.45); color: var(--gold); text-decoration: none; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 2px; transition: all 0.25s ease; }
+    .mem-cta:hover { background: var(--gold); color: var(--off-black); border-color: var(--gold); }
+    .mem-cta:active { transform: scale(0.98); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━
+       TEAM
+    ━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .team { padding: 9rem 0; background: var(--surface); }
+
+    .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 5rem; }
+
+    .team-card { display: grid; grid-template-columns: 110px 1fr; gap: 1.75rem; align-items: start; padding: 2.5rem; background: var(--cream); border: 1px solid var(--border); border-radius: 3px; transition: all 0.3s cubic-bezier(0.16,1,0.3,1); }
+    .team-card:hover { transform: translateY(-4px); box-shadow: 0 18px 36px var(--shadow); border-color: var(--cream-dark); }
+
+    .team-ava { width: 110px; height: 110px; border-radius: 3px; object-fit: cover; flex-shrink: 0; background: var(--cream-dark); }
+    .team-role { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .team-name { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 500; color: var(--text-1); letter-spacing: -0.015em; margin-bottom: 0.75rem; }
+    .team-bio { font-size: 0.875rem; font-weight: 300; color: var(--text-2); line-height: 1.75; }
+    .team-email { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; font-size: 0.8rem; color: var(--brown); text-decoration: none; transition: color 0.2s; }
+    .team-email:hover { color: var(--gold); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━
+       PRODUCTS
+    ━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .products { padding: 9rem 0; background: var(--cream-mid); }
+
+    .prod-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: end; margin-bottom: 4.5rem; }
+    .prod-body { font-size: 1rem; font-weight: 300; color: var(--text-2); line-height: 1.85; }
+    .prod-aside { font-size: 0.9rem; font-weight: 300; color: var(--text-2); line-height: 1.75; padding-left: 2rem; border-left: 2px solid var(--gold); }
+
+    .prod-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1.5rem; }
+    .prod-item { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; transition: all 0.3s ease; }
+    .prod-item:hover { transform: translateY(-3px); box-shadow: 0 14px 28px var(--shadow); }
+    .prod-img { width: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .prod-item.feat .prod-img { height: 260px; }
+    .prod-item:not(.feat) .prod-img { height: 160px; }
+    .prod-item:hover .prod-img { transform: scale(1.04); }
+    .prod-label { padding: 1rem 1.25rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-1); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━
+       CONTACT
+    ━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .contact { padding: 9rem 0 0; background: var(--surface); }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 7rem; align-items: start; margin-top: 5rem; }
+
+    .c-block { margin-bottom: 3.5rem; }
+    .c-block:last-child { margin-bottom: 0; }
+    .c-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+
+    .c-link { display: flex; align-items: center; gap: 0.85rem; padding: 0.7rem 0; font-size: 0.95rem; font-weight: 400; color: var(--text-1); text-decoration: none; border-bottom: 1px solid var(--border); transition: all 0.2s ease; }
+    .c-link:last-child { border-bottom: none; }
+    .c-link:hover { color: var(--brown); padding-left: 0.5rem; }
+    .c-link svg { color: var(--gold); flex-shrink: 0; }
+    .c-address { font-size: 0.95rem; font-weight: 300; color: var(--text-2); line-height: 1.75; }
+
+    .h-row { display: flex; justify-content: space-between; align-items: center; padding: 0.65rem 0; font-size: 0.9rem; border-bottom: 1px solid var(--border); }
+    .h-row:last-child { border-bottom: none; }
+    .h-day { font-weight: 400; color: var(--text-2); }
+    .h-time { font-weight: 500; color: var(--text-1); }
+    .h-row.closed .h-time { color: var(--text-3); font-weight: 300; }
+    .h-row.today .h-day { color: var(--brown); font-weight: 600; }
+    .h-row.today .h-time { color: var(--brown); }
+
+    .map-box { border-radius: 3px; overflow: hidden; border: 1px solid var(--border); height: 480px; }
+    .map-box iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━
+       CTA BAND
+    ━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .cta-band { margin-top: 9rem; padding: 7rem 0; background: var(--off-black); text-align: center; }
+    .cta-band-eye { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+    .cta-band-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,3.5rem); font-weight: 500; color: var(--cream); letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 1.5rem; }
+    .cta-band-title em { font-style: italic; color: var(--gold); }
+    .cta-band-sub { font-size: 1rem; font-weight: 300; color: rgba(250,247,242,0.55); max-width: 42ch; margin: 0 auto 3rem; line-height: 1.75; }
+    .cta-acts { display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap; }
+
+    .btn-gold { display: inline-flex; align-items: center; gap: 0.6rem; padding: 1.05rem 2.5rem; background: var(--gold); color: var(--off-black); text-decoration: none; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; transition: all 0.25s cubic-bezier(0.16,1,0.3,1); }
+    .btn-gold:hover { background: var(--gold-hover); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(196,164,107,0.3); }
+    .btn-gold:active { transform: scale(0.99); }
+    .btn-gold svg { flex-shrink: 0; transition: transform 0.2s ease; }
+    .btn-gold:hover svg { transform: translateX(3px); }
+
+    .btn-gl { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0; color: rgba(250,247,242,0.7); text-decoration: none; font-size: 0.85rem; font-weight: 400; border-bottom: 1px solid rgba(250,247,242,0.3); transition: all 0.2s ease; }
+    .btn-gl:hover { color: var(--cream); border-color: var(--cream); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━
+       FOOTER
+    ━━━━━━━━━━━━━━━━━━━━━━━━ */
+    footer { background: #141211; color: var(--cream); padding: 5rem 0 2.5rem; }
+    .ft-inner { max-width: 1400px; margin: 0 auto; padding: 0 2.5rem; }
+    .ft-top { display: grid; grid-template-columns: 2.5fr 1fr 1fr 1.5fr; gap: 4rem; padding-bottom: 4rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .ft-logo-main { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: var(--cream); display: block; letter-spacing: -0.01em; }
+    .ft-logo-sub { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); display: block; margin-top: 3px; }
+    .ft-about { margin-top: 1.5rem; font-size: 0.875rem; font-weight: 300; color: rgba(250,247,242,0.45); line-height: 1.75; max-width: 26ch; }
+    .ft-col-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+    .ft-links { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .ft-links a { color: rgba(250,247,242,0.45); text-decoration: none; font-size: 0.875rem; font-weight: 300; transition: color 0.2s; }
+    .ft-links a:hover { color: var(--cream); }
+    .ft-ci { display: flex; align-items: center; gap: 0.7rem; font-size: 0.875rem; font-weight: 300; color: rgba(250,247,242,0.55); margin-bottom: 0.85rem; }
+    .ft-ci a { color: rgba(250,247,242,0.55); text-decoration: none; transition: color 0.2s; }
+    .ft-ci a:hover { color: var(--cream); }
+    .ft-ci svg { color: var(--gold); flex-shrink: 0; }
+    .ft-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; font-size: 0.78rem; color: rgba(250,247,242,0.25); }
+    .ft-bottom a { color: rgba(250,247,242,0.4); text-decoration: none; transition: color 0.2s; }
+    .ft-bottom a:hover { color: var(--cream); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━
+       STICKY BOOK (mobile)
+    ━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .sticky-book { display: none; position: fixed; bottom: 0; left: 0; right: 0; padding: 0.75rem 1rem 1rem; background: var(--off-black); z-index: 180; box-shadow: 0 -4px 20px rgba(0,0,0,0.2); }
+    .sticky-book a { display: block; text-align: center; padding: 1rem; background: var(--gold); color: var(--off-black); text-decoration: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; transition: all 0.2s ease; }
+    .sticky-book a:active { transform: scale(0.98); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━
+       RESPONSIVE
+    ━━━━━━━━━━━━━━━━━━━━━━━━ */
+    @media (max-width: 1100px) {
+      .prod-grid { grid-template-columns: 1fr 1fr; }
+      .prod-item.feat .prod-img { height: 200px; }
+      .ft-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    }
+
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 4rem; }
+      .about-tag { right: 0; bottom: -1.5rem; }
+      .about-visual { padding-bottom: 2rem; }
+
+      .svc-layout { grid-template-columns: 1fr; }
+      .svc-col:last-child { border-left: none; border-top: 1px solid var(--border); }
+      .svc-col:last-child .svc-group { padding-left: 0; }
+
+      .mem-grid { grid-template-columns: 1fr; }
+
+      .team-grid { grid-template-columns: 1fr; }
+
+      .prod-intro { grid-template-columns: 1fr; gap: 2rem; }
+      .prod-aside { border-left: none; padding-left: 0; border-top: 2px solid var(--gold); padding-top: 1.5rem; }
+
+      .contact-grid { grid-template-columns: 1fr; gap: 4rem; }
+      .map-box { height: 340px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-book { display: none; }
+      .hamburger { display: flex; }
+
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-image { height: 60vw; order: -1; }
+      .hero-image::before { background: linear-gradient(to bottom, transparent 0%, var(--cream) 90%); }
+      .hero-content { padding: 3rem 1.5rem 4rem; }
+      .hero-stats { gap: 2rem; }
+      .scroll-hint { display: none; }
+
+      .wrap { padding: 0 1.5rem; }
+      .nav-inner { padding: 0 1.5rem; }
+
+      .about-img { height: 280px; }
+      .about-tag { position: relative; bottom: auto; right: auto; display: inline-block; margin-top: 1rem; }
+
+      .svc-group { padding: 2rem 0; }
+
+      .mem-card { padding: 2rem; }
+
+      .team-card { grid-template-columns: 80px 1fr; gap: 1.25rem; padding: 1.75rem; }
+      .team-ava { width: 80px; height: 80px; }
+
+      .prod-grid { grid-template-columns: 1fr 1fr; }
+      .prod-item.feat .prod-img, .prod-item:not(.feat) .prod-img { height: 150px; }
+
+      .ft-top { grid-template-columns: 1fr; gap: 2rem; }
+
+      .sticky-book { display: block; }
+      body { padding-bottom: 80px; }
+    }
+
+    @media (max-width: 480px) {
+      .prod-grid { grid-template-columns: 1fr; }
+      .hero-stats { flex-direction: column; gap: 1.25rem; }
+      .mem-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">
+        <span class="nav-logo-main">Lavish Mutts</span>
+        <span class="nav-logo-sub">Wichita, KS</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#memberships">Memberships</a></li>
+        <li><a href="#team">Our Team</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="https://book.daysmart.com/booking/service?DSID=DC-1339351" target="_blank" rel="noopener" class="nav-book">Book Online</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#services">Services</a>
+    <a href="#memberships">Memberships</a>
+    <a href="#team">Our Team</a>
+    <a href="#products">Products</a>
+    <a href="#contact">Contact</a>
+    <a href="https://book.daysmart.com/booking/service?DSID=DC-1339351" target="_blank" rel="noopener" class="m-book">Book an Appointment &rarr;</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Premium Pet Grooming &mdash; Wichita, Kansas</p>
+      <h1 class="hero-title">
+        Where every pup gets<br>
+        the <em>royal treatment</em>
+      </h1>
+      <p class="hero-desc">
+        Professional grooming done with care, skill, and genuine love for animals.
+        From simple baths to full creative grooms &mdash; your pet deserves to look and feel their absolute best.
+      </p>
+      <div class="hero-actions">
+        <a href="https://book.daysmart.com/booking/service?DSID=DC-1339351" target="_blank" rel="noopener" class="btn-primary">
+          Book an Appointment
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#services" class="btn-ghost">View Services</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div>
+          <span class="stat-num">4</span>
+          <span class="stat-label">Expert Groomers</span>
+        </div>
+        <div>
+          <span class="stat-num">17+</span>
+          <span class="stat-label">Services Offered</span>
+        </div>
+      </div>
+      <div class="scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img
+        src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&q=80"
+        alt="Beautifully groomed dog at Lavish Mutts"
+        loading="eager"
+      >
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-body">
+          <p class="about-eye reveal">Our Story</p>
+          <h2 class="about-title reveal reveal-d1">
+            A salon built on passion,<br>not just grooming
+          </h2>
+          <div class="reveal reveal-d2">
+            <p>
+              Lavish Mutts was founded with one mission: to give every dog and cat the kind of attentive,
+              professional care that makes them feel like the star they are. Located in the heart of Wichita,
+              our salon is a calm, welcoming space where pets are treated with patience and genuine expertise.
+            </p>
+            <p>
+              From the very first appointment to the hundredth with a loyal member, we bring the same energy
+              to every pet &mdash; gentle hands, sharp skills, and an eye for what makes each animal look their very best.
+            </p>
+            <p>
+              Whether your pup needs a quick nail trim or a full creative transformation, Lavish Mutts has you covered.
+              Walk-in nail trims are always welcome, and online booking is open around the clock.
+            </p>
+            <div class="about-pull">
+              <p>"Every dog deserves to feel lavish &mdash; and we make that happen, one appointment at a time."</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual reveal reveal-d3">
+          <img
+            class="about-img"
+            src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=900&q=80"
+            alt="Dog grooming session at Lavish Mutts"
+            loading="lazy"
+          >
+          <div class="about-tag">
+            <span class="about-tag-num">5</span>
+            <span class="about-tag-label">Years Grooming</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-eye reveal">Our Services</p>
+        <h2 class="sec-title reveal reveal-d1">Everything your pet needs,<br>all in one place</h2>
+        <p class="sec-sub reveal reveal-d2">Full grooms, baths, add-on treatments, and more. Prices vary by breed and coat type.</p>
+      </div>
+
+      <div class="svc-layout">
+        <!-- Left col -->
+        <div class="svc-col">
+          <div class="svc-group reveal">
+            <h3 class="svc-group-title">Bath Services</h3>
+            <div class="svc-item">
+              <div class="svc-name">Simple Bath<small>Bath and full blow dry</small></div>
+              <span class="svc-price">$25</span>
+            </div>
+            <div class="svc-item">
+              <div class="svc-name">Bath &amp; Brush<small>Bath, blow dry, ear cleaning, nail trim, anal gland expression &amp; thorough brush out</small></div>
+              <span class="svc-price">$50+</span>
+            </div>
+            <div class="svc-item">
+              <div class="svc-name">Face, Feet &amp; Fanny<small>All Bath &amp; Brush services plus face, feet &amp; sanitary trim</small></div>
+              <span class="svc-price">$60</span>
+            </div>
+          </div>
+
+          <div class="svc-group reveal">
+            <h3 class="svc-group-title">Full Grooms</h3>
+            <div class="svc-item">
+              <div class="svc-name">Small Dog Full Groom<small>Up to 30 lbs &mdash; bath, blow dry, ear cleaning, anal gland expression &amp; full personalized haircut</small></div>
+              <span class="svc-price">$65</span>
+            </div>
+            <div class="svc-item">
+              <div class="svc-name">Medium Dog Full Groom<small>30&ndash;50 lbs &mdash; bath, blow dry, ear cleaning, anal gland expression &amp; full personalized haircut</small></div>
+              <span class="svc-price">$75</span>
+            </div>
+            <div class="svc-item">
+              <div class="svc-name">Large Dog Full Groom<small>60&ndash;90 lbs &mdash; bath, blow dry, ear cleaning, anal gland expression &amp; full personalized haircut</small></div>
+              <span class="svc-price">$92</span>
+            </div>
+            <div class="svc-item">
+              <div class="svc-name">XL Dog Full Groom<small>100+ lbs &mdash; bath, blow dry, ear cleaning, anal gland expression &amp; full personalized haircut</small></div>
+              <span class="svc-price">$117</span>
+            </div>
+            <div class="svc-item">
+              <div class="svc-name">Cat Full Groom<small>Bath, blow dry (if tolerated) &amp; personalized haircut</small></div>
+              <span class="svc-price">$120</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right col -->
+        <div class="svc-col">
+          <div class="svc-group reveal">
+            <h3 class="svc-group-title">Add-On Treatments</h3>
+            <div class="svc-item">
+              <div class="svc-name">Nail Trim<small>Clipping and filing (if tolerated by the pet)</small></div>
+              <span class="svc-price">$15</span>
+            </div>
+            <div class="svc-item">
+              <div class="svc-name">Brush Out<small>Keeps coats matt-free; included in bath &amp; groom packages</small></div>
+              <span class="svc-price">$15</span>
+            </div>
+            <div class="svc-item">
+              <div class="svc-name">Anal Gland Expression<small>Included in Bath &amp; Brush and full groom packages</small></div>
+              <span class="svc-price">$15</span>
+            </div>
+            <div class="svc-item">
+              <div class="svc-name">Ear Cleaning<small>Solution removes dirt and build-up from outer ear canal</small></div>
+              <span class="svc-price">$8</span>
+            </div>
+            <div class="svc-item">
+              <div class="svc-name">Teeth Brushing<small>Prevents plaque build-up, bad breath &amp; gum disease</small></div>
+              <span class="svc-price">$8</span>
+            </div>
+            <div class="svc-item">
+              <div class="svc-name">Paw Pad Treatment<small>Bag balm spa treatment to soothe and moisturize paws</small></div>
+              <span class="svc-price">$4</span>
+            </div>
+            <div class="svc-item">
+              <div class="svc-name">Flea &amp; Tick Treatment<small>Add-on to any bath or full groom; flea shampoo &amp; tick removal</small></div>
+              <span class="svc-price">$10</span>
+            </div>
+            <div class="svc-item">
+              <div class="svc-name">Creative Groom<small>Hair dye or creative haircut patterns &mdash; add-on service</small></div>
+              <span class="svc-price">$10+</span>
+            </div>
+          </div>
+
+          <div class="svc-group reveal">
+            <h3 class="svc-group-title">Additional Fees</h3>
+            <div class="svc-item">
+              <div class="svc-name">Handling Fee<small>Applied at groomer&rsquo;s discretion based on the pet&rsquo;s behavior</small></div>
+              <span class="svc-price">$15</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-note reveal">
+        <p>Full groom prices are estimates. Final pricing is based on breed and coat type. Double-coated breeds are slightly higher to include a de-shed treatment.</p>
+        <p>Please add any notes about your pet&rsquo;s temperament or medical conditions in the notes section at booking.</p>
+        <span class="walkin">Walk-in nail trims always welcome</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIPS -->
+  <section class="memberships" id="memberships">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-eye reveal">Membership Plans</p>
+        <h2 class="sec-title reveal reveal-d1">Save more. Visit often.</h2>
+        <p class="sec-sub reveal reveal-d2">Our clubs keep your pup looking and feeling their best on a regular schedule, at a price that makes sense. Call or stop by to sign up.</p>
+      </div>
+
+      <div class="mem-grid">
+        <!-- Essentials -->
+        <div class="mem-card reveal">
+          <div class="mem-badge">Monthly Membership</div>
+          <h3 class="mem-name">The Lavish Essentials Club</h3>
+          <p class="mem-desc">Come in once a month and keep your pup consistently fresh and well-maintained &mdash; without the full-service price tag every single visit.</p>
+          <div class="mem-inc">
+            <p class="mem-inc-label">Every visit includes</p>
+            <div class="mem-feat"><span class="dot"></span>Bath with full blow dry</div>
+            <div class="mem-feat"><span class="dot"></span>Nail trim &amp; grind</div>
+          </div>
+          <div class="mem-pricing">
+            <p class="mem-pricing-label">Monthly pricing by size</p>
+            <div class="mem-row"><span class="mem-size">Small &mdash; up to 30 lbs</span><span class="mem-price">$40 <sub>/mo</sub></span></div>
+            <div class="mem-row"><span class="mem-size">Medium &mdash; 30&ndash;50 lbs</span><span class="mem-price">$55 <sub>/mo</sub></span></div>
+            <div class="mem-row"><span class="mem-size">Large &mdash; 60&ndash;90 lbs</span><span class="mem-price">$70 <sub>/mo</sub></span></div>
+            <div class="mem-row"><span class="mem-size">XL &mdash; 100+ lbs</span><span class="mem-price">$80 <sub>/mo</sub></span></div>
+          </div>
+          <a href="tel:3163589265" class="mem-cta">Call to Enroll &mdash; (316) 358-9265</a>
+        </div>
+
+        <!-- Weekly -->
+        <div class="mem-card reveal reveal-d2">
+          <div class="mem-badge">Weekly Membership</div>
+          <h3 class="mem-name">The Lavish Weekly Club</h3>
+          <p class="mem-desc">Weekly visits keep your dog&rsquo;s coat in peak condition year-round. This membership can also be split between multiple pets in the same household.</p>
+          <div class="mem-inc">
+            <p class="mem-inc-label">Every visit includes</p>
+            <div class="mem-feat"><span class="dot"></span>Bath with full blow dry</div>
+            <div class="mem-feat"><span class="dot"></span>Nail trim &amp; grind</div>
+            <div class="mem-feat"><span class="dot"></span>Can be split between multiple pets</div>
+          </div>
+          <div class="mem-pricing">
+            <p class="mem-pricing-label">Monthly pricing by size</p>
+            <div class="mem-row"><span class="mem-size">Small &mdash; up to 30 lbs</span><span class="mem-price">$120 <sub>/mo</sub></span></div>
+            <div class="mem-row"><span class="mem-size">Medium &mdash; 30&ndash;50 lbs</span><span class="mem-price">$180 <sub>/mo</sub></span></div>
+            <div class="mem-row"><span class="mem-size">Large &mdash; 60&ndash;90 lbs</span><span class="mem-price">$220 <sub>/mo</sub></span></div>
+            <div class="mem-row"><span class="mem-size">XL &mdash; 100+ lbs</span><span class="mem-price">$260 <sub>/mo</sub></span></div>
+          </div>
+          <a href="tel:3163589265" class="mem-cta">Call to Enroll &mdash; (316) 358-9265</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="team" id="team">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-eye reveal">Our Groomers</p>
+        <h2 class="sec-title reveal reveal-d1">Meet the team behind<br>every great groom</h2>
+        <p class="sec-sub reveal reveal-d2">Experienced, passionate, and genuinely devoted to every animal that comes through our doors.</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card reveal">
+          <img class="team-ava" src="https://picsum.photos/seed/cassia-lm/220/220" alt="Cassia — Owner and Groomer" loading="lazy">
+          <div>
+            <p class="team-role">Owner &amp; Groomer</p>
+            <h3 class="team-name">Cassia</h3>
+            <p class="team-bio">Founder and heart of Lavish Mutts. With 5 years of hands-on experience across countless breeds, Cassia brings creativity, skill, and genuine passion to every appointment &mdash; especially when a creative groom is on the books.</p>
+            <a href="mailto:lavishmuttsllc@gmail.com" class="team-email">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              lavishmuttsllc@gmail.com
+            </a>
+          </div>
+        </div>
+
+        <div class="team-card reveal reveal-d1">
+          <img class="team-ava" src="https://picsum.photos/seed/ava-lm/220/220" alt="Ava B. — Groomer" loading="lazy">
+          <div>
+            <p class="team-role">Groomer</p>
+            <h3 class="team-name">Ava B.</h3>
+            <p class="team-bio">With 2 years of grooming experience and a naturally gentle touch, Ava approaches every pet with patience and careful attention to detail. Her love for animals shows in every perfectly finished coat.</p>
+          </div>
+        </div>
+
+        <div class="team-card reveal reveal-d2">
+          <img class="team-ava" src="https://picsum.photos/seed/gabby-lm/220/220" alt="Gabby H. — Groomer" loading="lazy">
+          <div>
+            <p class="team-role">Groomer</p>
+            <h3 class="team-name">Gabby H.</h3>
+            <p class="team-bio">5 years of experience, plenty of personality, and a special love for playful doodles and sweet pit bulls. Gabby makes every appointment positive and stress-free for even the most anxious pups.</p>
+          </div>
+        </div>
+
+        <div class="team-card reveal reveal-d3">
+          <img class="team-ava" src="https://picsum.photos/seed/raelyn-lm/220/220" alt="Raelyn D. — Receptionist and Groomer" loading="lazy">
+          <div>
+            <p class="team-role">Receptionist &amp; Groomer</p>
+            <h3 class="team-name">Raelyn D.</h3>
+            <p class="team-bio">Raelyn keeps everything running smoothly at the front of house while also lending her grooming skills when needed. Her warm welcome sets the tone for every visit at Lavish Mutts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="wrap">
+      <div class="prod-intro">
+        <div>
+          <p class="sec-eye reveal">In-Store Products</p>
+          <h2 class="sec-title reveal reveal-d1">Curated for your pup,<br>in our salon</h2>
+          <p class="prod-body reveal reveal-d2">Stop by and browse our thoughtfully chosen collection of pet accessories and essentials &mdash; handpicked by our team for quality, function, and style. We carry harnesses, bandanas, dog toys, slow feeders, shed signs, neck ties, and more.</p>
+        </div>
+        <div class="prod-aside reveal reveal-d3">
+          Visit Lavish Mutts to explore the full collection in person. Our selection is regularly refreshed with new finds to keep your dog looking and living their lavish best.
+        </div>
+      </div>
+
+      <div class="prod-grid">
+        <div class="prod-item feat reveal">
+          <img class="prod-img" src="https://images.pexels.com/photos/3299904/pexels-photo-3299904.jpeg?auto=compress&cs=tinysrgb&w=900&h=500&fit=crop" alt="Dog harnesses and accessories" loading="lazy">
+          <div class="prod-label">Harnesses &amp; Neck Ties</div>
+        </div>
+        <div class="prod-item reveal reveal-d1">
+          <img class="prod-img" src="https://images.unsplash.com/photo-1560807707-8cc77767d783?w=600&q=80" alt="Dog toys" loading="lazy">
+          <div class="prod-label">Dog Toys</div>
+        </div>
+        <div class="prod-item reveal reveal-d2">
+          <img class="prod-img" src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=600&h=600&q=85" alt="Dog bandanas" loading="lazy">
+          <div class="prod-label">Bandanas</div>
+        </div>
+        <div class="prod-item reveal reveal-d3">
+          <img class="prod-img" src="https://images.pexels.com/photos/17880518/pexels-photo-17880518.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop" alt="Slow feeders" loading="lazy">
+          <div class="prod-label">Slow Feeders</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-eye reveal">Find Us</p>
+        <h2 class="sec-title reveal reveal-d1">Get in touch</h2>
+        <p class="sec-sub reveal reveal-d2">Book online any time, or reach us directly during business hours. Walk-in nail trims are always welcome.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div>
+          <div class="c-block reveal">
+            <p class="c-label">Contact</p>
+            <a href="tel:3163589265" class="c-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.77 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              (316) 358-9265
+            </a>
+            <a href="mailto:lavishmuttsllc@gmail.com" class="c-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              lavishmuttsllc@gmail.com
+            </a>
+            <a href="https://book.daysmart.com/booking/service?DSID=DC-1339351" target="_blank" rel="noopener" class="c-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              Book an Appointment Online
+            </a>
+          </div>
+
+          <div class="c-block reveal">
+            <p class="c-label">Location</p>
+            <a href="https://maps.google.com/?q=6630+W+Central+Ave+Wichita+KS+67212" target="_blank" rel="noopener" class="c-link" style="align-items:flex-start;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:3px;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span class="c-address">Lavish Mutts<br>6630 W Central Ave, Suite 2<br>Wichita, Kansas 67212</span>
+            </a>
+          </div>
+
+          <div class="c-block reveal">
+            <p class="c-label">Business Hours</p>
+            <div class="h-row" data-day="Monday">
+              <span class="h-day">Monday</span><span class="h-time">8:30 am &ndash; 5:00 pm</span>
+            </div>
+            <div class="h-row" data-day="Tuesday">
+              <span class="h-day">Tuesday</span><span class="h-time">8:30 am &ndash; 5:00 pm</span>
+            </div>
+            <div class="h-row" data-day="Wednesday">
+              <span class="h-day">Wednesday</span><span class="h-time">8:30 am &ndash; 5:00 pm</span>
+            </div>
+            <div class="h-row" data-day="Thursday">
+              <span class="h-day">Thursday</span><span class="h-time">8:30 am &ndash; 5:00 pm</span>
+            </div>
+            <div class="h-row" data-day="Friday">
+              <span class="h-day">Friday</span><span class="h-time">8:30 am &ndash; 5:00 pm</span>
+            </div>
+            <div class="h-row" data-day="Saturday">
+              <span class="h-day">Saturday</span><span class="h-time">9:00 am &ndash; 5:00 pm</span>
+            </div>
+            <div class="h-row closed" data-day="Sunday">
+              <span class="h-day">Sunday</span><span class="h-time">Closed</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-box reveal reveal-d2">
+          <iframe
+            src="https://maps.google.com/maps?q=6630+W+Central+Ave,+Wichita,+KS+67212&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            allowfullscreen
+            loading="lazy"
+            title="Lavish Mutts on Google Maps"
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- CTA Band -->
+      <div class="cta-band">
+        <p class="cta-band-eye reveal">Ready to Book?</p>
+        <h2 class="cta-band-title reveal reveal-d1">
+          Your pup&rsquo;s next <em>lavish</em> appointment<br>is just one click away
+        </h2>
+        <p class="cta-band-sub reveal reveal-d2">
+          Online booking is open 24/7 &mdash; day or night. We&rsquo;ll confirm your appointment by email as soon as we receive it.
+        </p>
+        <div class="cta-acts reveal reveal-d3">
+          <a href="https://book.daysmart.com/booking/service?DSID=DC-1339351" target="_blank" rel="noopener" class="btn-gold">
+            Book an Appointment
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="tel:3163589265" class="btn-gl">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.77 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            (316) 358-9265
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="ft-inner">
+      <div class="ft-top">
+        <div>
+          <span class="ft-logo-main">Lavish Mutts</span>
+          <span class="ft-logo-sub">Wichita, Kansas</span>
+          <p class="ft-about">Premium pet grooming in Wichita, KS. Where every pup gets the royal treatment they deserve.</p>
+        </div>
+        <div>
+          <p class="ft-col-title">Quick Links</p>
+          <ul class="ft-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#memberships">Memberships</a></li>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#products">Products</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="ft-col-title">Services</p>
+          <ul class="ft-links">
+            <li><a href="#services">Full Grooms</a></li>
+            <li><a href="#services">Bath &amp; Brush</a></li>
+            <li><a href="#services">Nail Trims</a></li>
+            <li><a href="#services">Cat Grooming</a></li>
+            <li><a href="#services">Creative Grooms</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="ft-col-title">Contact</p>
+          <div class="ft-ci">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.77 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:3163589265">(316) 358-9265</a>
+          </div>
+          <div class="ft-ci">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <a href="mailto:lavishmuttsllc@gmail.com">lavishmuttsllc@gmail.com</a>
+          </div>
+          <div class="ft-ci">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <a href="https://maps.google.com/?q=6630+W+Central+Ave+Wichita+KS+67212" target="_blank" rel="noopener">6630 W Central Ave #2, Wichita</a>
+          </div>
+        </div>
+      </div>
+      <div class="ft-bottom">
+        <span>&copy; 2025 Lavish Mutts. All rights reserved.</span>
+        <a href="https://book.daysmart.com/booking/service?DSID=DC-1339351" target="_blank" rel="noopener">Book Online &rarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky mobile book -->
+  <div class="sticky-book">
+    <a href="https://book.daysmart.com/booking/service?DSID=DC-1339351" target="_blank" rel="noopener">
+      Book an Appointment &rarr;
+    </a>
+  </div>
+
+  <script>
+    // Scroll shadow on nav
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Highlight today's hours
+    const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const today = dayNames[new Date().getDay()];
+    document.querySelectorAll('.h-row[data-day]').forEach(row => {
+      if (row.dataset.day === today) row.classList.add('today');
+    });
+  </script>
+
+</body>
+</html>

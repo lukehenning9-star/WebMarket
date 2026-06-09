@@ -44,6 +44,14 @@ async function loadBusinesses() {
 
 loadBusinesses();
 
+function updatePlaceholder() {
+    searchInput.placeholder = window.innerWidth < 640
+        ? 'Search your business…'
+        : 'Search your business name…';
+}
+updatePlaceholder();
+window.addEventListener('resize', updatePlaceholder, { passive: true });
+
 
 /* ------------------------------------------------
    SEARCH
@@ -177,11 +185,11 @@ function openPreview(businessId) {
 }
 
 function showPricing(businessId, tier) {
-    const t2 = tier === 2;
-    const setup   = t2 ? '$750' : '$400';
-    const monthly = t2 ? '$75'  : '$50';
-    const yearly  = t2 ? '$750' : '$500';
-    const savings = t2 ? 'Save $150 vs monthly' : 'Save $100 vs monthly';
+    const t3 = tier === 3;
+    const setup   = t3 ? '$1,000' : '$750';
+    const monthly = t3 ? '$100'   : '$75';
+    const yearly  = t3 ? '$1,000' : '$750';
+    const savings = t3 ? 'Save $200 vs monthly' : 'Save $150 vs monthly';
 
     modalIframe.style.display = 'none';
     modalLoading.style.display = 'none';
@@ -191,12 +199,12 @@ function showPricing(businessId, tier) {
             <h2 class="pricing-title">Get your website live</h2>
             <p class="pricing-sub">${setup} one-time setup fee included with your first payment.</p>
             <div class="pricing-plans">
-                <button class="plan-card" onclick="startCheckout('${escAttr(businessId)}','monthly',${tier || 1})">
+                <button class="plan-card" onclick="startCheckout('${escAttr(businessId)}','monthly',${tier || 2})">
                     <span class="plan-name">Monthly</span>
                     <span class="plan-price">${monthly}<em>/mo</em></span>
                     <span class="plan-note">Cancel anytime</span>
                 </button>
-                <button class="plan-card plan-card--featured" onclick="startCheckout('${escAttr(businessId)}','yearly',${tier || 1})">
+                <button class="plan-card plan-card--featured" onclick="startCheckout('${escAttr(businessId)}','yearly',${tier || 2})">
                     <span class="plan-name">Yearly</span>
                     <span class="plan-price">${yearly}<em>/yr</em></span>
                     <span class="plan-note">${savings}</span>
@@ -250,6 +258,56 @@ document.addEventListener('keydown', e => {
 
 /* Expose to onclick in HTML */
 window.openPreview = openPreview;
+
+
+/* ------------------------------------------------
+   DEMO REQUEST MODAL
+   ------------------------------------------------ */
+const demoOverlay = document.getElementById('demo-modal-overlay');
+
+function openDemoModal() {
+    demoOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeDemoModal() {
+    demoOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+    document.getElementById('demoForm').style.display = '';
+    document.getElementById('demoForm').reset();
+    document.getElementById('demoSuccess').style.display = 'none';
+}
+
+async function submitDemo(e) {
+    e.preventDefault();
+    const company = document.getElementById('demoCompany').value.trim();
+    const contact = document.getElementById('demoContact').value.trim();
+    const details = document.getElementById('demoDetails').value.trim();
+    try {
+        const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ company, contact, details }),
+        });
+        if (res.ok) {
+            document.getElementById('demoForm').style.display = 'none';
+            document.getElementById('demoSuccess').style.display = 'block';
+        } else {
+            alert('Something went wrong. Please try again.');
+        }
+    } catch {
+        alert('Something went wrong. Please try again.');
+    }
+}
+
+demoOverlay.addEventListener('click', e => { if (e.target === demoOverlay) closeDemoModal(); });
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && demoOverlay.classList.contains('open')) closeDemoModal();
+});
+
+window.openDemoModal  = openDemoModal;
+window.closeDemoModal = closeDemoModal;
+window.submitDemo     = submitDemo;
 
 
 

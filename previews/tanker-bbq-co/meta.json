@@ -1,0 +1,16 @@
+{
+  "name": "Tanker BBQ Co.",
+  "category": "Barbeque",
+  "city": "Wichita, KS",
+  "price": 299,
+  "features": [
+    "Full Menu",
+    "Online Ordering",
+    "Google Maps",
+    "Mobile Optimized",
+    "Photo Gallery"
+  ],
+  "contactEmail": "",
+  "addedDate": "2026-06-08",
+  "tier": 2
+}

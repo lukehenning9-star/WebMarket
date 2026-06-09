@@ -24,8 +24,6 @@
       --gold-lt:  #b8891f;
       --gold-dim: rgba(154,114,32,0.08);
       --border:   rgba(28,24,20,0.09);
-      --green:    #1a4e2a;
-      --green-lt: #1f5d32;
       --font-head: 'Oswald', sans-serif;
       --font-body: 'Outfit', sans-serif;
       --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
@@ -570,109 +568,6 @@
       flex-shrink: 0;
     }
 
-    /* ─── Saturday Special ─────────────────────────────────────────── */
-    .saturday {
-      background: var(--green);
-      position: relative;
-      overflow: hidden;
-    }
-    .saturday::before {
-      content: 'SATURDAY';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(-12deg);
-      font-family: var(--font-head);
-      font-size: 18vw;
-      font-weight: 800;
-      color: rgba(255,255,255,0.04);
-      white-space: nowrap;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .sat-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-
-    .sat-badge {
-      display: inline-block;
-      background: var(--gold);
-      color: #fff;
-      font-size: 0.67rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      padding: 0.35rem 0.9rem;
-      margin-bottom: 1.5rem;
-      border-radius: 1px;
-    }
-
-    .sat-title {
-      font-family: var(--font-head);
-      font-size: clamp(2.5rem, 5vw, 4.25rem);
-      font-weight: 700;
-      color: #fff;
-      line-height: 0.95;
-      margin-bottom: 1.25rem;
-    }
-
-    .sat-desc {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.75;
-      max-width: 42ch;
-      margin-bottom: 2.5rem;
-    }
-
-    .sat-list { display: flex; flex-direction: column; }
-
-    .sat-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.1rem 1.25rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    .sat-row:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
-    .sat-row-name {
-      font-family: var(--font-head);
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: #fff;
-    }
-    .sat-row-price {
-      font-family: var(--font-head);
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #ddb93e;
-    }
-
-    .sat-sides {
-      margin-top: 1.5rem;
-      padding: 1.1rem 1.25rem;
-      background: rgba(255,255,255,0.07);
-      border-left: 3px solid var(--gold);
-    }
-    .sat-sides-label {
-      font-size: 0.67rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #ddb93e;
-      margin-bottom: 0.45rem;
-    }
-    .sat-sides-list {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.65;
-    }
-
     /* ─── Reviews ──────────────────────────────────────────────────── */
     .reviews-sec { background: var(--bg-2); }
 
@@ -962,7 +857,6 @@
       }
       .hl-img-wrap { aspect-ratio: 16/9; }
       .hl-badge { right: 0; bottom: -1rem; }
-      .sat-inner { grid-template-columns: 1fr; gap: 3.5rem; }
       .info-grid { grid-template-columns: 1fr; gap: 3.5rem; }
     }
 
@@ -1000,7 +894,6 @@
     <a href="#home" class="nav-logo">TASTE OF FLAVORZ</a>
     <ul class="nav-links">
       <li><a href="#menu">Menu</a></li>
-      <li><a href="#saturday">Saturday Special</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#location">Location</a></li>
       <li><a href="tel:3163527637" class="nav-cta">Call Now</a></li>
@@ -1014,7 +907,6 @@
   <div class="mobile-overlay" id="mobileOverlay">
     <button class="mob-close" id="mobClose" aria-label="Close menu">&#215;</button>
     <a href="#menu" onclick="closeMob()">Menu</a>
-    <a href="#saturday" onclick="closeMob()">Saturday Special</a>
     <a href="#reviews" onclick="closeMob()">Reviews</a>
     <a href="#location" onclick="closeMob()">Location</a>
     <a href="tel:3163527637" class="mob-phone" onclick="closeMob()">(316) 352-7637</a>
@@ -1207,39 +1099,6 @@
     </div>
   </section>
 
-  <!-- Saturday Special -->
-  <section class="sec saturday" id="saturday">
-    <div class="sat-inner">
-      <div>
-        <div class="sat-badge reveal">Weekly Special</div>
-        <h2 class="sat-title reveal delay-1">Saturday<br>Menu</h2>
-        <p class="sat-desc reveal delay-2">
-          Every Saturday we roll out an extended menu with extra comfort plates alongside the regular lineup. Come early — they go fast.
-        </p>
-        <a href="tel:3163527637" class="btn-gold reveal delay-3">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.37 19.79 19.79 0 012 2.78A2 2 0 013.98 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-          Call to Check Availability
-        </a>
-      </div>
-      <div class="reveal delay-2">
-        <div class="sat-list">
-          <div class="sat-row">
-            <div class="sat-row-name">Pork Steak Dinner</div>
-            <div class="sat-row-price">$15.99</div>
-          </div>
-          <div class="sat-row">
-            <div class="sat-row-name">Leg Quarter Dinner</div>
-            <div class="sat-row-price">$13.99</div>
-          </div>
-        </div>
-        <div class="sat-sides">
-          <div class="sat-sides-label">All Saturday Dinners Come With 2 Sides</div>
-          <div class="sat-sides-list">Mac &amp; Cheese &nbsp;&#183;&nbsp; Cabbage &nbsp;&#183;&nbsp; Potato Salad &nbsp;&#183;&nbsp; Baked Beans</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Reviews -->
   <section class="sec reviews-sec" id="reviews">
     <p class="sec-label reveal">What Customers Say</p>
@@ -1399,7 +1258,6 @@
       </div>
       <div class="foot-links">
         <a href="#menu">Menu</a>
-        <a href="#saturday">Saturday</a>
         <a href="#reviews">Reviews</a>
         <a href="#location">Location</a>
         <a href="tel:3163527637">Call</a>

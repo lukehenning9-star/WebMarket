@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Dapper Hound &mdash; All Breed Dog Grooming | Wichita, KS</title>
+  <meta name="description" content="Professional all-breed dog grooming in Wichita, KS. Every pet deserves to feel their best. Located at 5426 E Central Ave. Call (316) 396-0323.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ========================================================
+       NAVIGATION
+  ======================================================== -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <svg width="26" height="26" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="50" cy="71" rx="26" ry="20" fill="currentColor"/>
+          <ellipse cx="22" cy="49" rx="10" ry="14" fill="currentColor"/>
+          <ellipse cx="78" cy="49" rx="10" ry="14" fill="currentColor"/>
+          <ellipse cx="37" cy="35" rx="9" ry="12" fill="currentColor"/>
+          <ellipse cx="63" cy="35" rx="9" ry="12" fill="currentColor"/>
+        </svg>
+        The Dapper Hound
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <a href="tel:3163960323" class="nav-cta">Call to Book</a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- ========================================================
+       HERO — split layout: text left / visual right
+  ======================================================== -->
+  <section class="hero" id="hero">
+
+    <div class="hero-content">
+      <p class="eyebrow reveal">Wichita&rsquo;s All-Breed Grooming Studio</p>
+      <h1 class="hero-title reveal reveal-delay-1">
+        Every pet deserves<br>
+        to feel their <em>best.</em>
+      </h1>
+      <p class="hero-body reveal reveal-delay-2">
+        Expert grooming for every breed, every size, and every coat type.
+        Serving east Wichita at 5426 E Central Ave.
+      </p>
+      <div class="hero-actions reveal reveal-delay-3">
+        <a href="tel:3163960323" class="btn btn-primary">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11 19.79 19.79 0 0112.15 2.18 2 2 0 0114 4.18v3a2 2 0 01-2 2 10.17 10.17 0 004.83 4.83A2 2 0 0118.92 12z"/>
+          </svg>
+          (316) 396-0323
+        </a>
+        <a href="#gallery" class="btn btn-ghost">View Our Work</a>
+      </div>
+      <div class="hero-badges reveal reveal-delay-4">
+        <div class="badge">
+          <strong>100%</strong>
+          <span>Recommended</span>
+        </div>
+        <div class="badge">
+          <strong>All Breeds</strong>
+          <span>Welcome</span>
+        </div>
+        <div class="badge">
+          <strong>$$</strong>
+          <span>Fair Pricing</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-img-wrap">
+        <div class="hero-img-fallback" aria-hidden="true">
+          <!-- Large sitting dog, front view -->
+          <svg viewBox="0 0 200 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Body -->
+            <ellipse cx="100" cy="190" rx="64" ry="66" fill="white" opacity="0.88"/>
+            <!-- Neck blend -->
+            <ellipse cx="100" cy="130" rx="30" ry="22" fill="white" opacity="0.88"/>
+            <!-- Head -->
+            <circle cx="100" cy="90" r="58" fill="white" opacity="0.88"/>
+            <!-- Left ear (long floppy) -->
+            <ellipse cx="52" cy="66" rx="26" ry="44" fill="white" opacity="0.88" transform="rotate(-20 52 66)"/>
+            <!-- Right ear -->
+            <ellipse cx="148" cy="66" rx="26" ry="44" fill="white" opacity="0.88" transform="rotate(20 148 66)"/>
+            <!-- Eyes -->
+            <circle cx="83" cy="84" r="10" fill="rgba(0,0,0,0.2)"/>
+            <circle cx="117" cy="84" r="10" fill="rgba(0,0,0,0.2)"/>
+            <circle cx="80" cy="82" r="4" fill="white"/>
+            <circle cx="114" cy="82" r="4" fill="white"/>
+            <!-- Nose -->
+            <ellipse cx="100" cy="106" rx="12" ry="8" fill="rgba(0,0,0,0.2)"/>
+            <!-- Smile -->
+            <path d="M88 115 Q100 123 112 115" stroke="rgba(0,0,0,0.15)" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <!-- Left front paw -->
+            <ellipse cx="68" cy="248" rx="30" ry="14" fill="white" opacity="0.88"/>
+            <!-- Right front paw -->
+            <ellipse cx="132" cy="248" rx="30" ry="14" fill="white" opacity="0.88"/>
+            <!-- Tail (right side, curling up) -->
+            <path d="M162 178 Q194 150 186 114 Q180 92 166 100" stroke="white" stroke-width="17" fill="none" stroke-linecap="round" opacity="0.88"/>
+          </svg>
+        </div>
+        <img
+          src="https://images.pexels.com/photos/18640510/pexels-photo-18640510.jpeg?auto=compress&cs=tinysrgb&w=900&h=1100&fit=crop"
+          alt="Cute fluffy Pomeranians looking at the camera — the kind of happy dogs that leave The Dapper Hound"
+          class="hero-img"
+          loading="eager"
+        >
+      </div>
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ========================================================
+       SERVICES
+  ======================================================== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="eyebrow">What We Offer</p>
+        <h2>Grooming for every breed,<br><em>every dog.</em></h2>
+        <p class="section-body">
+          From the tiniest terrier to the largest working breed, every dog
+          that comes through the door gets the same expert attention, patience,
+          and care. No dog too big, no coat too complex.
+        </p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-item reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 3 L6 15 Q6 19 10 19 L14 19 Q18 19 18 15 L18 3"/>
+              <path d="M3 9 L21 9"/>
+            </svg>
+          </div>
+          <div class="service-text">
+            <h3>Full Groom</h3>
+            <p>Breed-specific cut, bath, blow dry, brush out, nail trim, and ear cleaning. The complete head-to-tail package.</p>
+          </div>
+        </div>
+
+        <div class="service-item reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 14.899A7 7 0 1115.71 8h1.79a4.5 4.5 0 012.5 8.242"/>
+              <path d="M12 12v9M8 17l4 4 4-4"/>
+            </svg>
+          </div>
+          <div class="service-text">
+            <h3>Bath &amp; Brush</h3>
+            <p>Deep cleaning bath with premium shampoo, conditioning treatment, professional blow dry, and thorough brush out.</p>
+          </div>
+        </div>
+
+        <div class="service-item reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2a3 3 0 013 3v7a3 3 0 01-6 0V5a3 3 0 013-3z"/>
+              <path d="M19 10a7 7 0 01-14 0"/>
+              <line x1="12" y1="17" x2="12" y2="22"/>
+              <line x1="8" y1="22" x2="16" y2="22"/>
+            </svg>
+          </div>
+          <div class="service-text">
+            <h3>Breed-Specific Cuts</h3>
+            <p>Precise, breed-standard trims or custom styles tailored to how you like your dog to look. Every time, exactly right.</p>
+          </div>
+        </div>
+
+        <div class="service-item reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+          <div class="service-text">
+            <h3>Nail Trim &amp; Filing</h3>
+            <p>Clean nail trim, smooth filing, and optional grinding to keep your dog comfortable and prevent overgrowth. Available as a standalone.</p>
+          </div>
+        </div>
+
+        <div class="service-item reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+              <line x1="9" y1="9" x2="9.01" y2="9"/>
+              <line x1="15" y1="9" x2="15.01" y2="9"/>
+            </svg>
+          </div>
+          <div class="service-text">
+            <h3>Ear Cleaning</h3>
+            <p>Gentle, thorough ear cleaning to prevent buildup and reduce the risk of infection. Standard with every full groom.</p>
+          </div>
+        </div>
+
+        <div class="service-item reveal reveal-delay-3">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/>
+            </svg>
+          </div>
+          <div class="service-text">
+            <h3>Puppy&rsquo;s First Groom</h3>
+            <p>A calm, patient introduction to grooming for puppies. We take our time to make it a genuinely positive first experience.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       ABOUT — reversed split: visual left / text right
+  ======================================================== -->
+  <section class="about" id="about">
+    <div class="container about-inner">
+
+      <div class="about-visual reveal">
+        <div class="about-img-wrap">
+          <div class="about-img-fallback" aria-hidden="true">
+            <!-- Dog portrait / close-up face -->
+            <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Main fluffy head -->
+              <circle cx="80" cy="88" r="62" fill="white" opacity="0.88"/>
+              <!-- Left long floppy ear -->
+              <ellipse cx="24" cy="82" rx="24" ry="46" fill="white" opacity="0.88" transform="rotate(-10 24 82)"/>
+              <!-- Right long floppy ear -->
+              <ellipse cx="136" cy="82" rx="24" ry="46" fill="white" opacity="0.88" transform="rotate(10 136 82)"/>
+              <!-- Top fluffy crown -->
+              <circle cx="80" cy="30" r="22" fill="white" opacity="0.88"/>
+              <!-- Eyes -->
+              <circle cx="60" cy="82" r="11" fill="rgba(0,0,0,0.2)"/>
+              <circle cx="100" cy="82" r="11" fill="rgba(0,0,0,0.2)"/>
+              <circle cx="57" cy="79" r="4" fill="white"/>
+              <circle cx="97" cy="79" r="4" fill="white"/>
+              <!-- Nose -->
+              <ellipse cx="80" cy="104" rx="12" ry="8" fill="rgba(0,0,0,0.2)"/>
+              <!-- Smile -->
+              <path d="M68 114 Q80 122 92 114" stroke="rgba(0,0,0,0.15)" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <img
+            src="https://images.pexels.com/photos/9378527/pexels-photo-9378527.jpeg?auto=compress&cs=tinysrgb&w=700&h=875&fit=crop"
+            alt="White Pomeranian puppy close-up — every dog leaves looking this good"
+            class="about-img"
+            loading="lazy"
+          >
+          <div class="about-badge">
+            <span>100%</span>
+            <span>Recommended</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <p class="eyebrow reveal">About The Dapper Hound</p>
+        <h2 class="reveal reveal-delay-1">Grooming you can <em>trust.</em></h2>
+        <p class="reveal reveal-delay-2">
+          At The Dapper Hound, every dog gets individual attention, patience,
+          and care from an experienced groomer who genuinely loves what she does.
+          Whether it&rsquo;s a detailed breed-specific cut or a simple bath and tidy,
+          every appointment gets the same high standard.
+        </p>
+        <p class="reveal reveal-delay-3">
+          Dogs come in looking like dogs and leave looking their absolute best.
+          And if your dog has been here before, they remember the warm welcome
+          &mdash; pets and owners alike keep coming back.
+        </p>
+        <div class="reveal reveal-delay-4">
+          <a href="tel:3163960323" class="btn btn-primary">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11 19.79 19.79 0 0112.15 2.18 2 2 0 0114 4.18v3a2 2 0 01-2 2 10.17 10.17 0 004.83 4.83A2 2 0 0118.92 12z"/>
+            </svg>
+            Call to Schedule
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       GALLERY — asymmetric grid
+  ======================================================== -->
+  <section class="gallery-sec" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="eyebrow">Our Work</p>
+        <h2>Happy dogs, happy <em>owners.</em></h2>
+      </div>
+
+      <div class="gallery-grid">
+
+        <!-- gi-1 = tall portrait slot → poodle sitting front (purple) -->
+        <div class="gallery-item gi-1 reveal">
+          <div class="gallery-fallback">
+            <!-- Poodle sitting front — pom-pom circles -->
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Top knot pom -->
+              <circle cx="50" cy="18" r="13" fill="currentColor"/>
+              <!-- Head pom -->
+              <circle cx="50" cy="36" r="21" fill="currentColor"/>
+              <!-- Left ear pom -->
+              <circle cx="26" cy="37" r="13" fill="currentColor"/>
+              <!-- Right ear pom -->
+              <circle cx="74" cy="37" r="13" fill="currentColor"/>
+              <!-- Neck/body connector -->
+              <ellipse cx="50" cy="57" rx="14" ry="10" fill="currentColor"/>
+              <!-- Body pom -->
+              <circle cx="50" cy="72" r="21" fill="currentColor"/>
+              <!-- Left paw pom -->
+              <circle cx="35" cy="92" r="9" fill="currentColor"/>
+              <!-- Right paw pom -->
+              <circle cx="65" cy="92" r="9" fill="currentColor"/>
+              <!-- Tail pom -->
+              <circle cx="78" cy="58" r="9" fill="currentColor"/>
+            </svg>
+            <span>Award-Winning Trim</span>
+          </div>
+          <img
+            src="https://images.pexels.com/photos/17880518/pexels-photo-17880518.jpeg?auto=compress&cs=tinysrgb&w=600&h=900&fit=crop"
+            alt="Close-up portrait of a white fluffy dog after a fresh groom"
+            loading="lazy"
+          >
+          <div class="gallery-caption">Award-Winning Trim</div>
+        </div>
+
+        <!-- gi-2 = square slot → side profile standing dog (teal) -->
+        <div class="gallery-item gi-2 reveal reveal-delay-1">
+          <div class="gallery-fallback">
+            <!-- Dog side profile — facing right -->
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Body -->
+              <ellipse cx="46" cy="60" rx="33" ry="19" fill="currentColor"/>
+              <!-- Neck -->
+              <ellipse cx="68" cy="51" rx="11" ry="13" fill="currentColor"/>
+              <!-- Head -->
+              <circle cx="74" cy="40" r="18" fill="currentColor"/>
+              <!-- Snout -->
+              <ellipse cx="87" cy="47" rx="11" ry="9" fill="currentColor"/>
+              <!-- Ear (floppy, from top of head) -->
+              <ellipse cx="66" cy="28" rx="9" ry="14" fill="currentColor" transform="rotate(-12 66 28)"/>
+              <!-- Back legs -->
+              <ellipse cx="22" cy="79" rx="7" ry="12" fill="currentColor"/>
+              <ellipse cx="36" cy="79" rx="7" ry="11" fill="currentColor"/>
+              <!-- Front legs -->
+              <ellipse cx="58" cy="79" rx="7" ry="11" fill="currentColor"/>
+              <ellipse cx="72" cy="77" rx="7" ry="12" fill="currentColor"/>
+              <!-- Tail curling up at back -->
+              <path d="M14 54 Q5 42 11 27" stroke="currentColor" stroke-width="7" fill="none" stroke-linecap="round"/>
+            </svg>
+            <span>German Wirehaired Pointer</span>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=600&h=600&q=85"
+            alt="Beautiful white dog after a full groom"
+            loading="lazy"
+          >
+          <div class="gallery-caption">German Wirehaired Pointer</div>
+        </div>
+
+        <!-- gi-3 = square slot → puppy face with big floppy ears (amber) -->
+        <div class="gallery-item gi-3 reveal reveal-delay-2">
+          <div class="gallery-fallback">
+            <!-- Puppy face — big fluffy head, floppy ears -->
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Big round head -->
+              <circle cx="50" cy="53" r="34" fill="currentColor"/>
+              <!-- Left big floppy ear -->
+              <ellipse cx="18" cy="56" rx="14" ry="27" fill="currentColor" transform="rotate(-8 18 56)"/>
+              <!-- Right big floppy ear -->
+              <ellipse cx="82" cy="56" rx="14" ry="27" fill="currentColor" transform="rotate(8 82 56)"/>
+              <!-- Top fluff -->
+              <ellipse cx="50" cy="22" rx="22" ry="14" fill="currentColor"/>
+              <!-- Snout bump -->
+              <ellipse cx="50" cy="63" rx="16" ry="11" fill="currentColor"/>
+              <!-- Nose -->
+              <ellipse cx="50" cy="57" rx="8" ry="5" fill="rgba(0,0,0,0.22)"/>
+              <!-- Left eye -->
+              <circle cx="36" cy="47" r="7" fill="rgba(0,0,0,0.2)"/>
+              <circle cx="33" cy="44" r="2.5" fill="white"/>
+              <!-- Right eye -->
+              <circle cx="64" cy="47" r="7" fill="rgba(0,0,0,0.2)"/>
+              <circle cx="61" cy="44" r="2.5" fill="white"/>
+            </svg>
+            <span>Goldendoodle Puppy</span>
+          </div>
+          <img
+            src="https://images.pexels.com/photos/840326/pexels-photo-840326.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop"
+            alt="Golden retriever puppy gazing up after a fresh groom"
+            loading="lazy"
+          >
+          <div class="gallery-caption">Goldendoodle Puppy</div>
+        </div>
+
+        <!-- gi-4 = wide landscape slot → bounding poodle (indigo) -->
+        <div class="gallery-item gi-4 reveal reveal-delay-1">
+          <div class="gallery-fallback">
+            <!-- Poodle mid-bound — wide landscape pose -->
+            <svg viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Body -->
+              <ellipse cx="80" cy="44" rx="50" ry="21" fill="currentColor"/>
+              <!-- Neck -->
+              <ellipse cx="114" cy="37" rx="14" ry="13" fill="currentColor"/>
+              <!-- Head -->
+              <circle cx="122" cy="26" r="19" fill="currentColor"/>
+              <!-- Snout -->
+              <ellipse cx="137" cy="33" rx="11" ry="9" fill="currentColor"/>
+              <!-- Head pom (poodle top knot) -->
+              <circle cx="120" cy="10" r="11" fill="currentColor"/>
+              <!-- Ear pom -->
+              <circle cx="106" cy="16" r="9" fill="currentColor"/>
+              <!-- Front legs (bounding forward) -->
+              <path d="M108 61 L104 75 Q101 79 97 79" stroke="currentColor" stroke-width="9" fill="none" stroke-linecap="round"/>
+              <path d="M120 64 L120 77 Q118 80 115 79" stroke="currentColor" stroke-width="9" fill="none" stroke-linecap="round"/>
+              <!-- Back legs (extending back) -->
+              <path d="M48 62 L42 75 Q38 79 34 79" stroke="currentColor" stroke-width="9" fill="none" stroke-linecap="round"/>
+              <path d="M60 63 L56 76 Q53 79 50 79" stroke="currentColor" stroke-width="9" fill="none" stroke-linecap="round"/>
+              <!-- Tail pom -->
+              <circle cx="24" cy="42" r="9" fill="currentColor"/>
+              <path d="M30 44 Q36 50 42 44" stroke="currentColor" stroke-width="7" fill="none" stroke-linecap="round"/>
+            </svg>
+            <span>Standard Poodle</span>
+          </div>
+          <img
+            src="https://images.pexels.com/photos/2409503/pexels-photo-2409503.jpeg?auto=compress&cs=tinysrgb&w=900&h=500&fit=crop"
+            alt="Happy golden retriever sitting on grass, mouth open in a smile"
+            loading="lazy"
+          >
+          <div class="gallery-caption">Standard Poodle</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       REVIEWS
+  ======================================================== -->
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="eyebrow">Client Reviews</p>
+        <h2>What pet owners are <em>saying.</em></h2>
+        <div class="reviews-summary">
+          <div class="stars" aria-label="5 stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#c4922a" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#c4922a" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#c4922a" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#c4922a" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#c4922a" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          </div>
+          <span>100% recommend &middot; 7 reviews</span>
+        </div>
+      </div>
+
+      <div class="reviews-grid">
+
+        <div class="review reveal">
+          <span class="review-quote-mark" aria-hidden="true">&ldquo;</span>
+          <p class="review-text">
+            Jamie does an amazing job with my precious Annie. She&rsquo;s been seeing her
+            for over a year now and is very comfortable with Jamie. Jamie knows exactly
+            how I like Annie to look and exceeds my expectations every time.
+            I would highly recommend Jamie to groom your precious baby.
+          </p>
+          <div class="review-author">
+            <div class="review-avatar" style="background: #b87333;" aria-hidden="true">TM</div>
+            <div class="review-author-info">
+              <strong>Tina Marie</strong>
+              <span>March 2021</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review reveal reveal-delay-1">
+          <span class="review-quote-mark" aria-hidden="true">&ldquo;</span>
+          <p class="review-text">
+            Absolutely loved our experience at The Dapper Hound. My boys are so handsome.
+            Everyone was so friendly at drop off and pick up. We will be repeat
+            customers from now on!
+          </p>
+          <div class="review-author">
+            <div class="review-avatar" style="background: #7a8a6e;" aria-hidden="true">SR</div>
+            <div class="review-author-info">
+              <strong>Sarah Dale Rollins</strong>
+              <span>January 2021</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review reveal reveal-delay-1">
+          <span class="review-quote-mark" aria-hidden="true">&ldquo;</span>
+          <p class="review-text">
+            Jamie did a great job with our two dogs. Teddy and Lucy seem to enjoy
+            their time with her. She was patient and was not rushed taking care of
+            our dogs and we have been very pleased.
+          </p>
+          <div class="review-author">
+            <div class="review-avatar" style="background: #6b7a8a;" aria-hidden="true">RS</div>
+            <div class="review-author-info">
+              <strong>Rocky Schmied</strong>
+              <span>January 2020</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review reveal reveal-delay-2">
+          <span class="review-quote-mark" aria-hidden="true">&ldquo;</span>
+          <p class="review-text">
+            I would recommend Jamie to anyone. My dogs go in looking like hound dogs
+            and come out beautiful! She is reasonably priced and the results
+            speak for themselves.
+          </p>
+          <div class="review-author">
+            <div class="review-avatar" style="background: #8a6e7a;" aria-hidden="true">CM</div>
+            <div class="review-author-info">
+              <strong>Chris Moore</strong>
+              <span>October 2019</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="reviews-footer reveal">
+        <p class="reviews-footer-text">
+          <strong>7 of 7 reviewers recommend</strong> The Dapper Hound.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       CTA BAND
+  ======================================================== -->
+  <section class="cta-section">
+    <div class="container cta-inner">
+      <div class="cta-text reveal">
+        <h2>Ready to book your dog&rsquo;s<br>next <em>groom?</em></h2>
+        <p>Give us a call or send an email &mdash; we&rsquo;d love to meet your pup.</p>
+      </div>
+      <div class="cta-actions reveal reveal-delay-2">
+        <a href="tel:3163960323" class="btn btn-primary btn-lg">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11 19.79 19.79 0 0112.15 2.18 2 2 0 0114 4.18v3a2 2 0 01-2 2 10.17 10.17 0 004.83 4.83A2 2 0 0118.92 12z"/>
+          </svg>
+          (316) 396-0323
+        </a>
+        <a href="mailto:TheDapperHound1@gmail.com" class="btn btn-outline btn-lg">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          Send an Email
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       CONTACT
+  ======================================================== -->
+  <section class="contact" id="contact">
+    <div class="container contact-inner">
+
+      <div class="contact-info">
+        <p class="eyebrow reveal">Find Us</p>
+        <h2 class="reveal reveal-delay-1">Visit The Dapper Hound</h2>
+        <div class="contact-items">
+
+          <a
+            href="https://maps.google.com/?q=5426+E+Central+Ave+Wichita+KS+67208"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-item reveal reveal-delay-2"
+          >
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <strong>Address</strong>
+              <span>5426 E Central Ave<br>Wichita, KS 67208</span>
+            </div>
+          </a>
+
+          <a href="tel:3163960323" class="contact-item reveal reveal-delay-3">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11 19.79 19.79 0 0112.15 2.18 2 2 0 0114 4.18v3a2 2 0 01-2 2 10.17 10.17 0 004.83 4.83A2 2 0 0118.92 12z"/>
+              </svg>
+            </div>
+            <div>
+              <strong>Phone</strong>
+              <span>(316) 396-0323</span>
+            </div>
+          </a>
+
+          <a href="mailto:TheDapperHound1@gmail.com" class="contact-item reveal reveal-delay-4">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div>
+              <strong>Email</strong>
+              <span>TheDapperHound1@gmail.com</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <div class="map-block reveal reveal-delay-2">
+        <a
+          href="https://maps.google.com/?q=5426+E+Central+Ave+Wichita+KS+67208"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="map-link"
+          aria-label="Open location in Google Maps"
+        >
+          <div class="map-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="40" height="40" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>5426 E Central Ave, Wichita, KS</span>
+            <span class="map-cta">Open in Google Maps &rarr;</span>
+          </div>
+          <div class="map-open-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"/>
+              <polyline points="7 7 17 7 17 17"/>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================
+       FOOTER
+  ======================================================== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="#" class="footer-logo">
+        <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="50" cy="71" rx="26" ry="20" fill="currentColor"/>
+          <ellipse cx="22" cy="49" rx="10" ry="14" fill="currentColor"/>
+          <ellipse cx="78" cy="49" rx="10" ry="14" fill="currentColor"/>
+          <ellipse cx="37" cy="35" rx="9" ry="12" fill="currentColor"/>
+          <ellipse cx="63" cy="35" rx="9" ry="12" fill="currentColor"/>
+        </svg>
+        The Dapper Hound
+      </a>
+      <p class="footer-tagline">Every pet deserves to feel their best.</p>
+      <div class="footer-links">
+        <a href="tel:3163960323">(316) 396-0323</a>
+        <span aria-hidden="true">&middot;</span>
+        <a href="mailto:TheDapperHound1@gmail.com">TheDapperHound1@gmail.com</a>
+        <span aria-hidden="true">&middot;</span>
+        <a href="https://maps.google.com/?q=5426+E+Central+Ave+Wichita+KS+67208" target="_blank" rel="noopener noreferrer">5426 E Central, Wichita KS</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="app.js"></script>
+</body>
+</html>

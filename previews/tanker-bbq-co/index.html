@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tanker BBQ Co. — Wichita's finest slow-smoked BBQ. Brisket, beef ribs, burnt ends, pulled pork, and handcrafted sides. Open Tuesday–Saturday, 11AM–7PM at 620 W Maple St.">
+  <title>Tanker BBQ Co. | Wichita's Finest BBQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #0C0A08;
+      --bg-2:         #141210;
+      --bg-3:         #1C1814;
+      --amber:        #C8681A;
+      --amber-bright: #E07B20;
+      --amber-dim:    rgba(200,104,26,0.12);
+      --cream:        #F2E4CC;
+      --text:         #EDE0C8;
+      --muted:        #8A7A62;
+      --border:       rgba(200,150,60,0.11);
+      --border-hi:    rgba(200,150,60,0.24);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; width: 100%; object-fit: cover; }
+    a   { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 200;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 36px;
+      transition: background 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(12,10,8,0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-color: var(--border);
+    }
+
+    .nav-logo {
+      font-size: 1.15rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      color: var(--cream);
+    }
+    .nav-logo span { color: var(--amber); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+
+    .nav-cta {
+      background: var(--amber) !important;
+      color: #0C0A08 !important;
+      padding: 9px 20px;
+      border-radius: 6px;
+      font-weight: 700 !important;
+      font-size: 0.78rem !important;
+      letter-spacing: 0.06em !important;
+      text-transform: uppercase !important;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-flex !important;
+      align-items: center;
+      gap: 7px;
+    }
+    .nav-cta:hover {
+      background: var(--amber-bright) !important;
+      color: #0C0A08 !important;
+      transform: translateY(-1px);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--cream);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      z-index: 199;
+      background: rgba(12,10,8,0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transform: translateY(-110%);
+      transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+    }
+    .mobile-menu.open { transform: translateY(0); }
+    .mobile-menu a {
+      display: block;
+      padding: 13px 0;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-call {
+      margin-top: 16px;
+      display: block;
+      background: var(--amber);
+      color: #0C0A08;
+      text-align: center;
+      padding: 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100dvh;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px 72px 80px 60px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--amber-dim);
+      border: 1px solid var(--border-hi);
+      color: var(--amber);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      padding: 7px 14px;
+      border-radius: 100px;
+      width: fit-content;
+      margin-bottom: 28px;
+    }
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--amber);
+      animation: blink 2.2s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%,100% { opacity:1; }
+      50%      { opacity:0.35; }
+    }
+
+    .hero h1 {
+      font-size: clamp(3.4rem, 5.8vw, 6rem);
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.035em;
+      color: var(--cream);
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--amber);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 440px;
+      margin-bottom: 44px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+
+    .btn-solid {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--amber);
+      color: #0C0A08;
+      padding: 15px 32px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-solid:hover {
+      background: var(--amber-bright);
+      color: #0C0A08;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--cream);
+      padding: 15px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: 1px solid var(--border-hi);
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(200,150,60,0.4);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-val {
+      font-size: 1.9rem;
+      font-weight: 900;
+      color: var(--cream);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .stat-lbl {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-right img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-right-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--bg) 0%, rgba(12,10,8,0.25) 45%, transparent 100%);
+      z-index: 1;
+    }
+
+    /* MARQUEE */
+    .marquee-wrap {
+      overflow: hidden;
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 56px;
+      width: max-content;
+      animation: scroll-marquee 22s linear infinite;
+    }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .marquee-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--amber); flex-shrink: 0; }
+    @keyframes scroll-marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* SECTION LABELS */
+    .sec-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 14px;
+    }
+    .sec-title {
+      font-size: clamp(2rem, 3.8vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--cream);
+      line-height: 1;
+    }
+    .sec-body {
+      font-size: 0.975rem;
+      color: var(--muted);
+      line-height: 1.72;
+      max-width: 58ch;
+    }
+
+    /* ABOUT */
+    .about { padding: 120px 0; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-img-wrap { position: relative; }
+    .about-img-wrap img {
+      height: 560px;
+      border-radius: 14px;
+      object-position: center;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--bg-3);
+      border: 1px solid var(--border-hi);
+      border-radius: 12px;
+      padding: 22px 26px;
+    }
+    .about-badge .num {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--amber);
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+    .about-badge .lbl {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+    }
+
+    .about-content { display: flex; flex-direction: column; gap: 20px; }
+    .about-text { display: flex; flex-direction: column; gap: 14px; }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .pillar {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+      transition: border-color 0.2s;
+    }
+    .pillar:hover { border-color: var(--border-hi); }
+    .pillar-icon {
+      width: 34px;
+      height: 34px;
+      background: var(--amber-dim);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    .pillar h4 {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 3px;
+    }
+    .pillar p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+    /* FAVORITES */
+    .favorites { padding: 0 0 120px; }
+    .fav-grid {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+    .fav-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      color: var(--cream);
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 100px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .fav-chip:hover { border-color: var(--border-hi); background: var(--bg-3); }
+    .fav-chip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--amber); flex-shrink: 0; }
+
+    /* SIGNATURE DISHES */
+    .signature { padding: 0 0 120px; }
+    .sig-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 420px;
+      gap: 14px;
+      margin-top: 48px;
+    }
+    .sig-card {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .sig-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.55s cubic-bezier(0.16,1,0.3,1);
+    }
+    .sig-card:hover img { transform: scale(1.06); }
+    .sig-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(12,10,8,0.88) 0%, rgba(12,10,8,0.1) 55%, transparent 100%);
+      z-index: 1;
+    }
+    .sig-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 24px;
+      z-index: 2;
+    }
+    .sig-tag {
+      display: inline-block;
+      background: rgba(200,104,26,0.88);
+      color: #0C0A08;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 100px;
+      margin-bottom: 8px;
+    }
+    .sig-card h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    .sig-card p { font-size: 0.78rem; color: rgba(242,228,204,0.65); margin-top: 4px; }
+
+    /* MENU */
+    .menu-sec {
+      padding: 120px 0;
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .menu-head { margin-bottom: 48px; }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .tab-btn {
+      padding: 9px 22px;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: transparent;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--amber);
+      color: #0C0A08;
+      border-color: var(--amber);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+    }
+    .menu-group-label {
+      grid-column: 1 / -1;
+      background: var(--bg-3);
+      padding: 12px 22px;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+    .menu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 18px 22px;
+      background: var(--bg);
+      transition: background 0.18s;
+    }
+    .menu-row:hover { background: var(--bg-3); }
+    .menu-name { font-size: 0.9rem; font-weight: 600; color: var(--cream); }
+    .menu-desc { font-size: 0.77rem; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+    .menu-price { font-size: 0.95rem; font-weight: 700; color: var(--amber); white-space: nowrap; flex-shrink: 0; }
+    .menu-note {
+      grid-column: 1 / -1;
+      background: var(--bg-3);
+      padding: 12px 22px;
+      font-size: 0.77rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .sides-wrap {
+      background: var(--border);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .sides-head {
+      grid-column: 1 / -1;
+      background: var(--bg-3);
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .sides-head-price { font-size: 0.875rem; font-weight: 700; color: var(--amber); }
+    .sides-head-sep { font-size: 0.8rem; color: var(--muted); }
+    .side-chip {
+      background: var(--bg);
+      padding: 15px 20px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--cream);
+      transition: background 0.18s;
+    }
+    .side-chip:hover { background: var(--bg-3); }
+
+    /* REVIEWS */
+    .reviews { padding: 120px 0; }
+    .reviews-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 52px;
+      gap: 24px;
+    }
+    .rating-block { text-align: right; }
+    .rating-big {
+      font-size: 4.5rem;
+      font-weight: 900;
+      color: var(--cream);
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+    .stars {
+      display: flex;
+      gap: 4px;
+      margin: 8px 0 6px;
+      justify-content: flex-end;
+    }
+    .star-svg { width: 19px; height: 19px; color: var(--amber); }
+    .star-svg.dim { color: rgba(200,104,26,0.25); }
+    .rating-ct { font-size: 0.8rem; color: var(--muted); }
+
+    .rev-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .rev-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .rev-card:hover { border-color: var(--border-hi); transform: translateY(-3px); }
+    .rev-stars { display: flex; gap: 3px; }
+    .rev-star { width: 13px; height: 13px; color: var(--amber); }
+    .rev-text { font-size: 0.875rem; color: var(--muted); line-height: 1.65; flex: 1; }
+    .rev-author { border-top: 1px solid var(--border); padding-top: 14px; }
+    .rev-name { font-size: 0.85rem; font-weight: 700; color: var(--cream); }
+    .rev-date { font-size: 0.74rem; color: var(--muted); margin-top: 2px; }
+    .rev-platform {
+      display: inline-block;
+      margin-top: 5px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--amber);
+      background: var(--amber-dim);
+      padding: 2px 8px;
+      border-radius: 100px;
+    }
+
+    /* LOCATION */
+    .location { padding: 120px 0; background: var(--bg-2); border-top: 1px solid var(--border); }
+    .loc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .hours-table { margin-top: 32px; }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    .hours-day { color: var(--muted); font-weight: 500; }
+    .hours-time { color: var(--cream); font-weight: 600; }
+    .hours-time.closed { color: var(--muted); font-weight: 400; }
+
+    .contact-list { margin-top: 36px; display: flex; flex-direction: column; gap: 14px; }
+    .contact-row { display: flex; align-items: center; gap: 14px; }
+    .contact-icon {
+      width: 42px; height: 42px;
+      background: var(--amber-dim);
+      border: 1px solid var(--border-hi);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-info strong {
+      display: block;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 1px;
+    }
+    .contact-info a, .contact-info span {
+      font-size: 0.925rem;
+      font-weight: 600;
+      color: var(--cream);
+      transition: color 0.2s;
+    }
+    .contact-info a:hover { color: var(--amber); }
+
+    .map-box {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      height: 380px;
+    }
+    .map-box iframe { width: 100%; height: 100%; border: none; }
+
+    /* CTA BAND */
+    .cta-band {
+      padding: 80px 0;
+      background: var(--bg-3);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .cta-band h2 {
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+    .cta-band p { font-size: 1rem; color: var(--muted); margin-bottom: 36px; }
+    .cta-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      padding: 56px 0 36px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 56px;
+      margin-bottom: 44px;
+    }
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-top: 10px;
+      max-width: 270px;
+    }
+    .footer-col h5 {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .footer-col a { font-size: 0.85rem; color: var(--muted); transition: color 0.2s; }
+    .footer-col a:hover { color: var(--cream); }
+    .footer-bottom {
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 110px 40px 60px; }
+      .hero-right { height: 52vw; min-height: 300px; order: -1; }
+      .hero-right-overlay { background: linear-gradient(to bottom, var(--bg) 0%, rgba(12,10,8,0.1) 100%); }
+      .about-grid { grid-template-columns: 1fr; gap: 44px; }
+      .about-img-wrap img { height: 380px; }
+      .about-badge { right: 0; }
+      .sig-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 280px 280px; }
+      .sig-grid .sig-card:first-child { grid-column: 1 / -1; }
+      .rev-grid { grid-template-columns: 1fr 1fr; }
+      .loc-grid { grid-template-columns: 1fr; gap: 44px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-left { padding: 90px 20px 48px; }
+      .hero-right { height: 62vw; min-height: 260px; }
+      .hero-stats { gap: 28px; }
+      .container { padding: 0 20px; }
+      .about { padding: 80px 0; }
+      .pillars { grid-template-columns: 1fr; }
+      .sig-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .sig-card { height: 240px; }
+      .sig-grid .sig-card:first-child { height: 280px; grid-column: auto; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .sides-wrap { grid-template-columns: 1fr 1fr; }
+      .reviews { padding: 80px 0; }
+      .reviews-head { flex-direction: column; align-items: flex-start; }
+      .rating-block { text-align: left; }
+      .stars { justify-content: flex-start; }
+      .rev-grid { grid-template-columns: 1fr; }
+      .location { padding: 80px 0; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .favorites, .signature { padding-bottom: 80px; }
+      .menu-sec { padding: 80px 0; }
+      .cta-band { padding: 60px 0; }
+    }
+
+    @media (max-width: 480px) {
+      .sides-wrap { grid-template-columns: 1fr; }
+      .hero-stats { gap: 20px; }
+      .stat-val { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">TANKER <span>BBQ</span></div>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#location">Location</a></li>
+    <li>
+      <a href="tel:+13164611413" class="nav-cta">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 9.81 19.79 19.79 0 01.67 1.18 2 2 0 012.64 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.61a16 16 0 006.29 6.29l.98-.98a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        Call Now
+      </a>
+    </li>
+  </ul>
+  <button class="hamburger" id="burger" onclick="toggleNav()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileNav">
+  <a href="#menu"     onclick="toggleNav()">Menu</a>
+  <a href="#about"    onclick="toggleNav()">Our Story</a>
+  <a href="#reviews"  onclick="toggleNav()">Reviews</a>
+  <a href="#location" onclick="toggleNav()">Hours &amp; Location</a>
+  <a href="tel:+13164611413" class="mobile-call">(316) 461-1413 &mdash; Call Us</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      Wichita's Finest BBQ
+    </div>
+    <h1>Smoke.<br>Fire.<br><em>Flavor.</em></h1>
+    <p class="hero-sub">
+      Slow-smoked over hardwood, built on handcrafted recipes, served fresh every day.
+      Real BBQ, made the right way &mdash; right here in Wichita.
+    </p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn-solid">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
+        View Full Menu
+      </a>
+      <a href="tel:+13164611413" class="btn-outline">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 9.81 19.79 19.79 0 01.67 1.18 2 2 0 012.64 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.61a16 16 0 006.29 6.29l.98-.98a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        (316) 461-1413
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-val">4.6</div>
+        <div class="stat-lbl">Star Rating</div>
+      </div>
+      <div>
+        <div class="stat-val">135+</div>
+        <div class="stat-lbl">Reviews</div>
+      </div>
+      <div>
+        <div class="stat-val">Tue&ndash;Sat</div>
+        <div class="stat-lbl">Open 11AM&ndash;7PM</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img
+      src="https://images.unsplash.com/photo-1558030006-450675393462?w=1400&q=85&auto=format&fit=crop"
+      alt="Tanker BBQ Co. smoked meats"
+      loading="eager">
+    <div class="hero-right-overlay"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item"><div class="marquee-dot"></div>Brisket</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Beef Ribs</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Burnt Ends</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Pulled Pork</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Hot Links</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Mac n Cheese</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Green Beans</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Sweet Corn Casserole</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Cheesecake</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Sampler Platter</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Brisket</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Beef Ribs</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Burnt Ends</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Pulled Pork</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Hot Links</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Mac n Cheese</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Green Beans</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Sweet Corn Casserole</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Cheesecake</div>
+    <div class="marquee-item"><div class="marquee-dot"></div>Sampler Platter</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="about-img-wrap reveal">
+        <img
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=85&auto=format&fit=crop"
+          alt="Tanker BBQ Co. restaurant interior">
+        <div class="about-badge">
+          <div class="num">4.7</div>
+          <div class="lbl">Service Rating</div>
+        </div>
+      </div>
+
+      <div class="about-content reveal reveal-d1">
+        <div class="sec-label">Our Story</div>
+        <h2 class="sec-title">Passion on<br>Every Plate</h2>
+        <div class="about-text">
+          <p class="sec-body">
+            Tanker BBQ Co. is where Wichita comes for real barbecue. Located on West Maple,
+            every dish starts with premium ingredients and ends with that unmistakable smoke ring
+            you can only get from cooking it right.
+          </p>
+          <p class="sec-body">
+            The owner's dedication to the craft shows in every bite &mdash; from brisket that melts
+            on your tongue to handmade sides that keep customers coming back week after week.
+            Friendly faces, a clean space, and unforgettable food.
+          </p>
+        </div>
+        <div class="pillars">
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8681A" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <h4>Welcoming Staff</h4>
+            <p>Friendly, helpful service on every visit.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8681A" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h4>Smoked Daily</h4>
+            <p>Fresh meats smoked every morning before service.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8681A" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <h4>Handcrafted Recipes</h4>
+            <p>Every sauce, rub, and side made from scratch.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8681A" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h4>Wichita&rsquo;s Best</h4>
+            <p>Consistently rated among the top BBQ in the city.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOMER FAVORITES -->
+<div class="favorites">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">What Guests Order Most</div>
+      <h2 class="sec-title">Customer Favorites</h2>
+    </div>
+    <div class="fav-grid reveal reveal-d1">
+      <div class="fav-chip"><div class="fav-chip-dot"></div>Garlicky Green Beans</div>
+      <div class="fav-chip"><div class="fav-chip-dot"></div>Coleslaw</div>
+      <div class="fav-chip"><div class="fav-chip-dot"></div>Pulled Pork</div>
+      <div class="fav-chip"><div class="fav-chip-dot"></div>Baked Beans</div>
+      <div class="fav-chip"><div class="fav-chip-dot"></div>Full Rack Beef Ribs</div>
+      <div class="fav-chip"><div class="fav-chip-dot"></div>Sweet Corn Casserole</div>
+      <div class="fav-chip"><div class="fav-chip-dot"></div>Cheesy Potluck Potatoes</div>
+      <div class="fav-chip"><div class="fav-chip-dot"></div>House-Made Sauces</div>
+    </div>
+  </div>
+</div>
+
+<!-- SIGNATURE DISHES -->
+<div class="signature">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">Must-Try</div>
+      <h2 class="sec-title">Signature Plates</h2>
+    </div>
+    <div class="sig-grid reveal reveal-d1">
+      <div class="sig-card">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1200&q=85&auto=format&fit=crop" alt="Texas-style brisket">
+        <div class="sig-overlay"></div>
+        <div class="sig-info">
+          <span class="sig-tag">House Signature</span>
+          <h3>Texas-Style Brisket</h3>
+          <p>Slow-smoked to tender perfection. Our most celebrated cut.</p>
+        </div>
+      </div>
+      <div class="sig-card">
+        <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=800&q=85&auto=format&fit=crop" alt="Full rack beef ribs">
+        <div class="sig-overlay"></div>
+        <div class="sig-info">
+          <span class="sig-tag">Customer Favorite</span>
+          <h3>Full Rack<br>Beef Ribs</h3>
+          <p>Melt-in-your-mouth. Texas style.</p>
+        </div>
+      </div>
+      <div class="sig-card">
+        <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=800&q=85&auto=format&fit=crop" alt="Burnt ends">
+        <div class="sig-overlay"></div>
+        <div class="sig-info">
+          <span class="sig-tag">Weekend Special</span>
+          <h3>Burnt Ends</h3>
+          <p>Brisket or pork belly, caramelized &amp; smoky.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MENU -->
+<section class="menu-sec" id="menu">
+  <div class="container">
+    <div class="menu-head reveal">
+      <div class="sec-label">Full Menu</div>
+      <h2 class="sec-title">What We're Serving</h2>
+    </div>
+
+    <div class="tabs reveal reveal-d1">
+      <button class="tab-btn active" onclick="switchTab(this,'meals')">Meals</button>
+      <button class="tab-btn" onclick="switchTab(this,'meats')">Smoked Meats</button>
+      <button class="tab-btn" onclick="switchTab(this,'sides')">Sides</button>
+      <button class="tab-btn" onclick="switchTab(this,'desserts')">Desserts &amp; Drinks</button>
+    </div>
+
+    <!-- MEALS -->
+    <div class="tab-panel active" id="panel-meals">
+      <div class="menu-grid">
+        <div class="menu-group-label">Combo Meals</div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-name">1 Meat &amp; 2 Sides</div>
+            <div class="menu-desc">*Excludes burnt ends &mdash; Brisket add $2</div>
+          </div>
+          <div class="menu-price">$13</div>
+        </div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-name">1 Burnt Ends &amp; 2 Sides</div>
+            <div class="menu-desc">Brisket or Pork Belly</div>
+          </div>
+          <div class="menu-price">$18</div>
+        </div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-name">Sampler Platter</div>
+            <div class="menu-desc">3 Meats and 3 Sides</div>
+          </div>
+          <div class="menu-price">$30</div>
+        </div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-name">Family Platter</div>
+            <div class="menu-desc">4 Meats and 4 Sides</div>
+          </div>
+          <div class="menu-price">$50</div>
+        </div>
+
+        <div class="menu-group-label">Stack Sandwiches</div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-name">Pig Stack</div>
+            <div class="menu-desc">Pulled Pork, Hot Links, Carolina Slaw</div>
+          </div>
+          <div class="menu-price">$12</div>
+        </div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-name">Cow Stack</div>
+            <div class="menu-desc">Brisket, Hot Links, Carolina Slaw</div>
+          </div>
+          <div class="menu-price">$14</div>
+        </div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-name">Mac Stack</div>
+            <div class="menu-desc">Mac &amp; Cheese with Chicken, Hot Links, or Pulled Pork &mdash; sauce &amp; green onions</div>
+          </div>
+          <div class="menu-price">$12</div>
+        </div>
+
+        <div class="menu-group-label">More</div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-name">Garlic Chicken Salad</div>
+            <div class="menu-desc">Garlic salad, chicken, cheese, BBQ sauce, croutons</div>
+          </div>
+          <div class="menu-price">$13</div>
+        </div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-name">Tanker Nachos</div>
+            <div class="menu-desc">Smoked meat queso, smoked meat chili, cheese, nachos &mdash; Add meat +$4</div>
+          </div>
+          <div class="menu-price">$8</div>
+        </div>
+        <div class="menu-note">Add 2x 3oz sides to any sandwich &mdash; $5</div>
+      </div>
+    </div>
+
+    <!-- SMOKED MEATS -->
+    <div class="tab-panel" id="panel-meats">
+      <div class="menu-grid">
+        <div class="menu-group-label">Individual Cuts</div>
+        <div class="menu-row"><div><div class="menu-name">Full Rack Ribs</div></div><div class="menu-price">$30</div></div>
+        <div class="menu-row"><div><div class="menu-name">Half Rack Ribs</div></div><div class="menu-price">$17</div></div>
+        <div class="menu-row"><div><div class="menu-name">1 LB Brisket</div></div><div class="menu-price">$20</div></div>
+        <div class="menu-row"><div><div class="menu-name">1 LB Brisket or Pork Burnt Ends</div></div><div class="menu-price">$24</div></div>
+        <div class="menu-row"><div><div class="menu-name">1 LB Pulled Pork</div></div><div class="menu-price">$18</div></div>
+        <div class="menu-row"><div><div class="menu-name">Chicken Thigh / Leg</div></div><div class="menu-price">$8 ea.</div></div>
+        <div class="menu-row"><div><div class="menu-name">Kansas Hot Link</div></div><div class="menu-price">$4 ea.</div></div>
+        <div class="menu-row"><div><div class="menu-name">Angus Beef Hot Dog</div></div><div class="menu-price">$2 ea.</div></div>
+
+        <div class="menu-group-label">Sandwiches</div>
+        <div class="menu-row"><div><div class="menu-name">Pulled Pork Sandwich</div></div><div class="menu-price">$8</div></div>
+        <div class="menu-row"><div><div class="menu-name">Chicken Sandwich</div></div><div class="menu-price">$9</div></div>
+        <div class="menu-row"><div><div class="menu-name">Brisket Sandwich</div></div><div class="menu-price">$10</div></div>
+
+        <div class="menu-group-label">Platters</div>
+        <div class="menu-row"><div><div class="menu-name">Brisket Burnt Ends &amp; 2 Sides</div></div><div class="menu-price">$20</div></div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-name">Sampler Platter</div>
+            <div class="menu-desc">3 Meats and 3 Sides</div>
+          </div>
+          <div class="menu-price">$30</div>
+        </div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-name">Family Platter</div>
+            <div class="menu-desc">4 Meats and 4 Sides</div>
+          </div>
+          <div class="menu-price">$50</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDES -->
+    <div class="tab-panel" id="panel-sides">
+      <div class="sides-wrap">
+        <div class="sides-head">
+          <span class="sides-head-price">12 oz. Sides &mdash; $5</span>
+          <span class="sides-head-sep">|</span>
+          <span class="sides-head-price">Large Sides &mdash; $5</span>
+          <span class="sides-head-sep">|</span>
+          <span class="sides-head-price">Quart Sides &mdash; $12</span>
+        </div>
+        <div class="side-chip">Garlic Salad</div>
+        <div class="side-chip">BBQ Beans</div>
+        <div class="side-chip">Sweet Corn Casserole</div>
+        <div class="side-chip">Garlicky Green Beans</div>
+        <div class="side-chip">Mac n Cheese</div>
+        <div class="side-chip">Homestyle Potato Salad</div>
+        <div class="side-chip">Cheesy Potluck Potatoes</div>
+        <div class="side-chip">Queso</div>
+        <div class="side-chip">Chili</div>
+        <div class="side-chip">Pasta Salad</div>
+        <div class="side-chip">Cucumber Tomato Salad</div>
+      </div>
+    </div>
+
+    <!-- DESSERTS -->
+    <div class="tab-panel" id="panel-desserts">
+      <div class="menu-grid">
+        <div class="menu-group-label">Dessert</div>
+        <div class="menu-row">
+          <div><div class="menu-name">Triple Berry Topped Cheesecake</div></div>
+          <div class="menu-price">$3</div>
+        </div>
+        <div class="menu-group-label">Drinks</div>
+        <div class="menu-row">
+          <div><div class="menu-name">Canned / Bottled Drinks</div></div>
+          <div class="menu-price">$1.25</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="reviews-head reveal">
+      <div>
+        <div class="sec-label">What Guests Say</div>
+        <h2 class="sec-title">Loved by Wichita</h2>
+      </div>
+      <div class="rating-block">
+        <div class="rating-big">4.6</div>
+        <div class="stars">
+          <svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star-svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star-svg dim" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="rating-ct">135 verified reviews</div>
+      </div>
+    </div>
+
+    <div class="rev-grid reveal reveal-d1">
+
+      <div class="rev-card">
+        <div class="rev-stars">
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="rev-text">"The beef ribs are incredible &mdash; Texas style, 1.5 pounds of melt-in-your-mouth beef butter. Brisket, pork ribs, garlicky green beans, coleslaw all great. Overall it was incredible!"</p>
+        <div class="rev-author">
+          <div class="rev-name">David S.</div>
+          <div class="rev-date">March 2026</div>
+          <div class="rev-platform">Google</div>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div class="rev-stars">
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="rev-text">"We had the sampler &mdash; brisket, hot link and ribs, with garlicky green beans, Mac n cheese, sweet corn casserole, and cheesy potluck potatoes. The food was awesome!"</p>
+        <div class="rev-author">
+          <div class="rev-name">Shawn Westfall</div>
+          <div class="rev-date">February 2026</div>
+          <div class="rev-platform">Google</div>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div class="rev-stars">
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="rev-text">"Food was good and service was extraordinary! We will be back."</p>
+        <div class="rev-author">
+          <div class="rev-name">Keith Dockter</div>
+          <div class="rev-date">March 2026</div>
+          <div class="rev-platform">Google</div>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div class="rev-stars">
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="rev-text">"A+++ for all their sauces! Cheesy potatoes were excellent and the hot links were really good. Will be back to try more."</p>
+        <div class="rev-author">
+          <div class="rev-name">Bob Squibis</div>
+          <div class="rev-date">February 2026</div>
+          <div class="rev-platform">Google</div>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div class="rev-stars">
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="rev-text">"Carnivore platter was great! Worth every penny. Outstanding service from start to finish."</p>
+        <div class="rev-author">
+          <div class="rev-name">Matthew McCreary</div>
+          <div class="rev-date">February 2026</div>
+          <div class="rev-platform">Google</div>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div class="rev-stars">
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="rev-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="rev-text">"Great BBQ, good portions, friendly staff, nice clean location. We enjoyed our meals &mdash; MUST DO for any foodie."</p>
+        <div class="rev-author">
+          <div class="rev-name">Verified Guest</div>
+          <div class="rev-date">May 2026</div>
+          <div class="rev-platform">Restaurantji</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & LOCATION -->
+<section class="location" id="location">
+  <div class="container">
+    <div class="loc-grid">
+
+      <div class="reveal">
+        <div class="sec-label">Find Us</div>
+        <h2 class="sec-title">Hours &amp;<br>Location</h2>
+        <div class="hours-table">
+          <div class="hours-row"><span class="hours-day">Monday</span>   <span class="hours-time closed">Closed</span></div>
+          <div class="hours-row"><span class="hours-day">Tuesday</span>  <span class="hours-time">11:00 AM &ndash; 7:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Wednesday</span><span class="hours-time">11:00 AM &ndash; 7:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Thursday</span> <span class="hours-time">11:00 AM &ndash; 7:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Friday</span>   <span class="hours-time">11:00 AM &ndash; 7:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Saturday</span> <span class="hours-time">11:00 AM &ndash; 7:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Sunday</span>   <span class="hours-time closed">Closed</span></div>
+        </div>
+        <div class="contact-list">
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8681A" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 9.81 19.79 19.79 0 01.67 1.18 2 2 0 012.64 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.61a16 16 0 006.29 6.29l.98-.98a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div class="contact-info">
+              <strong>Phone</strong>
+              <a href="tel:+13164611413">(316) 461-1413</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C8681A" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact-info">
+              <strong>Address</strong>
+              <a href="https://maps.google.com/?q=620+W+Maple+St,+Wichita,+KS" target="_blank" rel="noopener">620 W Maple St, Wichita, KS</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-d1">
+        <div class="map-box">
+          <iframe
+            src="https://maps.google.com/maps?q=620+W+Maple+St,+Wichita,+KS&t=m&z=15&output=embed"
+            title="Tanker BBQ Co. location"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <a href="https://maps.google.com/?q=620+W+Maple+St,+Wichita,+KS" target="_blank" rel="noopener" class="btn-solid" style="margin-top:16px;display:inline-flex;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Get Directions
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="container">
+    <h2>Ready to eat?</h2>
+    <p>Open Tuesday through Saturday, 11AM to 7PM. Come on in.</p>
+    <div class="cta-actions">
+      <a href="tel:+13164611413" class="btn-solid">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.7 9.81 19.79 19.79 0 01.67 1.18 2 2 0 012.64 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.61a16 16 0 006.29 6.29l.98-.98a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        Call (316) 461-1413
+      </a>
+      <a href="https://maps.google.com/?q=620+W+Maple+St,+Wichita,+KS" target="_blank" rel="noopener" class="btn-outline">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Get Directions
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">TANKER <span>BBQ</span></div>
+        <p>Wichita's home for slow-smoked, handcrafted barbecue. Open Tuesday through Saturday, 11AM to 7PM at 620 W Maple St.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#location">Location</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+13164611413">(316) 461-1413</a></li>
+          <li><a href="https://maps.google.com/?q=620+W+Maple+St,+Wichita,+KS" target="_blank" rel="noopener">620 W Maple St</a></li>
+          <li><a href="https://maps.google.com/?q=620+W+Maple+St,+Wichita,+KS" target="_blank" rel="noopener">Wichita, KS</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Tanker BBQ Co. All rights reserved.</span>
+      <span>620 W Maple St, Wichita, KS &mdash; (316) 461-1413</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky nav
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  }, { passive: true });
+
+  // Mobile nav toggle
+  function toggleNav() {
+    const menu = document.getElementById('mobileNav');
+    const burger = document.getElementById('burger');
+    const isOpen = menu.classList.toggle('open');
+    burger.classList.toggle('open', isOpen);
+  }
+
+  // Close mobile menu on outside click
+  document.addEventListener('click', e => {
+    const menu = document.getElementById('mobileNav');
+    const burger = document.getElementById('burger');
+    if (menu.classList.contains('open') && !menu.contains(e.target) && !burger.contains(e.target)) {
+      menu.classList.remove('open');
+      burger.classList.remove('open');
+    }
+  });
+
+  // Menu tabs
+  function switchTab(btn, name) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + name).classList.add('active');
+  }
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
