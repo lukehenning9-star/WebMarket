@@ -3,6 +3,12 @@
   "category": "Auto Detailing",
   "city": "Waco, TX",
   "price": 299,
-  "features": ["Mobile Service", "Hand Wash", "Interior Detail", "Exterior Polish"],
-  "contactEmail": "MidwayCustomDetailing@gmail.com"
+  "features": [
+    "Mobile Service",
+    "Hand Wash",
+    "Interior Detail",
+    "Exterior Polish"
+  ],
+  "contactEmail": "MidwayCustomDetailing@gmail.com",
+  "tier": 3
 }

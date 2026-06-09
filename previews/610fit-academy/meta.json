@@ -4,8 +4,13 @@
   "city": "Waco, TX",
   "price": 299,
   "monthlyPrice": 49,
-  "features": ["Personal Training", "Faith-Based Coaching", "Podcast", "Mobile Optimized"],
+  "features": [
+    "Personal Training",
+    "Faith-Based Coaching",
+    "Podcast",
+    "Mobile Optimized"
+  ],
   "contactEmail": "jenny@610fit.com",
   "addedDate": "2026-06-09",
-  "tier": 2
+  "tier": 3
 }
