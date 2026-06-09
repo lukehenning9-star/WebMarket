@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nathanael White Training &amp; Wellness | Personal Trainer Waco TX</title>
+  <meta name="description" content="Transform your body and life with Nathanael White Training &amp; Wellness in Waco, TX 76712. Personalized 1-on-1 training, strength programs, weight loss coaching, and wellness. Book a free consultation today.">
+  <meta name="keywords" content="personal trainer Waco TX, fitness coach Waco, weight loss Waco, strength training Waco, personal training 76712, wellness coaching Waco Texas, gym Waco">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Nathanael White Training &amp; Wellness | Personal Trainer Waco TX">
+  <meta property="og:description" content="Personalized fitness coaching in Waco, TX. 1-on-1 training, strength, weight loss, and wellness programs built around you.">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Nathanael White Training & Wellness",
+    "description": "Personalized personal training, strength coaching, weight loss, and wellness coaching in Waco, TX.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Waco",
+      "addressRegion": "TX",
+      "postalCode": "76712",
+      "addressCountry": "US"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 31.5493, "longitude": -97.1467 },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "17:00" }
+    ],
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "13" }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0a0a09;
+      --surf:      #141413;
+      --surf2:     #1c1c1a;
+      --bdr:       rgba(255,255,255,0.07);
+      --bdr-h:     rgba(228,168,74,0.35);
+      --txt:       #f0ede8;
+      --txt2:      #8a8783;
+      --acc:       #e4a84a;
+      --acc-dim:   rgba(228,168,74,0.1);
+      --acc-glow:  rgba(228,168,74,0.24);
+      --r:         1.5rem;
+      --nav:       72px;
+      --ease:      cubic-bezier(0.16,1,0.3,1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--txt);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img  { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a    { text-decoration: none; color: inherit; }
+
+    /* ── Type ── */
+    .lbl {
+      display: inline-block;
+      font-size: .6875rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--acc);
+    }
+    .d-xl {
+      font-size: clamp(2.75rem,7vw,5.5rem);
+      font-weight: 800; line-height: .95; letter-spacing: -.03em;
+    }
+    .d-lg {
+      font-size: clamp(2rem,4.5vw,3.25rem);
+      font-weight: 700; line-height: 1.05; letter-spacing: -.025em;
+    }
+    .b-lg { font-size: 1.0625rem; line-height: 1.75; color: var(--txt2); }
+    .b-md { font-size: .9375rem;  line-height: 1.7;  color: var(--txt2); }
+
+    /* ── Layout ── */
+    .wrap  { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+    .sec   { padding: 7rem 0; }
+
+    /* ── Buttons ── */
+    .btn-p {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .875rem 1.75rem;
+      background: var(--acc); color: #0a0a09;
+      font-family: 'Outfit', sans-serif; font-size: .9375rem; font-weight: 700;
+      border-radius: 100px; border: none; cursor: pointer; white-space: nowrap;
+      transition: background .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
+    }
+    .btn-p:hover { background: #f0b85a; transform: translateY(-2px); box-shadow: 0 14px 32px var(--acc-glow); }
+    .btn-p:active { transform: scale(.98); }
+
+    .btn-g {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .875rem 1.75rem;
+      background: transparent; color: var(--txt);
+      font-family: 'Outfit', sans-serif; font-size: .9375rem; font-weight: 600;
+      border-radius: 100px; border: 1px solid var(--bdr); cursor: pointer; white-space: nowrap;
+      transition: border-color .25s var(--ease), color .25s var(--ease), transform .25s var(--ease);
+    }
+    .btn-g:hover { border-color: var(--bdr-h); color: var(--acc); transform: translateY(-2px); }
+    .btn-g:active { transform: scale(.98); }
+
+    /* ────────────────────────────
+       NAVBAR
+    ──────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 200; height: var(--nav);
+      display: flex; align-items: center;
+      transition: background .35s ease, border-color .35s ease, backdrop-filter .35s ease;
+    }
+    .nav.scrolled {
+      background: rgba(10,10,9,.92);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--bdr);
+    }
+    .nav-row { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+
+    .logo { display: flex; align-items: center; gap: .75rem; flex-shrink: 0; }
+    .logo-mark {
+      width: 40px; height: 40px; background: var(--acc); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 900; color: #0a0a09; letter-spacing: -.05em; flex-shrink: 0;
+    }
+    .logo-name { font-size: .9375rem; font-weight: 700; letter-spacing: -.01em; line-height: 1.2; }
+    .logo-sub  { font-size: .6875rem; color: var(--txt2); font-weight: 400; }
+
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: .875rem; font-weight: 500; color: var(--txt2); transition: color .2s; }
+    .nav-links a:hover { color: var(--txt); }
+
+    .burger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 6px;
+    }
+    .burger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--txt); border-radius: 2px; transition: all .3s ease;
+    }
+    .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; transform: translateX(-8px); }
+    .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mob-panel {
+      display: none; position: fixed; top: var(--nav); left: 0; right: 0;
+      background: rgba(10,10,9,.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--bdr); padding: 1.5rem 2rem 2rem; z-index: 199;
+    }
+    .mob-panel.open { display: block; }
+    .mob-panel a { display: block; padding: 1rem 0; font-size: 1rem; font-weight: 500; color: var(--txt2); border-bottom: 1px solid var(--bdr); transition: color .2s; }
+    .mob-panel a:hover { color: var(--txt); }
+    .mob-panel .btn-p { margin-top: 1.5rem; width: 100%; justify-content: center; border-radius: 12px; }
+
+    /* ────────────────────────────
+       HERO
+    ──────────────────────────── */
+    .hero {
+      min-height: 100dvh; display: grid; grid-template-columns: 1fr 1fr;
+      padding-top: var(--nav); overflow: hidden;
+    }
+    .hero-copy {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 5rem 3rem 5rem 4rem;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .375rem .875rem;
+      background: var(--acc-dim); border: 1px solid rgba(228,168,74,.25);
+      border-radius: 100px; margin-bottom: 2rem; width: fit-content;
+    }
+    .badge-dot {
+      width: 6px; height: 6px; background: var(--acc); border-radius: 50%;
+      animation: pdot 2.2s ease-in-out infinite;
+    }
+    @keyframes pdot {
+      0%,100% { opacity:1; transform:scale(1); }
+      50%      { opacity:.4; transform:scale(.65); }
+    }
+    .badge-txt { font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--acc); }
+
+    .hero-hl { margin-bottom: 1.5rem; }
+    .hero-hl em { font-style: normal; color: var(--acc); }
+    .hero-sub { max-width: 460px; font-size: 1.0625rem; color: var(--txt2); line-height: 1.75; margin-bottom: 2.5rem; }
+    .hero-btns { display: flex; gap: .875rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
+    .hero-stats { display: flex; gap: 2.5rem; flex-wrap: wrap; padding-top: 2.5rem; border-top: 1px solid var(--bdr); }
+    .stat-val { font-size: 1.875rem; font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+    .stat-lbl { font-size: .8125rem; color: var(--txt2); margin-top: .25rem; }
+
+    .hero-vis { position: relative; overflow: hidden; }
+    .hero-vis img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(105deg, var(--bg) 0%, transparent 38%),
+        linear-gradient(0deg, rgba(10,10,9,.65) 0%, transparent 55%);
+    }
+    .scroll-hint {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      font-size: .625rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--txt2); opacity: .6;
+    }
+    .scroll-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, var(--acc), transparent);
+      animation: sdrop 2s ease-in-out infinite;
+    }
+    @keyframes sdrop {
+      0%   { opacity:0; transform:scaleY(0); transform-origin:top; }
+      50%  { opacity:1; transform:scaleY(1); }
+      100% { opacity:0; transform:scaleY(0); transform-origin:bottom; }
+    }
+
+    /* ────────────────────────────
+       ABOUT
+    ──────────────────────────── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+
+    .img-wrap { position: relative; }
+    .img-frame { border-radius: 2rem; overflow: hidden; aspect-ratio: 4/5; background: var(--surf); }
+
+    .rating-card {
+      position: absolute; bottom: -1.25rem; right: -1.25rem;
+      width: 196px; background: var(--surf2); border: 1px solid var(--bdr);
+      border-radius: 1.125rem; padding: 1.25rem 1.375rem; z-index: 2;
+    }
+    .rc-num { font-size: 2rem; font-weight: 800; letter-spacing: -.04em; color: var(--acc); line-height: 1; }
+    .rc-lbl { font-size: .75rem; color: var(--txt2); margin-top: .25rem; line-height: 1.4; }
+    .rc-stars { display: flex; gap: 3px; margin-top: .625rem; }
+
+    .about-copy { padding-right: .5rem; }
+    .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: .875rem; margin-top: 2.5rem; }
+    .pill {
+      padding: 1.125rem 1.25rem; background: var(--surf); border: 1px solid var(--bdr); border-radius: 1rem;
+      transition: border-color .25s var(--ease), transform .25s var(--ease);
+    }
+    .pill:hover { border-color: var(--bdr-h); transform: translateY(-3px); }
+    .pill svg   { width: 32px; height: 32px; margin-bottom: .75rem; color: var(--acc); }
+    .pill-t     { font-size: .9375rem; font-weight: 700; margin-bottom: .25rem; }
+    .pill-d     { font-size: .8125rem; color: var(--txt2); line-height: 1.55; }
+
+    /* ────────────────────────────
+       SERVICES
+    ──────────────────────────── */
+    .svc-bg { background: var(--surf); }
+
+    .svc-hdr { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 3.5rem; }
+
+    .svc-outer  { display: grid; grid-template-columns: 1.55fr 1fr; gap: 1.25rem; }
+    .svc-right  { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+
+    .card {
+      background: var(--surf2); border: 1px solid var(--bdr); border-radius: var(--r); overflow: hidden;
+      transition: border-color .3s var(--ease), transform .3s var(--ease);
+    }
+    .card:hover { border-color: var(--bdr-h); transform: translateY(-4px); }
+
+    .card-img { overflow: hidden; position: relative; }
+    .card-img img { transition: transform .6s var(--ease); }
+    .card:hover .card-img img { transform: scale(1.06); }
+    .card.feat .card-img { aspect-ratio: 16/10; }
+    .card-img.sm       { aspect-ratio: 16/9; }
+
+    .card-body { padding: 1.625rem; }
+    .card.feat .card-body { padding: 1.875rem; }
+    .card-num  { font-size: .6875rem; font-weight: 700; letter-spacing: .12em; color: var(--acc); margin-bottom: .5rem; }
+    .card-ttl  { font-size: 1.125rem; font-weight: 700; letter-spacing: -.01em; margin-bottom: .5rem; }
+    .card.feat .card-ttl { font-size: 1.375rem; }
+    .card-dsc  { font-size: .875rem; color: var(--txt2); line-height: 1.65; }
+    .card-lnk  {
+      display: inline-flex; align-items: center; gap: .375rem;
+      margin-top: 1.125rem; font-size: .875rem; font-weight: 600; color: var(--acc);
+      transition: gap .2s var(--ease);
+    }
+    .card-lnk:hover { gap: .625rem; }
+
+    /* ────────────────────────────
+       TESTIMONIALS
+    ──────────────────────────── */
+    .testi-hdr { text-align: center; margin-bottom: 4rem; }
+    .testi-stars { display: flex; align-items: center; justify-content: center; gap: 3px; margin: .75rem 0 .5rem; }
+    .rev-meta { font-size: .875rem; color: var(--txt2); }
+
+    .testi-grid { columns: 2; column-gap: 1.375rem; }
+    .tc {
+      break-inside: avoid; margin-bottom: 1.375rem;
+      background: var(--surf); border: 1px solid var(--bdr); border-radius: 1.25rem; padding: 1.625rem;
+      transition: border-color .25s var(--ease), transform .25s var(--ease);
+    }
+    .tc:hover { border-color: var(--bdr-h); transform: translateY(-3px); }
+    .tc-stars  { display: flex; gap: 3px; margin-bottom: .875rem; }
+    .tc-txt    { font-size: .9375rem; color: var(--txt); line-height: 1.68; margin-bottom: 1.125rem; }
+    .tc-author { display: flex; align-items: center; gap: .75rem; }
+    .tc-av     { width: 38px; height: 38px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: var(--surf2); }
+    .tc-nm     { font-size: .875rem; font-weight: 700; }
+    .tc-tag    { font-size: .75rem; color: var(--txt2); margin-top: 1px; }
+
+    /* ────────────────────────────
+       HOURS / AMENITIES
+    ──────────────────────────── */
+    .info-bg { background: var(--surf); }
+    .info-grid { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 5rem; align-items: start; }
+    .info-div  { background: var(--bdr); align-self: stretch; }
+
+    .blk-ttl { font-size: 1.1875rem; font-weight: 700; letter-spacing: -.01em; margin-bottom: 1.75rem; }
+    .hr-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: .8125rem 0; border-bottom: 1px solid var(--bdr); font-size: .9375rem;
+    }
+    .hr-row:last-child { border-bottom: none; }
+    .hr-day  { color: var(--txt2); }
+    .hr-time { font-weight: 600; }
+    .hr-time.cl { color: var(--txt2); font-weight: 400; font-style: italic; }
+
+    .amen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .25rem; }
+    .amen-item { display: flex; align-items: center; gap: .625rem; padding: .75rem 0; font-size: .875rem; color: var(--txt2); }
+    .amen-item svg { flex-shrink: 0; color: var(--acc); }
+
+    /* ────────────────────────────
+       CONTACT
+    ──────────────────────────── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+
+    .c-row { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem 0; border-bottom: 1px solid var(--bdr); }
+    .c-row:last-of-type { border-bottom: none; }
+    .c-ico {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: var(--acc-dim); border: 1px solid rgba(228,168,74,.2);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    }
+    .c-lbl { font-size: .6875rem; color: var(--txt2); margin-bottom: .25rem; letter-spacing: .04em; }
+    .c-val { font-size: .9375rem; font-weight: 600; }
+    .c-val a { color: var(--acc); transition: opacity .2s; }
+    .c-val a:hover { opacity: .8; }
+
+    .c-btns { margin-top: 2.5rem; display: flex; flex-direction: column; gap: .75rem; }
+    .c-btns .btn-p, .c-btns .btn-g { width: 100%; justify-content: center; border-radius: 12px; }
+
+    .map-wrap { border-radius: 1.375rem; overflow: hidden; height: 420px; border: 1px solid var(--bdr); }
+    .map-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    /* ────────────────────────────
+       CTA BAND
+    ──────────────────────────── */
+    .cta-band { padding: 6rem 0; text-align: center; position: relative; overflow: hidden; }
+    .cta-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 55% 60% at 50% 50%, rgba(228,168,74,.1) 0%, transparent 70%);
+    }
+    .cta-in { position: relative; z-index: 1; }
+    .cta-btns { display: flex; align-items: center; justify-content: center; gap: .875rem; flex-wrap: wrap; margin-top: 2.5rem; }
+
+    /* ────────────────────────────
+       FOOTER
+    ──────────────────────────── */
+    footer { background: var(--surf); border-top: 1px solid var(--bdr); padding: 3.5rem 0 2rem; }
+    .ft-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem;
+      padding-bottom: 2.75rem; margin-bottom: 2rem; border-bottom: 1px solid var(--bdr);
+    }
+    .ft-desc { font-size: .875rem; color: var(--txt2); line-height: 1.7; max-width: 290px; margin-top: 1rem; }
+    .ft-soc  { display: flex; gap: .625rem; margin-top: 1.5rem; }
+    .soc-btn {
+      width: 36px; height: 36px; background: var(--surf2); border: 1px solid var(--bdr); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color .2s, background .2s;
+    }
+    .soc-btn:hover { border-color: var(--bdr-h); background: var(--acc-dim); }
+    .ft-col-hd { font-size: .6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--txt2); margin-bottom: 1.25rem; }
+    .ft-links  { list-style: none; display: flex; flex-direction: column; gap: .75rem; }
+    .ft-links a { font-size: .875rem; color: var(--txt2); transition: color .2s; }
+    .ft-links a:hover { color: var(--txt); }
+    .ft-bot { display: flex; justify-content: space-between; align-items: center; font-size: .8125rem; color: var(--txt2); }
+
+    /* ────────────────────────────
+       ANIMATIONS
+    ──────────────────────────── */
+    .fu {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+    .fu.in { opacity: 1; transform: translateY(0); }
+    .fu.d1 { transition-delay: .1s; }
+    .fu.d2 { transition-delay: .2s; }
+    .fu.d3 { transition-delay: .3s; }
+    .fu.d4 { transition-delay: .4s; }
+    .fi { opacity: 0; transition: opacity .75s ease; }
+    .fi.in { opacity: 1; }
+
+    /* ────────────────────────────
+       RESPONSIVE
+    ──────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero            { grid-template-columns: 1fr; }
+      .hero-copy       { max-width: 100%; padding: 4rem 2rem; }
+      .hero-vis        { display: none; }
+      .about-grid      { grid-template-columns: 1fr; gap: 3rem; }
+      .img-wrap        { max-width: 480px; }
+      .svc-hdr         { grid-template-columns: 1fr; gap: 1.5rem; }
+      .svc-outer       { grid-template-columns: 1fr; }
+      .card.feat .card-img { aspect-ratio: 16/9; }
+      .contact-grid    { grid-template-columns: 1fr; gap: 3rem; }
+      .ft-grid         { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 768px) {
+      .sec             { padding: 4.5rem 0; }
+      .wrap            { padding: 0 1.25rem; }
+      .nav-links       { display: none; }
+      .nav-cta .btn-p  { display: none; }
+      .burger          { display: flex; }
+      .pillars         { grid-template-columns: 1fr; }
+      .svc-right       { grid-template-columns: 1fr; }
+      .testi-grid      { columns: 1; }
+      .info-grid       { grid-template-columns: 1fr; gap: 3rem; }
+      .info-div        { display: none; }
+      .amen-grid       { grid-template-columns: 1fr; }
+      .ft-grid         { grid-template-columns: 1fr; gap: 2rem; }
+      .ft-bot          { flex-direction: column; gap: .5rem; text-align: center; }
+      .hero-stats      { gap: 1.75rem; }
+      .rating-card     { right: 0; bottom: -1rem; }
+    }
+    @media (max-width: 480px) {
+      .d-xl            { font-size: 2.25rem; }
+      .d-lg            { font-size: 1.75rem; }
+      .hero-btns       { flex-direction: column; }
+      .hero-btns .btn-p,
+      .hero-btns .btn-g { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <div class="nav-row">
+      <a href="#home" class="logo">
+        <div class="logo-mark">NW</div>
+        <div>
+          <div class="logo-name">Nathanael White</div>
+          <div class="logo-sub">Training &amp; Wellness</div>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162"
+           class="btn-p" target="_blank" rel="noopener">
+          Apply Now
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+      <button class="burger" id="burger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mob-panel" id="mobPanel">
+  <a href="#about"        onclick="closeNav()">About</a>
+  <a href="#services"     onclick="closeNav()">Services</a>
+  <a href="#testimonials" onclick="closeNav()">Testimonials</a>
+  <a href="#contact"      onclick="closeNav()">Contact</a>
+  <a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162"
+     class="btn-p" target="_blank" rel="noopener" onclick="closeNav()">
+    Apply for Coaching
+  </a>
+</div>
+
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="home">
+  <div class="hero-copy">
+    <div class="hero-badge fu">
+      <div class="badge-dot"></div>
+      <span class="badge-txt">Accepting New Clients — Waco, TX 76712</span>
+    </div>
+
+    <h1 class="d-xl hero-hl fu d1">
+      Build the Body.<br><em>Own the Life.</em>
+    </h1>
+
+    <p class="hero-sub fu d2">
+      Personalized coaching built around you — not a template. Real accountability, intelligent programming, and a coach who invests in your goals as hard as you do.
+    </p>
+
+    <div class="hero-btns fu d3">
+      <a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162"
+         class="btn-p" target="_blank" rel="noopener">
+        Book a Consultation
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162"
+         class="btn-g" target="_blank" rel="noopener">
+        Start Training
+      </a>
+    </div>
+
+    <div class="hero-stats fu d4">
+      <div>
+        <div class="stat-val counter" data-target="200">0</div>
+        <div class="stat-lbl">Clients Coached</div>
+      </div>
+      <div>
+        <div class="stat-val counter" data-target="13">0</div>
+        <div class="stat-lbl">Five-Star Reviews</div>
+      </div>
+      <div>
+        <div class="stat-val" style="color:var(--acc);">5.0</div>
+        <div class="stat-lbl">Average Rating</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-vis">
+    <img src="https://picsum.photos/seed/fitness-nw-hero/900/1100"
+         alt="Personal training session Waco TX" loading="eager">
+    <div class="hero-overlay"></div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== ABOUT ========== -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <div class="img-wrap fi">
+        <div class="img-frame">
+          <img src="https://picsum.photos/seed/coach-waco-training/700/875"
+               alt="Nathanael White personal trainer Waco" loading="lazy">
+        </div>
+        <div class="rating-card">
+          <div class="rc-num">5.0</div>
+          <div class="rc-lbl">Rating across 13 client reviews</div>
+          <div class="rc-stars" id="rcStars"></div>
+        </div>
+      </div>
+
+      <div class="about-copy">
+        <p class="lbl fu" style="margin-bottom:1rem;">About Nathanael</p>
+        <h2 class="d-lg fu d1" style="margin-bottom:1.5rem;">
+          Coaching You to Become<br>Who You're Capable Of
+        </h2>
+        <p class="b-lg fu d2" style="margin-bottom:1.125rem;">
+          Based in Waco, TX, Nathanael White has built a reputation on results that last. Every program starts from scratch around your body, your schedule, and what you actually want to achieve — because generic plans produce generic outcomes.
+        </p>
+        <p class="b-md fu d3">
+          Whether you're stepping into training for the first time or pushing past a plateau, Nathanael brings the structure, knowledge, and relentless support to move you forward. This isn't just about the gym — it's a complete shift in how you think, move, and live.
+        </p>
+
+        <div class="pillars fu d4">
+          <div class="pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <path d="M4 8h4M8 8V6a2 2 0 014 0v8a2 2 0 004 0V8M16 8h4M4 16h4m8 0h4" stroke-linecap="round"/>
+            </svg>
+            <div class="pill-t">Personalized Plans</div>
+            <div class="pill-d">No templates. Every program built for your body and your goals.</div>
+          </div>
+          <div class="pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 7v5l3 3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="pill-t">Real Accountability</div>
+            <div class="pill-d">Consistent check-ins and a coach who keeps you on track.</div>
+          </div>
+          <div class="pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+            <div class="pill-t">Measured Progress</div>
+            <div class="pill-d">Clear benchmarks so you always see exactly how far you've come.</div>
+          </div>
+          <div class="pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/>
+            </svg>
+            <div class="pill-t">Whole-Life Wellness</div>
+            <div class="pill-d">Mindset, habits, and lifestyle alongside physical training.</div>
+          </div>
+        </div>
+
+        <a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162"
+           class="btn-p fu d4" target="_blank" rel="noopener" style="margin-top:2.5rem;">
+          Work With Nathanael
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== SERVICES ========== -->
+<section class="sec svc-bg" id="services">
+  <div class="wrap">
+
+    <div class="svc-hdr">
+      <div>
+        <p class="lbl fu" style="margin-bottom:1rem;">What We Offer</p>
+        <h2 class="d-lg fu d1">Training Built<br>Around Your Goals</h2>
+      </div>
+      <div>
+        <p class="b-md fu d2" style="margin-bottom:1.5rem;">
+          From your first session to breaking personal records, there is a program designed for exactly where you are right now — and where you are going.
+        </p>
+        <a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162"
+           class="btn-p fu d3" target="_blank" rel="noopener">
+          See All Programs
+        </a>
+      </div>
+    </div>
+
+    <div class="svc-outer fu">
+      <!-- Featured -->
+      <div class="card feat">
+        <div class="card-img">
+          <img src="https://picsum.photos/seed/one-on-one-training-nw/900/560"
+               alt="1-on-1 personal training Waco TX" loading="lazy">
+        </div>
+        <div class="card-body">
+          <div class="card-num">01 — SIGNATURE OFFERING</div>
+          <div class="card-ttl">1-on-1 Personal Training</div>
+          <p class="card-dsc">The gold standard in personalized coaching. Every session is designed specifically for your body, your movement patterns, and your goals. Hands-on attention on every rep, every set.</p>
+          <a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162"
+             class="card-lnk" target="_blank" rel="noopener">
+            Apply for this program
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2x2 grid -->
+      <div class="svc-right">
+        <div class="card">
+          <div class="card-img sm">
+            <img src="https://picsum.photos/seed/strength-barbell-gym/600/380"
+                 alt="Strength training Waco" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-num">02</div>
+            <div class="card-ttl">Strength Training</div>
+            <p class="card-dsc">Build real, lasting strength with progressive overload and expert programming.</p>
+            <a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162"
+               class="card-lnk" target="_blank" rel="noopener">
+              Apply
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img sm">
+            <img src="https://picsum.photos/seed/weight-loss-fit-run/600/380"
+                 alt="Weight loss program Waco TX" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-num">03</div>
+            <div class="card-ttl">Weight Loss</div>
+            <p class="card-dsc">Sustainable fat loss through smart training and lifestyle shifts that last.</p>
+            <a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162"
+               class="card-lnk" target="_blank" rel="noopener">
+              Apply
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img sm">
+            <img src="https://picsum.photos/seed/wellness-mindset-health/600/380"
+                 alt="Wellness coaching Waco" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-num">04</div>
+            <div class="card-ttl">Wellness Coaching</div>
+            <p class="card-dsc">Stress, habits, and mindset work alongside physical training for total transformation.</p>
+            <a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162"
+               class="card-lnk" target="_blank" rel="noopener">
+              Apply
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img sm">
+            <img src="https://picsum.photos/seed/beginner-gym-start/600/380"
+                 alt="Beginner fitness Waco TX" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-num">05</div>
+            <div class="card-ttl">Beginner Fitness</div>
+            <p class="card-dsc">Never trained before? Start here — safe, structured, and judgment-free from day one.</p>
+            <a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162"
+               class="card-lnk" target="_blank" rel="noopener">
+              Apply
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ========== TESTIMONIALS ========== -->
+<section class="sec" id="testimonials">
+  <div class="wrap">
+    <div class="testi-hdr fu">
+      <p class="lbl" style="margin-bottom:.875rem;">Client Results</p>
+      <h2 class="d-lg" style="margin-bottom:.75rem;">Real People. Real Results.</h2>
+      <div class="testi-stars" id="hdrStars"></div>
+      <p class="rev-meta">13 five-star reviews — Waco, TX</p>
+    </div>
+    <div class="testi-grid" id="tGrid"></div>
+  </div>
+</section>
+
+
+<!-- ========== HOURS & AMENITIES ========== -->
+<section class="sec info-bg" id="info">
+  <div class="wrap">
+    <div class="info-grid">
+
+      <div class="fu">
+        <p class="lbl" style="margin-bottom:.875rem;">Schedule</p>
+        <div class="blk-ttl">Business Hours</div>
+        <div class="hr-row"><span class="hr-day">Monday</span>    <span class="hr-time">8:00 AM – 5:00 PM</span></div>
+        <div class="hr-row"><span class="hr-day">Tuesday</span>   <span class="hr-time">8:00 AM – 5:00 PM</span></div>
+        <div class="hr-row"><span class="hr-day">Wednesday</span> <span class="hr-time">8:00 AM – 5:00 PM</span></div>
+        <div class="hr-row"><span class="hr-day">Thursday</span>  <span class="hr-time">8:00 AM – 5:00 PM</span></div>
+        <div class="hr-row"><span class="hr-day">Friday</span>    <span class="hr-time">8:00 AM – 5:00 PM</span></div>
+        <div class="hr-row"><span class="hr-day">Saturday</span>  <span class="hr-time cl">Closed</span></div>
+        <div class="hr-row"><span class="hr-day">Sunday</span>    <span class="hr-time cl">Closed</span></div>
+      </div>
+
+      <div class="info-div"></div>
+
+      <div class="fu d2">
+        <p class="lbl" style="margin-bottom:.875rem;">Facility</p>
+        <div class="blk-ttl">Accessibility &amp; Amenities</div>
+        <div class="amen-grid">
+          <div class="amen-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+            </svg>
+            Restroom
+          </div>
+          <div class="amen-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="7" r="4"/><path d="M5.5 21c0-3.59 2.91-6.5 6.5-6.5h2a6.5 6.5 0 016.5 6.5"/>
+            </svg>
+            Accessible Entrance
+          </div>
+          <div class="amen-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5"/>
+            </svg>
+            Accessible Parking
+          </div>
+          <div class="amen-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+            </svg>
+            Accessible Restroom
+          </div>
+          <div class="amen-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="10" width="18" height="11" rx="2"/><path d="M7 10V7a5 5 0 0110 0v3"/>
+            </svg>
+            Accessible Seating
+          </div>
+          <div class="amen-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 1v3M12 20v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M1 12h3M20 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
+            </svg>
+            Assistive Hearing Loop
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== CONTACT ========== -->
+<section class="sec" id="contact">
+  <div class="wrap">
+    <p class="lbl fu" style="margin-bottom:1rem;">Get in Touch</p>
+    <h2 class="d-lg fu d1" style="margin-bottom:1rem;">Ready to Start?</h2>
+    <p class="b-lg fu d2" style="margin-bottom:3.5rem; max-width:520px;">
+      The first step is the most important one. Apply through the coaching application and Nathanael will reach out to schedule your free consultation.
+    </p>
+
+    <div class="contact-grid">
+      <div class="fu">
+        <div class="c-row">
+          <div class="c-ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e4a84a" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div>
+            <div class="c-lbl">Location</div>
+            <div class="c-val">Waco, TX 76712</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e4a84a" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8"  y1="2" x2="8"  y2="6"/>
+              <line x1="3"  y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
+          <div>
+            <div class="c-lbl">Business Hours</div>
+            <div class="c-val">Monday – Friday &nbsp; 8:00 AM – 5:00 PM</div>
+          </div>
+        </div>
+        <div class="c-row">
+          <div class="c-ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e4a84a" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div>
+            <div class="c-lbl">Apply Online</div>
+            <div class="c-val">
+              <a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162"
+                 target="_blank" rel="noopener">
+                Coaching Application &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="c-btns">
+          <a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162"
+             class="btn-p" target="_blank" rel="noopener">
+            Apply for Coaching
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Waco,TX+76712"
+             class="btn-g" target="_blank" rel="noopener">
+            Get Directions
+          </a>
+        </div>
+      </div>
+
+      <div class="fu d2">
+        <div class="map-wrap">
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-97.2462%2C31.4893%2C-97.0512%2C31.6093&amp;layer=mapnik&amp;marker=31.5493%2C-97.1467"
+            allowfullscreen loading="lazy"
+            title="Nathanael White Training location in Waco TX 76712">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== CTA BAND ========== -->
+<section class="cta-band">
+  <div class="cta-glow"></div>
+  <div class="wrap cta-in fu">
+    <p class="lbl" style="margin-bottom:1rem;">Take the First Step</p>
+    <h2 class="d-lg">Your Transformation<br>Starts Today.</h2>
+    <p class="b-lg" style="margin:1.25rem auto 0; max-width:460px;">
+      Spots are limited. Apply now to lock in your consultation and begin your program.
+    </p>
+    <div class="cta-btns">
+      <a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162"
+         class="btn-p" target="_blank" rel="noopener">
+        Book a Consultation
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162"
+         class="btn-g" target="_blank" rel="noopener">
+        Start Training
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="wrap">
+    <div class="ft-grid">
+      <div>
+        <a href="#home" class="logo" style="display:inline-flex;">
+          <div class="logo-mark">NW</div>
+          <div>
+            <div class="logo-name">Nathanael White</div>
+            <div class="logo-sub">Training &amp; Wellness</div>
+          </div>
+        </a>
+        <p class="ft-desc">
+          Personalized fitness coaching in Waco, TX. Strength, weight loss, and wellness programs built entirely around you.
+        </p>
+        <div class="ft-soc">
+          <a href="#" class="soc-btn" aria-label="Facebook" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8a8783" stroke-width="2">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+            </svg>
+          </a>
+          <a href="#" class="soc-btn" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8a8783" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <a href="#" class="soc-btn" aria-label="X / Twitter" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8a8783" stroke-width="2">
+              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+            </svg>
+          </a>
+          <a href="#" class="soc-btn" aria-label="YouTube" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8a8783" stroke-width="2">
+              <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/>
+              <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="ft-col-hd">Navigation</div>
+        <ul class="ft-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#info">Hours</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="ft-col-hd">Programs</div>
+        <ul class="ft-links">
+          <li><a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162" target="_blank" rel="noopener">1-on-1 Training</a></li>
+          <li><a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162" target="_blank" rel="noopener">Strength Training</a></li>
+          <li><a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162" target="_blank" rel="noopener">Weight Loss</a></li>
+          <li><a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162" target="_blank" rel="noopener">Wellness Coaching</a></li>
+          <li><a href="https://kahunas.io/contact/person_info/96749721-23d8-4ee7-8a61-f00df7b7d162" target="_blank" rel="noopener">Beginner Fitness</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ft-bot">
+      <span>&copy; 2025 Nathanael White Training &amp; Wellness. All rights reserved.</span>
+      <span>Waco, TX 76712</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  /* ── Star helper ── */
+  const star = (sz) =>
+    `<svg width="${sz}" height="${sz}" viewBox="0 0 24 24" fill="#e4a84a">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+    </svg>`;
+
+  document.getElementById('rcStars').innerHTML  = star(13).repeat(5);
+  document.getElementById('hdrStars').innerHTML = star(20).repeat(5);
+
+  /* ── Navbar ── */
+  const nav    = document.getElementById('nav');
+  const burger = document.getElementById('burger');
+  const mob    = document.getElementById('mobPanel');
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  burger.addEventListener('click', () => {
+    const o = mob.classList.toggle('open');
+    burger.classList.toggle('open', o);
+  });
+
+  function closeNav() {
+    mob.classList.remove('open');
+    burger.classList.remove('open');
+  }
+
+  document.addEventListener('click', e => {
+    if (!nav.contains(e.target) && !mob.contains(e.target)) closeNav();
+  });
+
+  /* ── Scroll animations ── */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fu, .fi').forEach(el => obs.observe(el));
+
+  /* Hero fires immediately */
+  document.querySelectorAll('.hero .fu').forEach((el, i) => {
+    setTimeout(() => el.classList.add('in'), 120 + i * 80);
+  });
+
+  /* ── Counter ── */
+  const cObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el  = entry.target;
+      const tgt = parseInt(el.dataset.target, 10);
+      const stp = tgt / (1500 / 16);
+      let cur   = 0;
+      const t   = setInterval(() => {
+        cur += stp;
+        if (cur >= tgt) { el.textContent = tgt + '+'; clearInterval(t); }
+        else              el.textContent = Math.floor(cur) + '+';
+      }, 16);
+      cObs.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.counter').forEach(el => cObs.observe(el));
+
+  /* ── Testimonials ── */
+  const reviews = [
+    { name:'Marcus T.',    tag:'Weight Loss',      seed:'av-marcus',
+      text:'Lost 35 lbs in four months. I\'ve tried every program out there and nothing worked until I worked with Nathanael. The programming and consistency make all the difference.' },
+    { name:'Keisha B.',    tag:'Beginner Fitness',  seed:'av-keisha',
+      text:'Started from zero — couldn\'t do a single pushup. Now I\'m running 5Ks and actually enjoy working out. The fact that I still look forward to training says everything.' },
+    { name:'David R.',     tag:'Strength Training', seed:'av-david',
+      text:'My deadlift went from 135 to 315 lbs in seven months. The programming is intelligent and the coaching cues actually explain the why, not just the what.' },
+    { name:'Tanya W.',     tag:'1-on-1 Training',   seed:'av-tanya',
+      text:'Nathanael holds you accountable like no other trainer. He checks in regularly, adjusts when life gets hard, and genuinely cares about your progress beyond the session.' },
+    { name:'James C.',     tag:'Wellness Coaching', seed:'av-james',
+      text:'Best investment I\'ve made in my health, no contest. My energy, sleep, and stress management have all changed dramatically. This is full-life coaching, not just workouts.' },
+    { name:'Alicia M.',    tag:'Wellness Coaching', seed:'av-alicia',
+      text:'The mindset work changed how I relate to food and my body entirely. I stopped chasing a number on the scale and started building a life I\'m actually proud of.' },
+    { name:'Robert H.',    tag:'Weight Loss',       seed:'av-robert',
+      text:'Down two clothing sizes and my doctor reduced my blood pressure medication. My family noticed the change before I did. Worth every single penny.' },
+    { name:'Priya S.',     tag:'Beginner Fitness',  seed:'av-priya',
+      text:'Perfect for anyone starting out. I was terrified I\'d be the weakest person in the room, but Nathanael made it completely judgment-free from the very first session.' },
+    { name:'Chris A.',     tag:'1-on-1 Training',   seed:'av-chris',
+      text:'Six months in and I\'m in the best shape of my life at 41. People ask what I\'m doing differently. The answer is simple: I finally have a real coach.' },
+    { name:'Nicole F.',    tag:'Wellness Coaching', seed:'av-nicole',
+      text:'The combination of training and lifestyle coaching made all the difference. The nutrition guidance was practical and sustainable — something I could actually maintain.' },
+    { name:'Darnell K.',   tag:'Strength Training', seed:'av-darnell',
+      text:'Military discipline meets genuine compassion — that\'s Nathanael. Pushes you hard but always meets you where you are. Exactly what I needed transitioning out of service.' },
+    { name:'Stephanie L.', tag:'Beginner Fitness',  seed:'av-stephanie',
+      text:'I made excuses for years. Nathanael made the first session completely low-pressure, explained everything clearly, and I was hooked. No looking back.' },
+    { name:'Todd M.',      tag:'Weight Loss',       seed:'av-todd',
+      text:'Down 42 lbs in six months. The results speak for themselves. More focused at work, sleeping better, genuinely happy with where I am. Cannot recommend this enough.' }
+  ];
+
+  const grid = document.getElementById('tGrid');
+  reviews.forEach(r => {
+    const c = document.createElement('div');
+    c.className = 'tc fu';
+    c.innerHTML = `
+      <div class="tc-stars">${star(14).repeat(5)}</div>
+      <p class="tc-txt">"${r.text}"</p>
+      <div class="tc-author">
+        <div class="tc-av">
+          <img src="https://picsum.photos/seed/${r.seed}/80/80" alt="${r.name}"
+               loading="lazy" style="width:38px;height:38px;border-radius:50%;">
+        </div>
+        <div>
+          <div class="tc-nm">${r.name}</div>
+          <div class="tc-tag">${r.tag}</div>
+        </div>
+      </div>`;
+    grid.appendChild(c);
+    obs.observe(c);
+  });
+</script>
+
+</body>
+</html>
