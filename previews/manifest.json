@@ -96,7 +96,7 @@
       "Call-to-Order"
     ],
     "contactEmail": "lukewebsitemarket@gmail.com",
-    "tier": 2
+    "tier": 3
   },
   {
     "id": "just-like-mamas-kitchen",
@@ -112,7 +112,7 @@
       "Click to Call"
     ],
     "contactEmail": "lukehenning9@gmail.com",
-    "tier": 2
+    "tier": 3
   },
   {
     "id": "keep-it-cute-grooming",
@@ -198,7 +198,7 @@
       "Google Maps Link"
     ],
     "contactEmail": "lukewebsitemarket@gmail.com",
-    "tier": 2
+    "tier": 3
   },
   {
     "id": "tanker-bbq-co",
@@ -215,7 +215,7 @@
       "Photo Gallery"
     ],
     "contactEmail": "",
-    "tier": 2
+    "tier": 3
   },
   {
     "id": "taste-of-flavorz",
@@ -233,7 +233,7 @@
       "Google Maps Link"
     ],
     "contactEmail": "lukehenning9@gmail.com",
-    "tier": 2
+    "tier": 3
   },
   {
     "id": "the-dapper-hound",
@@ -266,6 +266,6 @@
       "Delivery & Takeout"
     ],
     "contactEmail": "lukewebsitemarket@gmail.com",
-    "tier": 2
+    "tier": 3
   }
 ]

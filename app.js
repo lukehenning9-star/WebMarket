@@ -166,7 +166,7 @@ function openPreview(businessId) {
 
     /* Purchase button — show Stripe pricing table */
     modalBuyBtn.innerHTML = '<span class="btn-text-full">Purchase This Website</span><span class="btn-text-short">Buy</span>';
-    modalBuyBtn.onclick = () => showPricing(biz.id, biz.tier || 1);
+    modalBuyBtn.onclick = () => showPricing(biz.id, biz.tier || 3);
     hidePricing();
 
     /* Show loading state then load the iframe */
@@ -199,12 +199,12 @@ function showPricing(businessId, tier) {
             <h2 class="pricing-title">Get your website live</h2>
             <p class="pricing-sub">${setup} one-time setup fee included with your first payment.</p>
             <div class="pricing-plans">
-                <button class="plan-card" onclick="startCheckout('${escAttr(businessId)}','monthly',${tier || 2})">
+                <button class="plan-card" onclick="startCheckout('${escAttr(businessId)}','monthly',${tier || 3})">
                     <span class="plan-name">Monthly</span>
                     <span class="plan-price">${monthly}<em>/mo</em></span>
                     <span class="plan-note">Cancel anytime</span>
                 </button>
-                <button class="plan-card plan-card--featured" onclick="startCheckout('${escAttr(businessId)}','yearly',${tier || 2})">
+                <button class="plan-card plan-card--featured" onclick="startCheckout('${escAttr(businessId)}','yearly',${tier || 3})">
                     <span class="plan-name">Yearly</span>
                     <span class="plan-price">${yearly}<em>/yr</em></span>
                     <span class="plan-note">${savings}</span>
@@ -221,7 +221,7 @@ async function startCheckout(businessId, plan, tier) {
         const res = await fetch('/api/checkout', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ plan, businessId, tier: tier || 1 }),
+            body: JSON.stringify({ plan, businessId, tier: tier || 3 }),
         });
         const { url } = await res.json();
         window.location.href = url;
