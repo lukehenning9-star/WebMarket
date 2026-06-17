@@ -28,16 +28,21 @@ module.exports = async function handler(req, res) {
     const prices = tier === 3 ? PRICES.tier3 : PRICES.tier2;
     const origin = 'https://uswebsitemarket.com';
 
-    const session = await stripe.checkout.sessions.create({
-        mode: 'subscription',
-        line_items: [
-            { price: prices.setupFee, quantity: 1 },
-            { price: prices[plan],    quantity: 1 },
-        ],
-        client_reference_id: businessId || 'unknown',
-        success_url: `${origin}/success.html`,
-        cancel_url:  `${origin}/`,
-    });
+    try {
+        const session = await stripe.checkout.sessions.create({
+            mode: 'subscription',
+            line_items: [
+                { price: prices.setupFee, quantity: 1 },
+                { price: prices[plan],    quantity: 1 },
+            ],
+            client_reference_id: businessId || 'unknown',
+            success_url: `${origin}/success.html`,
+            cancel_url:  `${origin}/`,
+        });
 
-    res.json({ url: session.url });
+        res.json({ url: session.url });
+    } catch (err) {
+        console.error('[checkout] Stripe error:', err.message, { plan, businessId, tier });
+        res.status(500).json({ error: 'Failed to create checkout session' });
+    }
 };
