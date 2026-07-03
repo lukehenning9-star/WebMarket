@@ -2,7 +2,7 @@
   "name": "Nose to Toes Pet Grooming",
   "category": "Pet Grooming",
   "city": "Andover, KS",
-  "price": 750,
+  "price": 500,
   "features": [
     "Mobile Optimized",
     "Hours & Location",
@@ -12,5 +12,6 @@
     "Google Maps Link"
   ],
   "contactEmail": "lukehenning9@gmail.com",
-  "tier": 3
+  "tier": 3,
+  "monthlyPrice": 100
 }

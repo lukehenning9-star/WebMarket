@@ -2,7 +2,7 @@
   "name": "The Dapper Hound",
   "category": "Dog Grooming",
   "city": "Wichita, KS",
-  "price": 299,
+  "price": 500,
   "features": [
     "All Breed Grooming",
     "Photo Gallery",
@@ -14,5 +14,6 @@
   "phone": "(316) 396-0323",
   "address": "5426 E Central Ave, Wichita, KS 67208",
   "addedDate": "2026-06-08",
-  "tier": 3
+  "tier": 3,
+  "monthlyPrice": 100
 }

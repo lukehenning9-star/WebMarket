@@ -6,7 +6,7 @@ A landing page platform at **uswebsitemarket.com** where business owners search 
 ---
 
 ## Current pricing (ALL sites)
-- **Setup fee:** $1,000 (one-time, charged on first payment)
+- **Setup fee:** $500 (one-time, charged on first payment)
 - **Monthly:** $100/mo
 - **Yearly:** $1,000/yr (saves $200 vs monthly)
 
@@ -16,11 +16,14 @@ All 16 sites are tier 3. The tier 2 concept ($750/$75) has been removed from all
 
 ## Stripe price IDs (LIVE, tier 3 only)
 ```
-setupFee: price_1Tg8cO9Zed1ZaDEwmIeBYzDC   ($1,000 one-time)
-monthly:  price_1Tg8ej9Zed1ZaDEwSnfffwrh   ($100/mo)
-yearly:   price_1Tg8f49Zed1ZaDEw8kmnjCKj   ($1,000/yr)
+setupFee: inline price_data in api/checkout.js  ($500 one-time — no dashboard price needed)
+monthly:  price_1Tg8ej9Zed1ZaDEwSnfffwrh        ($100/mo)
+yearly:   price_1Tg8f49Zed1ZaDEw8kmnjCKj        ($1,000/yr)
 ```
-These are hardcoded in `api/checkout.js`. No tier logic remains.
+Recurring prices are hardcoded in `api/checkout.js`; the setup fee is an inline
+`price_data` line item (`unit_amount: 50000`), so changing it is a one-line code edit.
+The old $1,000 setup price (price_1Tg8cO9Zed1ZaDEwmIeBYzDC) is unused and can be
+archived in the Stripe dashboard. No tier logic remains.
 
 ---
 
@@ -85,7 +88,7 @@ python add-to-market.py \
     --name     "Business Name" \
     --category "Category" \
     --city     "City, ST" \
-    --price    1000 \
+    --price    500 \
     --features "Feature 1,Feature 2,Feature 3"
 ```
 Then copy the built website files into `previews/<slug>/`. Commit and push to main — Vercel rebuilds the manifest automatically.
@@ -118,16 +121,18 @@ git push origin claude/gifted-ramanujan-aD5r6:main
 ---
 
 ## What was done in the last session
-- Unified all pricing to $1,000/$100/mo/$1,000/yr (removed tier 2 entirely)
-- Fixed `purchase.js` which had stale $400/$50/$500 pricing
-- Added try/catch + error logging to `api/checkout.js`
-- Set all 16 `meta.json` files to `"tier": 3`
-- Confirmed env vars, webhook, and success page are all in place
+- Ran deep market research on pricing/viability; verdict: model is sound, but the
+  $1,000 upfront was the biggest close-killer (comps in TX take ~$200 down)
+- Cut setup fee to **$500** (monthly/yearly unchanged at $100/$1,000)
+- Setup fee is now an inline `price_data` line item in `api/checkout.js` — no
+  Stripe dashboard price needed; old $1,000 price is orphaned and can be archived
+- Updated pricing copy in `app.js`, `all-builds.js`, `purchase.js`
+- Set `price: 500` / `monthlyPrice: 100` in all 16 `meta.json` files (shown in admin.html)
 
 ---
 
 ## Known things to watch
-- **Checkout flow**: The setup fee is bundled as a line item in a `mode: 'subscription'` Stripe session. This works if the setup fee price was created as a recurring price in Stripe. If checkout ever fails, check Vercel function logs under `api/checkout`.
+- **Checkout flow**: The $500 setup fee is an inline one-time `price_data` line item in a `mode: 'subscription'` Stripe session (Stripe invoices one-time items on the first invoice). If checkout ever fails, check Vercel function logs under `api/checkout`.
 - **Stock photos**: All sites use Unsplash images as placeholders. On purchase, swap with real business photos.
 - **contactEmail field**: Each `meta.json` has a `contactEmail` field that is not yet wired into any automated flow — it's there for future use.
 - **Luke's email**: lukewebsitemarket@gmail.com (business) / lukehenning9@gmail.com (personal, appears in some meta.json files as contactEmail placeholder)

@@ -2,7 +2,7 @@
   "name": "Just Like Mama's Kitchen",
   "category": "Soul Food",
   "city": "Wichita, KS",
-  "price": 299,
+  "price": 500,
   "features": [
     "Full Menu",
     "Customer Reviews",
@@ -10,5 +10,6 @@
     "Click to Call"
   ],
   "contactEmail": "lukehenning9@gmail.com",
-  "tier": 3
+  "tier": 3,
+  "monthlyPrice": 100
 }

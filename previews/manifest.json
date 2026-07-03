@@ -4,7 +4,7 @@
     "name": "610Fit Academy",
     "category": "Personal Fitness Coach",
     "city": "Waco, TX",
-    "price": 299,
+    "price": 500,
     "previewPath": "previews/610fit-academy",
     "features": [
       "Personal Training",
@@ -20,7 +20,7 @@
     "name": "Andrew's Cleaning Service",
     "category": "Cleaning Service",
     "city": "Wichita, KS",
-    "price": 299,
+    "price": 500,
     "previewPath": "previews/andrews-cleaning-service",
     "features": [
       "Residential Cleaning",
@@ -37,7 +37,7 @@
     "name": "Barks-An-Bubbles",
     "category": "Pet Groomer",
     "city": "Wichita, KS",
-    "price": 299,
+    "price": 500,
     "previewPath": "previews/barks-an-bubbles",
     "features": [
       "Mobile Optimized",
@@ -55,7 +55,7 @@
     "name": "Bonjour's Puppy Parade",
     "category": "Pet Grooming",
     "city": "Wichita, KS",
-    "price": 750,
+    "price": 500,
     "previewPath": "previews/bonjours-puppy-parade",
     "features": [
       "Dog & Cat Grooming",
@@ -72,7 +72,7 @@
     "name": "Go Dolla Fitness",
     "category": "Personal Training Gym",
     "city": "Wichita, KS",
-    "price": 299,
+    "price": 500,
     "previewPath": "previews/go-dolla-fitness",
     "features": [
       "Personal Training",
@@ -88,7 +88,7 @@
     "name": "Julius Rib Cage",
     "category": "BBQ Restaurant",
     "city": "Wichita, KS",
-    "price": 400,
+    "price": 500,
     "previewPath": "previews/julius-rib-cage",
     "features": [
       "Online Menu",
@@ -103,7 +103,7 @@
     "name": "Just Like Mama's Kitchen",
     "category": "Soul Food",
     "city": "Wichita, KS",
-    "price": 299,
+    "price": 500,
     "previewPath": "previews/just-like-mamas-kitchen",
     "features": [
       "Full Menu",
@@ -119,7 +119,7 @@
     "name": "Keep it Cute Grooming",
     "category": "Pet Grooming",
     "city": "Wichita, KS",
-    "price": 750,
+    "price": 500,
     "previewPath": "previews/keep-it-cute-grooming",
     "features": [
       "Mobile Optimized",
@@ -135,7 +135,7 @@
     "name": "Lavish Mutts",
     "category": "Pet Grooming",
     "city": "Wichita, KS",
-    "price": 399,
+    "price": 500,
     "previewPath": "previews/lavish-mutts-llc",
     "features": [
       "Online Booking",
@@ -154,7 +154,7 @@
     "name": "Midway Custom Detailing",
     "category": "Auto Detailing",
     "city": "Waco, TX",
-    "price": 299,
+    "price": 500,
     "previewPath": "previews/midway-custom-detailing",
     "features": [
       "Mobile Service",
@@ -170,7 +170,7 @@
     "name": "Nose to Toes Pet Grooming",
     "category": "Pet Grooming",
     "city": "Andover, KS",
-    "price": 750,
+    "price": 500,
     "previewPath": "previews/nose-to-toes-pet-grooming",
     "features": [
       "Mobile Optimized",
@@ -188,7 +188,7 @@
     "name": "Papa Jack's BBQ",
     "category": "BBQ Restaurant",
     "city": "Waco, TX",
-    "price": 399,
+    "price": 500,
     "previewPath": "previews/papa-jacks-bbq",
     "features": [
       "Full Menu",
@@ -205,7 +205,7 @@
     "name": "Tanker BBQ Co.",
     "category": "Barbeque",
     "city": "Wichita, KS",
-    "price": 299,
+    "price": 500,
     "previewPath": "previews/tanker-bbq-co",
     "features": [
       "Full Menu",
@@ -222,7 +222,7 @@
     "name": "Taste of Flavorz",
     "category": "Soul Food Restaurant",
     "city": "Wichita, KS",
-    "price": 299,
+    "price": 500,
     "previewPath": "previews/taste-of-flavorz",
     "features": [
       "Full Menu",
@@ -240,7 +240,7 @@
     "name": "The Dapper Hound",
     "category": "Dog Grooming",
     "city": "Wichita, KS",
-    "price": 299,
+    "price": 500,
     "previewPath": "previews/the-dapper-hound",
     "features": [
       "All Breed Grooming",
@@ -257,7 +257,7 @@
     "name": "The Eatery",
     "category": "Soul Food Restaurant",
     "city": "Wichita, KS",
-    "price": 299,
+    "price": 500,
     "previewPath": "previews/the-eatery",
     "features": [
       "Online Menu",

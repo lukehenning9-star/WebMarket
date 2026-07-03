@@ -7,7 +7,7 @@ USAGE:
         --name     "Mario's Pizza" \\
         --category "Italian Restaurant" \\
         --city     "Dallas, TX" \\
-        --price    299 \\
+        --price    500 \\
         --features "Online Menu,Contact Form,Mobile Optimized,Google Maps"
 
 This script:
@@ -63,7 +63,7 @@ def main():
     parser.add_argument("--city",     required=True,
                         help='City and state,  e.g. "Dallas, TX"')
     parser.add_argument("--price",    required=True, type=int,
-                        help="Asking price in USD, e.g. 299")
+                        help="Asking price in USD, e.g. 500")
     parser.add_argument("--features", default="Mobile Optimized,Contact Form",
                         help="Comma-separated features")
     parser.add_argument("--email",    default="",

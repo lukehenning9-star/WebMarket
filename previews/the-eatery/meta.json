@@ -2,8 +2,8 @@
   "name": "The Eatery",
   "category": "Soul Food Restaurant",
   "city": "Wichita, KS",
-  "price": 299,
-  "monthlyPrice": 40,
+  "price": 500,
+  "monthlyPrice": 100,
   "features": [
     "Online Menu",
     "Mobile Optimized",

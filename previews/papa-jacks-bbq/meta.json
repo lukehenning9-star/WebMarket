@@ -2,8 +2,8 @@
   "name": "Papa Jack's BBQ",
   "category": "BBQ Restaurant",
   "city": "Waco, TX",
-  "price": 399,
-  "monthlyPrice": 50,
+  "price": 500,
+  "monthlyPrice": 100,
   "features": [
     "Full Menu",
     "Online Menu",

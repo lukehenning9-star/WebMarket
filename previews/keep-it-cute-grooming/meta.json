@@ -2,7 +2,7 @@
   "name": "Keep it Cute Grooming",
   "category": "Pet Grooming",
   "city": "Wichita, KS",
-  "price": 750,
+  "price": 500,
   "features": [
     "Mobile Optimized",
     "Contact Form",
@@ -10,5 +10,6 @@
     "Services Menu"
   ],
   "contactEmail": "oquinn588@gmail.com",
-  "tier": 3
+  "tier": 3,
+  "monthlyPrice": 100
 }

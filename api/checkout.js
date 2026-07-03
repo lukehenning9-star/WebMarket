@@ -1,9 +1,18 @@
 const Stripe = require('stripe');
 
 const PRICES = {
-    setupFee: 'price_1Tg8cO9Zed1ZaDEwmIeBYzDC',
     monthly:  'price_1Tg8ej9Zed1ZaDEwSnfffwrh',
     yearly:   'price_1Tg8f49Zed1ZaDEw8kmnjCKj',
+};
+
+// One-time setup fee, defined inline so no Stripe dashboard price is needed
+const SETUP_FEE_ITEM = {
+    price_data: {
+        currency: 'usd',
+        product_data: { name: 'Website Setup Fee' },
+        unit_amount: 50000, // $500.00
+    },
+    quantity: 1,
 };
 
 module.exports = async function handler(req, res) {
@@ -25,8 +34,8 @@ module.exports = async function handler(req, res) {
         const session = await stripe.checkout.sessions.create({
             mode: 'subscription',
             line_items: [
-                { price: prices.setupFee, quantity: 1 },
-                { price: prices[plan],    quantity: 1 },
+                SETUP_FEE_ITEM,
+                { price: prices[plan], quantity: 1 },
             ],
             client_reference_id: businessId || 'unknown',
             success_url: `${origin}/success.html`,

@@ -2,8 +2,8 @@
   "name": "Andrew's Cleaning Service",
   "category": "Cleaning Service",
   "city": "Wichita, KS",
-  "price": 299,
-  "monthlyPrice": 49,
+  "price": 500,
+  "monthlyPrice": 100,
   "features": [
     "Residential Cleaning",
     "Deep Cleaning",

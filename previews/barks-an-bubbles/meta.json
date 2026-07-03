@@ -2,7 +2,7 @@
   "name": "Barks-An-Bubbles",
   "category": "Pet Groomer",
   "city": "Wichita, KS",
-  "price": 299,
+  "price": 500,
   "features": [
     "Mobile Optimized",
     "Service Menu",
@@ -12,5 +12,6 @@
     "Google Maps"
   ],
   "contactEmail": "Barksanbubblesllc@gmail.com",
-  "tier": 3
+  "tier": 3,
+  "monthlyPrice": 100
 }

@@ -116,7 +116,7 @@ function openPurchase(businessId) {
     modalPricing.innerHTML = `
         <div class="pricing-wrap">
             <h2 class="pricing-title">Get your website live</h2>
-            <p class="pricing-sub">$1,000 one-time setup fee included with your first payment.</p>
+            <p class="pricing-sub">$500 one-time setup fee included with your first payment.</p>
             <div class="pricing-plans">
                 <button class="plan-card" onclick="startCheckout('${escAttr(biz.id)}','monthly')">
                     <span class="plan-name">Monthly</span>
@@ -129,7 +129,7 @@ function openPurchase(businessId) {
                     <span class="plan-note">Save $200 vs monthly</span>
                 </button>
             </div>
-            <p class="pricing-legal">$1,000 setup + your chosen plan charged today. Renews automatically.</p>
+            <p class="pricing-legal">$500 setup + your chosen plan charged today. Renews automatically.</p>
         </div>`;
 
     modalOverlay.classList.add('open');

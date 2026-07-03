@@ -2,7 +2,7 @@
   "name": "Go Dolla Fitness",
   "category": "Personal Training Gym",
   "city": "Wichita, KS",
-  "price": 299,
+  "price": 500,
   "features": [
     "Personal Training",
     "Nutrition Coaching",
@@ -11,5 +11,6 @@
   ],
   "contactEmail": "",
   "addedDate": "2026-06-03",
-  "tier": 3
+  "tier": 3,
+  "monthlyPrice": 100
 }
