@@ -129,10 +129,27 @@ git push origin claude/gifted-ramanujan-aD5r6:main
 - Updated pricing copy in `app.js`, `all-builds.js`, `purchase.js`
 - Set `price: 500` / `monthlyPrice: 100` in all 16 `meta.json` files (shown in admin.html)
 
+### Hardening pass (after a code audit)
+- `api/checkout.js` rejects any `businessId` not in the deployed `previews/manifest.json`
+  (fetched from the live site, cached 5 min); returns 503 if the manifest can't be read
+- `api/checkout-webhook.js` skips repeat Stripe deliveries: in-memory event-ID set, plus a
+  `webmarket_notified_event` marker on the subscription's metadata so a purchase email is
+  only sent once even after a cold start. Email failure returns 500 so Stripe retries
+- `api/contact.js` has length limits, control-character stripping, a hidden honeypot
+  field (`website`), and a per-instance rate limit (3 requests / 10 min per IP)
+- Frontend checkout now shows an error instead of redirecting to `undefined` on failure
+- Preview iframe sandbox no longer has `allow-same-origin` or `allow-top-navigation`;
+  scripted top navigation is only allowed on a user click (keeps tap-to-call working)
+- `admin.html` reads `previews/manifest.json` (was reading stale `businesses.json`, now deleted)
+  and downloads a `meta.json` for the new site; marked `noindex`
+- Removed "One flat fee, no subscriptions" from the landing page and PRODUCT.md
+- Skill + CLAUDE.md now document the sandbox rules and ban picsum/loremflickr images
+
 ---
 
 ## Known things to watch
 - **Checkout flow**: The $500 setup fee is an inline one-time `price_data` line item in a `mode: 'subscription'` Stripe session (Stripe invoices one-time items on the first invoice). If checkout ever fails, check Vercel function logs under `api/checkout`.
-- **Stock photos**: All sites use Unsplash images as placeholders. On purchase, swap with real business photos.
+- **Stock photos**: Sites use Unsplash/Pexels images as placeholders. On purchase, swap with real business photos. `610fit-academy`, `lavish-mutts-llc` and `taste-of-flavorz` still use picsum.photos / loremflickr.com, which return arbitrary photos — replace those first.
+- **Rate limit is per instance**: the contact-form limit lives in function memory, so it slows one abusive client but isn't a global quota. A shared store (e.g. Vercel KV / Upstash) would be needed for a hard limit.
 - **contactEmail field**: Each `meta.json` has a `contactEmail` field that is not yet wired into any automated flow — it's there for future use.
 - **Luke's email**: lukewebsitemarket@gmail.com (business) / lukehenning9@gmail.com (personal, appears in some meta.json files as contactEmail placeholder)

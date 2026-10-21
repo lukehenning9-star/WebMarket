@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Market — Professional Websites for Small Businesses</title>
-    <meta name="description" content="Search your business name and preview your professionally built website — ready to go live today. One flat fee, no subscriptions.">
+    <meta name="description" content="Search your business name and preview your professionally built website — ready to go live today. $500 setup, then $100/month for hosting and support.">
     <meta property="og:title" content="Website Market — Your website is already built">
     <meta property="og:description" content="Search your business name and preview your professionally built website — ready to go live today.">
     <meta property="og:type" content="website">
@@ -121,7 +121,7 @@
                         <h3 class="step-title">You take it live</h3>
                         <p class="step-desc">
                             When you're ready, we connect your domain and hand everything over.
-                            One flat fee, no subscriptions.
+                            $500 setup, then $100 a month for hosting, updates, and support.
                         </p>
                     </div>
                 </div>
@@ -183,7 +183,7 @@
                     id="modalIframe"
                     class="modal-iframe"
                     title="Website Preview"
-                    sandbox="allow-scripts allow-same-origin allow-popups allow-top-navigation allow-forms"
+                    sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation allow-forms"
                 ></iframe>
                 <div id="modalPricing" class="modal-pricing"></div>
             </div>
@@ -202,15 +202,19 @@
                 <form id="demoForm" onsubmit="submitDemo(event)">
                     <div class="form-group">
                         <label class="form-label" for="demoCompany">Company Name</label>
-                        <input class="form-input" type="text" id="demoCompany" required placeholder="Your business name">
+                        <input class="form-input" type="text" id="demoCompany" required maxlength="120" placeholder="Your business name">
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="demoContact">Contact Info</label>
-                        <input class="form-input" type="text" id="demoContact" required placeholder="Email or phone number">
+                        <input class="form-input" type="text" id="demoContact" required maxlength="120" placeholder="Email or phone number">
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="demoDetails">Website Details <span class="form-optional">(optional)</span></label>
-                        <textarea class="form-input form-textarea" id="demoDetails" rows="3" placeholder="Tell us about your business or what you're looking for…"></textarea>
+                        <textarea class="form-input form-textarea" id="demoDetails" rows="3" maxlength="2000" placeholder="Tell us about your business or what you're looking for…"></textarea>
+                    </div>
+                    <div class="form-honeypot" aria-hidden="true">
+                        <label for="demoWebsite">Leave this field empty</label>
+                        <input type="text" id="demoWebsite" name="website" tabindex="-1" autocomplete="off">
                     </div>
                     <button type="submit" class="demo-submit-btn">Send Request</button>
                 </form>

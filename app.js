@@ -217,10 +217,14 @@ async function startCheckout(businessId, plan) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ plan, businessId }),
         });
-        const { url } = await res.json();
-        window.location.href = url;
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.url) {
+            throw new Error(data.error || `HTTP ${res.status}`);
+        }
+        window.location.href = data.url;
     } catch (err) {
-        alert('Something went wrong. Please try again.');
+        console.error('Checkout failed:', err.message);
+        alert('Something went wrong starting checkout. Please try again.');
     }
 }
 
@@ -281,15 +285,18 @@ async function submitDemo(e) {
     const company = document.getElementById('demoCompany').value.trim();
     const contact = document.getElementById('demoContact').value.trim();
     const details = document.getElementById('demoDetails').value.trim();
+    const website = document.getElementById('demoWebsite').value;
     try {
         const res = await fetch('/api/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ company, contact, details }),
+            body: JSON.stringify({ company, contact, details, website }),
         });
         if (res.ok) {
             document.getElementById('demoForm').style.display = 'none';
             document.getElementById('demoSuccess').style.display = 'block';
+        } else if (res.status === 429) {
+            alert("You've sent a few requests already. Please try again in a few minutes.");
         } else {
             alert('Something went wrong. Please try again.');
         }

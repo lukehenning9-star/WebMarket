@@ -1135,6 +1135,14 @@ footer {
     margin-bottom: 16px;
 }
 
+.form-honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
 .form-label {
     display: block;
     font-family: var(--font-body);

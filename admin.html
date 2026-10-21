@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin — Website Market</title>
+    <meta name="robots" content="noindex">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -266,8 +267,8 @@
             </div>
             <div class="panel-body">
                 <div class="load-note" id="loadNote" style="display:none">
-                    ⚠ Could not load <code>businesses.json</code>. This page requires an HTTP server.<br>
-                    Run: <code>python -m http.server 8080</code> then open <code>http://localhost:8080/admin.html</code>
+                    ⚠ Could not load <code>previews/manifest.json</code>. This page requires an HTTP server.<br>
+                    Run: <code>python build.py</code> and <code>python -m http.server 8080</code>, then open <code>http://localhost:8080/admin.html</code>
                 </div>
                 <ul id="businessList">
                     <li class="empty-state">Loading businesses…</li>
@@ -302,7 +303,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="fPrice">Price (USD) *</label>
-                        <input type="number" id="fPrice" placeholder="299" min="0">
+                        <input type="number" id="fPrice" placeholder="500" min="0">
                     </div>
                     <div class="form-group">
                         <label for="fEmail">Client Email</label>
@@ -320,7 +321,7 @@
                 <div id="output"></div>
                 <div class="output-actions" id="outputActions" style="display:none">
                     <button class="copy-btn" onclick="copyCommand()">Copy CLI Command</button>
-                    <button class="dl-btn" onclick="downloadJson()">Download businesses.json</button>
+                    <button class="dl-btn" onclick="downloadJson()">Download meta.json</button>
                 </div>
 
             </div>
@@ -335,7 +336,7 @@
 
         async function loadBusinesses() {
             try {
-                const res = await fetch('businesses.json');
+                const res = await fetch('previews/manifest.json');
                 if (!res.ok) throw new Error(res.status);
                 currentBusinesses = await res.json();
                 renderList(currentBusinesses);
@@ -368,6 +369,7 @@
 
         /* ── Generate CLI command and JSON entry ── */
         let lastEntry = null;
+        let lastSlug = '';
         let lastCommand = '';
 
         function generate() {
@@ -388,13 +390,12 @@
                 ? features.split(',').map(f => f.trim()).filter(Boolean)
                 : ['Mobile Optimized', 'Contact Form'];
 
+            lastSlug = slug;
             lastEntry = {
-                id:           slug,
                 name,
                 category,
                 city,
                 price,
-                previewPath:  `previews/${slug}`,
                 features:     featList,
                 contactEmail: email,
                 addedDate:    new Date().toISOString().slice(0, 10)
@@ -417,8 +418,8 @@
                 lastCommand +
                 '\n\n# It will:\n' +
                 `#  1. Create:  previews/${slug}/\n` +
-                `#  2. Update:  businesses.json\n` +
-                '#  3. Print next steps\n\n' +
+                `#  2. Write:   previews/${slug}/meta.json\n` +
+                '#  3. Rebuild: previews/manifest.json\n\n' +
                 '# Then copy your built site into previews/' + slug + '/';
 
             document.getElementById('outputActions').style.display = 'flex';
@@ -434,19 +435,14 @@
 
         function downloadJson() {
             if (!lastEntry) return;
-            const updated = [...currentBusinesses];
-            const existing = updated.findIndex(b => b.id === lastEntry.id);
-            if (existing >= 0) {
-                if (!confirm(`A business with id "${lastEntry.id}" already exists. Replace it?`)) return;
-                updated[existing] = lastEntry;
-            } else {
-                updated.push(lastEntry);
+            if (currentBusinesses.some(b => b.id === lastSlug)) {
+                if (!confirm(`previews/${lastSlug}/ already exists. Download a replacement meta.json anyway?`)) return;
             }
-            const blob = new Blob([JSON.stringify(updated, null, 2) + '\n'], { type: 'application/json' });
+            const blob = new Blob([JSON.stringify(lastEntry, null, 2) + '\n'], { type: 'application/json' });
             const url  = URL.createObjectURL(blob);
             const a    = document.createElement('a');
             a.href     = url;
-            a.download = 'businesses.json';
+            a.download = 'meta.json';
             a.click();
             URL.revokeObjectURL(url);
         }

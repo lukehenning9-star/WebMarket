@@ -11,10 +11,10 @@ WebMarket/
 ├── add-to-market.py      ← registers a new client (run this after building)
 ├── previews/
 │   ├── manifest.json     ← auto-generated search index (never edit by hand)
-│   ├── marios-pizza/     ← example: one client's complete website
+│   ├── the-eatery/       ← example: one client's complete website
 │   │   ├── index.html
 │   │   └── meta.json
-│   └── golden-wok/       ← another example
+│   └── papa-jacks-bbq/   ← another example
 │       ├── index.html
 │       └── meta.json
 ```
@@ -54,7 +54,7 @@ python add-to-market.py \
     --name     "Business Name" \
     --category "Type of Restaurant" \
     --city     "City, ST" \
-    --price    299 \
+    --price    500 \
     --features "Online Menu,Contact Form,Mobile Optimized,Google Maps"
 ```
 
@@ -78,7 +78,7 @@ Vercel auto-deploys and runs `build.py`, so the business appears in the WebMarke
   "name": "Mario's Pizza",
   "category": "Italian Restaurant",
   "city": "Dallas, TX",
-  "price": 299,
+  "price": 500,
   "features": ["Online Menu", "Contact Form", "Mobile Optimized"],
   "contactEmail": ""
 }
@@ -88,4 +88,12 @@ Vercel auto-deploys and runs `build.py`, so the business appears in the WebMarke
 - Do not edit `index.html`, `styles.css`, `app.js`, or `build.py` at the repo root
 - Do not edit `previews/manifest.json` by hand
 - Do not put files outside `previews/<slug>/`
-- Do not use absolute URLs or CDN links for assets inside the preview site (they need to work offline/in iframes)
+- Do not use random-image services (`picsum.photos`, `loremflickr.com`) — they return arbitrary photos that don't match the content. Use local files in the site folder, or a specific photo URL from Unsplash/Pexels that you have checked shows the right subject
+- Do not rely on `localStorage`, `sessionStorage`, cookies, or `fetch()` to files in your folder — previews run in a sandboxed iframe with no same-origin access (see below)
+
+## Iframe sandbox rules
+The preview iframe uses `sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation allow-forms"`. That means:
+- Scripts run, but the page gets an opaque origin: storage APIs throw and same-folder `fetch()`/`XMLHttpRequest` fail
+- Linked CSS, JS, images and Google Fonts load normally
+- External links should use `target="_blank"` (popups are allowed and open un-sandboxed)
+- A script may navigate the top window (e.g. for `tel:` links) only in response to a user click

@@ -10,7 +10,7 @@ Independent restaurant owners — not tech-savvy, often viewing on a phone after
 
 ## Product Purpose
 
-A marketplace landing page where restaurant owners search their name, find a professionally-built website already made for them, preview it in a full iframe, and contact to purchase. One flat fee, no subscriptions. Core value: the work is already done before the owner arrives. The search bar is the product.
+A marketplace landing page where restaurant owners search their name, find a professionally-built website already made for them, preview it in a full iframe, and buy it through Stripe checkout: $500 setup, then $100/month (or $1,000/year) for hosting and support. Core value: the work is already done before the owner arrives. The search bar is the product.
 
 ## Brand Personality
 

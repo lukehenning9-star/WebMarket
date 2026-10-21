@@ -148,10 +148,14 @@ async function startCheckout(businessId, plan) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ plan, businessId }),
         });
-        const { url } = await res.json();
-        window.location.href = url;
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.url) {
+            throw new Error(data.error || `HTTP ${res.status}`);
+        }
+        window.location.href = data.url;
     } catch (err) {
-        alert('Something went wrong. Please try again.');
+        console.error('Checkout failed:', err.message);
+        alert('Something went wrong starting checkout. Please try again.');
     }
 }
 

@@ -22,7 +22,7 @@ python add-to-market.py \
     --name     "Restaurant Name" \
     --category "Type of Restaurant" \
     --city     "City, ST" \
-    --price    299 \
+    --price    500 \
     --features "Online Menu,Contact Form,Mobile Optimized"
 ```
 
@@ -50,7 +50,7 @@ previews/
     ...
 ```
 
-The preview renders inside an iframe on the main site, so the site should be self-contained (all CSS/images relative to its own folder).
+The preview renders inside a sandboxed iframe on the main site (scripts run, but there is no same-origin access, so no `localStorage`, cookies, or same-folder `fetch()`). Keep CSS/JS relative to the site's own folder. See `.claude/skills/new-webmarket-site/SKILL.md` for the full rules.
 
 ## Local development
 
@@ -66,10 +66,11 @@ python -m http.server 8080 # serve the site
 
 Push to the main branch — Vercel runs `python build.py` automatically, regenerates the manifest, and deploys. Any new `previews/` subfolder pushed to the repo is instantly discoverable in search.
 
-## Configuration
+## Backend
 
-Before going live, replace `YOUR_EMAIL@example.com` in these files:
-- `index.html` (appears in the nav CTA, the no-results message, and the CTA section — search for `YOUR_EMAIL`)
-- `app.js` (line in `renderResults` for the no-results link, and `openPreview` fallback email)
+Three Vercel serverless functions in `api/`:
+- `checkout.js` — creates a Stripe Checkout session; rejects any `businessId` not in the deployed `previews/manifest.json`
+- `checkout-webhook.js` — verifies the Stripe signature and emails purchase / abandoned-checkout alerts; skips repeat deliveries using event IDs and a marker on the subscription's metadata
+- `contact.js` — demo-request form; length limits, a honeypot field, and a per-instance rate limit
 
-Per-client purchase emails can be set in each `previews/<slug>/meta.json` under the `contactEmail` field.
+Per-client contact emails can be set in each `previews/<slug>/meta.json` under the `contactEmail` field (not yet used by any automated flow).
