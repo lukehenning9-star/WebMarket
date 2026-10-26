@@ -146,6 +146,8 @@ git push origin claude/gifted-ramanujan-aD5r6:main
 - Manifest no longer publishes `contactEmail` or `tier`
 - Added README, `.gitignore`, `.gitattributes`, `package-lock.json`, security headers,
   og:image, tests (44 JS, 12 Python, 10 Playwright × desktop/mobile) and GitHub Actions CI
+- Upgraded nodemailer 6 → 10 (19 advisories; `npm audit` now clean). CI runner pinned to
+  ubuntu-24.04 because Playwright 1.56 can't install browsers on ubuntu-latest (26.04)
 
 ---
 
