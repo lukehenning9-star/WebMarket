@@ -1,76 +1,56 @@
 # Website Market
 
-A landing page platform for displaying restaurant websites built for potential clients. Business owners visit this site, search for their restaurant name, and preview the site built for them before purchasing.
+A marketplace where local business owners search their name, preview a website already built for them, and buy it through Stripe. See `README.md` for the architecture.
 
-## How it works
+## Layout
 
-- `previews/<slug>/` — each client's built website lives here
-- `previews/<slug>/meta.json` — business info (name, category, city, price, features)
-- `previews/manifest.json` — auto-generated index of all sites (created by `build.py`)
-- `index.html` + `styles.css` + `app.js` — the landing page and search interface
-- `admin.html` — browser-based admin tool for viewing/managing the registry
-- `add-to-market.py` — CLI script to register a new business (preferred method)
-- `build.py` — scans `previews/` and regenerates `manifest.json` (runs on every Vercel deploy)
-- `vercel.json` — tells Vercel to run `build.py` before each deployment
+- `public/` — everything Vercel serves (it is the output directory)
+  - `index.html`, `purchase.html`, `all-builds.html`, `success.html`, `admin.html`
+  - `css/styles.css`
+  - `js/<page>.js` — one ES module per page; shared code lives in `js/lib/`
+  - `previews/<slug>/` — one client's website (`index.html` + `meta.json`)
+  - `previews/manifest.json` — generated catalog; never edit by hand
+- `api/` — Vercel serverless functions (Node, ES modules); shared helpers in `api/_lib/`
+- `scripts/build.py` — regenerates the manifest (Vercel runs it on every deploy)
+- `scripts/add-to-market.py` — registers a new client site
+- `tests/` — `unit/` and `api/` (node:test), `python/` (unittest), `e2e/` (Playwright)
 
 ## Adding a new client website
 
-After you finish building a restaurant website in this or any other session, register it like this:
+Follow `.claude/skills/new-webmarket-site/SKILL.md`. In short:
 
 ```bash
-python add-to-market.py \
-    --name     "Restaurant Name" \
-    --category "Type of Restaurant" \
+python3 scripts/add-to-market.py \
+    --name     "Business Name" \
+    --category "Type of Business" \
     --city     "City, ST" \
     --price    500 \
     --features "Online Menu,Contact Form,Mobile Optimized"
 ```
 
-This will:
-1. Create `previews/restaurant-name/` with a placeholder index.html
-2. Create `previews/restaurant-name/meta.json` with the business info
-3. Regenerate `previews/manifest.json` immediately
-4. Print next steps
+This creates `public/previews/<slug>/` with `meta.json` and a placeholder `index.html`, and rebuilds the manifest. Copy the built site into that folder (overwriting the placeholder), run `npm test`, commit and push.
 
-Then **copy your built website files** into `previews/restaurant-name/` (overwriting the placeholder), commit, and push.
+The preview renders inside a sandboxed iframe (scripts run, but there is no same-origin access, so no `localStorage`, cookies, or same-folder `fetch()`). Keep CSS/JS relative to the site's own folder.
 
-**On Vercel:** `build.py` runs automatically on every deployment, so the manifest is always regenerated fresh. No extra steps needed.
-
-## Building a new client website
-
-Build the restaurant website directly in this repo under `previews/`:
-
-```
-previews/
-  restaurant-name/
-    index.html      ← main entry point (required)
-    meta.json       ← business info for search (required)
-    styles.css
-    images/
-    ...
-```
-
-The preview renders inside a sandboxed iframe on the main site (scripts run, but there is no same-origin access, so no `localStorage`, cookies, or same-folder `fetch()`). Keep CSS/JS relative to the site's own folder. See `.claude/skills/new-webmarket-site/SKILL.md` for the full rules.
-
-## Local development
-
-This site uses `fetch()` to load `previews/manifest.json`, so it must be served over HTTP:
+## Commands
 
 ```bash
-python build.py            # regenerate manifest from meta.json files
-python -m http.server 8080 # serve the site
-# then open: http://localhost:8080
+npm install          # once
+npm run dev          # rebuild manifest + serve public/ on http://localhost:8080
+npm test             # JS unit/API tests + Python script tests
+npm run test:e2e     # Playwright browser tests (desktop + mobile)
 ```
 
 ## Deploying
 
-Push to the main branch — Vercel runs `python build.py` automatically, regenerates the manifest, and deploys. Any new `previews/` subfolder pushed to the repo is instantly discoverable in search.
+Push to `main`. Vercel runs `python3 scripts/build.py` and serves `public/`. CI (`.github/workflows/ci.yml`) runs every test suite and fails if the committed manifest is stale.
 
 ## Backend
 
-Three Vercel serverless functions in `api/`:
-- `checkout.js` — creates a Stripe Checkout session; rejects any `businessId` not in the deployed `previews/manifest.json`
-- `checkout-webhook.js` — verifies the Stripe signature and emails purchase / abandoned-checkout alerts; skips repeat deliveries using event IDs and a marker on the subscription's metadata
-- `contact.js` — demo-request form; length limits, a honeypot field, and a per-instance rate limit
+- `api/checkout.js` — creates a Stripe Checkout session; rejects any `businessId` not in the deployed manifest
+- `api/checkout-webhook.js` — verifies the Stripe signature and emails purchase / abandoned-checkout alerts; skips repeat deliveries using event IDs and a marker on the subscription's metadata
+- `api/contact.js` — demo-request form; length limits, a honeypot field, and a per-instance rate limit
 
-Per-client contact emails can be set in each `previews/<slug>/meta.json` under the `contactEmail` field (not yet used by any automated flow).
+Each handler is built by a `create…Handler({...})` factory so tests can pass in fake Stripe/email clients; the default export wires up the real ones.
+
+`meta.json` may hold a `contactEmail`; it is deliberately not copied into the public manifest.

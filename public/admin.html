@@ -268,7 +268,7 @@
             <div class="panel-body">
                 <div class="load-note" id="loadNote" style="display:none">
                     ⚠ Could not load <code>previews/manifest.json</code>. This page requires an HTTP server.<br>
-                    Run: <code>python build.py</code> and <code>python -m http.server 8080</code>, then open <code>http://localhost:8080/admin.html</code>
+                    Run <code>npm run dev</code> from the repo root, then open <code>http://localhost:8080/admin.html</code>
                 </div>
                 <ul id="businessList">
                     <li class="empty-state">Loading businesses…</li>
@@ -401,15 +401,15 @@
                 addedDate:    new Date().toISOString().slice(0, 10)
             };
 
-            const escapedFeatures = featList.join(',').replace(/"/g, '\\"');
+            const shellQuote = value => `'${String(value).replace(/'/g, `'\\''`)}'`;
 
-            lastCommand = `python add-to-market.py \\
-    --name     "${name.replace(/"/g, '\\"')}" \\
-    --category "${category.replace(/"/g, '\\"')}" \\
-    --city     "${city.replace(/"/g, '\\"')}" \\
+            lastCommand = `python3 scripts/add-to-market.py \\
+    --name     ${shellQuote(name)} \\
+    --category ${shellQuote(category)} \\
+    --city     ${shellQuote(city)} \\
     --price    ${price}` +
-    (email ? ` \\\n    --email    "${email.replace(/"/g, '\\"')}"` : '') +
-    ` \\\n    --features "${escapedFeatures}"`;
+    (email ? ` \\\n    --email    ${shellQuote(email)}` : '') +
+    ` \\\n    --features ${shellQuote(featList.join(','))}`;
 
             const outputEl = document.getElementById('output');
             outputEl.style.display = 'block';
@@ -417,10 +417,10 @@
                 '# Run this command from the WebMarket root directory:\n\n' +
                 lastCommand +
                 '\n\n# It will:\n' +
-                `#  1. Create:  previews/${slug}/\n` +
-                `#  2. Write:   previews/${slug}/meta.json\n` +
-                '#  3. Rebuild: previews/manifest.json\n\n' +
-                '# Then copy your built site into previews/' + slug + '/';
+                `#  1. Create:  public/previews/${slug}/\n` +
+                `#  2. Write:   public/previews/${slug}/meta.json\n` +
+                '#  3. Rebuild: public/previews/manifest.json\n\n' +
+                '# Then copy your built site into public/previews/' + slug + '/';
 
             document.getElementById('outputActions').style.display = 'flex';
         }

@@ -6,17 +6,19 @@ WebMarket is a static landing page where restaurant owners search for their busi
 ## Repo structure (only the parts that matter)
 ```
 WebMarket/
-├── index.html            ← the main landing/search page (do not edit)
-├── build.py              ← regenerates previews/manifest.json (run after adding a site)
-├── add-to-market.py      ← registers a new client (run this after building)
-├── previews/
-│   ├── manifest.json     ← auto-generated search index (never edit by hand)
-│   ├── the-eatery/       ← example: one client's complete website
-│   │   ├── index.html
-│   │   └── meta.json
-│   └── papa-jacks-bbq/   ← another example
-│       ├── index.html
-│       └── meta.json
+├── scripts/
+│   ├── build.py              ← regenerates public/previews/manifest.json
+│   └── add-to-market.py      ← registers a new client (run this after building)
+└── public/
+    ├── index.html            ← the main landing/search page (do not edit)
+    └── previews/
+        ├── manifest.json     ← auto-generated search index (never edit by hand)
+        ├── the-eatery/       ← example: one client's complete website
+        │   ├── index.html
+        │   └── meta.json
+        └── papa-jacks-bbq/   ← another example
+            ├── index.html
+            └── meta.json
 ```
 
 ## Your job
@@ -28,10 +30,10 @@ Build a complete, self-contained restaurant website and register it so it appear
 Ask for (or confirm): business name, cuisine type, city/state, phone, address, hours, any menu items or photos to include.
 
 ### 2. Build the website
-Create the site in `previews/<slug>/` where `<slug>` is the business name in lowercase-hyphenated format (e.g. "Mario's Pizza" → `marios-pizza`).
+Create the site in `public/previews/<slug>/` where `<slug>` is the business name in lowercase-hyphenated format (e.g. "Mario's Pizza" → `marios-pizza`).
 
 ```
-previews/
+public/previews/
   <slug>/
     index.html    ← required — the full restaurant website
     styles.css    ← optional but preferred (keep CSS separate)
@@ -50,7 +52,7 @@ previews/
 
 ### 3. Register the site — run this command
 ```bash
-python add-to-market.py \
+python3 scripts/add-to-market.py \
     --name     "Business Name" \
     --category "Type of Restaurant" \
     --city     "City, ST" \
@@ -58,19 +60,20 @@ python add-to-market.py \
     --features "Online Menu,Contact Form,Mobile Optimized,Google Maps"
 ```
 
-This creates `previews/<slug>/meta.json` and regenerates `previews/manifest.json`.
+This creates `public/previews/<slug>/meta.json` and regenerates `public/previews/manifest.json`. It refuses to overwrite an existing `meta.json` unless you pass `--force`.
 
 ### 4. If meta.json already exists (you ran add-to-market.py first)
 The script creates a placeholder `index.html`. Replace it with your built site — your `index.html` overwrites the placeholder.
 
 ### 5. Commit and push
 ```bash
-git add previews/<slug>/
+npm test                      # catches a stale manifest or missing meta.json
+git add public/previews/<slug>/
 git commit -m "Add website preview for Business Name"
 git push
 ```
 
-Vercel auto-deploys and runs `build.py`, so the business appears in the WebMarket search bar immediately after the deploy completes (~30 seconds).
+Vercel auto-deploys and runs `scripts/build.py`, so the business appears in the WebMarket search bar immediately after the deploy completes (~30 seconds).
 
 ## meta.json format (for reference)
 ```json
@@ -85,9 +88,9 @@ Vercel auto-deploys and runs `build.py`, so the business appears in the WebMarke
 ```
 
 ## What NOT to do
-- Do not edit `index.html`, `styles.css`, `app.js`, or `build.py` at the repo root
-- Do not edit `previews/manifest.json` by hand
-- Do not put files outside `previews/<slug>/`
+- Do not edit the platform files (`public/*.html`, `public/css/`, `public/js/`, `scripts/`, `api/`) when adding a site
+- Do not edit `public/previews/manifest.json` by hand
+- Do not put files outside `public/previews/<slug>/`
 - Do not use random-image services (`picsum.photos`, `loremflickr.com`) — they return arbitrary photos that don't match the content. Use local files in the site folder, or a specific photo URL from Unsplash/Pexels that you have checked shows the right subject
 - Do not rely on `localStorage`, `sessionStorage`, cookies, or `fetch()` to files in your folder — previews run in a sandboxed iframe with no same-origin access (see below)
 

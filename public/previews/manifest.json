@@ -11,9 +11,7 @@
       "Faith-Based Coaching",
       "Podcast",
       "Mobile Optimized"
-    ],
-    "contactEmail": "jenny@610fit.com",
-    "tier": 3
+    ]
   },
   {
     "id": "andrews-cleaning-service",
@@ -28,9 +26,7 @@
       "Move-In/Out",
       "Commercial",
       "Mobile Optimized"
-    ],
-    "contactEmail": "lukewebsitemarket@gmail.com",
-    "tier": 3
+    ]
   },
   {
     "id": "barks-an-bubbles",
@@ -46,9 +42,7 @@
       "Hours & Location",
       "Click-to-Call",
       "Google Maps"
-    ],
-    "contactEmail": "Barksanbubblesllc@gmail.com",
-    "tier": 3
+    ]
   },
   {
     "id": "bonjours-puppy-parade",
@@ -63,9 +57,7 @@
       "Mobile Optimized",
       "Hours & Location",
       "Services Menu"
-    ],
-    "contactEmail": "lukewebsitemarket@gmail.com",
-    "tier": 3
+    ]
   },
   {
     "id": "go-dolla-fitness",
@@ -79,9 +71,7 @@
       "Nutrition Coaching",
       "Community Sessions",
       "Strength & Conditioning"
-    ],
-    "contactEmail": "",
-    "tier": 3
+    ]
   },
   {
     "id": "julius-rib-cage",
@@ -94,9 +84,7 @@
       "Online Menu",
       "Mobile Optimized",
       "Call-to-Order"
-    ],
-    "contactEmail": "lukewebsitemarket@gmail.com",
-    "tier": 3
+    ]
   },
   {
     "id": "just-like-mamas-kitchen",
@@ -110,9 +98,7 @@
       "Customer Reviews",
       "Mobile Optimized",
       "Click to Call"
-    ],
-    "contactEmail": "lukehenning9@gmail.com",
-    "tier": 3
+    ]
   },
   {
     "id": "keep-it-cute-grooming",
@@ -126,9 +112,7 @@
       "Contact Form",
       "Hours & Location",
       "Services Menu"
-    ],
-    "contactEmail": "oquinn588@gmail.com",
-    "tier": 3
+    ]
   },
   {
     "id": "lavish-mutts-llc",
@@ -145,9 +129,7 @@
       "Memberships",
       "Cat Grooming",
       "Mobile Optimized"
-    ],
-    "contactEmail": "lavishmuttsllc@gmail.com",
-    "tier": 3
+    ]
   },
   {
     "id": "midway-custom-detailing",
@@ -161,9 +143,7 @@
       "Hand Wash",
       "Interior Detail",
       "Exterior Polish"
-    ],
-    "contactEmail": "MidwayCustomDetailing@gmail.com",
-    "tier": 3
+    ]
   },
   {
     "id": "nose-to-toes-pet-grooming",
@@ -179,9 +159,7 @@
       "Client Reviews",
       "Click-to-Call",
       "Google Maps Link"
-    ],
-    "contactEmail": "lukehenning9@gmail.com",
-    "tier": 3
+    ]
   },
   {
     "id": "papa-jacks-bbq",
@@ -196,9 +174,7 @@
       "Mobile Optimized",
       "Call-to-Order",
       "Google Maps Link"
-    ],
-    "contactEmail": "lukewebsitemarket@gmail.com",
-    "tier": 3
+    ]
   },
   {
     "id": "tanker-bbq-co",
@@ -213,9 +189,7 @@
       "Google Maps",
       "Mobile Optimized",
       "Photo Gallery"
-    ],
-    "contactEmail": "",
-    "tier": 3
+    ]
   },
   {
     "id": "taste-of-flavorz",
@@ -231,9 +205,7 @@
       "Hours & Location",
       "Mobile Optimized",
       "Google Maps Link"
-    ],
-    "contactEmail": "lukehenning9@gmail.com",
-    "tier": 3
+    ]
   },
   {
     "id": "the-dapper-hound",
@@ -248,9 +220,7 @@
       "Mobile Friendly",
       "Reviews",
       "Contact Form"
-    ],
-    "contactEmail": "TheDapperHound1@gmail.com",
-    "tier": 3
+    ]
   },
   {
     "id": "the-eatery",
@@ -264,8 +234,6 @@
       "Mobile Optimized",
       "Call-to-Order",
       "Delivery & Takeout"
-    ],
-    "contactEmail": "lukewebsitemarket@gmail.com",
-    "tier": 3
+    ]
   }
 ]

@@ -9,13 +9,16 @@
     <meta property="og:description" content="Search your business name and preview your professionally built website — ready to go live today.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://uswebsitemarket.com">
+    <meta property="og:image" content="https://uswebsitemarket.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://uswebsitemarket.com/">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -138,7 +141,7 @@
             <p class="cta-sub">
                 Search above to preview your site, or request a demo and we'll walk you through it.
             </p>
-            <button class="cta-btn" onclick="openDemoModal()">Request a Demo</button>
+            <button class="cta-btn" type="button" id="demoOpenBtn">Request a Demo</button>
         </div>
     </section>
 
@@ -196,10 +199,10 @@
         <div class="demo-modal">
             <div class="demo-modal-header">
                 <h2 class="demo-modal-title">Request a Demo</h2>
-                <button class="demo-modal-close" onclick="closeDemoModal()" aria-label="Close">✕</button>
+                <button class="demo-modal-close" type="button" id="demoCloseBtn" aria-label="Close">✕</button>
             </div>
             <div class="demo-modal-body">
-                <form id="demoForm" onsubmit="submitDemo(event)">
+                <form id="demoForm">
                     <div class="form-group">
                         <label class="form-label" for="demoCompany">Company Name</label>
                         <input class="form-input" type="text" id="demoCompany" required maxlength="120" placeholder="Your business name">
@@ -226,6 +229,6 @@
     </div>
 
 
-    <script src="app.js"></script>
+    <script type="module" src="js/home.js"></script>
 </body>
 </html>

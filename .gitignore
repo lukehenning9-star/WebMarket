@@ -1,0 +1,14 @@
+node_modules/
+.vercel/
+.env
+.env.*
+
+# Playwright
+test-results/
+playwright-report/
+
+# Python
+__pycache__/
+*.pyc
+
+.DS_Store

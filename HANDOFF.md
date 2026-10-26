@@ -10,11 +10,11 @@ A landing page platform at **uswebsitemarket.com** where business owners search 
 - **Monthly:** $100/mo
 - **Yearly:** $1,000/yr (saves $200 vs monthly)
 
-All 16 sites are tier 3. The tier 2 concept ($750/$75) has been removed from all code.
+Every site uses the same pricing; there is no per-site tier logic.
 
 ---
 
-## Stripe price IDs (LIVE, tier 3 only)
+## Stripe price IDs (LIVE)
 ```
 setupFee: inline price_data in api/checkout.js  ($500 one-time — no dashboard price needed)
 monthly:  price_1Tg8ej9Zed1ZaDEwSnfffwrh        ($100/mo)
@@ -23,7 +23,7 @@ yearly:   price_1Tg8f49Zed1ZaDEw8kmnjCKj        ($1,000/yr)
 Recurring prices are hardcoded in `api/checkout.js`; the setup fee is an inline
 `price_data` line item (`unit_amount: 50000`), so changing it is a one-line code edit.
 The old $1,000 setup price (price_1Tg8cO9Zed1ZaDEwmIeBYzDC) is unused and can be
-archived in the Stripe dashboard. No tier logic remains.
+archived in the Stripe dashboard.
 
 ---
 
@@ -36,75 +36,62 @@ archived in the Stripe dashboard. No tier logic remains.
 
 ## Vercel setup
 - Deploy triggers on push to `main`
-- Build command: `python3 build.py` (regenerates `previews/manifest.json`)
-- No framework — pure static + serverless functions in `/api/`
+- Build command: `python3 scripts/build.py` (regenerates `public/previews/manifest.json`)
+- Output directory: `public/` — only that folder is served, so repo docs and scripts stay private
+- No framework — static site + serverless functions in `/api/`
 - Stripe webhook endpoint registered at: `https://uswebsitemarket.com/api/checkout-webhook`
   - Listens for: `checkout.session.completed`, `checkout.session.expired`
 
 ---
 
 ## Key files
-| File | Purpose |
+See `README.md` (architecture, layout) and `CLAUDE.md` (commands). In short:
+| Path | Purpose |
 |------|---------|
-| `index.html` + `styles.css` + `app.js` | Main landing page (search → preview → buy) |
-| `purchase.html` + `purchase.js` | "Get your website" direct purchase flow |
-| `all-builds.html` + `all-builds.js` | Browse all sites without searching |
-| `success.html` | Post-purchase confirmation page |
-| `admin.html` | Internal admin view |
-| `api/checkout.js` | Creates Stripe Checkout Session |
-| `api/checkout-webhook.js` | Emails Luke when purchase completes or is abandoned |
-| `api/contact.js` | Handles demo request form submissions (emails Luke) |
-| `build.py` | Scans `previews/*/meta.json` and writes `previews/manifest.json` |
-| `add-to-market.py` | CLI to register a new business site |
-| `previews/manifest.json` | Auto-generated index of all sites (do not edit manually) |
+| `public/index.html` + `public/js/home.js` | Landing page (search → preview → buy) |
+| `public/purchase.html` + `public/js/purchase.js` | Direct purchase flow |
+| `public/all-builds.html` + `public/js/all-builds.js` | Browse all sites |
+| `public/js/lib/search.js` | Search normalization + ranking (unit tested) |
+| `public/admin.html` | Internal admin view (noindex) |
+| `api/checkout.js` / `checkout-webhook.js` / `contact.js` | Stripe checkout, purchase emails, demo form |
+| `scripts/build.py` | Writes `public/previews/manifest.json` |
+| `scripts/add-to-market.py` | Registers a new site |
+| `tests/` | `npm test` (JS + Python), `npm run test:e2e` (Playwright) |
 
 ---
 
 ## All 16 sites (as of this session)
-| Slug | Business | City | Tier |
-|------|----------|------|------|
-| `610fit-academy` | 610Fit Academy | Waco, TX | 3 |
-| `andrews-cleaning-service` | Andrew's Cleaning Service | Wichita, KS | 3 |
-| `barks-an-bubbles` | Barks-An-Bubbles | Wichita, KS | 3 |
-| `bonjours-puppy-parade` | Bonjour's Puppy Parade | Wichita, KS | 3 |
-| `go-dolla-fitness` | Go Dolla Fitness | Wichita, KS | 3 |
-| `julius-rib-cage` | Julius Rib Cage | Wichita, KS | 3 |
-| `just-like-mamas-kitchen` | Just Like Mama's Kitchen | Wichita, KS | 3 |
-| `keep-it-cute-grooming` | Keep it Cute Grooming | Wichita, KS | 3 |
-| `lavish-mutts-llc` | Lavish Mutts | Wichita, KS | 3 |
-| `midway-custom-detailing` | Midway Custom Detailing | Waco, TX | 3 |
-| `nose-to-toes-pet-grooming` | Nose to Toes Pet Grooming | Andover, KS | 3 |
-| `papa-jacks-bbq` | Papa Jack's BBQ | Waco, TX | 3 |
-| `tanker-bbq-co` | Tanker BBQ Co. | Wichita, KS | 3 |
-| `taste-of-flavorz` | Taste of Flavorz | Wichita, KS | 3 |
-| `the-dapper-hound` | The Dapper Hound | Wichita, KS | 3 |
-| `the-eatery` | The Eatery | Wichita, KS | 3 |
+| Slug | Business | City |
+|------|----------|------|
+| `610fit-academy` | 610Fit Academy | Waco, TX |
+| `andrews-cleaning-service` | Andrew's Cleaning Service | Wichita, KS |
+| `barks-an-bubbles` | Barks-An-Bubbles | Wichita, KS |
+| `bonjours-puppy-parade` | Bonjour's Puppy Parade | Wichita, KS |
+| `go-dolla-fitness` | Go Dolla Fitness | Wichita, KS |
+| `julius-rib-cage` | Julius Rib Cage | Wichita, KS |
+| `just-like-mamas-kitchen` | Just Like Mama's Kitchen | Wichita, KS |
+| `keep-it-cute-grooming` | Keep it Cute Grooming | Wichita, KS |
+| `lavish-mutts-llc` | Lavish Mutts | Wichita, KS |
+| `midway-custom-detailing` | Midway Custom Detailing | Waco, TX |
+| `nose-to-toes-pet-grooming` | Nose to Toes Pet Grooming | Andover, KS |
+| `papa-jacks-bbq` | Papa Jack's BBQ | Waco, TX |
+| `tanker-bbq-co` | Tanker BBQ Co. | Wichita, KS |
+| `taste-of-flavorz` | Taste of Flavorz | Wichita, KS |
+| `the-dapper-hound` | The Dapper Hound | Wichita, KS |
+| `the-eatery` | The Eatery | Wichita, KS |
 
 ---
 
 ## How to add a new client site
 ```bash
-python add-to-market.py \
+python3 scripts/add-to-market.py \
     --name     "Business Name" \
     --category "Category" \
     --city     "City, ST" \
     --price    500 \
     --features "Feature 1,Feature 2,Feature 3"
 ```
-Then copy the built website files into `previews/<slug>/`. Commit and push to main — Vercel rebuilds the manifest automatically.
-
-After adding any new site, run:
-```bash
-python3 -c "
-import json, glob
-for path in glob.glob('previews/*/meta.json'):
-    with open(path) as f: meta = json.load(f)
-    meta['tier'] = 3
-    with open(path, 'w') as f: json.dump(meta, f, indent=2)
-"
-python3 build.py
-```
-This ensures new sites always get tier 3 pricing.
+Then copy the built website files into `public/previews/<slug>/`, run `npm test`, commit, and push to main.
 
 ---
 
@@ -120,13 +107,15 @@ git push origin claude/gifted-ramanujan-aD5r6:main
 
 ---
 
-## What was done in the last session
+## Session log
+
+### Pricing change
 - Ran deep market research on pricing/viability; verdict: model is sound, but the
   $1,000 upfront was the biggest close-killer (comps in TX take ~$200 down)
 - Cut setup fee to **$500** (monthly/yearly unchanged at $100/$1,000)
 - Setup fee is now an inline `price_data` line item in `api/checkout.js` — no
   Stripe dashboard price needed; old $1,000 price is orphaned and can be archived
-- Updated pricing copy in `app.js`, `all-builds.js`, `purchase.js`
+- Updated pricing copy on every page
 - Set `price: 500` / `monthlyPrice: 100` in all 16 `meta.json` files (shown in admin.html)
 
 ### Hardening pass (after a code audit)
@@ -145,11 +134,24 @@ git push origin claude/gifted-ramanujan-aD5r6:main
 - Removed "One flat fee, no subscriptions" from the landing page and PRODUCT.md
 - Skill + CLAUDE.md now document the sandbox rules and ban picsum/loremflickr images
 
+### Public-repo cleanup (for internship applications)
+- Moved the website into `public/` (Vercel output dir). Before this, `outputDirectory: "."`
+  published the whole repo, so HANDOFF.md, CLAUDE.md and the scripts were downloadable
+- Merged three copy-pasted page scripts into ES modules under `public/js/lib/`; inline
+  `onclick` handlers replaced with event delegation and `data-` attributes
+- Search moved to `public/js/lib/search.js`: apostrophe/punctuation-insensitive, multi-word
+  AND matching across fields, ranked (name > category > city). Fixes "mamas kitchen" and
+  "bbq waco" returning nothing
+- API handlers are now factories with injected Stripe/email clients; ESM; `micro` removed
+- Manifest no longer publishes `contactEmail` or `tier`
+- Added README, `.gitignore`, `.gitattributes`, `package-lock.json`, security headers,
+  og:image, tests (44 JS, 12 Python, 10 Playwright × desktop/mobile) and GitHub Actions CI
+
 ---
 
 ## Known things to watch
 - **Checkout flow**: The $500 setup fee is an inline one-time `price_data` line item in a `mode: 'subscription'` Stripe session (Stripe invoices one-time items on the first invoice). If checkout ever fails, check Vercel function logs under `api/checkout`.
 - **Stock photos**: Sites use Unsplash/Pexels images as placeholders. On purchase, swap with real business photos. `610fit-academy`, `lavish-mutts-llc` and `taste-of-flavorz` still use picsum.photos / loremflickr.com, which return arbitrary photos — replace those first.
 - **Rate limit is per instance**: the contact-form limit lives in function memory, so it slows one abusive client but isn't a global quota. A shared store (e.g. Vercel KV / Upstash) would be needed for a hard limit.
-- **contactEmail field**: Each `meta.json` has a `contactEmail` field that is not yet wired into any automated flow — it's there for future use.
+- **contactEmail field**: Each `meta.json` has a `contactEmail` field that is not yet wired into any automated flow. It is intentionally left out of the public manifest.
 - **Luke's email**: lukewebsitemarket@gmail.com (business) / lukehenning9@gmail.com (personal, appears in some meta.json files as contactEmail placeholder)

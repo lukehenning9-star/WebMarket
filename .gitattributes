@@ -1,0 +1,7 @@
+# Keep GitHub's language stats focused on the platform code.
+# Client demo sites are content, and the agent skills are third-party.
+public/previews/** linguist-documentation
+.agents/** linguist-vendored
+.claude/skills/** linguist-vendored
+public/previews/manifest.json linguist-generated
+package-lock.json linguist-generated
