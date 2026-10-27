@@ -12,3 +12,9 @@ __pycache__/
 *.pyc
 
 .DS_Store
+
+# Third-party agent skills are installed locally (see skills-lock.json), not committed.
+.agents/
+.claude/skills/*
+!.claude/skills/design/
+!.claude/skills/new-webmarket-site/

@@ -53,4 +53,6 @@ Push to `main`. Vercel runs `python3 scripts/build.py` and serves `public/`. CI 
 
 Each handler is built by a `create…Handler({...})` factory so tests can pass in fake Stripe/email clients; the default export wires up the real ones.
 
-`meta.json` may hold a `contactEmail`; it is deliberately not copied into the public manifest.
+Everything under `public/` is downloadable, including each `meta.json`, so only put information there that the business already shows publicly. `contactEmail` is left out of the manifest; leave it empty when unknown.
+
+Operational notes (pricing, Stripe IDs, env vars, session log) are in `docs/HANDOFF.md`.

@@ -1,5 +1,7 @@
 # Website Market
 
+[![CI](https://github.com/lukehenning9-star/WebMarket/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/lukehenning9-star/WebMarket/actions/workflows/ci.yml)
+
 **Live:** [uswebsitemarket.com](https://uswebsitemarket.com)
 
 Most of the work in selling a small business its first website is convincing the owner it will look good. Website Market skips that step. I build the site first, the owner searches their business name, sees the finished site running, and buys it.
@@ -67,7 +69,7 @@ The first version used a plain substring check, so `mamas kitchen` and `bbq waco
   If the email fails, the handler returns 500 so Stripe retries.
 - **Contact form.** Inputs are length-limited, control characters are stripped (blocking email header injection), a hidden honeypot field catches bots, and each IP gets 3 requests per 10 minutes.
 - **No inline handlers.** Result cards carry their ID in a `data-` attribute and use event delegation, and all catalog text goes through one `escapeHtml`. Tests feed hostile names through the card renderer.
-- **Deploy surface.** Only `public/` is served, and private `meta.json` fields such as the owner's email are left out of the public manifest.
+- **Deploy surface.** Only `public/` is served; repo docs, scripts and tests are not. The search manifest carries only the fields the UI needs.
 
 ## Tech stack
 

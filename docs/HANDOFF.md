@@ -149,11 +149,23 @@ git push origin claude/gifted-ramanujan-aD5r6:main
 - Upgraded nodemailer 6 → 10 (19 advisories; `npm audit` now clean). CI runner pinned to
   ubuntu-24.04 because Playwright 1.56 can't install browsers on ubuntu-latest (26.04)
 
+### After the repo went public
+- Removed the 21 third-party design skills (`.agents/` and their `.claude/skills/` links,
+  ~112k lines copied from other GitHub repos, mostly without licenses). `.gitignore` keeps a
+  local reinstall from being committed again; `skills-lock.json` still lists their sources.
+  Only `design` and `new-webmarket-site` remain in the repo
+- Moved this file to `docs/HANDOFF.md`
+- Blanked the personal-email placeholder `contactEmail` in three `meta.json` files
+  (meta.json files are publicly downloadable)
+- Fast-forwarded the stale GitHub default branch `claude/brave-planck-pGIYc` to `main` and
+  deleted fully-merged `claude/*` branches. The default branch should be switched to `main`
+  in GitHub settings (this session's GitHub access can't change repo settings)
+
 ---
 
 ## Known things to watch
 - **Checkout flow**: The $500 setup fee is an inline one-time `price_data` line item in a `mode: 'subscription'` Stripe session (Stripe invoices one-time items on the first invoice). If checkout ever fails, check Vercel function logs under `api/checkout`.
 - **Stock photos**: Sites use Unsplash/Pexels images as placeholders. On purchase, swap with real business photos. `610fit-academy`, `lavish-mutts-llc` and `taste-of-flavorz` still use picsum.photos / loremflickr.com, which return arbitrary photos — replace those first.
 - **Rate limit is per instance**: the contact-form limit lives in function memory, so it slows one abusive client but isn't a global quota. A shared store (e.g. Vercel KV / Upstash) would be needed for a hard limit.
-- **contactEmail field**: Each `meta.json` has a `contactEmail` field that is not yet wired into any automated flow. It is intentionally left out of the public manifest.
-- **Luke's email**: lukewebsitemarket@gmail.com (business) / lukehenning9@gmail.com (personal, appears in some meta.json files as contactEmail placeholder)
+- **meta.json is public**: everything under `public/` is served, including each site's `meta.json`. Only put information there that the business already shows on its site. `contactEmail` is not wired into any automated flow and is left out of the manifest; leave it empty when unknown rather than using a placeholder address.
+- **Business inbox**: lukewebsitemarket@gmail.com receives purchase, abandoned-checkout and demo-request alerts.
