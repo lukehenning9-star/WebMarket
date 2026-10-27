@@ -22,9 +22,14 @@ test.beforeEach(async ({ page, baseURL }) => {
 
     // Serve the site with the production security headers so CSP regressions fail here.
     await page.context().route(url => url.href.startsWith(baseURL), async route => {
-        const response = await route.fetch();
-        const pathname = new URL(route.request().url()).pathname;
-        await route.fulfill({ response, headers: { ...response.headers(), ...productionHeaders(pathname) } });
+        try {
+            const response = await route.fetch();
+            const pathname = new URL(route.request().url()).pathname;
+            await route.fulfill({ response, headers: { ...response.headers(), ...productionHeaders(pathname) } });
+        } catch (err) {
+            // A request still in flight when the test ends; nothing is waiting for it.
+            if (!/has been closed/.test(err.message)) throw err;
+        }
     });
 
     page.errors = [];
@@ -37,6 +42,7 @@ test.beforeEach(async ({ page, baseURL }) => {
 });
 
 test.afterEach(async ({ page }) => {
+    await page.context().unrouteAll({ behavior: 'ignoreErrors' });
     expect(page.errors, 'uncaught page errors').toEqual([]);
 });
 
