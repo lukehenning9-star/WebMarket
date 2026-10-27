@@ -157,9 +157,13 @@ git push origin claude/gifted-ramanujan-aD5r6:main
 - Moved this file to `docs/HANDOFF.md`
 - Blanked the personal-email placeholder `contactEmail` in three `meta.json` files
   (meta.json files are publicly downloadable)
-- Fast-forwarded the stale GitHub default branch `claude/brave-planck-pGIYc` to `main` and
-  deleted fully-merged `claude/*` branches. The default branch should be switched to `main`
-  in GitHub settings (this session's GitHub access can't change repo settings)
+- Fast-forwarded the stale GitHub default branch `claude/brave-planck-pGIYc` to `main`.
+  Still to do by hand (Claude sessions can't change repo settings or delete branches):
+  switch the default branch to `main` in GitHub settings, then delete the 20 `claude/*`
+  branches whose commits are all in `main` (check with `git cherry origin/main origin/<branch>`).
+  Seven branches hold commits that never reached `main` (`awesome-hypatia`, `eatery-redesign`,
+  `epic-bohr` = draft PR #35, `exciting-tesla`, `inspiring-cannon`, `loving-noether`,
+  `sleepy-maxwell`); review before deleting
 
 ---
 
