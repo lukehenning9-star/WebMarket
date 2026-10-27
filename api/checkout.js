@@ -1,4 +1,6 @@
 import Stripe from 'stripe';
+import { isJsonRequest } from './_lib/http.js';
+import { clientIp, createRateLimiter } from './_lib/rate-limit.js';
 
 export const PRICES = {
     monthly: 'price_1Tg8ej9Zed1ZaDEwSnfffwrh',
@@ -35,10 +37,16 @@ export function createManifestLoader({ fetchFn = fetch, ttlMs = MANIFEST_TTL_MS,
     };
 }
 
-export function createCheckoutHandler({ getStripe, knownBusinessIds }) {
+export function createCheckoutHandler({ getStripe, knownBusinessIds, isRateLimited = () => false }) {
     return async function handler(req, res) {
         if (req.method !== 'POST') {
             return res.status(405).json({ error: 'Method not allowed' });
+        }
+        if (!isJsonRequest(req)) {
+            return res.status(415).json({ error: 'Expected application/json' });
+        }
+        if (isRateLimited(clientIp(req))) {
+            return res.status(429).json({ error: 'Too many requests. Please try again later.' });
         }
 
         const { plan, businessId } = req.body || {};
@@ -79,4 +87,5 @@ export function createCheckoutHandler({ getStripe, knownBusinessIds }) {
 export default createCheckoutHandler({
     getStripe: () => new Stripe(process.env.STRIPE_SECRET_KEY),
     knownBusinessIds: createManifestLoader(),
+    isRateLimited: createRateLimiter({ windowMs: 10 * 60 * 1000, max: 20 }),
 });

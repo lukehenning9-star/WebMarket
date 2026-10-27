@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "python3 scripts/build.py",
-    "dev": "python3 scripts/build.py && python3 -m http.server 8080 --directory public",
+    "dev": "python3 scripts/build.py && python3 -m http.server 8080 --bind 127.0.0.1 --directory public",
+    "admin": "python3 scripts/build.py && echo \"Admin tool: http://localhost:8081/tools/admin.html\" && python3 -m http.server 8081 --bind 127.0.0.1",
     "test": "npm run test:js && npm run test:py",
     "test:js": "node --test \"tests/unit/*.test.js\" \"tests/api/*.test.js\"",
     "test:py": "python3 -m unittest discover -s tests/python -v",

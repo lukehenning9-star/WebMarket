@@ -5,6 +5,12 @@ import { fakeStripe, mockRes, silenceConsole } from './helpers.js';
 
 const KNOWN = new Set(['the-eatery', 'papa-jacks-bbq']);
 
+const post = (body, headers = {}) => ({
+    method: 'POST',
+    body,
+    headers: { 'content-type': 'application/json', 'x-forwarded-for': '203.0.113.9', ...headers },
+});
+
 describe('POST /api/checkout', () => {
     let stripe;
     let handler;
@@ -16,7 +22,7 @@ describe('POST /api/checkout', () => {
 
     it('creates a subscription session with the $500 setup fee and the chosen plan', async () => {
         const res = mockRes();
-        await handler({ method: 'POST', body: { plan: 'yearly', businessId: 'the-eatery' } }, res);
+        await handler(post({ plan: 'yearly', businessId: 'the-eatery' }), res);
 
         assert.equal(res.statusCode, 200);
         assert.equal(res.body.url, 'https://checkout.stripe.test/session');
@@ -30,7 +36,7 @@ describe('POST /api/checkout', () => {
     it('rejects businesses that are not in the catalog', async () => {
         for (const businessId of ['not-a-real-site', undefined, 42, { id: 'the-eatery' }]) {
             const res = mockRes();
-            await handler({ method: 'POST', body: { plan: 'monthly', businessId } }, res);
+            await handler(post({ plan: 'monthly', businessId }), res);
             assert.equal(res.statusCode, 400);
         }
         assert.equal(stripe.calls.sessions.length, 0);
@@ -39,19 +45,47 @@ describe('POST /api/checkout', () => {
     it('rejects unknown plans, including inherited object keys', async () => {
         for (const plan of ['weekly', 'toString', '__proto__', 'constructor', undefined]) {
             const res = mockRes();
-            await handler({ method: 'POST', body: { plan, businessId: 'the-eatery' } }, res);
+            await handler(post({ plan, businessId: 'the-eatery' }), res);
             assert.equal(res.statusCode, 400, `plan ${plan}`);
         }
     });
 
     it('rejects a missing body and non-POST methods', async () => {
         const noBody = mockRes();
-        await handler({ method: 'POST' }, noBody);
+        await handler(post(undefined), noBody);
         assert.equal(noBody.statusCode, 400);
 
         const get = mockRes();
         await handler({ method: 'GET' }, get);
         assert.equal(get.statusCode, 405);
+    });
+
+    it('rejects non-JSON bodies so other sites cannot post a plain form', async () => {
+        for (const type of [undefined, 'text/plain', 'application/x-www-form-urlencoded', 'multipart/form-data; boundary=x']) {
+            const res = mockRes();
+            await handler(post({ plan: 'monthly', businessId: 'the-eatery' }, { 'content-type': type }), res);
+            assert.equal(res.statusCode, 415, String(type));
+        }
+        const withCharset = mockRes();
+        await handler(post({ plan: 'monthly', businessId: 'the-eatery' }, { 'content-type': 'application/json; charset=utf-8' }), withCharset);
+        assert.equal(withCharset.statusCode, 200);
+    });
+
+    it('rate-limits session creation per IP', async () => {
+        let count = 0;
+        const limited = createCheckoutHandler({
+            getStripe: () => stripe,
+            knownBusinessIds: async () => KNOWN,
+            isRateLimited: () => ++count > 2,
+        });
+        const codes = [];
+        for (let i = 0; i < 3; i++) {
+            const res = mockRes();
+            await limited(post({ plan: 'monthly', businessId: 'the-eatery' }), res);
+            codes.push(res.statusCode);
+        }
+        assert.deepEqual(codes, [200, 200, 429]);
+        assert.equal(stripe.calls.sessions.length, 2);
     });
 
     it('returns 503 when the catalog cannot be loaded', async t => {
@@ -61,7 +95,7 @@ describe('POST /api/checkout', () => {
             knownBusinessIds: async () => { throw new Error('network down'); },
         });
         const res = mockRes();
-        await failing({ method: 'POST', body: { plan: 'monthly', businessId: 'the-eatery' } }, res);
+        await failing(post({ plan: 'monthly', businessId: 'the-eatery' }), res);
         assert.equal(res.statusCode, 503);
     });
 
@@ -69,7 +103,7 @@ describe('POST /api/checkout', () => {
         silenceConsole(t);
         stripe.checkout.sessions.create = async () => { throw new Error('stripe down'); };
         const res = mockRes();
-        await handler({ method: 'POST', body: { plan: 'monthly', businessId: 'the-eatery' } }, res);
+        await handler(post({ plan: 'monthly', businessId: 'the-eatery' }), res);
         assert.equal(res.statusCode, 500);
     });
 });

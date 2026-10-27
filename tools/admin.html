@@ -268,7 +268,7 @@
             <div class="panel-body">
                 <div class="load-note" id="loadNote" style="display:none">
                     ⚠ Could not load <code>previews/manifest.json</code>. This page requires an HTTP server.<br>
-                    Run <code>npm run dev</code> from the repo root, then open <code>http://localhost:8080/admin.html</code>
+                    Run <code>npm run admin</code> from the repo root, then open <code>http://localhost:8081/tools/admin.html</code>
                 </div>
                 <ul id="businessList">
                     <li class="empty-state">Loading businesses…</li>
@@ -336,7 +336,7 @@
 
         async function loadBusinesses() {
             try {
-                const res = await fetch('previews/manifest.json');
+                const res = await fetch('../public/previews/manifest.json');
                 if (!res.ok) throw new Error(res.status);
                 currentBusinesses = await res.json();
                 renderList(currentBusinesses);

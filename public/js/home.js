@@ -35,9 +35,9 @@ function openDemoModal() {
 function closeDemoModal() {
     demoOverlay.classList.remove('open');
     document.body.style.overflow = '';
-    demoForm.style.display = '';
+    demoForm.hidden = false;
     demoForm.reset();
-    demoSuccess.style.display = 'none';
+    demoSuccess.hidden = true;
 }
 
 async function submitDemo(event) {
@@ -56,8 +56,8 @@ async function submitDemo(event) {
             body: JSON.stringify(payload),
         });
         if (res.ok) {
-            demoForm.style.display = 'none';
-            demoSuccess.style.display = 'block';
+            demoForm.hidden = true;
+            demoSuccess.hidden = false;
         } else if (res.status === 429) {
             alert("You've sent a few requests already. Please try again in a few minutes.");
         } else {

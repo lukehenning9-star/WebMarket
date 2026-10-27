@@ -1,3 +1,4 @@
+import { isJsonRequest } from './_lib/http.js';
 import { sendNotification } from './_lib/mailer.js';
 import { clientIp, createRateLimiter } from './_lib/rate-limit.js';
 
@@ -11,6 +12,9 @@ function clean(value, maxLength) {
 export function createContactHandler({ notify, isRateLimited }) {
     return async function handler(req, res) {
         if (req.method !== 'POST') return res.status(405).end();
+        if (!isJsonRequest(req)) {
+            return res.status(415).json({ error: 'Expected application/json' });
+        }
 
         const body = req.body || {};
 

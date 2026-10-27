@@ -16,9 +16,18 @@ export default defineConfig({
         { name: 'desktop', use: { ...devices['Desktop Chrome'] } },
         { name: 'mobile', use: { ...devices['Pixel 7'] } },
     ],
-    webServer: {
-        command: `python3 scripts/build.py && python3 -m http.server ${PORT} --directory public`,
-        url: `http://localhost:${PORT}/`,
-        reuseExistingServer: !process.env.CI,
-    },
+    webServer: [
+        {
+            // The deployed site: only public/ is served, as on Vercel.
+            command: `python3 scripts/build.py && python3 -m http.server ${PORT} --bind 127.0.0.1 --directory public`,
+            url: `http://localhost:${PORT}/`,
+            reuseExistingServer: !process.env.CI,
+        },
+        {
+            // The repo root, for the local-only admin tool in tools/.
+            command: 'python3 -m http.server 4174 --bind 127.0.0.1',
+            url: 'http://localhost:4174/tools/admin.html',
+            reuseExistingServer: !process.env.CI,
+        },
+    ],
 });

@@ -4,10 +4,10 @@ import { createContactHandler } from '../../api/contact.js';
 import { clientIp, createRateLimiter } from '../../api/_lib/rate-limit.js';
 import { mockRes, silenceConsole } from './helpers.js';
 
-const request = (body, ip = '203.0.113.1') => ({
+const request = (body, ip = '203.0.113.1', contentType = 'application/json') => ({
     method: 'POST',
     body,
-    headers: { 'x-forwarded-for': `${ip}, 10.0.0.1` },
+    headers: { 'x-forwarded-for': `${ip}, 10.0.0.1`, 'content-type': contentType },
 });
 
 describe('POST /api/contact', () => {
@@ -36,6 +36,13 @@ describe('POST /api/contact', () => {
             await handler(request(body), res);
             assert.equal(res.statusCode, 400);
         }
+        assert.equal(emails.length, 0);
+    });
+
+    it('rejects non-JSON bodies', async () => {
+        const res = mockRes();
+        await handler(request({ company: 'Acme', contact: 'a@b.co' }, '203.0.113.2', 'text/plain'), res);
+        assert.equal(res.statusCode, 415);
         assert.equal(emails.length, 0);
     });
 

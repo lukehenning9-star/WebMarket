@@ -52,7 +52,7 @@ See `README.md` (architecture, layout) and `CLAUDE.md` (commands). In short:
 | `public/purchase.html` + `public/js/purchase.js` | Direct purchase flow |
 | `public/all-builds.html` + `public/js/all-builds.js` | Browse all sites |
 | `public/js/lib/search.js` | Search normalization + ranking (unit tested) |
-| `public/admin.html` | Internal admin view (noindex) |
+| `tools/admin.html` | Local-only admin tool (`npm run admin`), not deployed |
 | `api/checkout.js` / `checkout-webhook.js` / `contact.js` | Stripe checkout, purchase emails, demo form |
 | `scripts/build.py` | Writes `public/previews/manifest.json` |
 | `scripts/add-to-market.py` | Registers a new site |
@@ -164,6 +164,16 @@ git push origin claude/gifted-ramanujan-aD5r6:main
   Seven branches hold commits that never reached `main` (`awesome-hypatia`, `eatery-redesign`,
   `epic-bohr` = draft PR #35, `exciting-tesla`, `inspiring-cannon`, `loving-noether`,
   `sleepy-maxwell`); review before deleting
+
+### Security audit (see `docs/security-audit.md`)
+- Strict CSP + Permissions-Policy in `vercel.json`; e2e suite runs under those headers
+- Admin tool moved out of the deployed site to `tools/`
+- Checkout and contact are JSON-only (415 otherwise); checkout rate-limited per IP
+- Frontend only redirects to `https://checkout.stripe.com`; webhook returns a generic
+  error and the purchase email shows the payment status
+- Dependabot config added; `SECURITY.md` added
+- Still to do by hand: Vercel Deployment Protection for previews, env var scoping,
+  GitHub secret scanning / Dependabot alerts / private commit email (see the session summary)
 
 ---
 

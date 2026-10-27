@@ -5,7 +5,7 @@ A marketplace where local business owners search their name, preview a website a
 ## Layout
 
 - `public/` — everything Vercel serves (it is the output directory)
-  - `index.html`, `purchase.html`, `all-builds.html`, `success.html`, `admin.html`
+  - `index.html`, `purchase.html`, `all-builds.html`, `success.html`
   - `css/styles.css`
   - `js/<page>.js` — one ES module per page; shared code lives in `js/lib/`
   - `previews/<slug>/` — one client's website (`index.html` + `meta.json`)
@@ -13,6 +13,7 @@ A marketplace where local business owners search their name, preview a website a
 - `api/` — Vercel serverless functions (Node, ES modules); shared helpers in `api/_lib/`
 - `scripts/build.py` — regenerates the manifest (Vercel runs it on every deploy)
 - `scripts/add-to-market.py` — registers a new client site
+- `tools/admin.html` — local-only admin form (`npm run admin`); never deploy it
 - `tests/` — `unit/` and `api/` (node:test), `python/` (unittest), `e2e/` (Playwright)
 
 ## Adding a new client website
@@ -37,6 +38,7 @@ The preview renders inside a sandboxed iframe (scripts run, but there is no same
 ```bash
 npm install          # once
 npm run dev          # rebuild manifest + serve public/ on http://localhost:8080
+npm run admin        # local admin tool on http://localhost:8081/tools/admin.html
 npm test             # JS unit/API tests + Python script tests
 npm run test:e2e     # Playwright browser tests (desktop + mobile)
 ```
@@ -54,5 +56,7 @@ Push to `main`. Vercel runs `python3 scripts/build.py` and serves `public/`. CI 
 Each handler is built by a `create…Handler({...})` factory so tests can pass in fake Stripe/email clients; the default export wires up the real ones.
 
 Everything under `public/` is downloadable, including each `meta.json`, so only put information there that the business already shows publicly. `contactEmail` is left out of the manifest; leave it empty when unknown.
+
+Main pages run under a strict Content-Security-Policy (`vercel.json`): no inline `<script>`, `<style>`, `style=""` or `on*=` attributes in `public/*.html` or in markup built by `public/js/`. Use classes, the `hidden` attribute, and `addEventListener`. The e2e suite fails on any CSP violation. Security design and the audit are in `SECURITY.md` and `docs/security-audit.md`.
 
 Operational notes (pricing, Stripe IDs, env vars, session log) are in `docs/HANDOFF.md`.

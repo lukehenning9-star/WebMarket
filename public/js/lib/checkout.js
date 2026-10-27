@@ -17,6 +17,17 @@ export const PRICING_PANEL_HTML = `
         <p class="pricing-legal">$500 setup + your chosen plan charged today. Renews automatically.</p>
     </div>`;
 
+const STRIPE_CHECKOUT_ORIGIN = 'https://checkout.stripe.com';
+
+/** True only for Stripe-hosted checkout pages, so a bad API response can't redirect elsewhere. */
+export function isStripeCheckoutUrl(url) {
+    try {
+        return new URL(url).origin === STRIPE_CHECKOUT_ORIGIN;
+    } catch {
+        return false;
+    }
+}
+
 /** Creates a Stripe Checkout session for the business and redirects to it. */
 export async function startCheckout(businessId, plan) {
     try {
@@ -28,6 +39,9 @@ export async function startCheckout(businessId, plan) {
         const data = await res.json().catch(() => ({}));
         if (!res.ok || !data.url) {
             throw new Error(data.error || `HTTP ${res.status}`);
+        }
+        if (!isStripeCheckoutUrl(data.url)) {
+            throw new Error('Refusing to redirect to a non-Stripe URL');
         }
         window.location.href = data.url;
     } catch (err) {

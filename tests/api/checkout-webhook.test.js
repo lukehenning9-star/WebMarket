@@ -40,6 +40,7 @@ describe('POST /api/checkout-webhook', () => {
         const res = mockRes();
         await handler(signedWebhookRequest(completed('evt_1'), 'whsec_wrong'), res);
         assert.equal(res.statusCode, 400);
+        assert.equal(res.body, 'Invalid signature', 'does not echo library error details');
         assert.deepEqual(emails, []);
     });
 

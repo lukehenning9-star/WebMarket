@@ -42,6 +42,7 @@ export function createWebhookHandler({ getStripe, webhookSecret, notify }) {
                 `Customer: ${custName || custEmail}`,
                 `Email: ${custEmail}`,
                 `Amount charged: ${amount}`,
+                `Payment status: ${session.payment_status || 'unknown'}`,
                 '',
                 'Log in to Stripe for full details.',
             ].join('\n')
@@ -92,7 +93,7 @@ export function createWebhookHandler({ getStripe, webhookSecret, notify }) {
             event = stripe.webhooks.constructEvent(rawBody, sig, webhookSecret());
         } catch (err) {
             console.error('Stripe webhook signature error:', err.message);
-            return res.status(400).send(`Webhook error: ${err.message}`);
+            return res.status(400).send('Invalid signature');
         }
 
         if (seenEventIds.has(event.id)) {

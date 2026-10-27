@@ -61,7 +61,8 @@ The first version used a plain substring check, so `mamas kitchen` and `bbq waco
 ## Security
 
 - **Preview isolation.** Client sites run in `sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation allow-forms"`. Without `allow-same-origin`, a preview gets an opaque origin, so it can't read the parent page's cookies or DOM, even though it's served from the same domain. Top-level navigation is only allowed on a real click, which keeps tap-to-call links working. A Playwright test checks that the parent page can't reach any preview's DOM.
-- **Checkout validation.** `/api/checkout` only accepts businesses listed in the deployed manifest. The list is cached for 5 minutes, and the endpoint returns 503 if the manifest can't be loaded. Plan names are checked with `Object.hasOwn`, so `toString` or `__proto__` can't select a price.
+- **Content-Security-Policy.** Main pages only run scripts and styles from this origin (plus Google Fonts CSS); no inline scripts, styles or event handlers. The browser tests run under the exact headers in `vercel.json` and fail on any CSP violation.
+- **Checkout validation.** `/api/checkout` only accepts JSON (which blocks cross-site form posts), is rate-limited per IP, and only accepts businesses listed in the deployed manifest. The list is cached for 5 minutes, and the endpoint returns 503 if the manifest can't be loaded. Plan names are checked with `Object.hasOwn`, so `toString` or `__proto__` can't select a price. The browser only follows a redirect to `https://checkout.stripe.com`.
 - **Webhooks.** The Stripe signature is verified over the raw request body. Stripe can deliver the same event more than once, so duplicates are skipped two ways:
   - a set of recently seen event IDs, for retries that land on the same running instance;
   - a marker written to the subscription's metadata, which still works after a cold start.
@@ -69,7 +70,9 @@ The first version used a plain substring check, so `mamas kitchen` and `bbq waco
   If the email fails, the handler returns 500 so Stripe retries.
 - **Contact form.** Inputs are length-limited, control characters are stripped (blocking email header injection), a hidden honeypot field catches bots, and each IP gets 3 requests per 10 minutes.
 - **No inline handlers.** Result cards carry their ID in a `data-` attribute and use event delegation, and all catalog text goes through one `escapeHtml`. Tests feed hostile names through the card renderer.
-- **Deploy surface.** Only `public/` is served; repo docs, scripts and tests are not. The search manifest carries only the fields the UI needs.
+- **Deploy surface.** Only `public/` is served; repo docs, scripts, tests and the admin tool are not. The search manifest carries only the fields the UI needs.
+
+The full audit, with findings, fixes and accepted risks, is in [`docs/security-audit.md`](docs/security-audit.md). To report a problem, see [`SECURITY.md`](SECURITY.md).
 
 ## Tech stack
 
@@ -90,9 +93,9 @@ api/                     Serverless functions
   checkout.js            POST: create a Stripe Checkout session
   checkout-webhook.js    POST: Stripe events → purchase / abandoned-cart email
   contact.js             POST: demo-request form
-  _lib/                  mailer, rate limiter, raw-body reader (not routes)
+  _lib/                  mailer, rate limiter, raw-body reader, JSON check (not routes)
 public/                  Everything Vercel serves
-  index.html  purchase.html  all-builds.html  success.html  admin.html
+  index.html  purchase.html  all-builds.html  success.html
   css/styles.css
   js/
     home.js  purchase.js  all-builds.js  success.js     one entry module per page
@@ -103,8 +106,10 @@ public/                  Everything Vercel serves
 scripts/
   build.py               meta.json files → manifest.json (runs on every deploy)
   add-to-market.py       register a new client site
+tools/
+  admin.html             local-only form that builds the add-to-market command
 tests/
-  unit/                  search ranking, escaping, card rendering
+  unit/                  search ranking, escaping, card rendering, redirect allowlist
   api/                   all three endpoints, with injected Stripe/email fakes
   python/                build + registration scripts, catalog integrity
   e2e/                   Playwright, desktop + mobile
@@ -119,9 +124,10 @@ Requires Node 22+ and Python 3.11+.
 ```bash
 npm install
 npm run dev            # build the manifest and serve public/ at http://localhost:8080
+npm run admin          # local admin tool at http://localhost:8081/tools/admin.html
 ```
 
-Search, previews and the admin page work locally. Checkout and the contact form need the Vercel runtime (`vercel dev`) and these environment variables:
+Search, previews and the admin tool work locally. Checkout and the contact form need the Vercel runtime (`vercel dev`) and these environment variables:
 
 | Variable | Used by |
 |---|---|
@@ -132,17 +138,18 @@ Search, previews and the admin page work locally. Checkout and the contact form 
 ## Testing
 
 ```bash
-npm test               # 44 JS unit/API tests + 12 Python tests
-npm run test:e2e       # 10 Playwright scenarios × desktop and mobile
+npm test               # 49 JS unit/API tests + 12 Python tests
+npm run test:e2e       # 16 Playwright scenarios × desktop and mobile
 ```
 
 The browser tests block all third-party requests, so they run offline and give the same result every time. They cover:
 
 - search, keyboard navigation and focus return
 - escaping of search queries
-- checkout success and failure
+- checkout success and failure, and refusing to redirect anywhere but Stripe
+- the production security headers, with any CSP violation failing the test
 - the demo form and its honeypot field
-- the admin page
+- the admin tool (not deployed, works locally)
 - loading all 16 client sites inside the sandbox without script errors
 
 CI also fails if `manifest.json` is out of date.
